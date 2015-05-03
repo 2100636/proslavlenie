@@ -43,6 +43,7 @@ register.inclusion_tag('core/tags/core_top_menu.html', takes_context=True)(coreT
 def menu_tree(context, request):
     return {
         'menu_objects': MenuCategory.objects.all(),
+        'request': request
 
     }
 register.inclusion_tag('core/tags/menu_category.html', takes_context=True)(menu_tree)

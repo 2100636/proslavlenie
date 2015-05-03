@@ -222,8 +222,8 @@ section#drop_menu ul li ul li p{
 }
 section#drop_menu ul li {
     /*display: inline-table;*/
-    float: left;
-    width:19%;
+    /*float: left;*/
+    /*width:19%;*/
 }
 section#drop_menu ul li p {
     font-family: "Roboto Slab";

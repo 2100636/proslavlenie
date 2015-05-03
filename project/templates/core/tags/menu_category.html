@@ -14,17 +14,17 @@
 
             <ul class="root">
                 
-                {#{% sitetree_menu from "ministry" include 'trunk' %}#}
-                {% recursetree menu_objects %}
-                    <li>
-                        <p>{{ node.name }}</p>
-                        {% if not node.is_leaf_node %}
-                            <ul class="children">
-                                {{ children }}
-                            </ul>
-                        {% endif %}
-                    </li>
-                {% endrecursetree %}
+                {% sitetree_menu from "ministry" include 'trunk' %}
+                {#{% recursetree menu_objects %}#}
+                    {#<li>#}
+                        {#<p>{{ node.name }}</p>#}
+                        {#{% if not node.is_leaf_node %}#}
+                            {#<ul class="children">#}
+                                {#{{ children }}#}
+                            {#</ul>#}
+                        {#{% endif %}#}
+                    {#</li>#}
+                {#{% endrecursetree %}#}
             </ul>
 
         </div>
