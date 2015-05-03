@@ -189,18 +189,22 @@ INSTALLED_APPS = (
 	'django.contrib.flatpages',
     'filebrowser',
 	'django.contrib.admin',
-    'south',
     'ckeditor',
     'tinymce',
     'mptt',
     'mptt_tree_editor',
+    'colorful',
+    'sitetree',
     'project.core',
-    'project.accounts',
+    # 'project.accounts',
     'project.menu',
     'image_cropping',
     'easy_thumbnails',
+    'authentication',
 
 )
+
+AUTH_USER_MODEL = 'authentication.Account'
 
 FILEBROWSER_MEDIA_ROOT = MEDIA_ROOT
 FILEBROWSER_MEDIA_URL = MEDIA_URL

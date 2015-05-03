@@ -1,0 +1,89 @@
+{% load staticfiles %}
+{% load thumbnail %}
+{% load cropping %}
+{% load sitetree %}
+{% load mptt_tags %}
+
+<section class="header {% if request.get_full_path == "/" %}front{% endif %}">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-xs-12 col-md-12">
+                <div class="row">
+                    <div class="col-xs-12 col-md-3" style="float: right">
+                        <input id="header_search" class="search-form" type="text"/>
+                    </div>
+                    <div class="col-xs-12 col-md-1" style="float: right">
+                        <span id="lang">En</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <a href="/"><img src="/static/theme/img/logo.png" width="230" alt=""/></a>
+                    </div>
+                    <div class="col-xs-8 sepa">
+
+                        {#{% sitetree_menu from "site_menu" include 'trunk' %}#}
+                        {% sitetree_menu from "site_menu" include 'trunk' template "sitetree/site_menu.html" %}
+
+                    </div>
+                </div>
+            </div>
+
+        {% if request.get_full_path == "/" %}
+            <div class="col-xs-12 sepa" style="height: 360px">
+                <!-- Swiper -->
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        {% for slide in slides %}
+{#                                <div class="swiper-slide"><img src="{{ slide.url }}" alt=""/></div>#}
+                            <img class="swiper-slide" src="{% cropped_thumbnail slide "cropping" scale=1 %}">
+                        {% endfor %}
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination">
+                        {% for slide in slides %}
+                            <span class="my-pager">
+                                <div class="slider_icon"><span class="number">{{ slide.date|date:"j" }}</span><br/><small>{{ slide.date|date:"E" }}</small></div>
+                                <div class="title">{{ slide.name|truncatewords:3 }}</div>
+                                <div class="description">{{ slide.description|truncatewords:12 }}</div>
+                            </span>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+
+            
+
+            <div class="col-xs-12">
+                <div class="row">
+                    <div class="col-xs-4 sepa">
+                        <div class="btn_front">
+                            <img src="/static/theme/img/pray.png" height="42" alt=""/>
+                            <a href="">Молитвенная нужда</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 sepa">
+                        <div class="btn_front orange">
+                            <img src="/static/theme/img/online.png" height="42" alt=""/>
+                            <a href="">Онлайн трансляция</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 sepa">
+                        <div class="btn_front">
+                            <img src="/static/theme/img/gift.png" height="42" alt=""/>
+                            <a href="">Сделать пожертвование</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+            
+        </div>
+    </div>
+</section>
+

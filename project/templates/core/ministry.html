@@ -12,7 +12,7 @@
 {% endblock %}
 
 {% block content %}
-<div id="article" class="content-wrapper article" style="margin-left:0"><!-- Content Wrapper. Contains page content -->
+<div id="ministry" class="content-wrapper" style="margin-left:0"><!-- Content Wrapper. Contains page content -->
 
     <section class="social">
         <div class="container">
@@ -35,43 +35,81 @@
         {% menu_tree request %}
     </section>
 
+
+    <img src="{{ ministry.baner_url }}" alt="{{ ministry.name }} церкви
+    прославления" style="margin-top:-22px; width:100%;">
+
     <section class="content">
         <div class="container">
             <div class="row">
 
                 <div class="col-xs-12 col-md-7">
-                    <h1 class="">{{ article.name }}</h1>
+                    <h1 class="">{{ news.name }}</h1>
                 </div>
 
                 <div class="col-xs-12">
-{#                    <div class="list_bg"></div>#}
-{#                    <img src="{{ article.image_url }}" alt="Pakistani Woman" class="article_bg blur">#}
-                    <img src="{{ article.image_url }}" alt="Pakistani Woman" class="article_bg">
-{#                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg">#}
-{#                        <filter id="blur">#}
-{#                            <feGaussianBlur stdDeviation="20" />#}
-{#                        </filter>#}
-{#                    </svg>#}
-                    <h2>{{ article.sub_title }}</h2>
-                    <div class="lid_text">
-                        <p>{{ article.entry }}</p>
-                    </div>
-                </div>
-                <div class="col-xs-12">
-                    {{ article.description|safe }}
-                </div>
-                
-                <div class="col-xs-12">
-                    <div class="gallery">                        
-                        {% for img in article.get_gallery_images %}
-                            <img  src="{% cropped_thumbnail img "cropping" scale=0.5 %}">
-                        {% endfor %}
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <iframe width="370" height="250"
+                                src="https://www.youtube.com/embed/{{ ministry.video }}" frameborder="0" allowfullscreen></iframe>
+                            <br/>
+                            <p style="margin-top: 40px;">{{ ministry.description }}<p>
+                        </div>
+                        <div class="col-xs-8">
+                            <div class="gallery">
+{#                                <div class="row">#}
+                                    {% for img in ministry.get_gallery_images %}
+{#                                        <div class="col-xs-2">#}
+                                            <img src="{% cropped_thumbnail img "cropping" scale=1 %}">
+{#                                        </div>#}
+                                    {% endfor %}
+{#                                </div>#}
+                            </div>
+                        </div>
                     </div>
                 </div>
 
             </div>
         </div>
     </section>
+
+
+    <section class="color_block" style="background-color:{{ ministry.color }}; padding:35px 0;
+        color: #fff;">
+        <div class="container"> 
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    {{ ministry.allocate_description }}
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="contacts">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                    <h3 style="color: #2049a1;" id="">Лидер служения</h3>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <img src="/media/{{ ministry.leader.photo }}" style="width:85px; border-radius:85px;" alt="">
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                            <h5>{{ ministry.leader.first_name }}</h5> 
+                            <h5>{{ ministry.leader.last_name }}</h5> 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-3 col-md-offset-1 col-lg-3 col-ls-offset-1">
+                    <h3 style="color: #2049a1;">Контакты</h3>
+                    <p>моб. {{ ministry.leader.public_phone }}</p> 
+                    <p>{{ ministry.leader.email }}</p> 
+                </div>
+            </div>
+        </div>
+    </section>
+
 
 {#    <section class="ministry">#}
 {#        <div class="container">#}

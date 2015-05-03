@@ -9,6 +9,10 @@ h4 {
     font-family: "Roboto Slab";
     color: #0773bb;
 }
+h5 {
+    font-size: 14px;
+    color: #848484;
+}
 #news h1 {
     font-size: 32px;
     text-transform:none ;
@@ -54,7 +58,7 @@ img.radius90 {
     padding-top:20px;
     padding-bottom: 20px;
 }
-#front section.header {
+section.header.front {
     background: url("../img/header_bg.jpg") center no-repeat;
     background-size: 100% 100%;
     padding-top: 60px;
@@ -76,7 +80,7 @@ section.ministry {
     background: url("../img/arches.png");
 }
 #front section.articles .text{
-    font-family: "Roboto Slab";
+    font-family: "Open Sans";
 }
 section.footer {
     height: 160px;
@@ -94,9 +98,35 @@ span#lang {
     color: #fff;
 }
 ul.top_menu li{
-    float: left;
+    /*float: left;*/
     list-style: none;
     padding: 6px 0px;
+}
+ul.top_menu li ul li a {
+    color: #4A4A4A;
+}
+ul.top_menu li.dropdown.open a.dropdown-toggle {
+    background-color: #fff;
+      color: #0773bb;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+.top_menu .dropdown-menu {
+    top: 35px;
+    border-top-left-radius: 0;
+    border: 0px;
+}
+.top_menu .dropdown-menu li{
+    padding-top: 0;
+    padding-bottom: 0;
+    }
+.top_menu .dropdown-menu li a {
+    padding-top: 0;
+    padding-bottom: 0;
+    }
+.top_menu .dropdown-menu .active a {
+    color: #0773bb;
+    background: none;
 }
 ul.top_menu li a {
     padding:5px 16px;
@@ -105,7 +135,11 @@ ul.top_menu li a {
     font-family: Open Sans;
 }
 ul.top_menu li a:hover {
-    color: #fff;
+    color: #0773bb;
+    /*text-decoration: underline;*/
+    background-color: #fff;
+}
+ul.top_menu li ul li a:hover {
     text-decoration: underline;
 }
 .menu_group {
@@ -127,7 +161,7 @@ section#drop_menu .collapse {
     overflow: hidden;
 }
 section#drop_menu .panel {
-    /*border:0;*/
+    border:0px;
     /*box-shadow: none;*/
     background: url("../img/arches.png");
 }
@@ -206,7 +240,7 @@ small {
     padding-top: 12px;
     font-size: 26px;
     line-height: 12px;
-    margin: 4px 10px 30px 20px;
+    margin: 4px 10px 5px 20px;
     color: #97d5ff;
     background: #0773bb;
     font-family: "Open Sans";
@@ -241,7 +275,7 @@ small {
     width: 881px!important;
 }
 .swiper-pagination {
-    padding-top: 10px;
+    padding-top: 30px;
     width: 290px;
     height: 100%;
     right:0!important;
@@ -249,7 +283,7 @@ small {
     margin-right: -1px;
 }
 .swiper-pagination .my-pager {
-    height: 31%;
+    height: 25%;
     width: 100%;
     display: block;
     cursor: pointer;
@@ -267,8 +301,8 @@ small {
 .swiper-pagination .my-pager .title {
     line-height:18px;
     font-size: 17px;
-    margin: 6px 20px 0 0;
     text-align: left;
+    margin: -4px 20px 0 0;
     font-family: "Roboto Slab";
     text-transform: uppercase;
     color: #fff;
@@ -308,6 +342,27 @@ small {
     top: 20px;
     left: 25px;
 }
+
+/*стили для служений*/
+/*слижения служение*/
+#ministry section.content {
+    background: url("../img/arches.png");
+}
+#ministry .gallery img {
+    border-radius: 80px;
+    width: 153px;
+    margin-right: 35px;
+    height: auto;
+    margin-bottom: 35px;
+}
+#ministry .contacts {
+    padding: 35px 0;
+    }
+/*стили для новостей*/
+/*новости */
+#fron .news_item {
+    margin-bottom: 15px;
+    }
 #news .gallery img {
     margin-right: 25px;
     margin-bottom: 25px;
@@ -328,7 +383,7 @@ small {
     color: #0773bb;
     font-size: 30px;
     text-decoration: underline;
-    font-family: "Roboto Condensed";
+    font-family: "Roboto Slab";
 }
 .news .date {
     color: #0773bb;
@@ -344,7 +399,7 @@ small {
     font-size: 30px;
     color: #fff;
     text-decoration: underline;
-    font-family: "Roboto Condensed";
+    font-family: "Roboto Slab";
 }
 .reviews_item {
     margin-left: 27px;
@@ -369,7 +424,7 @@ section.articles h2{
     text-transform: uppercase;
     background: url("../img/separator.png") 0px no-repeat;
     background-size: 100% 1px;
-    font-family: "Roboto Condensed";
+    font-family: "Roboto Slab";
     margin-top: 0;
 }
 #article h2 {

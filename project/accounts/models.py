@@ -46,6 +46,7 @@ class OrganizerProfile(BaseUserInfo):
     #         return None
 
 
+
 def getOrganizerProfile(user):
     try:
         return OrganizerProfile.objects.get(user=user)

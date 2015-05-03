@@ -31,8 +31,12 @@ urlpatterns = patterns('project.core.views',
     url(r'^testimonys/$', 'testimonysView',
         {'template_name':'core/testimonys.html'},
         name='testimonysView'),
+
     url(r'^testimony/(?P<id>[-\w]+)/$', 'testimonyView',
         {'template_name':'core/testimony.html'},
         name='testimonyView'),
 
+    url(r'^ministry/(?P<slug>[-\w]+)/$', 'ministryView',
+        {'template_name':'core/ministry.html'},
+        name='ministryView'),
 )

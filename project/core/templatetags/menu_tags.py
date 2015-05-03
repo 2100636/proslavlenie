@@ -2,6 +2,7 @@
 #!/usr/bin/env python
 from django import template
 from project.accounts.models import getOrganizerProfile
+from project.core.models import SliderItem
 from project.menu.models import MenuCategory
 
 
@@ -45,3 +46,13 @@ def menu_tree(context, request):
 
     }
 register.inclusion_tag('core/tags/menu_category.html', takes_context=True)(menu_tree)
+
+
+def header_site(context, request):
+    """шапка сайта прославления, меню, логотип"""
+    slides = SliderItem.objects.all()[:4]
+    return {
+            'slides': slides,
+            'request': request
+            }
+register.inclusion_tag('core/tags/header.html', takes_context=True)(header_site)

@@ -2,6 +2,8 @@
 {% load mptt_tags %}
 {#{% load menu_tags %}#}
 
+{% load sitetree %}
+
 <div class="panel-group" id="accordion">
     <div class="panel panel-default">
 
@@ -11,6 +13,8 @@
         <div id="collapse" class="panel-collapse collapse">
 
             <ul class="root">
+                
+                {#{% sitetree_menu from "ministry" include 'trunk' %}#}
                 {% recursetree menu_objects %}
                     <li>
                         <p>{{ node.name }}</p>
