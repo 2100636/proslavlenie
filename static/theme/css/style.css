@@ -13,6 +13,16 @@ h5 {
     font-size: 14px;
     color: #848484;
 }
+.breadcrumb {
+    background: none;
+    color: #fff;
+    font-family: "Open Sans";
+    margin-top: 60px;
+}
+.breadcrumb li a {
+    color: #fff;
+    font-family: "Open Sans";
+}
 #news h1 {
     font-size: 32px;
     text-transform:none ;
@@ -346,7 +356,7 @@ small {
 /*стили для служений*/
 /*слижения служение*/
 #baner_text {
-    padding-top: 130px;
+    padding-top: 40px;
     /*padding-bottom: 70px;*/
 }
 section.baner {

@@ -1,0 +1,15 @@
+{% load sitetree %}
+<ul class="breadcrumb">
+{% for item in sitetree_items %}
+
+    {% if forloop.last %}
+        <li>{{ item.title_resolved }}</li>
+    {% elif forloop.first %}
+        <li><a href="/">Главная</a></li>
+        <li><a href="">{{ item.title_resolved }}</a></li>
+    {% else %}
+        <li><a href="">{{ item.title_resolved }}</a></li>
+    {% endif %}
+
+{% endfor %}
+</ul>

@@ -2,6 +2,7 @@
 {% load thumbnail %}
 {% load cropping %}
 {% load menu_tags %}
+{% load sitetree %}
 
 {% block page_css %}
     <link href="{{ STATIC_URL }}theme/css/style.css" rel="stylesheet" type="text/css" />
@@ -39,6 +40,9 @@
 {#        <img src="{{ ministry.baner_url }}" alt="{{ ministry.name }} церкви прославления" style="position: absolute; margin-top:-22px; width:100%;">#}
         <div class="container">
             <div class="row">
+                <div class="col-xs-12">
+                    {% sitetree_breadcrumbs from "site_menu" template "sitetree/breadcrumbs.html" %}
+                </div>
                 <div class="col-xs-12 col-md-5" id="baner_text">
                     <h2 style="color:{{ ministry.color }};">{{ ministry.name }}</h2>
                     <div class="lid_text">
