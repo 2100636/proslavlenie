@@ -158,7 +158,7 @@ ul.top_menu li ul li a:hover {
 section#drop_menu {
     position: relative;
     top: -2px;
-    z-index: 0;
+    z-index: 3;
 }
 section#drop_menu ul.root {
     overflow: hidden;
