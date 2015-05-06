@@ -35,13 +35,31 @@
         {% menu_tree request %}
     </section>
 
+    <section class="baner" style="background: url('{{ ministry.baner_url }}') center no-repeat;">
+{#        <img src="{{ ministry.baner_url }}" alt="{{ ministry.name }} церкви прославления" style="position: absolute; margin-top:-22px; width:100%;">#}
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-5" id="baner_text">
+                    <h2 style="color:{{ ministry.color }};">{{ ministry.name }}</h2>
+                    <div class="lid_text">
+                        <p>{{ ministry.baner_text }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <img src="{{ ministry.baner_url }}" alt="{{ ministry.name }} церкви
-    прославления" style="margin-top:-22px; width:100%;">
 
     <section class="content">
         <div class="container">
             <div class="row">
+
+{#                <div class="col-xs-12 col-md-5" id="baner_text">#}
+{#                    <h2>{{ ministry.name }}</h2>#}
+{#                    <div class="lid_text">#}
+{#                        <p>{{ ministry.baner_text }}</p>#}
+{#                    </div>#}
+{#                </div>#}
 
                 <div class="col-xs-12 col-md-7">
                     <h1 class="">{{ news.name }}</h1>
