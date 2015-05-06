@@ -564,7 +564,7 @@ section.footer .pull-right {
     text-align: center;
     /*margin-top: -26px;*/
     width: 60%;
-    z-index: 2;
+    z-index: 4;
     margin: -28px auto;
 }
 .social .social_container .ic {
