@@ -6,9 +6,9 @@
         <li>{{ item.title_resolved }}</li>
     {% elif forloop.first %}
         <li><a href="/">Главная</a></li>
-        <li><a href="">{{ item.title_resolved }}</a></li>
+        <li><a href="{% sitetree_url for item %}">{{ item.title_resolved }}</a></li>
     {% else %}
-        <li><a href="">{{ item.title_resolved }}</a></li>
+        <li><a href="{% sitetree_url for item %}">{{ item.title_resolved }}</a></li>
     {% endif %}
 
 {% endfor %}
