@@ -358,6 +358,7 @@ small {
 #baner_text {
     padding-top: 40px;
     /*padding-bottom: 70px;*/
+    min-height: 344px;
 }
 section.baner {
     margin-top: -21px;
@@ -373,6 +374,7 @@ section.baner {
     font-family: "Open Sans";
     font-style: italic;
     /*font-size: 20px;*/
+    /*min-height:140px;*/
 }
 #ministry section.content {
     background: url("../img/arches.png");
@@ -620,6 +622,9 @@ section.footer .pull-right {
     float: left;
     width: 100px;
     height: 100px;
+}
+body {
+    background-color: #fff;
 }
 .modal-body {
     padding: 0;
