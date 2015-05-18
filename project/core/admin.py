@@ -2,7 +2,7 @@
 #!/usr/bin/env python
 from django.contrib import admin
 from project.core.models import Article, Page, SliderItem, ArticleGalleryImage, NewsGalleryImage, PageGalleryImage, \
-    News, Review, Testimony, TestimonyGalleryImage, Video, VideoCategory, Ministry, MinistryImage
+    News, Review, Testimony, TestimonyGalleryImage, Video, VideoCategory, Ministry, MinistryImage, Need
 from image_cropping import ImageCroppingMixin
 from django import forms
 
@@ -86,3 +86,4 @@ admin.site.register(Testimony, TestimonyAdmin)
 admin.site.register(Video, VideoAdmin)
 admin.site.register(VideoCategory)
 admin.site.register(Ministry, MinistryAdmin)
+admin.site.register(Need)

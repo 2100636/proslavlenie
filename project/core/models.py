@@ -244,4 +244,12 @@ class MinistryImage(models.Model):
         return "/media/%s" % self.image
 
 
+class Need(models.Model):
+    name = models.CharField(max_length=100, verbose_name=u'Ваше имя')
+    phone = models.CharField(max_length=11, verbose_name=u'Ваш телефо')
+    email = models.EmailField(blank=True)
+    text = models.TextField(verbose_name=u'Текст сообщения')
+
+    def __unicode__(self):
+        return self.name
 

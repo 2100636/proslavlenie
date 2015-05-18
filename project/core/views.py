@@ -11,8 +11,11 @@ from project.accounts.models import getOrganizerProfile
 from project.accounts.forms import OrganizerProfileForm, UserRegistrationForm
 from django.core.exceptions import ObjectDoesNotExist
 from django.http.response import Http404
-from project.core.models import Article, ArticleGalleryImage, Page, PageGalleryImage, News, SliderItem, Review, Testimony, Video, Ministry, VideoCategory
+from project.core.models import Article, ArticleGalleryImage, Page, PageGalleryImage, News, SliderItem, Review, Testimony, Video, Ministry, VideoCategory, Need
 from project.menu.models import MenuCategory
+from django.core.mail import send_mail
+from project.settings import ADMIN_EMAIL
+from project.core.forms import NeedForm
 
 
 def indexView(request, template_name="catalog/index.html"):
@@ -40,6 +43,20 @@ def indexView(request, template_name="catalog/index.html"):
     #     except:
     #         None
     reviews = Review.objects.all()[:2]
+    if request.method == "POST":
+        need = Need()
+        need.name = request.POST['name']
+        need.phone = request.POST['phone']
+        need.email = request.POST['email']
+        need.text = request.POST['text']
+        try:
+            need.save()
+            subject = u'WayMy заявка в 2 клика'
+            message = u'телефон: %s \n Имя: %s \n Сообщение: %s \n почта: %s' % (request.POST['phone'], request.POST['name'], request.POST['text'], request.POST['email'])
+            send_mail(subject, message, 'teamer777@gmail.com', [ADMIN_EMAIL], fail_silently=False)
+        except:
+            pass
+
     return render_to_response(template_name, locals(),
                               context_instance=RequestContext(request))
 
