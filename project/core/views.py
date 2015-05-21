@@ -3,7 +3,7 @@
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 from project.core.functions import *
-from project.core.models import Article, Page,\
+from project.core.models import Article, Page, Question,\
     News, SliderItem, Review, Testimony, Video, Ministry, VideoCategory, Need
 
 from project.menu.models import MenuCategory
@@ -112,5 +112,11 @@ def ministryView(request, slug, template_name="catalog/ministry.html"):
 
 def pageView(request, slug, template_name="core/page.html"):
     page = Page.objects.get(slug=slug)
+    return render_to_response(
+        template_name, locals(), context_instance=RequestContext(request))
+
+
+def questionsView(request, template_name="core/questions.html"):
+    questions = Question.objects.all()
     return render_to_response(
         template_name, locals(), context_instance=RequestContext(request))

@@ -4,7 +4,7 @@ from django.contrib import admin
 from project.core.models import Article, Page, SliderItem,\
     ArticleGalleryImage, NewsGalleryImage, PageGalleryImage, \
     News, Review, Testimony, TestimonyGalleryImage, Video,\
-    VideoCategory, Ministry, MinistryImage, Need
+    VideoCategory, Ministry, MinistryImage, Need, Question
 
 from image_cropping import ImageCroppingMixin
 
@@ -96,3 +96,4 @@ admin.site.register(Video, VideoAdmin)
 admin.site.register(VideoCategory)
 admin.site.register(Ministry, MinistryAdmin)
 admin.site.register(Need)
+admin.site.register(Question)
