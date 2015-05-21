@@ -358,6 +358,7 @@ small {
 #baner_text {
     padding-top: 40px;
     /*padding-bottom: 70px;*/
+    min-height: 344px;
 }
 section.baner {
     margin-top: -21px;
@@ -373,6 +374,7 @@ section.baner {
     font-family: "Open Sans";
     font-style: italic;
     /*font-size: 20px;*/
+    /*min-height:140px;*/
 }
 #ministry section.content {
     background: url("../img/arches.png");
@@ -564,7 +566,7 @@ section.footer .pull-right {
     text-align: center;
     /*margin-top: -26px;*/
     width: 60%;
-    z-index: 2;
+    z-index: 4;
     margin: -28px auto;
 }
 .social .social_container .ic {
@@ -621,6 +623,9 @@ section.footer .pull-right {
     width: 100px;
     height: 100px;
 }
+body {
+    background-color: #fff;
+}
 .modal-body {
     padding: 0;
 }
@@ -650,6 +655,9 @@ section.footer .pull-right {
     border: 1px solid #fff;
     background: transparent;
     color: #fff;
+}
+input.btn {
+    margin:0;
 }
 .video_description {
     width: 100%;

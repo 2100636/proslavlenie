@@ -10,8 +10,8 @@
 
             <div class="col-xs-12 col-md-12">
                 <div class="row">
-                    <div class="col-xs-12 col-md-3" style="float: right">
-                        <input id="header_search" class="search-form" type="text"/>
+                    <div class="col-xs-12 col-md-3" class="form-control-wrapper" style=" float: right">
+                        <input id="header_search" class="form-control search-form" type="text"/>
                     </div>
                     <div class="col-xs-12 col-md-1" style="float: right">
                         <span id="lang">En</span>
@@ -64,7 +64,8 @@
                     <div class="col-xs-4 sepa">
                         <div class="btn_front">
                             <img src="/static/theme/img/pray.png" height="42" alt=""/>
-                            <a href="">Молитвенная нужда</a>
+                            <a href="" data-toggle="modal" data-target="#complete-dialog">Молитвенная нужда</a>
+                            <!--<button class="btn btn-primary" data-toggle="modal" data-target="#complete-dialog">Open dialog</button>-->
                         </div>
                     </div>
                     <div class="col-xs-4 sepa">
@@ -81,6 +82,36 @@
                     </div>
                 </div>
             </div>
+
+
+            <div id="complete-dialog" class="modal fade" tabindex="-1">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Оставить молитвенную просьбу</h4>
+                  </div>
+                  <form action="." method="post">{% csrf_token %}
+                      <div class="modal-body">
+                          <br/>
+                              <label>Ваши данные:</label>
+                              <input type="text" name="name" class="form-control" placeholder="Ваше имя">
+                              <input type="text" name="phone" class="form-control" placeholder="Ваш телефон">
+                              <input type="text" name="email" class="form-control" placeholder="Ваша почта (не обязательно)">
+                              <br/>
+                              <label>Опишите Вашу нужду:</label>
+                              <textarea class="form-control" name="text" placeholder="Текст сообщения"></textarea>
+                      </div>
+                      <div class="modal-footer">
+                          <button class="btn btn-primary" data-dismiss="modal">Закрыть</button>
+                          <input type="submit" name="button" class="btn btn-success" value="Отправить">
+                        <!--<button class="btn btn-success" >Отправить</button>-->
+                      </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
         {% endif %}
             
         </div>
