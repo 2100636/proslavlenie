@@ -44,4 +44,8 @@ urlpatterns = patterns(
     url(r'^page/(?P<slug>[-\w]+)/$', 'pageView',
         {'template_name': 'core/page.html'},
         name='pageView'),
+
+    url(r'^questions/$', 'questionsView',
+        {'template_name': 'core/questions.html'},
+        name='questionsView'),
 )

@@ -7,8 +7,9 @@
 
 {% block page_css %}
     <link href="{{ STATIC_URL }}theme/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="{{ STATIC_URL }}theme/css/non-responsive.css" rel="stylesheet" type="text/css" />
     <link href="{{ STATIC_URL }}theme/css/swiper.min.css" rel="stylesheet" type="text/css" />
-    <link href="{{ STATIC_URL }}theme/css/animate.css " rel="stylesheet" type="text/css" />
+    <link href="{{ STATIC_URL }}theme/css/animate.css " rel="stylesheet" type="text/css" />    
 {% endblock %}
 
 {% block content %}
@@ -35,9 +36,9 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-xs-12 col-md-5">
+                <div class="col-xs-5">
                     <div class="row">
-                        <div class="col-xs-12 col-md-12 sepa">
+                        <div class="col-xs-12 sepa">
                             <a style="cursor: pointer" name="" data-toggle="modal" data-target="#myModal"><img style="width: 100%;" src="{% cropped_thumbnail main_video "cropping" scale=1 %}"></a>
 {#                            <img style="width: 100%;" src="/media/{{ main_video.cover }}" alt=""/>#}
                         </div>
@@ -60,7 +61,7 @@
                             </div><!-- /.modal-dialog -->
                         </div><!-- /.modal -->
 
-                        <div class="col-xs-12 col-md-12 sepa">
+                        <div class="col-xs-12 sepa">
                             <div class="news">
                                 <h4><a href="/news/">Новости</a></h4>
                                 {% for news_item in news %}
@@ -75,19 +76,19 @@
                     </div>
                 </div>
 
-                <div class="col-xs-12 col-md-4">
+                <div class="col-xs-4">
                     <div class="row">
-                        <div class="col-xs-6 col-md-6 sepa">
+                        <div class="col-xs-6 sepa">
                             <div class="small_block">
                                 <a href="http://hram.proslavlenie.ru"><img src="{{ STATIC_URL }}theme/img/temple.jpg" alt=""/></a>
                             </div>
                         </div>
-                        <div class="col-xs-6 col-md-6 sepa">
+                        <div class="col-xs-6 sepa">
                             <div class="small_block">
                                 <a href="/testimonys"><img src="{{ STATIC_URL }}theme/img/glory.jpg" alt=""/></a>
                             </div>
                         </div>
-                        <div class="col-xs-6 col-md-6 sepa">
+                        <div class="col-xs-6 sepa">
                             <div class="small_block">
                                 <a style="cursor: pointer" name="" data-toggle="modal" data-target="#pritchModal">
                                     <img style="width: 100%;" src="{% cropped_thumbnail pritch_video "cropping_pritch" scale=1 %}">
@@ -113,17 +114,17 @@
                                 </div><!-- /.modal -->
                             </div>
                         </div>
-                        <div class="col-xs-6 col-md-6 sepa">
+                        <div class="col-xs-6 sepa">
                             <div class="small_block">
                                 <a href=""><img src="{{ STATIC_URL }}theme/img/help.jpg" alt=""/></a>
                             </div>
                         </div>
-                        <div class="col-xs-12 col-md-12 sepa">
+                        <div class="col-xs-12 sepa">
                             <a href="">
                                 <img src="{{ STATIC_URL }}theme/img/israel.jpg" alt=""/>
                             </a>
                         </div>
-                        <div class="col-xs-12 col-md-12 sepa">
+                        <div class="col-xs-12 sepa">
                             <a href="">
                                 <img src="{{ STATIC_URL }}theme/img/question.jpg" alt=""/>
                             </a>
@@ -131,9 +132,9 @@
                     </div>
                 </div>
 
-                <div class="col-xs-12 col-md-3">
+                <div class="col-xs-3">
                     <div class="row">
-                        <div class="col-xs-12 col-md-12 sepa">
+                        <div class="col-xs-12 sepa">
                             <div class="reviews">
                                 <h4><a href="/reviews/">О нас пишут</a></h4>
                                 {% for review in reviews %}
@@ -146,12 +147,12 @@
                             </div>                        
 
                         </div>
-                        <div class="col-xs-12 col-md-12 sepa">
+                        <div class="col-xs-12 sepa">
                             <a href="">
                                 <img src="{{ STATIC_URL }}theme/img/plan.jpg" alt=""/>
                             </a>
                         </div>
-                        <div class="col-xs-12 col-md-12 sepa">
+                        <div class="col-xs-12 sepa">
                             <a style="cursor: pointer" name="" data-toggle="modal" data-target="#videoblogModal"><img style="width: 100%;" src="{% cropped_thumbnail videoblog_video "cropping_videoblog" scale=1 %}"></a>
 {#                                <img style="width: 100%;" src="/media/{{ pritch_video.cover }}" alt=""/>#}
                             <div class="modal modal-primary fade" id="videoblogModal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -182,7 +183,7 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-xs-12 col-md-12">
+                <div class="col-xs-12">
 
                     <h2>Служения церкви</h2>
 
@@ -224,20 +225,20 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-xs-12 col-md-12 sepa">
+                <div class="col-xs-12 sepa">
                     <h2><a href="">Статьи</a></h2>
                 </div>
 
                 {% for article in articles %}
 
-                    <div class="col-xs-12 col-md-3 articles_item sepa">
+                    <div class="col-xs-3 articles_item sepa">
                         <div class="row">
 
-                            <div class="col-xs-4 col-md-4">
+                            <div class="col-xs-4">
                                 <img class="radius90" src="{% cropped_thumbnail article "cropping" scale=0.5 %}">
                             </div>
 
-                            <div class="col-xs-8 col-md-8">
+                            <div class="col-xs-8">
                                 <a href="{{ article.url }}">{{ article.name }}</a>
                                 <div class="text">{{ article.entry|truncatewords:25 }}</div>
                             </div>
@@ -249,7 +250,7 @@
 
 
 
-                <div class="col-xs-12 col-md-12 sepa bible">
+                <div class="col-xs-12 sepa bible">
                     <h3 class="center"><span>Библия на кажный день</span> <span><img src="{{ STATIC_URL }}theme/img/bible.png" alt=""/></span> <span>Евангелие от Иоанна 3:3-6</span> </h3>
                     <div class="col-xs-12 center text">
                         Иисус сказал ему в ответ: истинно, истинно говорю тебе, если кто не родится свыше, не может увидеть Царствия Божия.

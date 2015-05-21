@@ -1,7 +1,5 @@
 {% load i18n %}
 {% load mptt_tags %}
-{#{% load menu_tags %}#}
-
 {% load sitetree %}
 
 <div class="panel-group" id="accordion">
@@ -12,19 +10,8 @@
         </div>
         <div id="collapse" class="panel-collapse collapse">
 
-            <ul class="root">
-                
+            <ul class="root">                
                 {% sitetree_menu from "ministry" include 'trunk' %}
-                {#{% recursetree menu_objects %}#}
-                    {#<li>#}
-                        {#<p>{{ node.name }}</p>#}
-                        {#{% if not node.is_leaf_node %}#}
-                            {#<ul class="children">#}
-                                {#{{ children }}#}
-                            {#</ul>#}
-                        {#{% endif %}#}
-                    {#</li>#}
-                {#{% endrecursetree %}#}
             </ul>
 
         </div>

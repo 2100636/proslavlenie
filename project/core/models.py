@@ -196,6 +196,10 @@ class VideoCategory(models.Model):
 
     slug = models.CharField(max_length=20, verbose_name=u'Системное название')
 
+    class Meta:
+        verbose_name = u'Видео категория'
+        verbose_name_plural = u'Видео категории'
+
     def __unicode__(self):
         return u'Видео категория: %s' % self.name
 
@@ -240,6 +244,10 @@ class Page(BaseArticle):
     cropping = ImageRatioField('image', '340x340', verbose_name=u'Иконка')
     image = models.ImageField(verbose_name=u'Банер',
                               upload_to='articles/images/', blank=True)
+
+    class Meta:
+        verbose_name = u'Страница'
+        verbose_name_plural = u'Страницы'
 
     def __unicode__(self):
         return _(u'Страница: ') + self.name
@@ -322,5 +330,22 @@ class Need(models.Model):
     email = models.EmailField(blank=True)
     text = models.TextField(verbose_name=u'Текст сообщения')
 
+    class Meta:
+        verbose_name = u'Нужда'
+        verbose_name_plural = u'Нужды'
+
     def __unicode__(self):
         return self.name
+
+
+class Question(models.Model):
+    """docstring for Question"""
+    question = models.TextField(verbose_name=u'Ваш вопрос')
+    is_admin = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name = u'Вопрос'
+        verbose_name_plural = u'Вопросы'
+
+    def is_admin_question(self):
+        return self.is_admin
