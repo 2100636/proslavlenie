@@ -5,17 +5,11 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'project.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-    # url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', include(admin.site.urls)),
-    # url(r'^ajax-upload/', include('cicu.urls')),
     url(r'^ckeditor/', include('ckeditor.urls')),
     url(r'^', include('project.core.urls')),
     url(r'^profile/', include('project.accounts.urls')),
 )
-
 
 
 if settings.DEBUG:
