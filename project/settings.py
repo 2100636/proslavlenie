@@ -3,13 +3,14 @@
 import os
 from easy_thumbnails.conf import Settings as thumbnail_settings
 from django.utils.translation import ugettext_lazy as _
-from os.path import abspath, dirname, basename, join, split
 
 # djcelery.setup_loader()
 
 CURRPATH = os.path.abspath('.')
 
-PROJECT_PATH = os.path.abspath(os.path.dirname(__file__).decode('utf-8')).replace('\\', '/')
+PROJECT_PATH = os.path.abspath(
+    os.path.dirname(__file__).decode('utf-8')).replace('\\', '/')
+
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 ROOT_URLCONF = 'project.urls'
 
@@ -19,17 +20,15 @@ TEMPLATE_DEBUG = DEBUG
 DEFAULT_CHARSET = 'utf-8'
 
 ADMIN_EMAIL = 'greenteamer@bk.ru'
-ADMINS = (
-	# ('Your Name', 'your_email@example.com'),
-)
+ADMINS = ()
 
 THUMBNAIL_PROCESSORS = (
     'image_cropping.thumbnail_processors.crop_corners',
 ) + thumbnail_settings.THUMBNAIL_PROCESSORS
 
 """celery"""
-CELERYBEAT_SCHEDULER="djcelery.schedulers.DatabaseScheduler"
-CELERY_ALWAYS_EAGER=False
+CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"
+CELERY_ALWAYS_EAGER = False
 BROKER_BACKEND = "djkombu.transport.DatabaseTransport"
 """celery end"""
 
@@ -64,8 +63,8 @@ LANGUAGE_CODE = 'en-us'
 ugettext = lambda s: s
 
 LANGUAGES = (
-	('en', ugettext('English')),
-	('ru', ugettext('Russian')),
+    ('en', ugettext('English')),
+    ('ru', ugettext('Russian')),
 )
 
 SITE_ID = 1
@@ -108,18 +107,18 @@ ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-	# Put strings here, like "/home/html/static" or "C:/www/django/static".
-	# Always use forward slashes, even on Windows.
-	# Don't forget to use absolute paths, not relative paths.
-	# os.path.join(CURRPATH, 'static').replace('\\', '/'),
+    # Put strings here, like "/home/html/static" or "C:/www/django/static".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+    # os.path.join(CURRPATH, 'static').replace('\\', '/'),
     # os.path.join(CURRPATH, 'static/media').replace('\\', '/'),
 )
 
 # List of finder classes that know how to find static files in
 # various locations.
 STATICFILES_FINDERS = (
-	'django.contrib.staticfiles.finders.FileSystemFinder',
-	'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -133,27 +132,27 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
-	'django.middleware.common.CommonMiddleware',
-	'django.contrib.sessions.middleware.SessionMiddleware',
-	'django.middleware.locale.LocaleMiddleware',
-	'django.middleware.csrf.CsrfViewMiddleware',
-	'django.contrib.auth.middleware.AuthenticationMiddleware',
-	'django.contrib.messages.middleware.MessageMiddleware',
-	'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 )
 
 TEMPLATE_DIRS = (
-	os.path.join(PROJECT_PATH, 'templates').replace('\\', '/'),
+    os.path.join(PROJECT_PATH, 'templates').replace('\\', '/'),
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
-	'django.contrib.auth.context_processors.auth',
-	'django.core.context_processors.debug',
-	'django.core.context_processors.i18n',
-	'django.core.context_processors.media',
-	'django.core.context_processors.static',
-	'django.core.context_processors.request',
-	'django.contrib.messages.context_processors.messages',
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.request',
+    'django.contrib.messages.context_processors.messages',
 )
 
 TINYMCE_JS_URL = os.path.join(CURRPATH, '/libraries/tinymce/tinymce.min.js')
@@ -174,21 +173,23 @@ INPLACEEDIT_DISABLE_CLICK = False # "разрешаем сохранять из�
 THUMBNAIL_DEBUG = True
 INPLACEEDIT_EVENT = "click" # "событие для вызова редактирования"
 
-ADAPTOR_INPLACEEDIT = {'auto_fk': 'inplaceeditform_extra_fields.fields.AdaptorAutoCompleteForeingKeyField',
-                       'auto_m2m': 'inplaceeditform_extra_fields.fields.AdaptorAutoCompleteManyToManyField',
-                       'image_thumb': 'inplaceeditform_extra_fields.fields.AdaptorImageThumbnailField',
-                       'tiny': 'inplaceeditform_extra_fields.fields.AdaptorTinyMCEField',
-                       'ckeditor': 'inplaceeditform_extra_fields.fields.AdaptorCKEDITORField',}
+ADAPTOR_INPLACEEDIT = {
+    'auto_fk': 'inplaceeditform_extra_fields.fields.AdaptorAutoCompleteForeingKeyField',
+    'auto_m2m': 'inplaceeditform_extra_fields.fields.AdaptorAutoCompleteManyToManyField',
+    'image_thumb': 'inplaceeditform_extra_fields.fields.AdaptorImageThumbnailField',
+    'tiny': 'inplaceeditform_extra_fields.fields.AdaptorTinyMCEField',
+    'ckeditor': 'inplaceeditform_extra_fields.fields.AdaptorCKEDITORField',}
+
 INSTALLED_APPS = (
-	'django.contrib.auth',
-	'django.contrib.contenttypes',
-	'django.contrib.sessions',
-	'django.contrib.sites',
-	'django.contrib.messages',
-	'django.contrib.staticfiles',
-	'django.contrib.flatpages',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    # 'django.contrib.flatpages',
     'filebrowser',
-	'django.contrib.admin',
+    'django.contrib.admin',
     'ckeditor',
     'tinymce',
     'mptt',
@@ -197,10 +198,13 @@ INSTALLED_APPS = (
     'sitetree',
     'project.core',
     # 'project.accounts',
-    'project.menu',
+    # 'project.menu',
     'image_cropping',
     'easy_thumbnails',
     'authentication',
+    # 'flatblocks',
+    'django_generic_flatblocks',
+    'project.blocks',
 
 )
 
@@ -219,21 +223,21 @@ PATH_FILEBROWSER_MEDIA = STATIC_ROOT + 'filebrowser/'
 # See http://docs.djangoproject.com/en/dev/topics/logging for
 # more details on how to customize your logging configuration.
 LOGGING = {
-	'version': 1,
-	'disable_existing_loggers': False,
-	'handlers': {
-		'mail_admins': {
-			'level': 'ERROR',
-			'class': 'django.utils.log.AdminEmailHandler'
-		}
-	},
-	'loggers': {
-		'django.request': {
-			'handlers': ['mail_admins'],
-			'level': 'ERROR',
-			'propagate': True,
-		},
-	}
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler'
+        }
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    }
 }
 
 # Custom settings

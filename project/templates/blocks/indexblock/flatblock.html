@@ -1,0 +1,10 @@
+<div class="small_block">
+	{{ object.content }}
+	{% if object.description %}
+		{% if object.link %}
+    		<a href="{{ object.link }}"><div class="description">{{ object.description|truncatewords:2|safe }}</div></a>
+    	{% else %}
+			<div class="description">{{ object.description|truncatewords:2|safe }}</div>	
+		{% endif %}
+	{% endif %}    
+</div>

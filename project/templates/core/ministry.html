@@ -67,7 +67,7 @@
 {#                                <div class="row">#}
                                     {% for img in ministry.get_gallery_images %}
 {#                                        <div class="col-xs-2">#}
-                                            <img src="{% cropped_thumbnail img "cropping" scale=1 %}">
+                                            <a class="fancybox-me" rel="gallery" href="{{ img.url }}"><img src="{% cropped_thumbnail img "cropping" scale=1 %}"></a>
 {#                                        </div>#}
                                     {% endfor %}
 {#                                </div>#}

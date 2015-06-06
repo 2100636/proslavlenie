@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.contrib.auth.models import AbstractBaseUser,\
+    BaseUserManager, PermissionsMixin
 
 
 class AccountManager(BaseUserManager):
@@ -31,7 +32,8 @@ class AccountManager(BaseUserManager):
         return account
 
 
-class Account(AbstractBaseUser, PermissionsMixin):  #TODO: edit account and registration
+class Account(AbstractBaseUser, PermissionsMixin):
+    #TODO: edit account and registration
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=40, unique=True)
 
