@@ -184,7 +184,8 @@ section#drop_menu .collapse {
 }
 section#drop_menu .panel {
     border:0px;
-    /*box-shadow: none;*/
+    border-radius: 0px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
     background: url("../img/arches.png");
 }
 section#drop_menu #accordion {
@@ -581,6 +582,77 @@ section.footer .pull-right {
     z-index: 4;
     margin: -28px auto;
 }
+.social .social_container .social-ic {
+    position: relative;
+    margin: 0 28px;
+    display: inline-block;
+    border-radius: 48px;
+    width: 48px;
+    height: 48px;
+    color: #fff;
+    line-height: 48px;
+    font-size: 30px;
+}
+.social-ic.fa-vk {
+    background-color: #3F90C6;
+}
+.social .social_container .social-ic.fa-vk:hover:after {
+    border-color: #3F90C6;
+}
+.social-ic.fa-ok{
+    background-color: #FD9B27;
+}
+.social .social_container .social-ic.fa-ok:hover:after {
+    border-color: #FD9B27;
+}
+.social-ic.fa-facebook-f {
+    background-color: #3469AE;
+}
+.social .social_container .social-ic.fa-facebook-f:hover:after {
+    border-color: #3469AE;
+}
+.social-ic.fa-instagram {
+    background-color: #3F90C6;
+}
+.social .social_container .social-ic.fa-instagram:hover:after {
+    border-color: #3F90C6;
+}
+.social-ic.fa-youtube {
+    background-color: #FC151A;
+}
+.social .social_container .social-ic.fa-youtube:hover:after {
+    border-color: #FC151A;
+}
+.social-ic.fa-twitter {
+    background-color: #4091C7;
+}
+.social .social_container .social-ic.fa-twitter:hover:after {
+    border-color: #4091C7;
+}
+.social .social_container .social-ic:hover:after {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  border: 5px solid;
+}
+.social .social_container .social-ic:after {
+  content: "";
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  position: absolute;
+  left: -6px;
+  top: -6px;
+  z-index: -1;
+  -webkit-transition: all 0.3s ease;
+  /* -webkit-transition: border 0.5s ease; */
+  /* transition--ease-out: border 0.5s ease; */
+  /* -moz-transition--ease-out: all 1s; */
+  /* -webkit-transition--ease-out: all 1s; */
+  /* -o-transition--ease-out: all 1s; */
+}
+
+
 .social .social_container .ic {
     position: relative;
     margin: 0 28px;
