@@ -27,7 +27,7 @@
         {% menu_tree request %}
     </section>
 
-    <section class="content">
+    <section class="content news_all">
         <div class="container">
             <div class="row">
 
@@ -38,8 +38,9 @@
                 {% for news in news_all %}
                     <div class="col-xs-12" style="margin-bottom: 30px;">
                         <h4><a href="{{ news.url }}">{{ news.name }}</a></h4>
-                        <img style="" src="{{ MEDIA_URL }}{{ news.image }}">
-                        <p style="font-size: 15px;">{{ news.description }}</p>
+                        <img src="{% cropped_thumbnail news "cropping" scale=1 %}">
+                        <p style="font-size: 15px;">{{ news.description|truncatewords:100|safe }}</p>
+                        <a href="{{ news.url }}"><button class="btn btn-primary pull-right" style="margin-top: 10px;">Подробнее</button></a>
                     </div>
                 {% endfor %}
 

@@ -63,6 +63,7 @@
                 <div class="row">
                     <div class="col-xs-4 sepa">
                         <div class="btn_front">
+                            <!-- Сама форма находится в index.html -->
                             <img src="/static/theme/img/pray.png" height="42" alt=""/>
                             <a href="" data-toggle="modal" data-target="#complete-dialog">Молитвенная нужда</a>
                             <!--<button class="btn btn-primary" data-toggle="modal" data-target="#complete-dialog">Open dialog</button>-->
@@ -83,34 +84,7 @@
                 </div>
             </div>
 
-
-            <div id="complete-dialog" class="modal fade" tabindex="-1">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title">Оставить молитвенную просьбу</h4>
-                  </div>
-                  <form action="." method="post">{% csrf_token %}
-                      <div class="modal-body">
-                          <br/>
-                              <label>Ваши данные:</label>
-                              <input type="text" name="name" class="form-control" placeholder="Ваше имя">
-                              <input type="text" name="phone" class="form-control" placeholder="Ваш телефон">
-                              <input type="text" name="email" class="form-control" placeholder="Ваша почта (не обязательно)">
-                              <br/>
-                              <label>Опишите Вашу нужду:</label>
-                              <textarea class="form-control" name="text" placeholder="Текст сообщения"></textarea>
-                      </div>
-                      <div class="modal-footer">
-                          <button class="btn btn-warning" data-dismiss="modal">Закрыть</button>
-                          <input type="submit" name="button" class="btn btn-primary" value="Отправить">
-                        <!--<button class="btn btn-success" >Отправить</button>-->
-                      </div>
-                  </form>
-                </div>
-              </div>
-            </div>
+            
 
         {% endif %}
             

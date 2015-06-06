@@ -261,7 +261,7 @@ class Page(BaseArticle):
 
 class PageGalleryImage(models.Model):
     page = models.ForeignKey(Page)
-    image = models.FileField(
+    image = models.ImageField(
         verbose_name=u'Изображение для галереи',
         upload_to='gallery_page', blank=True)
 

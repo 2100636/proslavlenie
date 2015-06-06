@@ -37,8 +37,11 @@
 
                 {% for review in reviews %}
                     <div class="col-xs-12" style="margin-bottom: 30px;">
-                        <p style="font-size: 15px;">{{ review.description }}</p>
-                        <span style="float: right; font-size: 12px;">- {{ review.name }}</span>
+                        <h3>{{ review.name }}</h3>
+                        <img style="float:left; margin-right: 20px;" src="{% cropped_thumbnail review "cropping" scale=1 %}">
+                        <p style="font-size: 15px;">{{ review.description|truncatewords:40 }}</p>
+                        <p style="text-align: right; font-size: 12px;">- {{ review.name }}</p>
+                        <a href="{{ review.url }}"><button class="btn btn-primary pull-right" style="margin-top: 10px;">Подробнее</button></a>
                     </div>
                 {% endfor %}
 

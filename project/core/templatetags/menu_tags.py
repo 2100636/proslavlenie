@@ -3,7 +3,7 @@
 from django import template
 from project.accounts.models import getOrganizerProfile
 from project.core.models import SliderItem
-from project.menu.models import MenuCategory
+# from project.menu.models import MenuCategory
 
 
 register = template.Library()
@@ -42,7 +42,7 @@ register.inclusion_tag('core/tags/core_top_menu.html', takes_context=True)(coreT
 
 def menu_tree(context, request):
     return {
-        'menu_objects': MenuCategory.objects.all(),
+        # 'menu_objects': MenuCategory.objects.all(),
         'request': request
 
     }

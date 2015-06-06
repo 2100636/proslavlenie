@@ -1,0 +1,38 @@
+{
+  "name": "Proslavlenie-tomsk-project",
+  "version": "1.0.0",
+  "description": "Church of prise in Tomsk",
+  "author": "Aleksandr Korovkin",
+  "homepage": "http://proslavlenie.ru",
+  "browserify": {
+    "transform": [
+      [
+        "reactify",
+        {
+          "es6": false
+        }
+      ]
+    ]
+  },
+  "dependencies": {
+    "jquery": "^2.1.4",
+    "material-ui": "^0.8.0",
+    "flux": "^2.0.3",
+    "js-cookie": "^1.5.1",
+    "merge": "^1.2.0",
+    "microevent": "^1.0.0",
+    "react": "latest",
+    "fancybox": "^3.0.0",
+    "swiper": "^3.0.7"
+  },
+  "devDependencies": {
+    "browserify": "latest",
+    "reactify": "^1.1.1",
+    "watchify": "^3.2.1"
+  },
+  "scripts": {
+    "prod": "jsx -x jsx ./static/browserify/dev ./static/browserify/dist",    
+    "build-js": "browserify ./static/browserify/main.js > ./static/browserify/bundle.js",
+    "watch-js": "watchify ./static/browserify/main.js -o ./static/browserify/bundle.js -v -d"
+  }
+}

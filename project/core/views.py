@@ -2,11 +2,11 @@
 #!/usr/bin/env python
 from django.template import RequestContext
 from django.shortcuts import render_to_response
-from project.core.functions import *
-from project.core.models import Article, Page, Question,\
-    News, SliderItem, Review, Testimony, Video, Ministry, VideoCategory, Need
+from functions import *
+from forms import QuestionForm, NeedForm
+from models import Article, Page, Question,\
+    News, SliderItem, Review, Testimony, Video, Ministry, VideoCategory
 
-from project.menu.models import MenuCategory
 from django.core.mail import send_mail
 from project.settings import ADMIN_EMAIL
 
@@ -15,7 +15,6 @@ def indexView(request, template_name="catalog/index.html"):
     user = request.user
     articles = Article.objects.all()
     news = News.objects.all()[:5]
-    menu_objects = MenuCategory.objects.all()
     slides = SliderItem.objects.all()[:3]
 
     # получение ссылок для видео
@@ -31,16 +30,17 @@ def indexView(request, template_name="catalog/index.html"):
             videoblog_video = Video.objects.filter(category=c).last()
             videoblog_video.video = videoblog_video.video[17:]
 
-    reviews = Review.objects.all()[:2]
-    if request.method == "POST":
-        need = Need()
-        need.name = request.POST['name']
-        need.phone = request.POST['phone']
-        need.email = request.POST['email']
-        need.text = request.POST['text']
-        try:
-            need.save()
-            subject = u'WayMy заявка в 2 клика'
+    reviews = Review.objects.all()[:3]
+
+    form_question = QuestionForm()
+    form_need = NeedForm()
+
+    # Отправляем нужду на почту
+    if request.method == "POST" and "need" in request.POST:
+        form_need = NeedForm(request.POST)
+        if form_need.is_valid():
+            form_need.save()
+            subject = u'Нужда proslavlenie.ru'
             message = u'телефон: %s \n Имя: %s \n Сообщение: %s \n почта: %s'\
                 % (
                     request.POST['phone'],
@@ -51,8 +51,27 @@ def indexView(request, template_name="catalog/index.html"):
             send_mail(
                 subject, message, 'teamer777@gmail.com', [ADMIN_EMAIL],
                 fail_silently=False)
-        except:
-            pass
+
+    # Отправляем вопрос на почту
+    elif request.method == "POST" and "question" in request.POST:
+        postdata = {
+            'name': request.POST['name'],
+            'phone': request.POST['phone'],
+            'text': request.POST['text']
+        }
+        form_question = QuestionForm(postdata)
+        if form_question.is_valid():
+            subject = u'Вопрос proslavlenie.ru'
+            message = u'телефон: %s \n Имя: %s \n Сообщение: %s \n'\
+                % (
+                    request.POST['phone'],
+                    request.POST['name'],
+                    request.POST['text']
+                )
+
+            send_mail(
+                subject, message, 'teamer777@gmail.com', [ADMIN_EMAIL],
+                fail_silently=False)
 
     return render_to_response(
         template_name, locals(), context_instance=RequestContext(request))
@@ -106,6 +125,7 @@ def testimonyView(request, id, template_name="catalog/testimony.html"):
 def ministryView(request, slug, template_name="catalog/ministry.html"):
     user = request.user
     ministry = Ministry.objects.get(slug=slug)
+    ministry.video = ministry.video[17:]
     return render_to_response(
         template_name, locals(), context_instance=RequestContext(request))
 

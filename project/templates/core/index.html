@@ -4,16 +4,17 @@
 {% load mptt_tags %}
 {% load sitetree %}
 {% load menu_tags %}
+{% load generic_flatblocks %}
 
 {% block page_css %}
     <link href="{{ STATIC_URL }}theme/css/style.css" rel="stylesheet" type="text/css" />
     <link href="{{ STATIC_URL }}theme/css/non-responsive.css" rel="stylesheet" type="text/css" />
-    <link href="{{ STATIC_URL }}theme/css/swiper.min.css" rel="stylesheet" type="text/css" />
-    <link href="{{ STATIC_URL }}theme/css/animate.css " rel="stylesheet" type="text/css" />    
+    <link href="{{ STATIC_URL }}node_modules/swiper/dist/css/swiper.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ STATIC_URL }}theme/css/index/animate.css " rel="stylesheet" type="text/css" />    
 {% endblock %}
 
 {% block content %}
-<div id="front" class="content-wrapper" style="margin-left:0"><!-- Content Wrapper. Contains page content -->
+<div id="front" class="content-wrapper" style="margin-left:0"><!-- Content Wrapper. Contains page content -->    
 
     <section class="social">
         <div class="container">
@@ -38,11 +39,11 @@
 
                 <div class="col-xs-5">
                     <div class="row">
+
+                        <!-- Большое видео - модальное окно на главной -->
                         <div class="col-xs-12 sepa">
                             <a style="cursor: pointer" name="" data-toggle="modal" data-target="#myModal"><img style="width: 100%;" src="{% cropped_thumbnail main_video "cropping" scale=1 %}"></a>
-{#                            <img style="width: 100%;" src="/media/{{ main_video.cover }}" alt=""/>#}
                         </div>
-
                         <div class="modal modal-primary fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -52,7 +53,6 @@
                                     </div>
                                     <div class="modal-body">
                                         <iframe width="550" height="360" src="https://www.youtube.com/embed/{{ main_video.video }}" frameborder="0" allowfullscreen></iframe>
-{#                                            <p><iframe width="420" height="315" src="{{ main_video.video }}" frameborder="0" allowfullscreen></iframe></p>#}
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Закрыть</button>
@@ -60,6 +60,7 @@
                                 </div><!-- /.modal-content -->
                             </div><!-- /.modal-dialog -->
                         </div><!-- /.modal -->
+                        <!-- /.Большое видео - модальное окно на главной -->
 
                         <div class="col-xs-12 sepa">
                             <div class="news">
@@ -78,23 +79,24 @@
 
                 <div class="col-xs-4">
                     <div class="row">
+
+                        <!-- Первый flat блок на главной -->
                         <div class="col-xs-6 sepa">
-                            <div class="small_block">
-                                <a href="http://hram.proslavlenie.ru"><img src="{{ STATIC_URL }}theme/img/temple.jpg" alt=""/></a>
-                            </div>
-                        </div>
+                            {% gblock "index_first" for "blocks.IndexBlock" %}
+                        </div><!-- /.Первый flat блок на главной -->
+
+                        <!-- Второй flat блок на главной -->
                         <div class="col-xs-6 sepa">
-                            <div class="small_block">
-                                <a href="/testimonys"><img src="{{ STATIC_URL }}theme/img/glory.jpg" alt=""/></a>
-                            </div>
-                        </div>
+                            {% gblock "index_second" for "blocks.IndexBlock" %}
+                        </div><!-- /.Второй flat блок на главной -->
+
+                        <!-- Маленький блок с проповедью на главной -->
                         <div class="col-xs-6 sepa">
                             <div class="small_block">
                                 <a style="cursor: pointer" name="" data-toggle="modal" data-target="#pritchModal">
                                     <img style="width: 100%;" src="{% cropped_thumbnail pritch_video "cropping_pritch" scale=1 %}">
                                     <div class="video_description">Проповедь</div>
                                 </a>
-{#                                <img style="width: 100%;" src="/media/{{ pritch_video.cover }}" alt=""/>#}
                                 <div class="modal modal-primary fade" id="pritchModal" tabindex="-1" role="dialog" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -104,7 +106,6 @@
                                             </div>
                                             <div class="modal-body">
                                                 <iframe width="550" height="360" src="https://www.youtube.com/embed/{{ pritch_video.video }}" frameborder="0" allowfullscreen></iframe>
-        {#                                            <p><iframe width="420" height="315" src="{{ main_video.video }}" frameborder="0" allowfullscreen></iframe></p>#}
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Закрыть</button>
@@ -113,27 +114,54 @@
                                     </div><!-- /.modal-dialog -->
                                 </div><!-- /.modal -->
                             </div>
-                        </div>
-                        <div class="col-xs-6 sepa">
-                            <div class="small_block">
-                                <a href=""><img src="{{ STATIC_URL }}theme/img/help.jpg" alt=""/></a>
-                            </div>
-                        </div>
+                        </div><!-- /.Маленький блок с проповедью на главной -->
+
+                        <!-- Третий flat блок на главной -->
+                        <div class="col-xs-6 sepa">                        
+                            {% gblock "index_third" for "blocks.IndexBlock" %}
+                        </div><!-- /.Третий flat блок -->
+
+                        <!-- Большой flat блок на главной (Израиль изначально) -->
                         <div class="col-xs-12 sepa">
-                            <a href="">
-                                <img src="{{ STATIC_URL }}theme/img/israel.jpg" alt=""/>
-                            </a>
-                        </div>
-                        <div class="col-xs-12 sepa">
-                            <a href="">
+                            {% gblock "index_big" for "blocks.IndexBlock" %}  
+                        </div><!-- /.Большой flat блок -->
+
+                        <!-- Блок задать вопрос. Модальное окно, отправка сообщения на почту -->
+                        <div class="col-xs-12 sepa"> 
+                            <a style="cursor: pointer" name="" data-toggle="modal" data-target="#quastionModal">
                                 <img src="{{ STATIC_URL }}theme/img/question.jpg" alt=""/>
                             </a>
-                        </div>
+                           
+                            <div class="modal modal-primary fade" id="quastionModal" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                            <h4 class="modal-title">Задать вопрос</h4>
+                                        </div>
+                                        <form action="." method="post">{% csrf_token %}
+                                            <div class="modal-body">                                                
+                                                {{form_question.name}}
+                                                {{form_question.phone}}
+                                                {{form_question.text}}
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-warning" data-dismiss="modal">Закрыть</button>
+                                                <input type="submit" name="question" class="btn btn-primary" value="Отправить">
+                                                <!--<button class="btn btn-success" >Отправить</button>-->
+                                            </div>
+                                        </form>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
+                        </div><!-- /.Блок задать вопрос. -->
+
                     </div>
                 </div>
 
                 <div class="col-xs-3">
                     <div class="row">
+
                         <div class="col-xs-12 sepa">
                             <div class="reviews">
                                 <h4><a href="/reviews/">О нас пишут</a></h4>
@@ -145,16 +173,16 @@
                                     </div>
                                 {% endfor %}
                             </div>                        
-
                         </div>
+
                         <div class="col-xs-12 sepa">
                             <a href="">
                                 <img src="{{ STATIC_URL }}theme/img/plan.jpg" alt=""/>
                             </a>
                         </div>
+
                         <div class="col-xs-12 sepa">
                             <a style="cursor: pointer" name="" data-toggle="modal" data-target="#videoblogModal"><img style="width: 100%;" src="{% cropped_thumbnail videoblog_video "cropping_videoblog" scale=1 %}"></a>
-{#                                <img style="width: 100%;" src="/media/{{ pritch_video.cover }}" alt=""/>#}
                             <div class="modal modal-primary fade" id="videoblogModal" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -164,7 +192,6 @@
                                         </div>
                                         <div class="modal-body">
                                             <iframe width="550" height="360" src="https://www.youtube.com/embed/{{ videoblog_video.video }}" frameborder="0" allowfullscreen></iframe>
-    {#                                            <p><iframe width="420" height="315" src="{{ main_video.video }}" frameborder="0" allowfullscreen></iframe></p>#}
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Закрыть</button>
@@ -173,6 +200,7 @@
                                 </div><!-- /.modal-dialog -->
                             </div><!-- /.modal -->
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -182,41 +210,10 @@
     <section class="ministry">
         <div class="container">
             <div class="row">
-
                 <div class="col-xs-12">
-
                     <h2>Служения церкви</h2>
-
-                        {% sitetree_menu from "ministry" include 'trunk' %}
-                        
-                        {#{% recursetree menu_objects %}#}
-
-                            {#{% if not node.is_child_node %}#}
-                                {#<div class="ministry_block">#}
-                                    {#<ul>#}
-                            {#{% endif %}#}
-
-                                    {#{% if node.is_child_node %}#}
-                                        {#<li>#}
-                                            {#<a href="{{ node.url }}">{{ node.name }}</a>#}
-                                        {#</li>#}
-                                    {#{% else %}#}
-                                        {#<h4>{{ node.name }}</h4>#}
-                                    {#{% endif %}#}
-
-                                    {#{% if not node.is_leaf_node %}#}
-                                        {#{{ children }}#}
-                                    {#{% endif %}#}
-
-                            {#{% if not node.is_child_node %}#}
-                                    {#</ul>#}
-                                {#</div>#}
-                            {#{% endif %}#}
-
-                        {#{% endrecursetree %}#}
-
+                    {% sitetree_menu from "ministry" include 'trunk' %}                        
                 </div>
-
             </div>
         </div>
     </section>
@@ -265,7 +262,31 @@
     </section>
 
 
-{#        <div class="clearfix"></div>#}
+<!-- модальное окно для кнопки Молитвенная нужда из header.html -->
+<div id="complete-dialog" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Оставить молитвенную просьбу</h4>
+            </div>
+            <form action="." method="post">{% csrf_token %}
+                <div class="modal-body">
+                    <br/>
+                    {{form_need.name}}
+                    {{form_need.phone}}
+                    {{form_need.email}}
+                    {{form_need.text}}
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-warning" data-dismiss="modal">Закрыть</button>
+                    <input type="submit" name="need" class="btn btn-primary" value="Отправить">
+                    <!--<button class="btn btn-success" >Отправить</button>-->
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 </div><!-- /.content-wrapper -->
 {% endblock %}
