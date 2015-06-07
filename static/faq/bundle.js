@@ -1,0 +1,1 @@
+console.error("Error: Cannot find module '/Users/greenteamer/Desktop/Django/applications/proslavlenie/static/faq/main.js' from '/Users/greenteamer/Desktop/Django/applications/proslavlenie/static'");
