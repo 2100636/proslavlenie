@@ -62,7 +62,7 @@ var AnswerModal = React.createClass({
 		var modalAnswer = [
 			<Dialog
               ref="answerDialog"
-			  title="Задать вопрос"
+			  title="Ответить на вопрос"
 			  actions={answerActions}
 			  modal={this.state.modal}>
 			  {modalForm}
