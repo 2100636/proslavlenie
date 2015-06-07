@@ -180,6 +180,7 @@ ADAPTOR_INPLACEEDIT = {
     'tiny': 'inplaceeditform_extra_fields.fields.AdaptorTinyMCEField',
     'ckeditor': 'inplaceeditform_extra_fields.fields.AdaptorCKEDITORField',}
 
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -187,7 +188,12 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'django.contrib.flatpages',
+
+    'authentication',
+    'project.blocks',
+    'project.faq',
+    'project.core',
+
     'filebrowser',
     'django.contrib.admin',
     'ckeditor',
@@ -196,17 +202,18 @@ INSTALLED_APPS = (
     'mptt_tree_editor',
     'colorful',
     'sitetree',
-    'project.core',
-    # 'project.accounts',
-    # 'project.menu',
     'image_cropping',
     'easy_thumbnails',
-    'authentication',
-    # 'flatblocks',
     'django_generic_flatblocks',
-    'project.blocks',
-
+    'rest_framework',
 )
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
+    'PAGE_SIZE': 10
+}
+
 
 AUTH_USER_MODEL = 'authentication.Account'
 

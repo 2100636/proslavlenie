@@ -1,0 +1,50 @@
+{% extends "front_main.html" %}
+{% load thumbnail %}
+{% load cropping %}
+{% load menu_tags %}
+{% load staticfiles %}
+
+{% block content %}
+<div id="" class="content-wrapper" style="margin-left:0"><!-- Content Wrapper. Contains page content -->
+
+    <section id="drop_menu">
+        {% menu_tree request %}
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-xs-12">
+                    <div id="faq"></div>
+                </div>                
+
+            </div>
+        </div>
+    </section>
+
+</div><!-- /.content-wrapper -->
+{% endblock %}
+
+{% block page_js %}
+    <!-- browserify -->
+    <script src="{{ STATIC_URL }}faq/bundle.js" type="text/javascript"></script>
+
+    <script>
+        (function($) {
+            $(document).ready(function() {
+
+                setInterval(function(){
+                    $("#drop_menu .accordion_button").addClass('shake animated');
+                }, 3000);
+
+                setTimeout(function () {
+                    setInterval(function(){
+                        $("#drop_menu .accordion_button").removeClass('shake animated');
+                    }, 3000);
+                }, 2000);
+
+            });
+        })(jQuery);
+    </script>
+{% endblock %}

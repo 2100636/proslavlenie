@@ -31,7 +31,7 @@
   },
   "scripts": {
     "prod": "jsx -x jsx ./browserify/dev ./browserify/dist",    
-    "build-js": "browserify ./browserify/main.js > ./browserify/bundle.js",
-    "watch-js": "watchify ./browserify/main.js -o ./browserify/bundle.js -v -d"
+    "build-js": "browserify ./faq/main.js > ./faq/bundle.js",
+    "watch-js": "watchify ./faq/main.js -o ./faq/bundle.js -v -d"
   }
 }
