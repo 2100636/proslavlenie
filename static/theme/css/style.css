@@ -800,3 +800,24 @@ input.btn {
 .small_block:hover .description {
     bottom: 0px;
 }
+.question-date {
+    float: right;
+    line-height: 37px;
+}
+
+.text-right {
+    text-align: right;
+}
+
+
+/*стили для material-design*/
+.modal-button-ok {
+    background-color: #428bca!important;
+    color: #fff!important;
+    margin: 0 10px!important;
+}
+.modal-button-cancel {
+    background-color: #ff8280!important;
+    color: #fff!important;    
+    margin: 0 10px!important;
+}
