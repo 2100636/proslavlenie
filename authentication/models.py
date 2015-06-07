@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser,\
-    BaseUserManager, PermissionsMixin
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 
 class AccountManager(BaseUserManager):
@@ -32,7 +31,7 @@ class AccountManager(BaseUserManager):
         return account
 
 
-class Account(AbstractBaseUser, PermissionsMixin):
+class Account(AbstractBaseUser):
     #TODO: edit account and registration
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=40, unique=True)
@@ -51,6 +50,7 @@ class Account(AbstractBaseUser, PermissionsMixin):
     updated_at = models.DateTimeField(auto_now=True)
 
     objects = AccountManager()
+    backend = 'django.contrib.auth.backends.ModelBackend'
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
@@ -63,3 +63,13 @@ class Account(AbstractBaseUser, PermissionsMixin):
 
     def get_short_name(self):
         return self.first_name
+
+    def has_perm(self, perm, obj=None):
+        "Does the user have a specific permission?"
+        # Simplest possible answer: Yes, always
+        return True
+
+    def has_module_perms(self, app_label):
+        "Does the user have permissions to view the app `app_label`?"
+        # Simplest possible answer: Yes, always
+        return True
