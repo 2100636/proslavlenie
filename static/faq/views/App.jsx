@@ -13,6 +13,7 @@ var App = React.createClass({
           	user: {}
         }
     },
+    
     componentDidMount: function () {       
         FaqActions.getFaqTree();
         FaqActions.getCurrentUser();
