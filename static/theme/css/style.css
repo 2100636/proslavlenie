@@ -297,6 +297,9 @@ small {
     margin-right: 289px;
     width: 881px!important;
 }
+.swiper-slide:hover {
+    cursor: pointer;
+}
 .swiper-pagination {
     padding-top: 30px;
     width: 290px;
