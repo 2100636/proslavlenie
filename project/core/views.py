@@ -14,7 +14,7 @@ from project.settings import ADMIN_EMAIL
 def indexView(request, template_name="catalog/index.html"):
     user = request.user
     articles = Article.objects.all()
-    news = News.objects.all()[:5]
+    news = News.objects.order_by("-date")[:5]
     slides = SliderItem.objects.all()[:3]
 
     # получение ссылок для видео
@@ -30,7 +30,7 @@ def indexView(request, template_name="catalog/index.html"):
             videoblog_video = Video.objects.filter(category=c).last()
             videoblog_video.video = videoblog_video.video[17:]
 
-    reviews = Review.objects.all()[:3]
+    reviews = Review.objects.order_by("-date")[:3]
 
     form_question = QuestionForm()
     form_need = NeedForm()
@@ -92,13 +92,13 @@ def newsView(request, id, template_name="catalog/news.html"):
 
 
 def newsAllView(request, template_name="catalog/news_all.html"):
-    news_all = News.objects.all()
+    news_all = News.objects.order_by("-date")
     return render_to_response(
         template_name, locals(), context_instance=RequestContext(request))
 
 
 def reviewsView(request, template_name="catalog/reviews.html"):
-    reviews = Review.objects.all()
+    reviews = Review.objects.order_by("-date")
     return render_to_response(
         template_name, locals(), context_instance=RequestContext(request))
 
