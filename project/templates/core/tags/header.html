@@ -40,14 +40,14 @@
                     <div class="swiper-wrapper">
                         {% for slide in slides %}
 {#                                <div class="swiper-slide"><img src="{{ slide.url }}" alt=""/></div>#}
-                            <img class="swiper-slide" src="{% cropped_thumbnail slide "cropping" scale=1 %}">
+                            <img link="{{ slide.link }}" class="swiper-slide" src="{% cropped_thumbnail slide "cropping" scale=1 %}">
                         {% endfor %}
                     </div>
                     <!-- Add Pagination -->
                     <div class="swiper-pagination">
                         {% for slide in slides %}
                             <span class="my-pager">
-                                <div class="slider_icon"><span class="number">{{ slide.date|date:"j" }}</span><br/><small>{{ slide.date|date:"E" }}</small></div>
+                                <div class="slider_icon"><span class="number">{{ sslide.date|date:"j" }}</span><br/><small>{{ slide.date|date:"E" }}</small></div>
                                 <div class="title">{{ slide.name|truncatewords:3 }}</div>
                                 <div class="description">{{ slide.description|truncatewords:12 }}</div>
                             </span>
@@ -90,5 +90,6 @@
             
         </div>
     </div>
+
 </section>
 
