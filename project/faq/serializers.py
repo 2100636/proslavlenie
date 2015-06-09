@@ -21,6 +21,7 @@ def create_faq_tree(questions):
 
         tree_list.append({
             'id': question.id,
+            'checked': question.checked,
             'title': question.title,
             'date': "%s" % question.date,
             'text': question.question,

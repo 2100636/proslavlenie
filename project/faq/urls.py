@@ -9,6 +9,7 @@ urlpatterns = patterns(
         {'template_name': 'faq/faq.html'},
         name='faqView'),
 
+    # api for faq
     url(r'^faq-tree/$', 'getFaqTree', name='faq-tree'),
     url(r'^post-answer/$', 'postAnswer', name='post-answer'),
     url(r'^post-question/$', 'postQuestion', name='post-question'),

@@ -7,6 +7,7 @@ class QuestionFaq(models.Model):
     title = models.CharField(max_length=50, verbose_name=u'Тема вопроса')
     question = models.TextField(verbose_name=u'Задайте вопрос')
     date = models.DateField(auto_now_add=True)
+    checked = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = u'Вопрос в FAQ'

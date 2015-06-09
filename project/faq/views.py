@@ -22,8 +22,12 @@ def faqView(request, template_name="faq/faq.html"):
 
 def getFaqTree(request):
 
-    if request.method == 'GET':
+    # все отзывы видит только зарегистрированный пользователь
+    if request.method == 'GET' and request.user.is_authenticated() and request.user.is_servant:
         questions = QuestionFaq.objects.order_by("-date")
+        tree = create_faq_tree(questions)
+    elif request.method == 'GET' and not request.user.is_authenticated() or not request.user.is_servant:
+        questions = QuestionFaq.objects.filter(checked=True).order_by("-date")
         tree = create_faq_tree(questions)
 
     return HttpResponse(tree, content_type="application/json")

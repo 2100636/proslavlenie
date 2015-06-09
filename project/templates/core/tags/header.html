@@ -47,7 +47,7 @@
                     <div class="swiper-pagination">
                         {% for slide in slides %}
                             <span class="my-pager">
-                                <div class="slider_icon"><span class="number">{{ sslide.date|date:"j" }}</span><br/><small>{{ slide.date|date:"E" }}</small></div>
+                                <div class="slider_icon"><span class="number">{{ slide.date|date:"j" }}</span><br/><small>{{ slide.date|date:"E" }}</small></div>
                                 <div class="title">{{ slide.name|truncatewords:3 }}</div>
                                 <div class="description">{{ slide.description|truncatewords:12 }}</div>
                             </span>

@@ -21,7 +21,7 @@
                 {% for testimony in testimonys %}
                     <div class="col-xs-12" style="margin-bottom: 30px;">
                         <img src="{{ MEDIA_URL }}{{ testimony.image }}">
-                        <p style="font-size: 15px;">{{ testimony.description }}</p>
+                        <p style="font-size: 15px;">{{ testimony.description|truncatewords:50|safe }}</p>
                         <p style="text-align: right; font-size: 12px;">- {{ testimony.name }}</p>
                         <a href="{{ testimony.url }}"><button class="btn btn-primary pull-right" style="margin-top: 10px;">Подробнее</button></a>
                     </div>
