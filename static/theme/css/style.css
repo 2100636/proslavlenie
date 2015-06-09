@@ -711,6 +711,9 @@ section.footer .pull-right {
 #testimonys h1 {
     margin-bottom: 40px;
 }
+#testimony img.main {
+    width: 100%;
+}
 body {
     background-color: #fff;
 }
@@ -790,7 +793,7 @@ input.btn {
     text-align: center;
     font-size: 18px;
     bottom: -200px;
-    background: rgba(0, 57, 95, 0.76);
+    background: #0773BB;
     color: #FFFFFF;
     transition: all 0.3s ease;
     -webkit-transition: all 0.3s ease;
@@ -821,3 +824,4 @@ input.btn {
     color: #fff!important;    
     margin: 0 10px!important;
 }
+

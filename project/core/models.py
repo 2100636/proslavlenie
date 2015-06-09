@@ -214,7 +214,7 @@ class Video(models.Model):
         'cover', '479x320', verbose_name=u'Обложка основного видео на главной')
 
     cropping_pritch = ImageRatioField(
-        'cover', '173x150', verbose_name=u'Обложка проповеди на главной')
+        'cover', '165x200', verbose_name=u'Обложка проповеди на главной')
 
     cropping_videoblog = ImageRatioField(
         'cover', '275x200', verbose_name=u'Обложка видеоблог на главной')
