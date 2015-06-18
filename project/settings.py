@@ -19,7 +19,7 @@ TEMPLATE_DEBUG = DEBUG
 
 DEFAULT_CHARSET = 'utf-8'
 
-ADMIN_EMAIL = 'greenteamer@bk.ru'
+ADMIN_EMAIL = 'infoproslavlenie@gmail.com'
 ADMINS = ()
 
 THUMBNAIL_PROCESSORS = (
