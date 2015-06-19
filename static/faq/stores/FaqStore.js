@@ -40,6 +40,7 @@ FaqDispatcher.register(function (payload) {
 
                     FaqStore.collection = data;
                     FaqStore.collectionChange();
+                    console.log(data);
 
                 }).bind(this),
                 error: (function (xhr, status, err) {
@@ -124,6 +125,39 @@ FaqDispatcher.register(function (payload) {
                     });
 
                     FaqStore.collectionChange();
+                })
+            .error(
+                function (data) {
+                    console.log("Ошибка post запроса при добавлении вопроса");
+                    $.snackbar({timeout: 5000, content: data.message });
+                });
+
+            break;
+
+        case 'post-question-checked':
+            var csrftoken = Cookies.get('csrftoken');
+            console.log(payload.question);
+            $.post(
+                "/api/v1/post-question-checked/",
+                {
+                    csrfmiddlewaretoken: csrftoken,                    
+                    id: payload.question.id,
+                    status: payload.question.status
+                    // status: 'true'
+                }
+            ).success(
+                function (data) {
+                    $.snackbar('ok ok ok ok');
+
+                    // FaqStore.collection.unshift({
+                    //     'id': data.question_id,
+                    //     'title': data.title,
+                    //     'text': data.text,
+                    //     'date': data.date,
+                    //     'answers': data.answers
+                    // });
+
+                    // FaqStore.collectionChange();
                 })
             .error(
                 function (data) {

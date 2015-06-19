@@ -36,6 +36,12 @@ var FaqDispatcher = require('../dispatcher/FaqDispatcher.js');
                 actionType: "post-question-action",
                 question: question                
             });
+        },
+        question_checked: function (question) {
+            FaqDispatcher.dispatch({
+                actionType: "post-question-checked",
+                question: question
+            });        
         }
     }
 
@@ -248,6 +254,7 @@ FaqDispatcher.register(function (payload) {
 
                     FaqStore.collection = data;
                     FaqStore.collectionChange();
+                    console.log(data);
 
                 }).bind(this),
                 error: (function (xhr, status, err) {
@@ -341,6 +348,39 @@ FaqDispatcher.register(function (payload) {
 
             break;
 
+        case 'post-question-checked':
+            var csrftoken = Cookies.get('csrftoken');
+            console.log(payload.question);
+            $.post(
+                "/api/v1/post-question-checked/",
+                {
+                    csrfmiddlewaretoken: csrftoken,                    
+                    id: payload.question.id,
+                    status: payload.question.status
+                    // status: 'true'
+                }
+            ).success(
+                function (data) {
+                    $.snackbar('ok ok ok ok');
+
+                    // FaqStore.collection.unshift({
+                    //     'id': data.question_id,
+                    //     'title': data.title,
+                    //     'text': data.text,
+                    //     'date': data.date,
+                    //     'answers': data.answers
+                    // });
+
+                    // FaqStore.collectionChange();
+                })
+            .error(
+                function (data) {
+                    console.log("Ошибка post запроса при добавлении вопроса");
+                    $.snackbar({timeout: 5000, content: data.message });
+                });
+
+            break;
+
         default:
     };
 
@@ -422,7 +462,7 @@ var AnswerModal = React.createClass({displayName: "AnswerModal",
 			)	
 			];
 		var classString = 'btn btn-primary';
-		if (this.props.user.username === 'anonimous') {
+		if (this.props.user.is_servant === false) {
 			classString += ' hide';
 		};
         return (				
@@ -619,7 +659,7 @@ var React = require('react');
 
 var FlatButton = require('material-ui').FlatButton;
 var Dialog = require('material-ui').Dialog;
-var TextField = require('material-ui').TextField;
+var Checkbox = require('material-ui').Checkbox;
 var ThemeManager = require('material-ui/lib/styles/theme-manager')();
 var injectTapEventPlugin = require("react-tap-event-plugin");
 
@@ -630,19 +670,55 @@ var FaqActions = require('../actions/FaqActions.js');
 
 
 var Question = React.createClass({displayName: "Question",
-	render: function () {		
-		return (
-			React.createElement("div", {className: "col-xs-12"}, 
-				React.createElement("div", {className: "question-faq"}, 
-					React.createElement("h2", {ref: "title_question"}, this.props.question.title, " ", React.createElement("span", {className: "small question-date"}, this.props.question.date)), 
-					React.createElement("p", {ref: "text_question"}, this.props.question.text), 					
-					React.createElement(AnswerModal, {id: this.props.question.id, user: this.props.user})
-				), 
-				React.createElement("div", {className: "answers"}, 					
-					React.createElement(AnswerList, {answers: this.props.question.answers})
+	childContextTypes: {
+        muiTheme: React.PropTypes.object
+    },
+    getChildContext: function() {        
+        return {
+            muiTheme: ThemeManager.getCurrentTheme()
+        };
+    },
+    question_checked: function () {    	
+    	FaqActions.question_checked({
+    		id: this.props.question.id,
+    		status: this.refs.checked_ref.isChecked()
+    	});
+    },
+	render: function () {
+		if (this.props.user.is_servant) {
+			var checker = React.createElement(Checkbox, {
+		        name: "checkboxName2", 
+		        ref: "checked_ref", 
+		        style: { width: '100%', margin: '0 auto'}, 
+		        label: "Опубликовано", 
+		        defaultChecked: this.props.question.checked, 
+		        onCheck: this.question_checked})	       
+			return (
+				React.createElement("div", {className: "col-xs-12"}, 
+					React.createElement("div", {className: "question-faq"}, 					
+						React.createElement("h2", {ref: "title_question"}, this.props.question.title, " ", React.createElement("span", {className: "small question-date"}, this.props.question.date)), 
+						checker, 
+						React.createElement("p", {ref: "text_question"}, this.props.question.text), 								
+						React.createElement(AnswerModal, {id: this.props.question.id, user: this.props.user})
+					), 
+					React.createElement("div", {className: "answers"}, 					
+						React.createElement(AnswerList, {answers: this.props.question.answers})
+					)
 				)
 			)
-		)
+		} else {
+			return (
+				React.createElement("div", {className: "col-xs-12"}, 
+					React.createElement("div", {className: "question-faq"}, 					
+						React.createElement("h2", {ref: "title_question"}, this.props.question.title, " ", React.createElement("span", {className: "small question-date"}, this.props.question.date)), 						
+						React.createElement("p", {ref: "text_question"}, this.props.question.text)								
+					), 
+					React.createElement("div", {className: "answers"}, 					
+						React.createElement(AnswerList, {answers: this.props.question.answers})
+					)
+				)
+			)
+		};      		
 	}
 });
 

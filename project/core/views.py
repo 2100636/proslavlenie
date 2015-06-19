@@ -80,6 +80,8 @@ def indexView(request, template_name="catalog/index.html"):
 def articleView(request, slug, template_name="catalog/article.html"):
     user = request.user
     article = Article.objects.get(slug=slug)
+    meta_title = article.name
+    meta_description = article.description
     return render_to_response(template_name, locals(),
                               context_instance=RequestContext(request))
 

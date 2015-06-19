@@ -289,28 +289,7 @@
        swiper.slideTo($(this).index());
     });
     </script>
-
-
-
-<script>
-    (function($) {
-        $(document).ready(function() {
-
-            $('.my-pager .title').mouseenter(function(){
-                $(this).parent('.my-pager').addClass('shake animated');
-            });
-            $('.my-pager').mouseleave(function(){
-                $(".my-pager").removeClass('shake animated');
-            });
-
-        });
-
-        $('.swiper-slide').on('click', function () {
-            var link = $(this).attr('link');
-            window.location.href = link;
-        });
-
-    })(jQuery);
-</script>
-
 {% endblock %}
+
+{% block shacke %}
+{% endblock shacke %}

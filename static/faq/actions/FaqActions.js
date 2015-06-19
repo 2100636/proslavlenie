@@ -22,6 +22,12 @@ var FaqDispatcher = require('../dispatcher/FaqDispatcher.js');
                 actionType: "post-question-action",
                 question: question                
             });
+        },
+        question_checked: function (question) {
+            FaqDispatcher.dispatch({
+                actionType: "post-question-checked",
+                question: question
+            });        
         }
     }
 

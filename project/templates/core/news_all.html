@@ -50,27 +50,4 @@
        swiper.slideTo($(this).index());
     });
     </script>
-
-
-<script>
-    (function($) {
-        $(document).ready(function() {
-
-            setInterval(function(){
-                $("#drop_menu .accordion_button").addClass('shake animated');
-            }, 3000);
-
-            setTimeout(function () {
-                setInterval(function(){
-                    $("#drop_menu .accordion_button").removeClass('shake animated');
-                }, 3000);
-            }, 2000);
-
-        });
-    })(jQuery);
-</script>
-
-
-
-
 {% endblock %}

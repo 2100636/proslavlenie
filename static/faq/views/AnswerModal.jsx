@@ -69,7 +69,7 @@ var AnswerModal = React.createClass({
 			</Dialog>	
 			];
 		var classString = 'btn btn-primary';
-		if (this.props.user.username === 'anonimous') {
+		if (this.props.user.is_servant === false) {
 			classString += ' hide';
 		};
         return (				
