@@ -19,6 +19,13 @@ class BaseArticle(models.Model):
     description = RichTextField()
 
 
+class BaseMeta(models.Model):
+    class Meta:
+        abstract = True
+    meta_title = models.CharField(max_length=80, blank=True, verbose_name=u'Мета title для страницы')    
+    meta_description = models.CharField(max_length=200, blank=True, verbose_name=u'Мета description для страницы')
+
+
 class SliderItem(models.Model):
     name = models.CharField(max_length=200, verbose_name=u'Название слайдера')
 
@@ -49,7 +56,7 @@ class SliderItem(models.Model):
         return '/media/%s' % self.image
 
 
-class Article(BaseArticle):
+class Article(BaseArticle, BaseMeta):
     sub_title = models.CharField(max_length=60, verbose_name=u'Подзаголовок')
     entry = models.TextField(verbose_name=u'Вступление')
 
@@ -88,7 +95,7 @@ class ArticleGalleryImage(models.Model):
         return "/media/%s" % self.image
 
 
-class News(models.Model):
+class News(BaseMeta):
     name = models.CharField(max_length=200, verbose_name=u'Название новости')
     description = RichTextField()
 
@@ -128,7 +135,7 @@ class NewsGalleryImage(models.Model):
         return "/media/%s" % self.image
 
 
-class Review(models.Model):
+class Review(BaseMeta):
     name = models.CharField(max_length=200, verbose_name=u'Имя')
     description = models.TextField(verbose_name=u'Отзыв')
 
@@ -156,7 +163,7 @@ class Review(models.Model):
         return u"/review/%s" % self.id
 
 
-class Testimony(models.Model):
+class Testimony(BaseMeta):
     name = models.CharField(max_length=200, verbose_name=u'Ваше имя')
     description = models.TextField(verbose_name=u'Ваше свидетельство')
     image = models.ImageField(
@@ -237,7 +244,7 @@ class Video(models.Model):
         return u'Видео %s' % self.name
 
 
-class Page(BaseArticle):
+class Page(BaseArticle, BaseMeta):
     sub_title = models.CharField(max_length=60, verbose_name=u'Подзаголовок')
     entry = models.TextField(verbose_name=u'Вступление')
 
@@ -271,7 +278,7 @@ class PageGalleryImage(models.Model):
         return "/media/%s" % self.image
 
 
-class Ministry(models.Model):
+class Ministry(BaseMeta):
     name = models.CharField(max_length=200, verbose_name=u'Название служения')
     slug = models.SlugField(verbose_name=u'Ссылка на служение', unique=True)
     video = models.CharField(

@@ -79,9 +79,10 @@ def indexView(request, template_name="catalog/index.html"):
 
 def articleView(request, slug, template_name="catalog/article.html"):
     user = request.user
-    article = Article.objects.get(slug=slug)
-    meta_title = article.name
-    meta_description = article.description
+    article = Article.objects.get(slug=slug)    
+    # мета описание
+    meta_title = article.meta_title
+    meta_description = article.meta_description
     return render_to_response(template_name, locals(),
                               context_instance=RequestContext(request))
 
@@ -89,6 +90,9 @@ def articleView(request, slug, template_name="catalog/article.html"):
 def newsView(request, id, template_name="catalog/news.html"):
     user = request.user
     news = News.objects.get(id=id)
+    # мета описание
+    meta_title = news.meta_title
+    meta_description = news.meta_description
     return render_to_response(
         template_name, locals(), context_instance=RequestContext(request))
 
@@ -107,6 +111,9 @@ def reviewsView(request, template_name="catalog/reviews.html"):
 
 def reviewView(request, id, template_name="catalog/review.html"):
     review = Review.objects.get(id=id)
+    # мета описание
+    meta_title = review.meta_title
+    meta_description = review.meta_description
     return render_to_response(
         template_name, locals(), context_instance=RequestContext(request))
 
@@ -120,6 +127,9 @@ def testimonysView(request, template_name="catalog/reviews.html"):
 def testimonyView(request, id, template_name="catalog/testimony.html"):
     user = request.user
     testimony = Testimony.objects.get(id=id)
+    # мета описание
+    meta_title = testimony.meta_title
+    meta_description = testimony.meta_description
     return render_to_response(
         template_name, locals(), context_instance=RequestContext(request))
 
@@ -128,12 +138,18 @@ def ministryView(request, slug, template_name="catalog/ministry.html"):
     user = request.user
     ministry = Ministry.objects.get(slug=slug)
     ministry.video = ministry.video[17:]
+    # мета описание
+    meta_title = ministry.meta_title
+    meta_description = ministry.meta_description
     return render_to_response(
         template_name, locals(), context_instance=RequestContext(request))
 
 
 def pageView(request, slug, template_name="core/page.html"):
     page = Page.objects.get(slug=slug)
+    # мета описание
+    meta_title = page.meta_title
+    meta_description = page.meta_description
     return render_to_response(
         template_name, locals(), context_instance=RequestContext(request))
 
