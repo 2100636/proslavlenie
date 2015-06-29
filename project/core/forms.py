@@ -1,6 +1,13 @@
 # -*- coding: utf-8 -*-
 from django import forms
 from project.core.models import Need
+from yandex_money.models import Payment
+
+
+# class PaymentForm(forms.ModelForm):
+#     class Meta:
+#         model = Payment
+#         fields = ('scid', 'shopID', 'CustomerNumber', 'Sum', 'paymentType')
 
 
 class NeedForm(forms.ModelForm):

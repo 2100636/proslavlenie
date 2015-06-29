@@ -2,13 +2,31 @@
 #!/usr/bin/env python
 from django.template import RequestContext
 from django.shortcuts import render_to_response
+from django.views.generic import TemplateView
 from functions import *
 from forms import QuestionForm, NeedForm
+from yandex_money.models import Payment
 from models import Article, Page, Question,\
     News, SliderItem, Review, Testimony, Video, Ministry, VideoCategory
 
 from django.core.mail import send_mail
 from project.settings import ADMIN_EMAIL
+
+from yandex_money.forms import PaymentForm
+from yandex_money.models import Payment
+
+
+class TestPay(TemplateView):
+    template_name = 'core/order_page.html'
+
+    def get_context_data(self, **kwargs):
+        amount = 1235
+        payment = Payment(order_amount=amount)
+        payment.save()
+
+        ctx = super(TestPay, self).get_context_data(**kwargs)
+        ctx['form'] = PaymentForm(instance=payment)
+        return ctx
 
 
 def indexView(request, template_name="catalog/index.html"):
@@ -34,6 +52,11 @@ def indexView(request, template_name="catalog/index.html"):
 
     form_question = QuestionForm()
     form_need = NeedForm()
+
+    # test payment
+    amount = 1235
+    payment = Payment(order_amount=amount)
+    payment_form = PaymentForm(instance=payment)
 
     # Отправляем нужду на почту
     if request.method == "POST" and "need" in request.POST:
@@ -79,7 +102,7 @@ def indexView(request, template_name="catalog/index.html"):
 
 def articleView(request, slug, template_name="catalog/article.html"):
     user = request.user
-    article = Article.objects.get(slug=slug)    
+    article = Article.objects.get(slug=slug)
     # мета описание
     meta_title = article.meta_title
     if not meta_title or meta_title == '':

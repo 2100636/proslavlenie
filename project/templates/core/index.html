@@ -10,7 +10,7 @@
     <link href="{{ STATIC_URL }}theme/css/style.css" rel="stylesheet" type="text/css" />
     <link href="{{ STATIC_URL }}theme/css/non-responsive.css" rel="stylesheet" type="text/css" />
     <link href="{{ STATIC_URL }}node_modules/swiper/dist/css/swiper.min.css" rel="stylesheet" type="text/css" />
-    <link href="{{ STATIC_URL }}theme/css/index/animate.css " rel="stylesheet" type="text/css" />    
+    <link href="{{ STATIC_URL }}theme/css/index/animate.css " rel="stylesheet" type="text/css" />
 {% endblock %}
 
 {% block meta %}
@@ -19,7 +19,7 @@
 {% endblock %}
 
 {% block content %}
-<div id="front" class="content-wrapper" style="margin-left:0"><!-- Content Wrapper. Contains page content -->    
+<div id="front" class="content-wrapper" style="margin-left:0"><!-- Content Wrapper. Contains page content -->
 
     <section class="content">
         <div class="container">
@@ -105,21 +105,21 @@
                         </div><!-- /.Маленький блок с проповедью на главной -->
 
                         <!-- Третий flat блок на главной -->
-                        <div class="col-xs-6 sepa">                        
+                        <div class="col-xs-6 sepa">
                             {% gblock "index_third" for "blocks.IndexBlock" %}
                         </div><!-- /.Третий flat блок -->
 
                         <!-- Большой flat блок на главной (Израиль изначально) -->
                         <div class="col-xs-12 sepa">
-                            {% gblock "index_big" for "blocks.IndexBlock" %}  
+                            {% gblock "index_big" for "blocks.IndexBlock" %}
                         </div><!-- /.Большой flat блок -->
 
                         <!-- Блок задать вопрос. Модальное окно, отправка сообщения на почту -->
-                        <div class="col-xs-12 sepa"> 
+                        <div class="col-xs-12 sepa">
                             <a style="cursor: pointer" name="" data-toggle="modal" data-target="#quastionModal">
                                 <img src="{{ STATIC_URL }}theme/img/question.jpg" alt=""/>
                             </a>
-                           
+
                             <div class="modal modal-primary fade" id="quastionModal" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -128,7 +128,7 @@
                                             <h4 class="modal-title">Задать вопрос</h4>
                                         </div>
                                         <form action="." method="post">{% csrf_token %}
-                                            <div class="modal-body">                                                
+                                            <div class="modal-body">
                                                 {{form_question.name}}
                                                 {{form_question.phone}}
                                                 {{form_question.text}}
@@ -160,7 +160,7 @@
                                         <div class="person">— {{ review.name|truncatewords:6 }}</div>
                                     </div>
                                 {% endfor %}
-                            </div>                        
+                            </div>
                         </div>
 
                         <div class="col-xs-12 sepa">
@@ -200,7 +200,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <h2>Служения церкви</h2>
-                    {% sitetree_menu from "ministry" include 'trunk' %}                        
+                    {% sitetree_menu from "ministry" include 'trunk' %}
                 </div>
             </div>
         </div>
@@ -275,6 +275,33 @@
         </div>
     </div>
 </div>
+
+{% if user.is_admin %}
+    <div id="pay-dialog" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Оставить молитвенную просьбу</h4>
+                </div>
+                <div class="modal-body">
+                    <br/>
+                    <!-- Значения всех полей условны и приведены исключительно для примера -->
+                    <form action="https://demomoney.yandex.ru/eshop.xml" method="post">
+                        <!-- Обязательные поля -->
+                        {{ payment_form.as_ul|safe }}
+                        <input type="submit" value="Заплатить"/>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-warning" data-dismiss="modal">Закрыть</button>
+                    <input type="submit" name="need" class="btn btn-primary" value="Отправить">
+                    <!--<button class="btn btn-success" >Отправить</button>-->
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
 
 </div><!-- /.content-wrapper -->
 {% endblock %}
