@@ -14,5 +14,6 @@ urlpatterns = patterns(
     url(r'^post-answer/$', 'postAnswer', name='post-answer'),
     url(r'^post-question/$', 'postQuestion', name='post-question'),
     url(r'^user/$', 'getUser', name='get-user'),
+    url(r'^post-question-checked/$', 'postQuestionChecked', name='post-question-checked')
 
 )

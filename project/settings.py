@@ -19,7 +19,7 @@ TEMPLATE_DEBUG = DEBUG
 
 DEFAULT_CHARSET = 'utf-8'
 
-ADMIN_EMAIL = 'greenteamer@bk.ru'
+ADMIN_EMAIL = 'infoproslavlenie@gmail.com'
 ADMINS = ()
 
 THUMBNAIL_PROCESSORS = (
@@ -206,8 +206,17 @@ INSTALLED_APPS = (
     'easy_thumbnails',
     'django_generic_flatblocks',
     'rest_framework',
+    'yandex_money',
 )
 
+YANDEX_MONEY_DEBUG = True
+YANDEX_MONEY_SCID = 61911
+YANDEX_MONEY_SHOP_ID = 39684
+YANDEX_MONEY_SHOP_PASSWORD = 'testforyamoney'
+YANDEX_MONEY_FAIL_URL = 'https://example.com/fail-payment/'
+YANDEX_MONEY_SUCCESS_URL = 'https://example.com/success-payment/'
+# информировать о случаях, когда модуль вернул Яндекс.Кассе ошибку
+YANDEX_MONEY_MAIL_ADMINS_ON_PAYMENT_ERROR = True
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),

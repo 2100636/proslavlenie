@@ -42,13 +42,13 @@ class ArticleAdmin(ImageCroppingMixin, admin.ModelAdmin):
 class NewsAdmin(ImageCroppingMixin, admin.ModelAdmin):
     model = News
     inlines = [NewsImagesInline]
-    fields = ('name', 'date', 'description', 'image', 'cropping')
+    fields = ('name', 'date', 'description', 'meta_title', 'meta_description', 'image', 'cropping')
 
 
 class TestimonyAdmin(ImageCroppingMixin, admin.ModelAdmin):
     model = News
     inlines = [TestimonyImagesInline]
-    fields = ('name', 'description', 'image')
+    fields = ('name', 'description', 'meta_title', 'meta_description', 'image')
 
 
 class PageAdmin(admin.ModelAdmin):
@@ -80,7 +80,7 @@ class MinistryAdmin(ImageCroppingMixin, admin.ModelAdmin):
     model = Ministry
     fields = (
         'name', 'slug', ('baner', 'baner_text'), 'video', 'description',
-        ('color', 'allocate_description'), 'leader', 'date')
+        ('color', 'allocate_description'), 'meta_title', 'meta_description', 'leader', 'date')
 
     inlines = [MinistryImageInline, ]
     prepopulated_fields = {'slug': ('name',)}

@@ -37,7 +37,10 @@ def getUser(request):
 
     data = json.dumps({'username': 'anonimous'})
     if request.method == 'GET' and request.user.is_authenticated():
-        data = json.dumps({'username': u"%s" % request.user.get_full_name()})
+        data = json.dumps({
+            'username': u"%s" % request.user.get_full_name(),
+            'is_servant': request.user.is_servant
+        })
 
     return HttpResponse(data, content_type="application/json")
 
@@ -91,3 +94,30 @@ def postQuestion(request):
         })
 
     return HttpResponse(data, content_type="application/json")
+
+
+@csrf_protect
+def postQuestionChecked(request):
+    data = json.dumps({
+        'message': "Извините, что-то пошло не так, попробуйте позже."})
+
+    if request.method == 'POST' and request.POST['id']:
+        id = int(request.POST['id'])
+        question = QuestionFaq.objects.get(id=id)
+        if request.POST['status'] == 'true':
+            question.checked = True
+        else: 
+            question.checked = False
+        question.save()
+
+        data = json.dumps({
+            'text': question.question,
+            'question_id': question.id,
+            'title': question.title,
+            'date': "%s" % question.date,
+            'answers': [],
+            'message': "Спасибо, Вы успешно изменили статус вопроса."
+        })
+
+    return HttpResponse(data, content_type="application/json")
+

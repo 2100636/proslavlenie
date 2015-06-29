@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/env python
 from django.conf.urls import patterns, url
+from views import TestPay
 
 urlpatterns = patterns(
     'project.core.views',
+
+    url(r'^pay/$', TestPay.as_view(), name='payment_form'),
 
     url(r'^$', 'indexView',
         {'template_name': 'core/index.html'},

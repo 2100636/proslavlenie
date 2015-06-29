@@ -5,7 +5,11 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        {# <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'> #}
+        {# <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'> #}        
+        {% block meta %}
+            <title>{{ meta_title }} | Церковь Прославления</title>
+            <meta name="description" content="{{ meta_description }}"/>
+        {% endblock %}
         
         <!-- Добавляем файл со стилями -->
         {% include "stylesheets.html" %}
@@ -64,6 +68,27 @@
 
         {% block page_js %}            
         {% endblock %}
+
+        <!-- наш шейкер на каждой странице кроме главной -->
+        {% block shacke %}
+            <script>
+                (function($) {
+                    $(document).ready(function() {
+
+                        setInterval(function(){
+                            $("#drop_menu .accordion_button").addClass('shake animated');
+                        }, 5000);
+
+                        setTimeout(function () {
+                            setInterval(function(){
+                                $("#drop_menu .accordion_button").removeClass('shake animated');
+                            }, 5000);
+                        }, 2000);
+
+                    });
+                })(jQuery);
+            </script>
+        {% endblock shacke %}
 
         </body>
 </html>

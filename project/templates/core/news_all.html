@@ -3,6 +3,11 @@
 {% load cropping %}
 {% load menu_tags %}
 
+{% block meta %}
+    <title>Новости | Церковь Прославления</title>
+    <meta name="description" content='Жизнь, события и новости "Церкви Прославления"'/>
+{% endblock %}
+
 {% block content %}
 <div id="news" class="content-wrapper" style="margin-left:0"><!-- Content Wrapper. Contains page content -->
 
@@ -50,27 +55,4 @@
        swiper.slideTo($(this).index());
     });
     </script>
-
-
-<script>
-    (function($) {
-        $(document).ready(function() {
-
-            setInterval(function(){
-                $("#drop_menu .accordion_button").addClass('shake animated');
-            }, 3000);
-
-            setTimeout(function () {
-                setInterval(function(){
-                    $("#drop_menu .accordion_button").removeClass('shake animated');
-                }, 3000);
-            }, 2000);
-
-        });
-    })(jQuery);
-</script>
-
-
-
-
 {% endblock %}

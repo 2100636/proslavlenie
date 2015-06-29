@@ -4,6 +4,11 @@
 {% load menu_tags %}
 {% load staticfiles %}
 
+{% block meta %}
+    <title>Вопрос-Ответ | Церковь Прославления</title>
+    <meta name="description" content='В разделе "вопрос-ответ" вы можете задать любой интересующий Вас вопрос.'/>
+{% endblock %}
+
 {% block content %}
 <div id="" class="content-wrapper" style="margin-left:0"><!-- Content Wrapper. Contains page content -->
 
@@ -29,22 +34,4 @@
 {% block page_js %}
     <!-- browserify -->
     <script src="{{ STATIC_URL }}faq/bundle.js" type="text/javascript"></script>
-
-    <script>
-        (function($) {
-            $(document).ready(function() {
-
-                setInterval(function(){
-                    $("#drop_menu .accordion_button").addClass('shake animated');
-                }, 3000);
-
-                setTimeout(function () {
-                    setInterval(function(){
-                        $("#drop_menu .accordion_button").removeClass('shake animated');
-                    }, 3000);
-                }, 2000);
-
-            });
-        })(jQuery);
-    </script>
 {% endblock %}
