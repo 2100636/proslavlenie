@@ -13,6 +13,7 @@ from yandex_money.models import Payment
 class NeedForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(NeedForm, self).__init__(*args, **kwargs)
+
         self.fields['name'].widget.attrs = {
             'placeholder': 'Ваше Имя', 'class': 'form-control floating-label'}
 

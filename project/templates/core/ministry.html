@@ -46,6 +46,16 @@
                             <p style="margin-top: 40px;">{{ ministry.description }}<p>
                         </div>
                         <div class="col-xs-8">
+                            {% if request.path_info == '/ministry/biblejskie-kursy/' %}
+                                <div class="bs_form_container">
+                                    <form action="." method="post">{% csrf_token %}
+                                        <h3>Анкета для поступления в БШ</h3>
+                                        {{ form }}
+                                        <input type="submit" name="bs_form" class="btn btn-success" style="display: block;margin-top: 20px;float: right;" value="Отправить">
+                                    </form>
+                                </div>
+                            {% endif %} 
+
                             <div class="gallery">
 {#                                <div class="row">#}
                                     {% for img in ministry.get_gallery_images %}
