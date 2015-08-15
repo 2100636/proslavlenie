@@ -81,7 +81,7 @@ USE_L10N = True
 # Example: "/home/media/media.lawrence.com/media/"
 # MEDIA_ROOT = 'C:/webmagazinedjango/webshop/static/media/'
 # MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media').replace('\\', '/')
-MEDIA_ROOT = '%s/project/media' % CURRPATH
+MEDIA_ROOT = ''
 CKEDITOR_UPLOAD_PATH = '/media/uploads'
 DIRECTORY = os.path.join(CURRPATH, 'media/uploads')
 
