@@ -5,6 +5,7 @@ from django.shortcuts import render_to_response
 from django.views.generic import TemplateView
 from functions import *
 from forms import QuestionForm, NeedForm
+from project.forms.forms import BSForm
 from yandex_money.models import Payment
 from models import Article, Page, Question,\
     News, SliderItem, Review, Testimony, Video, Ministry, VideoCategory
@@ -166,6 +167,38 @@ def testimonyView(request, id, template_name="catalog/testimony.html"):
 
 
 def ministryView(request, slug, template_name="catalog/ministry.html"):
+
+    if request.path_info == '/ministry/biblejskie-kursy/':
+        form = BSForm();
+
+    if request.method == 'POST' and 'bs_form' in request.POST:
+        form = BSForm(request.POST)
+        if form.is_valid():
+            form.save()
+            subject = u'Анкета БШ'
+            message = u'ФИО: %s \n Дата рождения: %s \n телефон: %s \n город: %s \n Семейное положение: %s \n Принадлежность к церкви: %s \n Город: %s \n Ф.И.О пастора Церкви: %s \n Член Церкви: %s \n Верует ли в Господа: %s \n Дата спасения: %s \n Призвание: %s \n Форма обучения: %s \n Согласен с правилами: %s'\
+                % (
+                    request.POST['fio'],
+                    request.POST['birth_day'],
+                    request.POST['phone'],
+                    request.POST['city'],
+                    request.POST['family_status'],
+                    request.POST['you_church'],
+                    request.POST['church_city'],
+                    request.POST['pastor_fio'],
+                    request.POST.get('is_church_member', False),
+                    request.POST.get('is_believer', False),
+                    request.POST['salvation_day'],
+
+                    request.POST['you_mission'],
+                    request.POST['form_of_study'],
+                    request.POST.get('rules', False)
+                    )
+
+            send_mail(
+                subject, message, 'teamer777@gmail.com', ['bk.tomsk@mail.ru'],
+                fail_silently=False)
+
     user = request.user
     ministry = Ministry.objects.get(slug=slug)
     ministry.video = ministry.video[17:]
