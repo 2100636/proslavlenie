@@ -210,15 +210,6 @@ INSTALLED_APPS = (
     'yandex_money',
 )
 
-YANDEX_MONEY_DEBUG = True
-YANDEX_MONEY_SCID = 61911
-YANDEX_MONEY_SHOP_ID = 39684
-YANDEX_MONEY_SHOP_PASSWORD = 'testforyamoney'
-YANDEX_MONEY_FAIL_URL = 'https://example.com/fail-payment/'
-YANDEX_MONEY_SUCCESS_URL = 'https://example.com/success-payment/'
-# информировать о случаях, когда модуль вернул Яндекс.Кассе ошибку
-YANDEX_MONEY_MAIL_ADMINS_ON_PAYMENT_ERROR = True
-
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
     'PAGE_SIZE': 10
@@ -256,9 +247,12 @@ LOGGING = {
         },
     }
 }
+# ssl
+ENABLE_SSL = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 # Custom settings
-ENABLE_SSL = False
 SITE_NAME = _(u'Product magazine')
 META_KEYWORDS = _(u'products, online, shop, buy')
 META_DESCRIPTION = _(u'Product magazine is an online supplier of products')
