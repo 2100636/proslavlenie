@@ -247,10 +247,6 @@ LOGGING = {
         },
     }
 }
-# ssl
-ENABLE_SSL = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
 
 # Custom settings
 SITE_NAME = _(u'Product magazine')

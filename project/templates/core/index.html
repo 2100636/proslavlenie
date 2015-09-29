@@ -287,9 +287,20 @@
                 <div class="modal-body">
                     <br/>
                     <!-- Значения всех полей условны и приведены исключительно для примера -->
+                    <h3>1 форма</h3>
                     <form action="https://demomoney.yandex.ru/eshop.xml" method="post">
                         <!-- Обязательные поля -->
                         {{ payment_form.as_ul|safe }}
+                        <input type="submit" value="Заплатить"/>
+                    </form>
+                    <h3>2 форма</h3>
+                    <form action="https://demomoney.yandex.ru/eshop.xml" method="post">
+                        <!-- Обязательные поля -->
+                        <input name="shopId" value="39684" type="hidden"/>
+                        <input name="scid" value="61911" type="hidden"/>
+                        <input name="sum" value="1200" type="hidden">
+                        <input name="customerNumber" value="{{ request.user.id }}" type="hidden"/>
+
                         <input type="submit" value="Заплатить"/>
                     </form>
                 </div>
