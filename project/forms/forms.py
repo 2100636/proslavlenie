@@ -64,3 +64,4 @@ class BSForm(forms.ModelForm):
 
     class Meta:
         model = BibleScool
+        exclude = ()
