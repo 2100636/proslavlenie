@@ -128,9 +128,6 @@ class Payment(models.Model):
 
     class Meta:
         ordering = ('-pub_date',)
-        unique_together = (
-            ('shop_id', 'order_number'),
-        )
         verbose_name = u'платёж'
         verbose_name_plural = u'платежи'
         app_label = 'payment'
