@@ -68,7 +68,7 @@ class Payment(models.Model):
         u'Номер витрины', default=settings.YANDEX_MONEY_SCID)
     customer_number = models.CharField(
         u'Идентификатор плательщика', max_length=64,
-        default=str(uuid4()))
+        default=lambda: str(uuid4()).replace('-', ''))
     order_amount = models.DecimalField(
         u'Сумма заказа', max_digits=15, decimal_places=2)
 
@@ -80,7 +80,7 @@ class Payment(models.Model):
         choices=PAYMENT_TYPE.CHOICES)
     order_number = models.CharField(
         u'Номер заказа', max_length=64,
-        default=str(uuid4()))
+        default=lambda: str(uuid4()).replace('-', ''))
     cps_email = models.EmailField(
         u'Email плательщика', max_length=100, blank=True, null=True)
     cps_phone = models.CharField(
