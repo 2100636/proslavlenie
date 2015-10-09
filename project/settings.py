@@ -194,6 +194,7 @@ INSTALLED_APPS = (
     'project.faq',
     'project.core',
     'project.forms',
+    'project.payment',
 
     'filebrowser',
     'django.contrib.admin',
@@ -206,8 +207,7 @@ INSTALLED_APPS = (
     'image_cropping',
     'easy_thumbnails',
     'django_generic_flatblocks',
-    'rest_framework',
-    'yandex_money'
+    'rest_framework'
 )
 
 REST_FRAMEWORK = {

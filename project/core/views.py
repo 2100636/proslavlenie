@@ -6,15 +6,14 @@ from django.views.generic import TemplateView
 from functions import *
 from forms import QuestionForm, NeedForm
 from project.forms.forms import BSForm
-from yandex_money.models import Payment
 from models import Article, Page, Question,\
     News, SliderItem, Review, Testimony, Video, Ministry, VideoCategory
 
 from django.core.mail import send_mail
 from project.settings import ADMIN_EMAIL
 
-from yandex_money.forms import PaymentForm
-from yandex_money.models import Payment
+from project.payment.forms import PaymentForm
+from project.payment.models import Payment
 
 
 class TestPay(TemplateView):

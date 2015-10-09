@@ -41,6 +41,7 @@
                         {% for slide in slides %}
 {#                                <div class="swiper-slide"><img src="{{ slide.url }}" alt=""/></div>#}
                             <img link="{{ slide.link }}" class="swiper-slide" src="{% cropped_thumbnail slide "cropping" scale=1 %}">
+                            {# <img link="{{ slide.link }}" class="swiper-slide" src="/media/{{ slide.image }}">#}
                         {% endfor %}
                     </div>
                     <!-- Add Pagination -->
