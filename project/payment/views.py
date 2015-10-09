@@ -47,6 +47,7 @@ class BaseView(View):
                     except YandexValidationError as exc:
                         params = exc.params
                     else:
+                        print "start else after success payment"
                         params = self.get_response_params(payment, cd)
                         self.mark_payment(payment, cd)
                         payment.send_signals()
@@ -124,7 +125,7 @@ class CheckOrderFormView(BaseView):
                 'code': '100',
                 'message': u'Неверно указана сумма платежа',
             }
-            raise YandexValidationError(params=params)
+            raise YandexValidationError(params=params)        
 
     def get_xml_element(self, **params):
         return E.checkOrderResponse(**params)
