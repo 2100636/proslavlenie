@@ -3,7 +3,13 @@
 from hashlib import md5
 from django import forms
 from django.conf import settings
-from .models import Payment
+from models import Payment
+
+
+class TestPaymentForm(forms.ModelForm):
+    class Meta:
+        model = Payment
+        fields = ('scid', 'shop_id', 'customer_number', 'shop_amount', 'payment_type')
 
 
 class BasePaymentForm(forms.Form):

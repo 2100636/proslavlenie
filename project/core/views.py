@@ -12,7 +12,7 @@ from models import Article, Page, Question,\
 from django.core.mail import send_mail
 from project.settings import ADMIN_EMAIL
 
-from project.payment.forms import PaymentForm
+from project.payment.forms import PaymentForm, TestPaymentForm
 from project.payment.models import Payment
 
 
@@ -25,7 +25,7 @@ class TestPay(TemplateView):
         payment.save()
 
         ctx = super(TestPay, self).get_context_data(**kwargs)
-        ctx['form'] = PaymentForm(instance=payment)
+        ctx['form'] = TestPaymentForm(instance=payment)
         return ctx
 
 
