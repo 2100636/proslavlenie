@@ -114,9 +114,8 @@ class BasePaymentForm(forms.Form):
 class PaymentForm(BasePaymentForm):
     sum = forms.FloatField(label='Сумма заказа')
 
-    cps_email = forms.EmailField(label='Email', required=False)
-    cps_phone = forms.CharField(label='Телефон',
-                                max_length=15, required=False)
+    cps_email = forms.EmailField(required=False)
+    cps_phone = forms.CharField(max_length=15, required=False)
 
     shopFailURL = forms.URLField(initial=settings.YANDEX_MONEY_FAIL_URL)
     shopSuccessURL = forms.URLField(initial=settings.YANDEX_MONEY_SUCCESS_URL)
@@ -136,9 +135,22 @@ class PaymentForm(BasePaymentForm):
 
         if instance:
             self.fields['sum'].initial = instance.order_amount
+            self.fields['sum'].widget.attrs = {'placeholder': 'Сумма', 'class': 'form-control floating-label'}
             self.fields['paymentType'].initial = instance.payment_type
+            self.fields['paymentType'].widget.attrs = {'placeholder': 'Способ оплаты', 'class': 'form-control floating-label'}
             self.fields['customerNumber'].initial = instance.customer_number
             self.fields['orderNumber'].initial = instance.order_number
+            self.fields['cps_email'].initial = instance.cps_email
+            self.fields['cps_email'].widget.attrs = {'placeholder': 'Ваш email', 'class': 'form-control floating-label'}
+            self.fields['cps_phone'].initial = instance.cps_phone
+            self.fields['cps_phone'].widget.attrs = {'placeholder': 'Ваш телефон', 'class': 'form-control floating-label'}
+
+            # hide label
+            self.fields['sum'].label = "Введите желаемую сумму в рублях"
+            self.fields['paymentType'].label = "Выберите способ оплаты"
+            self.fields['cps_phone'].label = ""
+            self.fields['cps_email'].label = ""
+
             if instance.fail_url:
                 self.fields['shopFailURL'].initial = instance.fail_url
             if instance.success_url:
@@ -149,7 +161,7 @@ class PaymentForm(BasePaymentForm):
                 self.fields['cps_phone'].initial = instance.cps_phone
 
     def get_display_field_names(self):
-        return ['paymentType', 'cps_email', 'cps_phone']
+        return ['sum', 'paymentType', 'cps_email', 'cps_phone']
 
 
 class CheckForm(BasePaymentForm):
