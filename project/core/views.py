@@ -56,6 +56,7 @@ def indexView(request, template_name="catalog/index.html"):
     # test payment
     amount = 1235
     payment = Payment(order_amount=amount)
+    payment.save()
     payment_form = PaymentForm(instance=payment)
 
     # Отправляем нужду на почту
