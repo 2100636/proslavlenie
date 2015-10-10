@@ -16,19 +16,6 @@ from project.payment.forms import PaymentForm
 from project.payment.models import Payment
 
 
-class TestPay(TemplateView):
-    template_name = 'core/order_page.html'
-
-    def get_context_data(self, **kwargs):
-        amount = 1235
-        payment = Payment(order_amount=amount)
-        payment.save()
-
-        ctx = super(TestPay, self).get_context_data(**kwargs)
-        ctx['form'] = PaymentForm(instance=payment)
-        return ctx
-
-
 def indexView(request, template_name="catalog/index.html"):
     user = request.user
     articles = Article.objects.order_by('-id')[:4]

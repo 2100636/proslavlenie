@@ -1,1 +1,32 @@
-its fail
+{% extends "front_main.html" %}
+{% load menu_tags %}
+
+{% block content %}
+<div id="success-page" class="content-wrapper success-page"><!-- Content Wrapper. Contains page content -->
+
+    <section id="drop_menu">
+        {% menu_tree request %}
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-xs-12 col-md-7">
+                    <h1 class="">К сожалению, пожертвование не состоялось по техническим причинам, пожалуйста попробуйте еще раз</h1>
+                </div>
+
+                <div class="col-xs-12">
+                    {{ article.description|safe }}
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+</div><!-- /.content-wrapper -->
+{% endblock %}
+
+{% block page_js %}
+{% endblock %}

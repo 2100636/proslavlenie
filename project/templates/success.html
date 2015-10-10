@@ -1,1 +1,82 @@
-its success
+{% extends "front_main.html" %}
+{% load menu_tags %}
+
+{% block content %}
+<div id="success-page" class="content-wrapper success-page"><!-- Content Wrapper. Contains page content -->
+
+    <section id="drop_menu">
+        {% menu_tree request %}
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-xs-12 col-md-7">
+                    <h1 class="">Пожертвование успешно проведено, спасибо за Ваше участие</h1>
+                </div>
+
+                <div class="col-xs-12">
+                    {# <img src="{{ article.image_url }}" alt="Pakistani Woman" class="article_bg">#}
+                    <h2>Данные платежа:</h2>
+                    <ul>
+                      <li>Индетификатор операции: {{ request.GET.orderNumber }}</li>
+                      <li>Индетификатор пользователя: {{ request.GET.customerNumber }}</li>
+                      <li>Сумма оплаты: {{ request.GET.orderSumAmount }}</li>
+                      <li>Дата оплаты: {{ request.GET.paymentDatetime }}</li>
+                      <li>
+                        Способ оплаты:
+                        {% if request.GET.paymentType == 'AC' %}
+                          Банковская карта
+                        {% endif %}
+                        {% if  request.GET.paymentType == 'PC' %}
+                          Кошелек Яндекс.Деньги
+                        {% endif %}
+                        {% if  request.GET.paymentType == 'GP' %}
+                          Наличными через кассы и терминалы
+                        {% endif %}
+                        {% if  request.GET.paymentType == 'MC' %}
+                          Счет мобильного телефона
+                        {% endif %}
+                        {% if  request.GET.paymentType == 'WM' %}
+                          Кошелек WebMoney
+                        {% endif %}
+                        {% if  request.GET.paymentType == 'SB' %}
+                          Сбербанк: оплата по SMS или Сбербанк Онлайн
+                        {% endif %}
+                        {% if  request.GET.paymentType == 'AB' %}
+                          Альфа-Клик
+                        {% endif %}
+                        {% if  request.GET.paymentType == 'MA' %}
+                          MasterPass
+                        {% endif %}
+                        {% if  request.GET.paymentType == 'PB' %}
+                          Интернет-банк Промсвязьбанка
+                        {% endif %}
+                        {% if  request.GET.paymentType == 'QW' %}
+                          QIWI Wallet
+                        {% endif %}
+                        {% if  request.GET.paymentType == 'QP' %}
+                          Куппи.ру
+                        {% endif %}
+                      </li>
+                    </ul>
+
+                    <div class="lid_text">
+                        <p>{{ article.entry }}</p>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    {{ article.description|safe }}
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+</div><!-- /.content-wrapper -->
+{% endblock %}
+
+{% block page_js %}
+{% endblock %}
