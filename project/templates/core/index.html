@@ -276,34 +276,33 @@
     </div>
 </div>
 
-{% if user.is_admin %}
-    <div id="pay-dialog" class="modal fade" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title">Сделать пожертвование</h4>
-                </div>
-                <div class="modal-body">
-                    <br/>
-                    <!-- Значения всех полей условны и приведены исключительно для примера -->
-                    <p class="text">Впишите желаему сумму и способ оплаты, затем нажмите кнопку отправить.</p>
-                    <form action="/yandex-money/confirm-payment/" method="post">{% csrf_token %}
-                        <!-- Обязательные поля -->
-                        <label for="amount">Введите ссумму</label>
-                        <input type="number" name="amount" value="">
 
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-warning" data-dismiss="modal">Закрыть</button>
-                    <input type="submit" name="" class="btn btn-primary" value="Отправить">
-                    </form>
-                    <!--<button class="btn btn-success" >Отправить</button>-->
-                </div>
+<div id="pay-dialog" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Сделать пожертвование</h4>
+            </div>
+            <div class="modal-body">
+                <br/>
+                <!-- Значения всех полей условны и приведены исключительно для примера -->
+                <p class="text">Впишите желаему сумму и способ оплаты, затем нажмите кнопку отправить.</p>
+                <form action="/yandex-money/confirm-payment/" method="post">{% csrf_token %}
+                    <!-- Обязательные поля -->
+                    <label for="amount">Введите ссумму</label>
+                    <input type="number" name="amount" value="">
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-warning" data-dismiss="modal">Закрыть</button>
+                <input type="submit" name="" class="btn btn-primary" value="Отправить">
+                </form>
+                <!--<button class="btn btn-success" >Отправить</button>-->
             </div>
         </div>
     </div>
-{% endif %}
+</div>
 
 </div><!-- /.content-wrapper -->
 {% endblock %}
