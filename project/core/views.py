@@ -40,12 +40,6 @@ def indexView(request, template_name="catalog/index.html"):
     form_question = QuestionForm()
     form_need = NeedForm()
 
-    # test payment
-    amount = 1235
-    payment = Payment(order_amount=amount)
-    payment.save()
-    payment_form = PaymentForm(instance=payment)
-
     # Отправляем нужду на почту
     if request.method == "POST" and "need" in request.POST:
         form_need = NeedForm(request.POST)

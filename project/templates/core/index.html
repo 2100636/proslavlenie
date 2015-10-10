@@ -288,17 +288,15 @@
                     <br/>
                     <!-- Значения всех полей условны и приведены исключительно для примера -->
                     <p class="text">Впишите желаему сумму и способ оплаты, затем нажмите кнопку отправить.</p>
-                    <form action="https://demomoney.yandex.ru/eshop.xml" method="post">
+                    <form action="/yandex-money/confirm-payment/" method="post">{% csrf_token %}
                         <!-- Обязательные поля -->
-                        {{ payment_form.as_ul|safe }}
-                        {# <input type="submit" value="Заплатить"/>#}
-                    {# </form>#}
-                        {# <input type="submit" value="Заплатить"/>#}
+                        <label for="amount">Введите ссумму</label>
+                        <input type="number" name="amount" value="">
 
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-warning" data-dismiss="modal">Закрыть</button>
-                    <input type="submit" name="need" class="btn btn-primary" value="Отправить">
+                    <input type="submit" name="" class="btn btn-primary" value="Отправить">
                     </form>
                     <!--<button class="btn btn-success" >Отправить</button>-->
                 </div>

@@ -4,6 +4,8 @@ import logging
 from datetime import datetime
 
 from django.http import HttpResponse
+from django.shortcuts import render_to_response
+from django.template import RequestContext
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import View
@@ -12,8 +14,7 @@ from django.core.mail import mail_admins
 from lxml import etree
 from lxml.builder import E
 
-from forms import CheckForm
-from forms import NoticeForm
+from forms import CheckForm, NoticeForm, PaymentForm
 from models import Payment
 
 
@@ -125,7 +126,7 @@ class CheckOrderFormView(BaseView):
                 'code': '100',
                 'message': u'Неверно указана сумма платежа',
             }
-            raise YandexValidationError(params=params)        
+            raise YandexValidationError(params=params)
 
     def get_xml_element(self, **params):
         return E.checkOrderResponse(**params)
@@ -147,3 +148,15 @@ class NoticeFormView(BaseView):
         payment.payment_type = cd.get('paymentType')
         payment.status = payment.STATUS.SUCCESS
         payment.save()
+
+
+def confirmFormView(request, template_name="confirm.html"):
+
+    if request.method == "POST" and "amount" in request.POST:
+        amount = request.POST['amount']
+        payment = Payment(order_amount=amount)
+        payment.save()
+        payment_form = PaymentForm(instance=payment)
+
+    return render_to_response(
+        template_name, locals(), context_instance=RequestContext(request))

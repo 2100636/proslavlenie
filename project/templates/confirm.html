@@ -1,0 +1,36 @@
+{% extends "front_main.html" %}
+{% load menu_tags %}
+
+{% block content %}
+<div id="success-page" class="content-wrapper success-page"><!-- Content Wrapper. Contains page content -->
+
+    <section id="drop_menu">
+        {% menu_tree request %}
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-xs-12 col-md-7">
+                    <h1 class="">Подтвердите данные:</h1>
+                </div>
+
+                <div class="col-xs-12">
+                  <form action="https://demomoney.yandex.ru/eshop.xml" method="post">
+                      <!-- Обязательные поля -->
+                      {{ payment_form.as_ul|safe }}
+                      <input type="submit" class="btn btn-primary" value="Отправить">
+                  </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+</div><!-- /.content-wrapper -->
+{% endblock %}
+
+{% block page_js %}
+{% endblock %}
