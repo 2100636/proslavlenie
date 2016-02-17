@@ -7,6 +7,9 @@ from django.db import models
 from signals import payment_process
 from signals import payment_completed
 
+def lambda1(self):
+    return str(uuid4()).replace('-', '')
+
 
 class Payment(models.Model):
     class STATUS:
@@ -66,9 +69,13 @@ class Payment(models.Model):
         u'ID магазина', default=settings.YANDEX_MONEY_SHOP_ID)
     scid = models.PositiveIntegerField(
         u'Номер витрины', default=settings.YANDEX_MONEY_SCID)
-    customer_number = models.CharField(
-        u'Идентификатор плательщика', max_length=64,
-        default=lambda: str(uuid4()).replace('-', ''))
+
+    customer_number = models.CharField(u'Идентификатор плательщика', max_length=64, default=lambda1(1))
+
+    # customer_number = models.CharField(
+    #     u'Идентификатор плательщика', max_length=64,
+    #     default=lambda: str(uuid4()).replace('-', ''))
+
     order_amount = models.DecimalField(
         u'Сумма заказа', max_digits=15, decimal_places=2)
 
@@ -78,9 +85,12 @@ class Payment(models.Model):
     payment_type = models.CharField(
         u'Способ платежа', max_length=2, default=PAYMENT_TYPE.PC,
         choices=PAYMENT_TYPE.CHOICES)
-    order_number = models.CharField(
-        u'Номер заказа', max_length=64,
-        default=lambda: str(uuid4()).replace('-', ''))
+    order_number = models.CharField(u'Номер заказа', max_length=64, default=lambda1(1))
+
+    # order_number = models.CharField(
+    #     u'Номер заказа', max_length=64,
+    #     default=lambda: str(uuid4()).replace('-', ''))
+
     cps_email = models.EmailField(
         u'Email плательщика', max_length=100, blank=True, null=True)
     cps_phone = models.CharField(
