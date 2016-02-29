@@ -5,7 +5,7 @@ from django.conf.urls import patterns, url
 urlpatterns = patterns(
     'project.core.views',
 
-    url(r'crossdomain\.xml^$', 'crossdomain_xmlView', {'template_name': 'core/crossdomain.xml'}, name='crossdomain_xml'),
+    url(r'^crossdomain\.xml$', 'crossdomain_xmlView', {'template_name': 'core/crossdomain.xml'}, name='crossdomain_xml'),
 
     url(r'^$', 'indexView',
         {'template_name': 'core/index.html'},
