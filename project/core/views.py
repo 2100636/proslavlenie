@@ -16,6 +16,11 @@ from project.payment.forms import PaymentForm
 from project.payment.models import Payment
 
 
+def crossdomain_xmlView(request, template_name):
+    return render_to_response(
+        template_name, locals(), context_instance=RequestContext(request))
+
+
 def indexView(request, template_name="catalog/index.html"):
     user = request.user
     articles = Article.objects.order_by('-id')[:4]
