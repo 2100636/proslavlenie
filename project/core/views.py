@@ -18,7 +18,7 @@ from project.payment.models import Payment
 
 def crossdomain_xmlView(request, template_name="core/crossdomain.html"):
     return render_to_response(
-        template_name, locals(), context_instance=RequestContext(request), content_type='text/xml')
+        template_name, locals(), context_instance=RequestContext(request), content_type='application/xml')
 
 
 def indexView(request, template_name="catalog/index.html"):
