@@ -9,7 +9,7 @@ urlpatterns = patterns(
         {'template_name': 'core/index.html'},
         name='indexView'),
 
-    url(r'crossdomain.xml^$', 'crossdomain_xmlView', {'template_name': 'core/crossdomain.xml'}, name='crossdomain_xml'),
+    url(r'crossdomain\.xml^$', 'crossdomain_xmlView', {'template_name': 'core/crossdomain.xml'}, name='crossdomain_xml'),
 
     url(r'^articles/(?P<slug>[-\w]+)/$', 'articleView',
         {'template_name': 'core/article.html'},
