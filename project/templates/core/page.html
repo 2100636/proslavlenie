@@ -35,19 +35,20 @@
                 </div>
                 <div class="col-xs-12">
                     {% if request.path == '/page/onlajn-translyaciya/' %}
-                        <script src="https://content.jwplatform.com/libraries/NrE2US3n.js"></script>
-                        <div id="myElement">Loading the player...</div>
-                        <script type="text/javascript">
-                            var playerInstance = jwplayer("myElement");
-                            playerInstance.setup({
-                                file: "https://bogtvhdlive-f.akamaihd.net/i/proslavlenie_main@382410/master.m3u8",
-                                image: "https://example.com/uploads/myPoster.jpg",
-                                width: 640,
-                                height: 360,
-                                title: 'Tomsk main stream',
-                                description: 'Description!'
-                            });
-                        </script>
+{#                        <script src="https://content.jwplatform.com/libraries/NrE2US3n.js"></script>#}
+{#                        <div id="myElement">Loading the player...</div>#}
+{#                        <script type="text/javascript">#}
+{#                            var playerInstance = jwplayer("myElement");#}
+{#                            playerInstance.setup({#}
+{#                                file: "https://bogtvhdlive-f.akamaihd.net/i/proslavlenie_main@382410/master.m3u8",#}
+{#                                image: "https://example.com/uploads/myPoster.jpg",#}
+{#                                width: 640,#}
+{#                                height: 360,#}
+{#                                title: 'Tomsk main stream',#}
+{#                                description: 'Description!'#}
+{#                            });#}
+{#                        </script>#}
+                        <!-- <iframe src="http://apis.bog.tv/player/tomsk.html" width="680" height="390" frameborder="0" style="padding:0;margin:0;"></iframe> -->
                     {% endif %}
                     {{ page.description|safe }}
                 </div>
