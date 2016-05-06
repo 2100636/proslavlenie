@@ -8,7 +8,6 @@ class BibleScool(models.Model):
     phone = models.CharField(max_length=11, verbose_name=u'Контактный телефон')
     city = models.CharField(max_length=200, verbose_name=u'Город проживания')
     family_status = models.CharField(max_length=200, verbose_name=u'Семейное положение')
-    test = models.CharField(max_length=200, verbose_name=u'test', default='---' )
 
     you_church = models.CharField(max_length=240, verbose_name=u'К какой Церкви Вы принадлежите')
     church_city = models.CharField(max_length=200, verbose_name=u'Город')
