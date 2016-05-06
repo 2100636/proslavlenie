@@ -100,7 +100,7 @@ def articleView(request, slug, template_name="catalog/article.html"):
 
 def newsView(request, id, template_name="catalog/news.html"):
 
-    if request.path_info == '/news/1/':
+    if request.path_info == '/news/109/':
         form = HvalaSForm()
 
     if request.method == 'POST' and 'hvalas_form' in request.POST:
