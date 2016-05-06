@@ -55,6 +55,7 @@ class HvalaScool(models.Model):
     type_ministry = models.CharField(max_length=255, verbose_name=u'Укажите, в каком служении применять полученные знания после окончания Школы Хвалы')
     leader_fi = models.CharField(max_length=255, verbose_name=u'Укажите Ф.И. лидера, который может порекомендовать вас для обучения, его телефон')
     date = models.DateField(verbose_name=u'Дата заполнения', default=datetime.datetime.now, editable=False)
+    date_test = models.DateField(verbose_name=u'Дата заполнения_', default=datetime.datetime.now, editable=False)
     class Meta:
         verbose_name = u'Анкета для поступления в Школу Хвалы'
         verbose_name_plural = u'Анкеты для поступления в Школу Хвалы'
