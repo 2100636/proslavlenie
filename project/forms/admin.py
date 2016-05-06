@@ -5,12 +5,11 @@ from models import BibleScool, HvalaScool
 
 
 #
-# class HvalaScoolAdmin(admin.ModelAdmin):
-#     model = HvalaScool
-#     list_display = ('fi', 'date')
-#     list_display_links = ('fi',)
-#     list_per_page = 50
+class HvalaScoolAdmin(admin.ModelAdmin):
+    model = HvalaScool
+    list_display = ('fi', 'date')
+    list_display_links = ('fi',)
+    list_per_page = 50
 
 admin.site.register(BibleScool)
-admin.site.register(HvalaScool)
-# admin.site.register(HvalaScool, HvalaScoolAdmin)
+admin.site.register(HvalaScool, HvalaScoolAdmin)
