@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django import forms
-from project.forms.models import BibleScool
+from project.forms.models import BibleScool, HvalaScool
 
 
 class BSForm(forms.ModelForm):
@@ -64,4 +64,23 @@ class BSForm(forms.ModelForm):
 
     class Meta:
         model = BibleScool
+        exclude = ()
+
+
+
+class HvalaSForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(HvalaSForm, self).__init__(*args, **kwargs)
+
+        # self.fields['fi'].widget.attrs = {
+        #     'placeholder': 'Ф.И',
+        #     'class': 'form-control floating-label'}
+        # self.fields['fi'].label = ''
+
+        for field in self.fields:
+            self.fields[field].widget.attrs = {'placeholder': self.fields[field].label, 'class': 'form-control floating-label'}
+            if field != 'how_class':
+                self.fields[field].label = ''
+    class Meta:
+        model = HvalaScool
         exclude = ()

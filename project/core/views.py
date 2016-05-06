@@ -5,12 +5,12 @@ from django.shortcuts import render_to_response
 from django.views.generic import TemplateView
 from functions import *
 from forms import QuestionForm, NeedForm
-from project.forms.forms import BSForm
+from project.forms.forms import BSForm, HvalaSForm
 from models import Article, Page, Question,\
     News, SliderItem, Review, Testimony, Video, Ministry, VideoCategory
 
 from django.core.mail import send_mail
-from project.settings import ADMIN_EMAIL
+from project.settings import ADMIN_EMAIL, DEFAULT_FROM_EMAIL
 
 from project.payment.forms import PaymentForm
 from project.payment.models import Payment
@@ -59,7 +59,7 @@ def indexView(request, template_name="catalog/index.html"):
                     request.POST['email'])
 
             send_mail(
-                subject, message, 'teamer777@gmail.com', [ADMIN_EMAIL],
+                subject, message, DEFAULT_FROM_EMAIL, [ADMIN_EMAIL],
                 fail_silently=False)
 
     # Отправляем вопрос на почту
@@ -80,8 +80,7 @@ def indexView(request, template_name="catalog/index.html"):
                 )
 
             send_mail(
-                subject, message, 'teamer777@gmail.com', [ADMIN_EMAIL],
-                fail_silently=False)
+                subject, message, DEFAULT_FROM_EMAIL, [ADMIN_EMAIL], fail_silently=False)
 
     return render_to_response(
         template_name, locals(), context_instance=RequestContext(request))
@@ -100,6 +99,36 @@ def articleView(request, slug, template_name="catalog/article.html"):
 
 
 def newsView(request, id, template_name="catalog/news.html"):
+
+    if request.path_info == '/news/1/':
+        form = HvalaSForm()
+
+    if request.method == 'POST' and 'hvalas_form' in request.POST:
+        form = HvalaSForm(request.POST)
+        if form.is_valid():
+            form.save()
+            subject = u'Анкета для поступления в Школу Хвалы'
+            message = u'ФИ: %s \n Город, название церкцви: %s \n телефон: %s \n Возраст: %s \n ' \
+                      u'Музыкальное образование: %s \n Класс обучения: %s \n Применять в: %s \n ' \
+                      u'ФИ лидера: %s '\
+                % (
+                    request.POST['fi'],
+                    request.POST['city'],
+                    request.POST['phone'],
+                    request.POST['age'],
+                    request.POST['music_education'],
+                    request.POST['how_class'],
+                    request.POST['type_ministry'],
+                    request.POST['leader_fi']
+                    )
+
+            send_mail(
+                subject, message, DEFAULT_FROM_EMAIL, [ADMIN_EMAIL], fail_silently=False)
+
+            form_msg = ['Спасибо! Анкета успешно отправлена', '#2274C7']
+        else:
+            form_msg = ['Ошибка заполнения анкеты. Проверьте корректность всех данных', '#DC7373']
+
     user = request.user
     news = News.objects.get(id=id)
     # мета описание
@@ -155,7 +184,7 @@ def testimonyView(request, id, template_name="catalog/testimony.html"):
 def ministryView(request, slug, template_name="catalog/ministry.html"):
 
     if request.path_info == '/ministry/biblejskie-kursy/':
-        form = BSForm();
+        form = BSForm()
 
     if request.method == 'POST' and 'bs_form' in request.POST:
         form = BSForm(request.POST)
@@ -182,8 +211,7 @@ def ministryView(request, slug, template_name="catalog/ministry.html"):
                     )
 
             send_mail(
-                subject, message, 'teamer777@gmail.com', ['bk.tomsk@mail.ru'],
-                fail_silently=False)
+                subject, message, DEFAULT_FROM_EMAIL, ['bk.tomsk@mail.ru'], fail_silently=False)
 
     user = request.user
     ministry = Ministry.objects.get(slug=slug)
