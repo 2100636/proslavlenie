@@ -8,6 +8,7 @@ class BibleScool(models.Model):
     phone = models.CharField(max_length=11, verbose_name=u'Контактный телефон')
     city = models.CharField(max_length=200, verbose_name=u'Город проживания')
     family_status = models.CharField(max_length=200, verbose_name=u'Семейное положение')
+    test = models.CharField(max_length=200, verbose_name=u'test', default='---' )
 
     you_church = models.CharField(max_length=240, verbose_name=u'К какой Церкви Вы принадлежите')
     church_city = models.CharField(max_length=200, verbose_name=u'Город')
@@ -37,13 +38,6 @@ class BibleScool(models.Model):
         return u'%s - форма БШ' % self.fio
 
 
-class_type = (
-    ('klav_vokal', 'Клавиши + вокал'),
-    ('gitar_vokal', 'Гитара + вокал'),
-    ('basgitara', 'Бас-гитара'),
-    ('baraban', 'Барабаны')
-)
-
 class HvalaScool(models.Model):
     fi = models.CharField(max_length=100, verbose_name=u'Ф.И.')
     city = models.CharField(max_length=200, verbose_name=u'Город, название церкцви')
@@ -60,9 +54,8 @@ class HvalaScool(models.Model):
         verbose_name=u'Укажите класс, в котором планируете обучаться'
     )
     type_ministry = models.CharField(max_length=255, verbose_name=u'Укажите, в каком служении применять полученные знания после окончания Школы Хвалы')
-    leader_fi = models.CharField(max_length=255, verbose_name=u'Укажите ФИ лидера, который может порекомендовать вас для обучения, его телефон')
-    date = models.DateField(verbose_name=u'Дата заполнения', default=datetime.datetime.now,
-                            editable=False)
+    leader_fi = models.CharField(max_length=255, verbose_name=u'Укажите Ф.И. лидера, который может порекомендовать вас для обучения, его телефон')
+    date = models.DateField(verbose_name=u'Дата заполнения', default=datetime.datetime.now, editable=False)
     class Meta:
         verbose_name = u'Анкета для поступления в Школу Хвалы'
         verbose_name_plural = u'Анкеты для поступления в Школу Хвалы'
