@@ -39,7 +39,7 @@ class BibleScool(models.Model):
 
 class HvalaScool(models.Model):
     fi = models.CharField(max_length=100, verbose_name=u'Ф.И.')
-    city = models.CharField(max_length=200, verbose_name=u'Город, название церкцви')
+    city = models.CharField(max_length=200, verbose_name=u'Город, название церкви')
     phone = models.CharField(max_length=11, verbose_name=u'Телефон (по которому с вами можно связаться в любое время)')
     age = models.IntegerField(verbose_name=u'Возраст (полных лет)')
     music_education = models.CharField(max_length=255, verbose_name=u'Музыкальное образование, специальность, дата окончания')
