@@ -45,7 +45,11 @@ class SliderItem(models.Model):
 
     cropping = ImageRatioField('image', '880x320', verbose_name=u'Обрезка фото')
 
+    sort = models.IntegerField(verbose_name=u'Порядок сортировки', default=0,
+                                help_text=u'Слайды сортируются в порядке возрастания')
+
     class Meta:
+        ordering = ['sort']
         verbose_name = u'Слайд'
         verbose_name_plural = u'Слайдер на главной'
 
