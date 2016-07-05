@@ -40,7 +40,7 @@ class Account(AbstractBaseUser):
     first_name = models.CharField(max_length=40, blank=True)
     last_name = models.CharField(max_length=40, blank=True)
     tagline = models.CharField(max_length=140, blank=True)
-    public_phone = models.CharField(max_length=11, blank=True, null=True)
+    public_phone = models.CharField(max_length=150, blank=True, null=True)
     photo = models.ImageField(upload_to='authentication', blank=True, null=True)
 
     is_admin = models.BooleanField(default=False)
