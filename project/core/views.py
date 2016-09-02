@@ -124,8 +124,9 @@ def newsView(request, id, template_name="catalog/news.html"):
 
             send_mail(
                 subject, message, DEFAULT_FROM_EMAIL, [ADMIN_EMAIL], fail_silently=False)
+                #subject, message, DEFAULT_FROM_EMAIL, ['2100636@mail.ru'], fail_silently=False)
 
-            form_msg = ['Спасибо! Анкета успешно отправлена', '#2274C7']
+            form_msg = ['Спасибо! Анкета успешно отправлена', '#0773bb']
         else:
             form_msg = ['Ошибка заполнения анкеты. Проверьте корректность всех данных', '#DC7373']
 
@@ -212,6 +213,10 @@ def ministryView(request, slug, template_name="catalog/ministry.html"):
 
             send_mail(
                 subject, message, DEFAULT_FROM_EMAIL, ['bk.tomsk@mail.ru'], fail_silently=False)
+                #subject, message, DEFAULT_FROM_EMAIL, ['2100636@mail.ru'], fail_silently=False)
+            form_msg = ['Спасибо! Анкета успешно отправлена', '#0773bb']
+        else:
+            form_msg = ['Ошибка заполнения анкеты <br> Проверьте корректность всех данных', '#DC7373']
 
     user = request.user
     ministry = Ministry.objects.get(slug=slug)

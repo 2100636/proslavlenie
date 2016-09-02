@@ -46,6 +46,21 @@
                             <p style="margin-top: 40px;">{{ ministry.description }}<p>
                         </div>
                         <div class="col-xs-8">
+                            {% if form_msg %}
+                                <div class="col-xs12">
+                                    <div class="form_msg">{{ form_msg.0 }}</div>
+                                    <style>
+                                        .form_msg{
+                                            background: {{ form_msg.1 }};
+                                            padding: 30px 30px 27px;
+                                            color: #fff;
+                                            font-size: 21px;
+                                            text-align: center;
+                                            text-transform: uppercase;
+                                        }
+                                    </style>
+                                </div>
+                            {% endif %}
                             {% if request.path_info == '/ministry/biblejskie-kursy/' %}
                                 <div class="bs_form_container">
                                     <form action="." method="post">{% csrf_token %}

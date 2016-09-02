@@ -27,7 +27,7 @@ class BibleScool(models.Model):
         ),
         default='day')
 
-    rules = models.BooleanField(verbose_name=u'Я понимаю, что, как слушатель Библейских курсов, я обязан следовать установленным правилам.')
+    rules = models.BooleanField(verbose_name=u'Я понимаю, что, как слушатель Библейских курсов, я обязан следовать установленным правилам.', default=True)
 
     class Meta:
         verbose_name = u'Заполненная форма билейской школы'
