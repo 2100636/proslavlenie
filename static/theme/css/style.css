@@ -826,7 +826,10 @@ input.btn {
 
 
 form ul.errorlist {
-  color: #c72626;
+color: #c72626;
+margin-top: 14px;
+margin-bottom: -4px;
+padding: 0;
 }
 
 
