@@ -1,0 +1,16 @@
+{
+  "name": "proslavlenie.ru",
+  "short_name": "proslavlenie.ru",
+
+  "icons": [
+    {
+      "src": "https://cdn.pushdealer.com/f3e2f480/icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+
+  "start_url": "/",
+  "display": "standalone",
+  "gcm_sender_id": "809338452293"
+}
