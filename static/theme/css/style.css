@@ -834,5 +834,28 @@ padding: 0;
 
 
 
-
+body:after {
+content: "";
+display: block;
+width: 796px;
+position: absolute;
+left: 50%;
+z-index: 1;
+margin-left: -395px;
+background: url("../img/new_year_elki_liniya.png");
+height: 170px;
+top: -78px;
+}
+.new_year_2017:after {
+content: "";
+display: block;
+width: 100px;
+height: 73px;
+position: absolute;
+right: -40px;
+top: -5px;
+z-index: 11;
+background: url("../img/new_year_shapka.png");
+background-size: 100%;
+}
 
