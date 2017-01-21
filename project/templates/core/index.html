@@ -14,7 +14,7 @@
 {% endblock %}
 
 {% block meta %}
-    <title>"Церковь Прославления" г.Томск</title>
+    <title>Church of Praise, Tomsk</title>
     <meta name="description" content='Сайт церкви христиан веры Евангельской "Церковь Прославления" г.Томск'/>
 {% endblock %}
 
@@ -43,7 +43,7 @@
                                         <iframe width="550" height="360" src="https://www.youtube.com/embed/{{ main_video.video }}" frameborder="0" allowfullscreen></iframe>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Закрыть</button>
+                                        <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
                                     </div>
                                 </div><!-- /.modal-content -->
                             </div><!-- /.modal-dialog -->
@@ -52,7 +52,7 @@
 
                         <div class="col-xs-12 sepa">
                             <div class="news">
-                                <h4><a href="/news/">Новости</a></h4>
+                                <h4><a href="/news/">News</a></h4>
                                 {% for news_item in news %}
                                     <div class="news_item">
                                         <div class="date">{{ news_item.date }}</div>
