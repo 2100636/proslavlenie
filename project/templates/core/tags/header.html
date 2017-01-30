@@ -5,7 +5,13 @@
 {% load mptt_tags %}
 
 <section class="header {% if request.get_full_path == "/" %}front{% endif %}">
-    <div class="container">
+    <div class="container" style="position: relative;">
+    <span id="lang">
+        Язык сайта:
+        <a href="https://proslavlenie.ru"><img src="/static/theme/img/russia.png" class="active"></a>
+        <a href="http://eng.proslavlenie.ru"><img src="/static/theme/img/united_kingdom.png"></a>
+    </span>
+
         <div class="row">
 
             <div class="col-xs-12">
@@ -13,9 +19,9 @@
                     <div class="col-xs-3" class="form-control-wrapper" style=" float: right">
                         <input id="header_search" class="form-control search-form" type="text"/>
                     </div>
-                    <div class="col-xs-1" style="float: right">
+<!--                     <div class="col-xs-1" style="float: right">
                         <span id="lang">En</span>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
