@@ -83,7 +83,7 @@
                             <div class="small_block">
                                 <a style="cursor: pointer" name="" data-toggle="modal" data-target="#pritchModal">
                                     <img style="width: 100%;" src="{% cropped_thumbnail pritch_video "cropping_pritch" scale=1 %}">
-                                    <div class="description">Проповедь</div>
+                                    <div class="description">Sermon</div>
                                 </a>
                                 <div class="modal modal-primary fade" id="pritchModal" tabindex="-1" role="dialog" aria-hidden="true">
                                     <div class="modal-dialog">
@@ -152,7 +152,7 @@
 
                         <div class="col-xs-12 sepa">
                             <div class="reviews">
-                                <h4><a href="/reviews/">О нас пишут</a></h4>
+                                <h4><a href="/reviews/">What is said about us</a></h4>
                                 {% for review in reviews %}
                                     <div class="reviews_item">
                                         <img src="{{ STATIC_URL }}theme/img/quoters.png" alt=""/>
