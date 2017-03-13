@@ -70,9 +70,9 @@ class PenuelConf(models.Model):
     fio = models.CharField(max_length=100, verbose_name=u'Ф.И.О')
     city = models.CharField(max_length=200, verbose_name=u'Город')
     phone = models.CharField(max_length=11, verbose_name=u'Телефон')
-    email = models.CharField(max_length=11, verbose_name=u'E-mail')
-    you_church = models.CharField(max_length=11, verbose_name=u'Название церкви')
-    you_sluzhenie = models.CharField(max_length=11, verbose_name=u'Ваше служение')
+    email = models.CharField(max_length=30, verbose_name=u'E-mail')
+    you_church = models.CharField(max_length=250, verbose_name=u'Название церкви')
+    you_sluzhenie = models.CharField(max_length=250, verbose_name=u'Ваше служение')
     date = models.DateField(verbose_name=u'Дата заполнения', default=datetime.datetime.now, editable=False)
 
     class Meta:

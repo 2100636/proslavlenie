@@ -102,6 +102,7 @@ def newsView(request, id, template_name="catalog/news.html"):
 
     if request.path_info == '/news/141/':
         form = PenuelConfForm()
+        dfsfd = '1234'
 
     if request.method == 'POST' and 'PenuelConfForm' in request.POST:
         form = PenuelConfForm(request.POST)
