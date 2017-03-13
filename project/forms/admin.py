@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/env python
 from django.contrib import admin
-from models import BibleScool, HvalaScool
+from models import BibleScool, HvalaScool, PenuelConf
 
 
 #
@@ -11,5 +11,7 @@ class HvalaScoolAdmin(admin.ModelAdmin):
     list_display_links = ('fi',)
     list_per_page = 50
 
+
 admin.site.register(BibleScool)
 admin.site.register(HvalaScool, HvalaScoolAdmin)
+admin.site.register(PenuelConf)
