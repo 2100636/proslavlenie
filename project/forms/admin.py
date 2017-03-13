@@ -12,6 +12,13 @@ class HvalaScoolAdmin(admin.ModelAdmin):
     list_per_page = 50
 
 
+class PenuelConfAdmin(admin.ModelAdmin):
+    model = PenuelConf
+    list_display = ('fio', 'date')
+    list_display_links = ('fio',)
+    list_per_page = 50
+
+
 admin.site.register(BibleScool)
 admin.site.register(HvalaScool, HvalaScoolAdmin)
-admin.site.register(PenuelConf)
+admin.site.register(PenuelConf, PenuelConfAdmin)

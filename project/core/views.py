@@ -129,8 +129,6 @@ def newsView(request, id, template_name="catalog/news.html"):
 
 
 
-
-
     if request.path_info == '/news/109/':
         form = HvalaSForm()
 

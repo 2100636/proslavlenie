@@ -73,6 +73,7 @@ class PenuelConf(models.Model):
     email = models.CharField(max_length=11, verbose_name=u'E-mail')
     you_church = models.CharField(max_length=11, verbose_name=u'Название церкви')
     you_sluzhenie = models.CharField(max_length=11, verbose_name=u'Ваше служение')
+    date = models.DateField(verbose_name=u'Дата заполнения', default=datetime.datetime.now, editable=False)
 
     class Meta:
         verbose_name = u'Анкета для конференции Пенуэл в Томске'
