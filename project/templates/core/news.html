@@ -43,6 +43,47 @@
         </div>
     </section>
 
+
+
+
+    {% if request.path_info == '/news/141/' %}
+        <section class="content" id="anketa">
+            <div class="container">
+                <div class="row">
+
+                    {% if form_msg %}
+                        <div class="col-xs12">
+                            <h3 class="form_msg">{{ form_msg.0 }}</h3>
+
+                            <style>
+                                .form_msg{
+                                    background: {{ form_msg.1 }};
+                                    color: #fff;
+                                    padding: 40px;
+                                    text-align: center;
+                                }
+                            </style>
+                        </div>
+                    {% endif %}
+
+                    <div class="col-xs-3">
+                        <br/>
+                        <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQzNC4xNjggNDM0LjE2OCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDM0LjE2OCA0MzQuMTY4OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjEyOHB4IiBoZWlnaHQ9IjEyOHB4Ij4KPGc+Cgk8cGF0aCBkPSJNMzMyLjMxOCwyMzAuMTk2VjM0Ljk2N0g0MC45M3YzNjQuMjM1aDEzNC4wMzhjOS42MTYsMCwxNy40ODMsNy44NjcsMTcuNDgzLDE3LjQ4M3MtNy44NjcsMTcuNDgzLTE3LjQ4MywxNy40ODNIMjMuNDQ2ICAgYy05LjYxNiwwLTE3LjQ4My03Ljg2Ny0xNy40ODMtMTcuNDgzVjE3LjQ4M0M1Ljk2Myw3Ljg2NywxMy44MzEsMCwyMy40NDYsMGgzMjYuMzU0YzkuNjE2LDAsMTcuNDgzLDcuODY3LDE3LjQ4MywxNy40ODN2MjEyLjcxMyAgIGMwLDkuNjE2LTcuODY3LDE3LjQ4My0xNy40ODMsMTcuNDgzUzMzMi4zMTgsMjM5LjgxMiwzMzIuMzE4LDIzMC4xOTZ6IE00MjIuMzU3LDI3Mi43MzljLTcuMjg1LTYuNDExLTE4LjM1Ny01LjgyOC0yNC43NjgsMS40NTcgICBsLTk1Ljg2NywxMDYuNjQ4bC00OC4wNzktNDYuMzMxYy02Ljk5My02LjcwMi0xOC4wNjYtNi40MTEtMjQuNzY4LDAuNTgzcy02LjQxMSwxOC4wNjYsMC41ODMsMjQuNzY4bDYxLjE5MSw1OC44NiAgIGMzLjIwNSwzLjIwNSw3LjU3Niw0Ljk1NCwxMi4yMzgsNC45NTRjMC4yOTEsMCwwLjI5MSwwLDAuNTgzLDBjNC42NjItMC4yOTEsOS4zMjQtMi4zMzEsMTIuMjM4LTUuODI4bDEwNy44MTQtMTIwLjA1MiAgIEM0MzAuMjI0LDI5MC4yMjIsNDI5LjY0MSwyNzkuMTUsNDIyLjM1NywyNzIuNzM5eiBNMjY4LjIxMiwxMDEuOTg2SDExMC44NjNjLTkuNjE2LDAtMTcuNDgzLDcuODY3LTE3LjQ4MywxNy40ODMgICBzNy44NjcsMTcuNDgzLDE3LjQ4MywxNy40ODNoMTU3LjM0OWM5LjYxNiwwLDE3LjQ4My03Ljg2NywxNy40ODMtMTcuNDgzUzI3Ny44MjgsMTAxLjk4NiwyNjguMjEyLDEwMS45ODZ6IE0yODUuNjk2LDIxNS42MjcgICBjMC05LjYxNi03Ljg2Ny0xNy40ODMtMTcuNDgzLTE3LjQ4M0gxMTAuODYzYy05LjYxNiwwLTE3LjQ4Myw3Ljg2Ny0xNy40ODMsMTcuNDgzYzAsOS42MTYsNy44NjcsMTcuNDgzLDE3LjQ4MywxNy40ODNoMTU3LjM0OSAgIEMyNzcuODI4LDIzMy4xMSwyODUuNjk2LDIyNS4yNDMsMjg1LjY5NiwyMTUuNjI3eiBNMTEwLjg2MywyOTEuMzg4Yy05LjYxNiwwLTE3LjQ4Myw3Ljg2Ny0xNy40ODMsMTcuNDgzICAgYzAsOS42MTYsNy44NjcsMTcuNDgzLDE3LjQ4MywxNy40ODNoNDYuNjIyYzkuNjE2LDAsMTcuNDgzLTcuODY3LDE3LjQ4My0xNy40ODNjMC05LjYxNi03Ljg2Ny0xNy40ODMtMTcuNDgzLTE3LjQ4M0gxMTAuODYzeiIgZmlsbD0iIzIyNzRjNyIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=" />
+                    </div>
+                    <div class="col-xs-9">
+                        <form action=".#anketa" method="post" id="PenuelConfForm">
+                            {% csrf_token %}
+                            <h3>Анкета для конференции Пенуэл в Томске</h3>
+                            {{ form }}
+                            <input type="submit" name="PenuelConfForm" class="btn btn-success" style="display: block;margin-top: 20px;float: right;" value="Отправить">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endif %}
+
+
     {% if request.path_info == '/news/109/' %}
         <section class="content" id="anketa">
             <div class="container">
@@ -80,6 +121,9 @@
             </div>
         </section>
 {% endif %}
+
+
+
 
 </div><!-- /.content-wrapper -->
 {% endblock %}

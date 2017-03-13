@@ -5,7 +5,7 @@ from django.shortcuts import render_to_response
 from django.views.generic import TemplateView
 from functions import *
 from forms import QuestionForm, NeedForm
-from project.forms.forms import BSForm, HvalaSForm
+from project.forms.forms import BSForm, HvalaSForm, PenuelConfForm
 from models import Article, Page, Question,\
     News, SliderItem, Review, Testimony, Video, Ministry, VideoCategory
 
@@ -99,6 +99,37 @@ def articleView(request, slug, template_name="catalog/article.html"):
 
 
 def newsView(request, id, template_name="catalog/news.html"):
+
+    if request.path_info == '/news/141/':
+        form = PenuelConfForm()
+
+    if request.method == 'POST' and 'PenuelConfForm' in request.POST:
+        form = PenuelConfForm(request.POST)
+        if form.is_valid():
+            form.save()
+            subject = u'Анкета для конференции Пенуэл в Томске'
+            message = u'ФИО: %s \n Город: %s \n Телефон: %s \n E-mail: %s \n Название церкви: %s \n ' \
+                      u'Служение: %s \n '\
+                % (
+                    request.POST['fio'],
+                    request.POST['city'],
+                    request.POST['phone'],
+                    request.POST['email'],
+                    request.POST['you_church'],
+                    request.POST['you_sluzhenie'],
+                    )
+
+            send_mail(
+                #subject, message, DEFAULT_FROM_EMAIL, [ADMIN_EMAIL], fail_silently=False)
+                subject, message, DEFAULT_FROM_EMAIL, ['2100636@mail.ru'], fail_silently=False)
+
+            form_msg = ['Спасибо за регистрацию! <br> В ближайшее время с вами свяжутся для подтверждения регистрации.', '#0773bb']
+        else:
+            form_msg = ['Ошибка заполнения анкеты. Проверьте корректность всех данных', '#DC7373']
+
+
+
+
 
     if request.path_info == '/news/109/':
         form = HvalaSForm()

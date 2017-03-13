@@ -1,6 +1,46 @@
 # -*- coding: utf-8 -*-
 from django import forms
-from project.forms.models import BibleScool, HvalaScool
+from project.forms.models import BibleScool, HvalaScool, PenuelConf
+
+class PenuelConfForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(PenuelConfForm, self).__init__(*args, **kwargs)
+
+        self.fields['fio'].widget.attrs = {
+            'placeholder': 'Ф.И.О',
+            'class': 'form-control floating-label'}
+        self.fields['fio'].label = ''
+
+        self.fields['city'].widget.attrs = {
+            'placeholder': 'Город проживания',
+            'class': 'form-control floating-label'}
+        self.fields['city'].label = ''
+
+        self.fields['phone'].widget.attrs = {
+            'placeholder': 'Контактный телефон',
+            'class': 'form-control floating-label'}
+        self.fields['phone'].label = ''
+
+        self.fields['email'].widget.attrs = {
+            'placeholder': 'E-mail',
+            'class': 'form-control floating-label'}
+        self.fields['email'].label = ''
+
+        self.fields['you_church'].widget.attrs = {
+            'placeholder': 'К какой Церкви Вы принадлежите',
+            'class': 'form-control floating-label'}
+        self.fields['you_church'].label = ''
+
+        self.fields['you_sluzhenie'].widget.attrs = {
+            'placeholder': 'Ваше служение',
+            'class': 'form-control floating-label'}
+        self.fields['you_sluzhenie'].label = ''
+
+    class Meta:
+        model = PenuelConf
+        exclude = ()
+
+
 
 
 class BSForm(forms.ModelForm):

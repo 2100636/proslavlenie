@@ -63,3 +63,21 @@ class HvalaScool(models.Model):
     def __unicode__(self):
         return u'%s - Анкета' % self.fi
 
+
+
+
+class PenuelConf(models.Model):
+    fio = models.CharField(max_length=100, verbose_name=u'Ф.И.О')
+    city = models.CharField(max_length=200, verbose_name=u'Город')
+    phone = models.CharField(max_length=11, verbose_name=u'Телефон')
+    email = models.CharField(max_length=11, verbose_name=u'E-mail')
+    you_church = models.CharField(max_length=11, verbose_name=u'Название церкви')
+    you_sluzhenie = models.CharField(max_length=11, verbose_name=u'Ваше служение')
+
+    class Meta:
+        verbose_name = u'Анкета для конференции Пенуэл в Томске'
+        verbose_name_plural = u'Анкеты для конференции Пенуэл в Томске'
+
+    def __unicode__(self):
+        return u'%s - Анкета' % self.fi
+
