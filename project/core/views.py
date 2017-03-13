@@ -99,10 +99,9 @@ def articleView(request, slug, template_name="catalog/article.html"):
 
 
 def newsView(request, id, template_name="catalog/news.html"):
-    tempdiv = '<div class="tempdiv"></div>'
+
     if request.path_info == '/news/141/':
         form = PenuelConfForm()
-        tempdiv2 = '<div class="tempdiv2"></div>'
 
     if request.method == 'POST' and 'PenuelConfForm' in request.POST:
         form = PenuelConfForm(request.POST)
@@ -121,8 +120,8 @@ def newsView(request, id, template_name="catalog/news.html"):
                     )
 
             send_mail(
-                #subject, message, DEFAULT_FROM_EMAIL, [ADMIN_EMAIL], fail_silently=False)
-                subject, message, DEFAULT_FROM_EMAIL, ['2100636@mail.ru'], fail_silently=False)
+                subject, message, DEFAULT_FROM_EMAIL, [ADMIN_EMAIL], fail_silently=False)
+                #subject, message, DEFAULT_FROM_EMAIL, ['2100636@mail.ru'], fail_silently=False)
 
             form_msg = ['Спасибо за регистрацию! <br> В ближайшее время с вами свяжутся для подтверждения регистрации.', '#0773bb']
         else:
