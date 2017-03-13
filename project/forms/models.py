@@ -79,5 +79,5 @@ class PenuelConf(models.Model):
         verbose_name_plural = u'Анкеты для конференции Пенуэл в Томске'
 
     def __unicode__(self):
-        return u'%s - Анкета' % self.fi
+        return u'%s - Анкета' % self.fio
 
