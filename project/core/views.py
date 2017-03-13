@@ -99,10 +99,10 @@ def articleView(request, slug, template_name="catalog/article.html"):
 
 
 def newsView(request, id, template_name="catalog/news.html"):
-
+    tempdiv = '<div class="tempdiv"></div>'
     if request.path_info == '/news/141/':
         form = PenuelConfForm()
-        dfsfd = '1234'
+        tempdiv2 = '<div class="tempdiv2"></div>'
 
     if request.method == 'POST' and 'PenuelConfForm' in request.POST:
         form = PenuelConfForm(request.POST)
