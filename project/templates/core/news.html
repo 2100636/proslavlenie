@@ -47,7 +47,7 @@
 
     {% if request.path_info == '/news/141/' %}
 
-        <section class="content anketa_PenuelConfForm" id="anketa">
+        <section class="content anketa_PenuelConfForm qwerty" id="anketa">
             <div class="container">
                 <div class="row">
 
@@ -87,7 +87,7 @@
                 </div>
             </div>
         </section>
-{% endif %}
+    {% endif %}
 
 
     {% if request.path_info == '/news/109/' %}
@@ -126,7 +126,7 @@
                 </div>
             </div>
         </section>
-{% endif %}
+    {% endif %}
 
 
 
@@ -151,13 +151,13 @@
     </script>
 
 
-<script>
-    $(document).ready(function() {
-        $('.anketa_PenuelConf').click(function(){
-            $('.anketa_PenuelConfForm').show();
+    <script>
+        $(document).ready(function() {
+            $('.anketa_PenuelConf').click(function(){
+                $('.anketa_PenuelConfForm').show();
+            });
         });
-    });
-</script>
+    </script>
 
 
 {% endblock %}
