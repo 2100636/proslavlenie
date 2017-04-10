@@ -48,19 +48,19 @@ def indexView(request, template_name="catalog/index.html"):
     # Отправляем нужду на почту
     if request.method == "POST" and "need" in request.POST:
         form_need = NeedForm(request.POST)
-        if form_need.is_valid():
-            form_need.save()
-            subject = u'Нужда proslavlenie.ru'
-            message = u'телефон: %s \n Имя: %s \n Сообщение: %s \n почта: %s'\
-                % (
-                    request.POST['phone'],
-                    request.POST['name'],
-                    request.POST['text'],
-                    request.POST['email'])
+        if request.POST['other'] == ''
+            if form_need.is_valid():
+                form_need.save()
+                subject = u'Нужда proslavlenie.ru'
+                message = u'телефон: %s \n Имя: %s \n Сообщение: %s \n почта: %s'\
+                    % (
+                        request.POST['phone'],
+                        request.POST['name'],
+                        request.POST['text'],
+                        request.POST['email'])
 
-            send_mail(
-                subject, message, DEFAULT_FROM_EMAIL, [ADMIN_EMAIL],
-                fail_silently=False)
+                send_mail(
+                    subject, message, DEFAULT_FROM_EMAIL, [ADMIN_EMAIL], fail_silently=False)
 
     # Отправляем вопрос на почту
     elif request.method == "POST" and "question" in request.POST:
