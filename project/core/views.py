@@ -48,7 +48,7 @@ def indexView(request, template_name="catalog/index.html"):
     # Отправляем нужду на почту
     if request.method == "POST" and "need" in request.POST:
         form_need = NeedForm(request.POST)
-        if request.POST['other'] == ''
+        if request.POST['other'] == '':
             if form_need.is_valid():
                 form_need.save()
                 subject = u'Нужда proslavlenie.ru'
