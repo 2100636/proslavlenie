@@ -49,8 +49,9 @@
 
         <section class="content anketa_PenuelConfForm qwerty" id="anketa">
             <div class="container">
+                <p>Регистрация закрыта</p>
+<!--    
                 <div class="row">
-
                     {% if form_msg %}
                         <div class="col-xs12">
                             <h3 class="form_msg">{{ form_msg.0 }}</h3>
@@ -84,7 +85,9 @@
                             <input type="submit" name="PenuelConfForm" class="btn btn-success" style="display: block;margin-top: 20px;float: right;" value="Отправить">
                         </form>
                     </div>
-                </div>
+                </div> -->
+
+
             </div>
         </section>
     {% endif %}
@@ -94,8 +97,6 @@
         <section class="content" id="anketa">
             <div class="container">
                 <div class="row">
-
-
                     {% if form_msg %}
                         <div class="col-xs12">
                             <h3 class="form_msg">{{ form_msg.0 }}</h3>
@@ -120,6 +121,12 @@
                             {% csrf_token %}
                             <h3> Анкета для поступления в Школу Хвалы</h3>
                             {{ form }}
+                                    
+                            <div class="agreement checkbox">
+                              <label>{{form_need.agreement}}
+                                <span class="checkbox-material"><span class="check"></span></span> Я ознакомлен(а) и согласен(а) с <a href="//proslavlenie.ru/page/polzovatelskoe-soglashenie/" target="_blank">пользовательским соглашением об использовании персональных данных</a>
+                              </label>
+                            </div>     
                             <input type="submit" name="hvalas_form" class="btn btn-success" style="display: block;margin-top: 20px;float: right;" value="Отправить">
                         </form>
                     </div>

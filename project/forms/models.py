@@ -31,7 +31,7 @@ class BibleScool(models.Model):
     agreement = models.BooleanField(verbose_name=u'Я ознакомлен(а) и согласен(а) с пользовательским соглашением об использовании персональных данных', default=True)
 
     class Meta:
-        verbose_name = u'Заполненная форма билейской школы (курсы)'
+        verbose_name = u'Заполненная форма библейской школы (курсы)'
         verbose_name_plural = u'Заполненные формы библейской школы (курсы)'
 
     def __unicode__(self):
@@ -57,6 +57,8 @@ class HvalaScool(models.Model):
     leader_fi = models.CharField(max_length=255, verbose_name=u'Укажите Ф.И. лидера, который может порекомендовать вас для обучения, его телефон')
     date = models.DateField(verbose_name=u'Дата заполнения', default=datetime.datetime.now, editable=False)
     date_test = models.DateField(verbose_name=u'Дата заполнения_', default=datetime.datetime.now, editable=False)
+    agreement = models.BooleanField(verbose_name=u'Я ознакомлен(а) и согласен(а) с пользовательским соглашением об использовании персональных данных', default=True)
+    
     class Meta:
         verbose_name = u'Анкета для поступления в Школу Хвалы'
         verbose_name_plural = u'Анкеты для поступления в Школу Хвалы'
@@ -82,4 +84,49 @@ class PenuelConf(models.Model):
 
     def __unicode__(self):
         return u'%s - Анкета' % self.fio
+
+
+
+
+
+
+
+
+
+class Play2017(models.Model):
+    fio = models.CharField(max_length=100, verbose_name=u'ФИО')
+    age = models.IntegerField(verbose_name=u'Возраст (полных лет)') 
+    sex = models.CharField(max_length=200,
+        choices=(
+            ('male', 'Мужской'),
+            ('female', 'Женский')
+        ),
+        verbose_name=u'Пол'
+    )    
+    city = models.CharField(max_length=200, verbose_name=u'Город')
+    you_church = models.CharField(max_length=240, verbose_name=u'Название церкви')
+    pastor_fio = models.CharField(max_length=100, verbose_name=u'ФИО старшего пастора')
+    whoiam = models.CharField(max_length=200,
+        choices=(
+            ('male', 'Молодежный пастор'),
+            ('female', 'Подростковый пастор')
+            ('male', 'Молодежный лидер'),
+            ('male', 'Подростковый лидер'),
+            ('male', 'Служение прославлени'),
+            ('male', 'Администрирование'),
+            ('male', 'Медиа'),
+            ('male', 'Другое (указать)'),      
+        ),
+        verbose_name=u'Кем вы являетесь на данный момент '
+    )   
+    whoiam_custom = models.CharField(max_length=100, verbose_name=u'Кем вы являетесь на данный момент (Указать)', default='')
+    agreement = models.BooleanField(verbose_name=u'Я ознакомлен(а) и согласен(а) с пользовательским соглашением об использовании персональных данных', default=True)
+
+    class Meta:
+        verbose_name = u'Заполненная форма PLAY 2017'
+        verbose_name_plural = u'Заполненные формы PLAY 2017'
+
+    def __unicode__(self):
+        return u'%s - Анкета' % self.fio
+
 

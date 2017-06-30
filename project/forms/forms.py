@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django import forms
-from project.forms.models import BibleScool, HvalaScool, PenuelConf
+from project.forms.models import BibleScool, HvalaScool, PenuelConf, Play2017
 from django.utils.safestring import mark_safe
 
 class PenuelConfForm(forms.ModelForm):
@@ -126,4 +126,22 @@ class HvalaSForm(forms.ModelForm):
                 self.fields[field].label = ''
     class Meta:
         model = HvalaScool
+        exclude = ()
+
+
+class Play2017Form(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(Play2017Form, self).__init__(*args, **kwargs)
+
+        # self.fields['fi'].widget.attrs = {
+        #     'placeholder': 'Ф.И',
+        #     'class': 'form-control floating-label'}
+        # self.fields['fi'].label = ''
+
+        for field in self.fields:
+            self.fields[field].widget.attrs = {'placeholder': self.fields[field].label, 'class': 'form-control floating-label'}
+            if field != 'sex' or field != 'whoiam':
+                self.fields[field].label = ''
+    class Meta:
+        model = Play2017
         exclude = ()

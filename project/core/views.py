@@ -115,33 +115,30 @@ def articleView(request, slug, template_name="catalog/article.html"):
 
 def newsView(request, id, template_name="catalog/news.html"):
 
-    if request.path_info == '/news/141/':
-        form = PenuelConfForm()
+    # if request.path_info == '/news/141/':
+    #     form = PenuelConfForm()
 
-    if request.method == 'POST' and 'PenuelConfForm' in request.POST:
-        form = PenuelConfForm(request.POST)
-        if form.is_valid():
-            form.save()
-            subject = u'Анкета для конференции Пенуэл в Томске'
-            message = u'ФИО: %s \n Город: %s \n Телефон: %s \n E-mail: %s \n Название церкви: %s \n ' \
-                      u'Служение: %s \n '\
-                % (
-                    request.POST['fio'],
-                    request.POST['city'],
-                    request.POST['phone'],
-                    request.POST['email'],
-                    request.POST['you_church'],
-                    request.POST['you_sluzhenie'],
-                    )
-
-            send_mail(
-                subject, message, DEFAULT_FROM_EMAIL, [ADMIN_EMAIL], fail_silently=False)
-                #subject, message, DEFAULT_FROM_EMAIL, ['2100636@mail.ru'], fail_silently=False)
-
-            form_msg = ['Спасибо за регистрацию! <br> В ближайшее время с вами свяжутся для подтверждения регистрации.', '#0773bb']
-        else:
-            form_msg = ['Ошибка заполнения анкеты. Проверьте корректность всех данных', '#DC7373']
-
+    # if request.method == 'POST' and 'PenuelConfForm' in request.POST:
+    #     form = PenuelConfForm(request.POST)
+    #     if form.is_valid():
+    #         form.save()
+    #         subject = u'Анкета для конференции Пенуэл в Томске'
+    #         message = u'ФИО: %s \n Город: %s \n Телефон: %s \n E-mail: %s \n Название церкви: %s \n ' \
+    #                   u'Служение: %s \n '\
+    #             % (
+    #                 request.POST['fio'],
+    #                 request.POST['city'],
+    #                 request.POST['phone'],
+    #                 request.POST['email'],
+    #                 request.POST['you_church'],
+    #                 request.POST['you_sluzhenie'],
+    #                 )
+    #         send_mail(
+    #             subject, message, DEFAULT_FROM_EMAIL, [ADMIN_EMAIL], fail_silently=False)
+    #             #subject, message, DEFAULT_FROM_EMAIL, ['2100636@mail.ru'], fail_silently=False)
+    #         form_msg = ['Спасибо за регистрацию! <br> В ближайшее время с вами свяжутся для подтверждения регистрации.', '#0773bb']
+    #     else:
+    #         form_msg = ['Ошибка заполнения анкеты. Проверьте корректность всех данных', '#DC7373']
 
 
     if request.path_info == '/news/109/':
@@ -150,27 +147,32 @@ def newsView(request, id, template_name="catalog/news.html"):
     if request.method == 'POST' and 'hvalas_form' in request.POST:
         form = HvalaSForm(request.POST)
         if form.is_valid():
-            form.save()
-            subject = u'Анкета для поступления в Школу Хвалы'
-            message = u'ФИ: %s \n Город, название церкцви: %s \n телефон: %s \n Возраст: %s \n ' \
-                      u'Музыкальное образование: %s \n Класс обучения: %s \n Применять в: %s \n ' \
-                      u'ФИ лидера: %s '\
-                % (
-                    request.POST['fi'],
-                    request.POST['city'],
-                    request.POST['phone'],
-                    request.POST['age'],
-                    request.POST['music_education'],
-                    request.POST['how_class'],
-                    request.POST['type_ministry'],
-                    request.POST['leader_fi']
-                    )
+            if request.POST.get('agreement', False) == False:
+                form_msg = ['Ошибка заполнения анкеты <br> Вы должны согласиться с пользовательским соглашением', '#DC7373']
+            else:
+                form.save()
+                subject = u'Анкета для поступления в Школу Хвалы'
+                message = u'ФИ: %s \n Город, название церкцви: %s \n телефон: %s \n Возраст: %s \n ' \
+                          u'Музыкальное образование: %s \n Класс обучения: %s \n Применять в: %s \n ' \
+                          u'ФИ лидера: %s '\
+                          u'Согласен с правилами: %s \n Согласен с пользовательским соглашением: да' \
 
-            send_mail(
-                subject, message, DEFAULT_FROM_EMAIL, [ADMIN_EMAIL], fail_silently=False)
-                #subject, message, DEFAULT_FROM_EMAIL, ['2100636@mail.ru'], fail_silently=False)
+                    % (
+                        request.POST['fi'],
+                        request.POST['city'],
+                        request.POST['phone'],
+                        request.POST['age'],
+                        request.POST['music_education'],
+                        request.POST['how_class'],
+                        request.POST['type_ministry'],
+                        request.POST['leader_fi']
+                        )
 
-            form_msg = ['Спасибо! Анкета успешно отправлена', '#0773bb']
+                send_mail(
+                    subject, message, DEFAULT_FROM_EMAIL, [ADMIN_EMAIL], fail_silently=False)
+                    #subject, message, DEFAULT_FROM_EMAIL, ['2100636@mail.ru'], fail_silently=False)
+
+                form_msg = ['Спасибо! Анкета успешно отправлена', '#0773bb']
         else:
             form_msg = ['Ошибка заполнения анкеты. Проверьте корректность всех данных', '#DC7373']
 
