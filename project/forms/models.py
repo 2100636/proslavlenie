@@ -115,11 +115,11 @@ class Play2017(models.Model):
             ('male', 'Служение прославлени'),
             ('male', 'Администрирование'),
             ('male', 'Медиа'),
-            ('male', 'Другое (указать)'),      
+            ('male', 'Другое (указать)')
         ),
         verbose_name=u'Кем вы являетесь на данный момент '
     )   
-    whoiam_custom = models.CharField(max_length=100, verbose_name=u'Кем вы являетесь на данный момент (Указать)', default='')
+    whoiam_custom = models.CharField(max_length=200, verbose_name=u'Кем вы являетесь на данный момент (Указать)', default='')
     agreement = models.BooleanField(verbose_name=u'Я ознакомлен(а) и согласен(а) с пользовательским соглашением об использовании персональных данных', default=True)
 
     class Meta:
