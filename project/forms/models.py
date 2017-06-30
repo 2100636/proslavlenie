@@ -28,10 +28,11 @@ class BibleScool(models.Model):
         default='day')
 
     rules = models.BooleanField(verbose_name=u'Я понимаю, что, как слушатель Библейских курсов, я обязан следовать установленным правилам.', default=True)
+    agreement = models.BooleanField(verbose_name=u'Я ознакомлен(а) и согласен(а) с пользовательским соглашением об использовании персональных данных', default=True)
 
     class Meta:
-        verbose_name = u'Заполненная форма билейской школы'
-        verbose_name_plural = u'Заполненные формы библейской школы'
+        verbose_name = u'Заполненная форма билейской школы (курсы)'
+        verbose_name_plural = u'Заполненные формы библейской школы (курсы)'
 
     def __unicode__(self):
         return u'%s - форма БШ' % self.fio
