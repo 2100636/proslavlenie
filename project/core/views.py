@@ -45,7 +45,7 @@ def indexView(request, template_name="catalog/index.html"):
     form_question = QuestionForm()
     form_need = NeedForm()
 
-    # Отправляем нужду на почту
+    # Отправляем на почту
     if request.method == "POST" and "need" in request.POST:
         form_need = NeedForm(request.POST)
         if form_need.is_valid():
@@ -262,8 +262,8 @@ def ministryView(request, slug, template_name="catalog/ministry.html"):
                         )
 
                 send_mail(
-                    #subject, message, DEFAULT_FROM_EMAIL, ['bk.tomsk@mail.ru'], fail_silently=False)
-                    subject, message, DEFAULT_FROM_EMAIL, ['2100636@mail.ru'], fail_silently=False)
+                    subject, message, DEFAULT_FROM_EMAIL, ['bk.tomsk@mail.ru'], fail_silently=False)
+                    #subject, message, DEFAULT_FROM_EMAIL, ['2100636@mail.ru'], fail_silently=False)
                 form_msg = ['Спасибо! Анкета успешно отправлена', '#0773bb']
         else:
             form_msg = ['Ошибка заполнения анкеты <br> Проверьте корректность всех данных', '#DC7373']
@@ -311,8 +311,8 @@ def ministryView(request, slug, template_name="catalog/ministry.html"):
                         )
 
                 send_mail(
-                    #subject, message, DEFAULT_FROM_EMAIL, ['youth_of_praise@mail.ru'], fail_silently=False)
-                    subject, message, DEFAULT_FROM_EMAIL, ['2100636@mail.ru'], fail_silently=False)
+                    subject, message, DEFAULT_FROM_EMAIL, ['youth_of_praise@mail.ru'], fail_silently=False)
+                    #subject, message, DEFAULT_FROM_EMAIL, ['2100636@mail.ru'], fail_silently=False)
                 form_msg = ['Спасибо! Анкета успешно отправлена', '#0773bb']
         else:
             form_msg = ['Ошибка заполнения анкеты <br> Проверьте корректность всех данных', '#DC7373']
