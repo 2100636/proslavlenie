@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/env python
 from django.contrib import admin
-from models import BibleScool, HvalaScool, PenuelConf
+from models import BibleScool, HvalaScool, PenuelConf, Play2017
 
 
 #
@@ -22,3 +22,4 @@ class PenuelConfAdmin(admin.ModelAdmin):
 admin.site.register(BibleScool)
 admin.site.register(HvalaScool, HvalaScoolAdmin)
 admin.site.register(PenuelConf, PenuelConfAdmin)
+admin.site.register(Play2017)
