@@ -75,13 +75,30 @@
 <div class="you_church">{{form.you_church}}</div>
 <div class="church_city">{{form.church_city}}</div>
 <div class="pastor_fio">{{form.pastor_fio}}</div>
-<div class="is_church_member checkbox">{{form.is_church_member}}<span class="checkbox-material"><span class="check"></span></span></div>
-<div class="is_believer checkbox">{{form.is_believer}}<span class="checkbox-material"><span class="check"></span></span></div>
+<div class="is_church_member checkbox">
+  <label>
+    {{form.is_church_member}}
+    <span class="checkbox-material"><span class="check"></span></span> Являетесь ли Вы членом Церкви
+  </label>
+</div>
+<div class="is_believer checkbox">
+  <label>{{form.is_believer}}
+    <span class="checkbox-material"><span class="check"></span></span> Веруете ли Вы в Иисуса Христа как своего Господа и Спасителя
+  </label>
+</div>
 <div class="salvation_day">{{form.salvation_day}}</div>
 <div class="you_mission">{{form.you_mission}}</div>
 <div class="form_of_study">{{form.form_of_study}}</div>
-<div class="rules checkbox">{{form.rules}}<span class="checkbox-material"><span class="check"></span></span></div>
-<div class="agreement checkbox">{{form.agreement}}<span class="checkbox-material"><span class="check"></span></span></div>
+<div class="rules checkbox">
+  <label>{{form.rules}}
+    <span class="checkbox-material"><span class="check"></span></span> Я понимаю, что, как слушатель Библейских курсов, я обязан следовать установленным правилам
+  </label>
+</div>
+<div class="agreement checkbox">
+  <label>{{form.agreement}}
+    <span class="checkbox-material"><span class="check"></span></span> Я ознакомлен(а) и согласен(а) с <a href="//proslavlenie.ru/page/polzovatelskoe-soglashenie/">пользовательским соглашением об использовании персональных данных</a>
+  </label>
+</div>
 
                                         <input type="submit" name="bs_form" class="btn btn-success" style="display: block;margin-top: 20px;float: right;" value="Отправить">
                                     </form>
