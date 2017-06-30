@@ -340,6 +340,7 @@ class Need(models.Model):
     phone = models.CharField(max_length=11, verbose_name=u'Ваш телефо')
     email = models.EmailField(blank=True)
     text = models.TextField(verbose_name=u'Текст сообщения')
+    agreement = models.BooleanField(verbose_name=u'Я ознакомлен(а) и согласен(а) с пользовательским соглашением об использовании персональных данных', default=True)
 
     class Meta:
         verbose_name = u'Нужда'

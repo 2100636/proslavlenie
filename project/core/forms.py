@@ -31,7 +31,7 @@ class NeedForm(forms.ModelForm):
 
     class Meta:
         model = Need
-        fields = ('name', 'phone', 'email', 'text')
+        fields = ('name', 'phone', 'email', 'text', 'agreement')
 
 
 class QuestionForm(forms.Form):
