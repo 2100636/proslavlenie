@@ -19,6 +19,25 @@
 {% endblock %}
 
 {% block content %}
+
+
+{% if form_msg %}
+<div class="container">
+    <div class="form_msg 123">{{ form_msg.0 }}</div>
+    <style>
+        .form_msg{
+            background: {{ form_msg.1 }};
+            padding: 30px 30px 27px;
+            color: #fff;
+            font-size: 21px;
+            text-align: center;
+            text-transform: uppercase;
+            margin: 33px auto 5px;
+        }
+    </style>
+</div>
+{% endif %}
+
 <div id="front" class="content-wrapper" style="margin-left:0"><!-- Content Wrapper. Contains page content -->
 
     <section class="content">
