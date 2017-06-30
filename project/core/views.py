@@ -298,7 +298,7 @@ def ministryView(request, slug, template_name="catalog/ministry.html"):
                     whoiam = request.POST['whoiam_custom']
                 subject = u'Анкета PLAY 2017'
                 message = u'ФИО: %s \n Возраст (полных лет): %s \n Пол: %s \n Город: %s \n Название церкви: %s \n ' \
-                        u'ФИО старшего пастора: %s \n Кем вы являетесь на данный моментКем вы являетесь на данный момент: %s \n ' \
+                        u'ФИО старшего пастора: %s \n Кем вы являетесь на данный момент: %s \n ' \
                         u'Согласен с пользовательским соглашением: да' \
                     % (
                         request.POST['fio'],
