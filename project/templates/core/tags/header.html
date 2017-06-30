@@ -101,3 +101,21 @@
     </div>
 
 </section>
+
+
+{% if form_msg %}
+<div class="container">
+    <div class="form_msg">{{ form_msg.0 }}</div>
+    <style>
+        .form_msg{
+            background: {{ form_msg.1 }};
+            padding: 30px 30px 27px;
+            color: #fff;
+            font-size: 21px;
+            text-align: center;
+            text-transform: uppercase;
+            margin: 5px auto 60px;
+        }
+    </style>
+</div>
+{% endif %}

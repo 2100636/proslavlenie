@@ -49,18 +49,23 @@ def indexView(request, template_name="catalog/index.html"):
     if request.method == "POST" and "need" in request.POST:
         form_need = NeedForm(request.POST)
         if form_need.is_valid():
-            form_need.save()
-            subject = u'Нужда proslavlenie.ru'
-            message = u'телефон: %s \n Имя: %s \n Сообщение: %s \n почта: %s'\
-                % (
-                    request.POST['phone'],
-                    request.POST['name'],
-                    request.POST['text'],
-                    request.POST['email'])
 
-            send_mail(
-                subject, message, DEFAULT_FROM_EMAIL, [ADMIN_EMAIL],
-                fail_silently=False)
+            if request.POST.get('agreement', False) == False:
+                form_msg = ['Ошибка заполнения формы <br> Вы должны согласиться с пользовательским соглашением', '#DC7373']
+            else:
+                form_need.save()
+                subject = u'Нужда proslavlenie.ru'
+                message = u'телефон: %s \n Имя: %s \n Сообщение: %s \n почта: %s'\
+                    % (
+                        request.POST['phone'],
+                        request.POST['name'],
+                        request.POST['text'],
+                        request.POST['email'])
+
+                send_mail(
+                    subject, message, DEFAULT_FROM_EMAIL, [ADMIN_EMAIL],
+                    fail_silently=False)
+        form_msg = ['Спасибо! Молитвенная просьба успешно отправлена', '#0773bb']
 
     # Отправляем вопрос на почту
     elif request.method == "POST" and "question" in request.POST:
@@ -81,6 +86,8 @@ def indexView(request, template_name="catalog/index.html"):
 
             send_mail(
                 subject, message, DEFAULT_FROM_EMAIL, [ADMIN_EMAIL], fail_silently=False)
+    else:
+        form_msg = ['Ошибка заполнения формы <br> Проверьте корректность всех данных', '#DC7373']
 
     return render_to_response(
         template_name, locals(), context_instance=RequestContext(request))
