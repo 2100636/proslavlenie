@@ -51,3 +51,4 @@ class QuestionForm(forms.Form):
     name = forms.CharField(widget=forms.TextInput)
     phone = forms.CharField(widget=forms.TextInput, required=False)
     text = forms.CharField(widget=forms.Textarea)
+

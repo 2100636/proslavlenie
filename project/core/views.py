@@ -49,9 +49,8 @@ def indexView(request, template_name="catalog/index.html"):
     if request.method == "POST" and "need" in request.POST:
         form_need = NeedForm(request.POST)
         if form_need.is_valid():
-
             if request.POST.get('agreement', False) == False:
-                form_msg = ['Ошибка заполнения формы <br> Вы должны согласиться с пользовательским соглашением', '#DC7373']
+                form_msg = ['Ошибка заполнения формы "Молитвенная нужда"<br> Вы должны согласиться с пользовательским соглашением', '#DC7373']
             else:
                 form_need.save()
                 subject = u'Нужда proslavlenie.ru'
@@ -78,18 +77,22 @@ def indexView(request, template_name="catalog/index.html"):
         }
         form_question = QuestionForm(postdata)
         if form_question.is_valid():
-            subject = u'Вопрос proslavlenie.ru'
-            message = u'телефон: %s \n Имя: %s \n Сообщение: %s \n'\
-                % (
-                    request.POST['phone'],
-                    request.POST['name'],
-                    request.POST['text']
-                )
+            if request.POST.get('agreement', False) == False:
+                form_msg = ['Ошибка заполнения формы <br> Вы должны согласиться с пользовательским соглашением', '#DC7373']
+            else:
+                subject = u'Вопрос proslavlenie.ru'
+                message = u'телефон: %s \n Имя: %s \n Сообщение: %s \n'\
+                    % (
+                        request.POST['phone'],
+                        request.POST['name'],
+                        request.POST['text']
+                    )
 
-            send_mail(
-                subject, message, DEFAULT_FROM_EMAIL, [ADMIN_EMAIL], fail_silently=False)
+                send_mail(
+                    subject, message, DEFAULT_FROM_EMAIL, [ADMIN_EMAIL], fail_silently=False)
+                form_msg = ['Спасибо! Впопрос успешно отправлен', '#0773bb']
         else:
-            form_msg = ['Ошибка заполнения формы <br> Проверьте корректность всех данных', '#DC7373']
+            form_msg = ['Ошибка заполнения формы ."Задать вопрос"<br> Проверьте корректность всех данных', '#DC7373']
     
 
     return render_to_response(
