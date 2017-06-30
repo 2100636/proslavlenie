@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django import forms
 from project.forms.models import BibleScool, HvalaScool, PenuelConf
+from django.utils.safestring import mark_safe
 
 class PenuelConfForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
@@ -102,7 +103,8 @@ class BSForm(forms.ModelForm):
             'class': 'form-control floating-label'}
         self.fields['you_mission'].label = ''
 
-        self.fields['agreement'].label = 'Я ознакомлен(а) и согласен(а) с <a href="//proslavlenie.ru/page/polzovatelskoe-soglashenie/">пользовательским соглашением об использовании персональных данных</a>'
+        self.fields['agreement'].label = mark_safe('Я ознакомлен(а) и согласен(а) с <a href="//proslavlenie.ru/page/polzovatelskoe-soglashenie/">пользовательским соглашением об использовании персональных данных</a>')
+        #self.fields['agreement'].label = 'Я ознакомлен(а) и согласен(а) с <a href="//proslavlenie.ru/page/polzovatelskoe-soglashenie/">пользовательским соглашением об использовании персональных данных</a>'
 
     class Meta:
         model = BibleScool
