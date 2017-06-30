@@ -280,24 +280,22 @@ def ministryView(request, slug, template_name="catalog/ministry.html"):
                 form_msg = ['Ошибка заполнения анкеты <br> Вы должны согласиться с пользовательским соглашением', '#DC7373']
             else:
                 form.save()
-
                 if request.POST['whoiam'] == '1':
                     whoiam = u'Молодежный пастор'
                 elif request.POST['whoiam'] == '2':
-                    whoiam = u'Подростковый пастор')
+                    whoiam = u'Подростковый пастор'
                 elif request.POST['whoiam'] == '3':
-                    whoiam = u'Молодежный лидер')
+                    whoiam = u'Молодежный лидер'
                 elif request.POST['whoiam'] == '4':
-                    whoiam = u'Подростковый лидер')
+                    whoiam = u'Подростковый лидер'
                 elif request.POST['whoiam'] == '5':
-                    whoiam = u'Служение прославлени')
+                    whoiam = u'Служение прославлени'
                 elif request.POST['whoiam'] == '6':
-                    whoiam = u'Администрирование')
+                    whoiam = u'Администрирование'
                 elif request.POST['whoiam'] == '7':
-                    whoiam = u'Медиа')
+                    whoiam = u'Медиа'
                 else:
                     whoiam = request.POST['whoiam_custom']
-
                 subject = u'Анкета PLAY 2017'
                 message = u'ФИО: %s \n Возраст (полных лет): %s \n Пол: %s \n Город: %s \n Название церкви: %s \n ' \
                         u'ФИО старшего пастора: %s \n Кем вы являетесь на данный моментКем вы являетесь на данный момент: %s \n ' \
