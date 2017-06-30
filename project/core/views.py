@@ -5,7 +5,7 @@ from django.shortcuts import render_to_response
 from django.views.generic import TemplateView
 from functions import *
 from forms import QuestionForm, NeedForm
-from project.forms.forms import BSForm, HvalaSForm, PenuelConfForm
+from project.forms.forms import BSForm, HvalaSForm, PenuelConfForm, Play2017Form
 from models import Article, Page, Question,\
     News, SliderItem, Review, Testimony, Video, Ministry, VideoCategory
 
@@ -267,6 +267,49 @@ def ministryView(request, slug, template_name="catalog/ministry.html"):
                 form_msg = ['Спасибо! Анкета успешно отправлена', '#0773bb']
         else:
             form_msg = ['Ошибка заполнения анкеты <br> Проверьте корректность всех данных', '#DC7373']
+
+    #######################
+
+    if request.path_info == '/ministry/molodezhnoe-sluzhenie/':
+        form = Play2017Form()
+
+    if request.method == 'POST' and 'ms_form' in request.POST:
+        form = Play2017Form(request.POST)
+        if form.is_valid():
+            if request.POST.get('agreement', False) == False:
+                form_msg = ['Ошибка заполнения анкеты <br> Вы должны согласиться с пользовательским соглашением', '#DC7373']
+            else:
+                form.save()
+                # subject = u'Анкета PLAY 2017 '
+                # message = u'ФИО: %s \n Дата рождения: %s \n телефон: %s \n город: %s \n Семейное положение: %s \n ' \
+                #         u'Принадлежность к церкви: %s \n Город: %s \n Ф.И.О пастора Церкви: %s \n Член Церкви: %s \n ' \
+                #         u'Верует ли в Господа: %s \n Дата спасения: %s \n Призвание: %s \n Форма обучения: %s \n ' \
+                #         u'Согласен с правилами: %s \n Согласен с пользовательским соглашением: да' \
+                #     % (
+                #         request.POST['fio'],
+                #         request.POST['birth_day'],
+                #         request.POST['phone'],
+                #         request.POST['city'],
+                #         request.POST['family_status'],
+                #         request.POST['you_church'],
+                #         request.POST['church_city'],
+                #         request.POST['pastor_fio'],
+                #         request.POST.get('is_church_member', False),
+                #         request.POST.get('is_believer', False),
+                #         request.POST['salvation_day'],
+                #         request.POST['you_mission'],
+                #         request.POST['form_of_study'],
+                #         request.POST.get('rules', False)
+                #         )
+
+                # send_mail(
+                #     #subject, message, DEFAULT_FROM_EMAIL, ['youth_of_praise@mail.ru'], fail_silently=False)
+                #     subject, message, DEFAULT_FROM_EMAIL, ['2100636@mail.ru'], fail_silently=False)
+                # form_msg = ['Спасибо! Анкета успешно отправлена', '#0773bb']
+        else:
+            form_msg = ['Ошибка заполнения анкеты <br> Проверьте корректность всех данных', '#DC7373']
+    
+    #######################
 
     user = request.user
     ministry = Ministry.objects.get(slug=slug)

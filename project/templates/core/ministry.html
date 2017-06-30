@@ -46,6 +46,9 @@
                             <p style="margin-top: 40px;">{{ ministry.description }}<p>
                         </div>
                         <div class="col-xs-8">
+
+
+
                             {% if form_msg %}
                                 <div class="col-xs12">
                                     <div class="form_msg">{{ form_msg.0 }}</div>
@@ -61,6 +64,11 @@
                                     </style>
                                 </div>
                             {% endif %}
+
+
+
+
+
                             {% if request.path_info == '/ministry/biblejskie-kursy/' %}
                                 <div class="bs_form_container">
                                     <form action="." method="post">
@@ -104,6 +112,36 @@
                                     </form>
                                 </div>
                             {% endif %} 
+
+
+
+
+
+
+
+
+
+
+                            {% if request.path_info == '/ministry/molodezhnoe-sluzhenie/' %}
+                                <div class="bs_form_container">
+                                    <form action="." method="post">
+                                        {% csrf_token %}
+                                        <h3>Анкета для поступления в БШ</h3>
+                                        {{ form }}
+
+<div class="agreement checkbox">
+  <label>{{form.agreement}}
+    <span class="checkbox-material"><span class="check"></span></span> Я ознакомлен(а) и согласен(а) с <a href="//proslavlenie.ru/page/polzovatelskoe-soglashenie/" target="_blank">пользовательским соглашением об использовании персональных данных</a>
+  </label>
+</div>
+
+                                        <input type="submit" name="ms_form" class="btn btn-success" style="display: block;margin-top: 20px;float: right;" value="Отправить">
+                                    </form>
+                                </div>
+                            {% endif %} 
+
+
+
 
                             <div class="gallery">
 {#                                <div class="row">#}
