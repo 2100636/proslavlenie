@@ -78,7 +78,9 @@ def indexView(request, template_name="catalog/index.html"):
         form_question = QuestionForm(postdata)
         if form_question.is_valid():
             if request.POST.get('agreement', False) == False:
-                form_msg = ['Ошибка заполнения формы <br> Вы должны согласиться с пользовательским соглашением', '#DC7373']
+                form_msg = ['Ошибка заполнения формы "Задать вопрос"<br> Вы должны согласиться с пользовательским соглашением', '#DC7373']
+            elif request.POST['otherfield'] != '':
+                form_msg = ['Ошибка заполнения формы "Задать вопрос"<br> Обнаружен спам, попробуйте позднее', '#DC7373']
             else:
                 subject = u'Вопрос proslavlenie.ru'
                 message = u'телефон: %s \n Имя: %s \n Сообщение: %s \n'\
@@ -90,9 +92,9 @@ def indexView(request, template_name="catalog/index.html"):
 
                 send_mail(
                     subject, message, DEFAULT_FROM_EMAIL, [ADMIN_EMAIL], fail_silently=False)
-                form_msg = ['Спасибо! Впопрос успешно отправлен', '#0773bb']
+                form_msg = ['Спасибо! Вопрос успешно отправлен', '#0773bb']
         else:
-            form_msg = ['Ошибка заполнения формы ."Задать вопрос"<br> Проверьте корректность всех данных', '#DC7373']
+            form_msg = ['Ошибка заполнения формы "Задать вопрос"<br> Проверьте корректность всех данных', '#DC7373']
     
 
     return render_to_response(
