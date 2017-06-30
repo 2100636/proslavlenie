@@ -65,7 +65,9 @@ def indexView(request, template_name="catalog/index.html"):
                 send_mail(
                     subject, message, DEFAULT_FROM_EMAIL, [ADMIN_EMAIL],
                     fail_silently=False)
-        form_msg = ['Спасибо! Молитвенная просьба успешно отправлена', '#0773bb']
+                form_msg = ['Спасибо! Молитвенная просьба успешно отправлена', '#0773bb']
+        else:
+            form_msg = ['Ошибка заполнения формы <br> Проверьте корректность всех данных', '#DC7373']
 
     # Отправляем вопрос на почту
     elif request.method == "POST" and "question" in request.POST:
@@ -86,8 +88,9 @@ def indexView(request, template_name="catalog/index.html"):
 
             send_mail(
                 subject, message, DEFAULT_FROM_EMAIL, [ADMIN_EMAIL], fail_silently=False)
-    else:
-        form_msg = ['Ошибка заполнения формы <br> Проверьте корректность всех данных', '#DC7373']
+        else:
+            form_msg = ['Ошибка заполнения формы <br> Проверьте корректность всех данных', '#DC7373']
+    
 
     return render_to_response(
         template_name, locals(), context_instance=RequestContext(request))
