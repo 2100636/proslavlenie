@@ -120,10 +120,17 @@
                         <form action=".#anketa" method="post" id="HvalaSForm">
                             {% csrf_token %}
                             <h3> Анкета для поступления в Школу Хвалы</h3>
-                            {{ form }}
-                                    
+                            <div class="fi">{{fi}}</div>
+                            <div class="city">{{city}}</div>
+                            <div class="phone">{{phone}}</div>
+                            <div class="age">{{age}}</div>
+                            <div class="music_education">{{music_education}}</div>
+                            <div class="how_class">{{how_class}}</div>
+                            <div class="type_ministry">{{type_ministry}}</div>
+                            <div class="leader_fi">{{leader_fi}}</div>
                             <div class="agreement checkbox">
-                              <label>{{form_need.agreement}}
+                              <label>
+                                {{form.agreement}}
                                 <span class="checkbox-material"><span class="check"></span></span> Я ознакомлен(а) и согласен(а) с <a href="//proslavlenie.ru/page/polzovatelskoe-soglashenie/" target="_blank">пользовательским соглашением об использовании персональных данных</a>
                               </label>
                             </div>     
