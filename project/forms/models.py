@@ -117,7 +117,7 @@ class Play2017(models.Model):
             ('7', 'Медиа'),
             ('8', 'Другое (указать)')
         ),
-        verbose_name=u'Кем вы являетесь на данный момент '
+        verbose_name=u'Кем вы являетесь на данный момент'
     )   
     whoiam_custom = models.CharField(max_length=200, verbose_name=u'Кем вы являетесь на данный момент (Указать)', default='')
     agreement = models.BooleanField(verbose_name=u'Я ознакомлен(а) и согласен(а) с пользовательским соглашением об использовании персональных данных', default=True)

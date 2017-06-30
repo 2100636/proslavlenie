@@ -124,11 +124,32 @@
 
                             {% if request.path_info == '/ministry/molodezhnoe-sluzhenie/' %}
                                 <div class="bs_form_container">
+                                    <h3>Лидерская конференция для молодежных и подростковых служителей PLAY 2017</h3>
+                                    <p>Конференция пройдет в формате выезда на базе «Церкви Прославления» г. Томск. </p>
+                                    <p>Даты конференции 22-25 августа. Необходима регистрация</p>
+                                    <p>Для регистрации заполните анкету ниже.</p>
+                                </div> 
+                                <div class="bs_form_container">
                                     <form action="." method="post">
                                         {% csrf_token %}
-                                        <h3>Анкета для поступления в БШ</h3>
-                                        {{ form }}
-
+                                        <h3>Регистрация в конференции PLAY 2017</h3>
+<div class="fio">{{form.fio}}</div>
+<div class="fio">{{form.age}}</div>
+<div class="fio">
+    <label for="id_how_class">
+        Пол
+        {{form.sex}}
+    </label>
+</div>
+<div class="fio">{{form.city}}</div>
+<div class="fio">{{form.you_church}}</div>
+<div class="fio">{{form.pastor_fio}}</div>
+<div class="fio">
+    <label for="id_how_class">
+        Кем вы являетесь на данный момент
+        {{form.whoiam}}
+    </label></div>
+<div class="fio">{{form.whoiam_custom}}</div>
 <div class="agreement checkbox">
   <label>{{form.agreement}}
     <span class="checkbox-material"><span class="check"></span></span> Я ознакомлен(а) и согласен(а) с <a href="//proslavlenie.ru/page/polzovatelskoe-soglashenie/" target="_blank">пользовательским соглашением об использовании персональных данных</a>
