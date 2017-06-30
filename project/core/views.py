@@ -219,31 +219,37 @@ def ministryView(request, slug, template_name="catalog/ministry.html"):
     if request.method == 'POST' and 'bs_form' in request.POST:
         form = BSForm(request.POST)
         if form.is_valid():
-            form.save()
-            subject = u'Анкета БШ'
-            message = u'ФИО: %s \n Дата рождения: %s \n телефон: %s \n город: %s \n Семейное положение: %s \n Принадлежность к церкви: %s \n Город: %s \n Ф.И.О пастора Церкви: %s \n Член Церкви: %s \n Верует ли в Господа: %s \n Дата спасения: %s \n Призвание: %s \n Форма обучения: %s \n Согласен с правилами: %s'\
-                % (
-                    request.POST['fio'],
-                    request.POST['birth_day'],
-                    request.POST['phone'],
-                    request.POST['city'],
-                    request.POST['family_status'],
-                    request.POST['you_church'],
-                    request.POST['church_city'],
-                    request.POST['pastor_fio'],
-                    request.POST.get('is_church_member', False),
-                    request.POST.get('is_believer', False),
-                    request.POST['salvation_day'],
+            if request.POST.get('agreement', False) == False:
+                form_msg = ['Ошибка заполнения анкеты <br> Вы должны согласиться с пользовательским соглашением', '#DC7373']
+            else:
+                form.save()
+                subject = u'Анкета БШ'
+                message = u'ФИО: %s \n Дата рождения: %s \n телефон: %s \n город: %s \n Семейное положение: %s \n ' \
+                        u'Принадлежность к церкви: %s \n Город: %s \n Ф.И.О пастора Церкви: %s \n Член Церкви: %s \n ' \
+                        u'Верует ли в Господа: %s \n Дата спасения: %s \n Призвание: %s \n Форма обучения: %s \n ' \
+                        u'Согласен с правилами: %s%s \n Согласен с пользовательским соглашением: %s' \
+                    % (
+                        request.POST['fio'],
+                        request.POST['birth_day'],
+                        request.POST['phone'],
+                        request.POST['city'],
+                        request.POST['family_status'],
+                        request.POST['you_church'],
+                        request.POST['church_city'],
+                        request.POST['pastor_fio'],
+                        request.POST.get('is_church_member', False),
+                        request.POST.get('is_believer', False),
+                        request.POST['salvation_day'],
+                        request.POST['you_mission'],
+                        request.POST['form_of_study'],
+                        request.POST.get('rules', False),
+                        request.POST.get('agreement', False)
+                        )
 
-                    request.POST['you_mission'],
-                    request.POST['form_of_study'],
-                    request.POST.get('rules', False)
-                    )
-
-            send_mail(
-                subject, message, DEFAULT_FROM_EMAIL, ['bk.tomsk@mail.ru'], fail_silently=False)
-                #subject, message, DEFAULT_FROM_EMAIL, ['2100636@mail.ru'], fail_silently=False)
-            form_msg = ['Спасибо! Анкета успешно отправлена', '#0773bb']
+                send_mail(
+                    #subject, message, DEFAULT_FROM_EMAIL, ['bk.tomsk@mail.ru'], fail_silently=False)
+                    subject, message, DEFAULT_FROM_EMAIL, ['2100636@mail.ru'], fail_silently=False)
+                form_msg = ['Спасибо! Анкета успешно отправлена', '#0773bb']
         else:
             form_msg = ['Ошибка заполнения анкеты <br> Проверьте корректность всех данных', '#DC7373']
 
