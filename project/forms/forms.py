@@ -103,8 +103,7 @@ class BSForm(forms.ModelForm):
             'class': 'form-control floating-label'}
         self.fields['you_mission'].label = ''
 
-        self.fields['agreement'].label = mark_safe('Я ознакомлен(а) и согласен(а) с <a href="//proslavlenie.ru/page/polzovatelskoe-soglashenie/">пользовательским соглашением об использовании персональных данных</a>')
-        #self.fields['agreement'].label = 'Я ознакомлен(а) и согласен(а) с <a href="//proslavlenie.ru/page/polzovatelskoe-soglashenie/">пользовательским соглашением об использовании персональных данных</a>'
+        self.fields['agreement'].label = mark_safe('Я ознакомлен(а) и согласен(а) с <a href="//proslavlenie.ru/page/polzovatelskoe-soglashenie/" target="_blank">пользовательским соглашением об использовании персональных данных</a>')
 
     class Meta:
         model = BibleScool
