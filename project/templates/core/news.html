@@ -120,14 +120,14 @@
                         <form action=".#anketa" method="post" id="HvalaSForm">
                             {% csrf_token %}
                             <h3> Анкета для поступления в Школу Хвалы</h3>
-                            <div class="fi">{{fi}}</div>
-                            <div class="city">{{city}}</div>
-                            <div class="phone">{{phone}}</div>
-                            <div class="age">{{age}}</div>
-                            <div class="music_education">{{music_education}}</div>
-                            <div class="how_class">{{how_class}}</div>
-                            <div class="type_ministry">{{type_ministry}}</div>
-                            <div class="leader_fi">{{leader_fi}}</div>
+                            <div class="fi">{{form.fi}}</div>
+                            <div class="city">{{form.city}}</div>
+                            <div class="phone">{{form.phone}}</div>
+                            <div class="age">{{form.age}}</div>
+                            <div class="music_education">{{form.music_education}}</div>
+                            <div class="how_class">{{form.how_class}}</div>
+                            <div class="type_ministry">{{form.type_ministry}}</div>
+                            <div class="leader_fi">{{form.leader_fi}}</div>
                             <div class="agreement checkbox">
                               <label>
                                 {{form.agreement}}
