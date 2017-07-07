@@ -125,7 +125,7 @@
                             {% if request.path_info == '/ministry/molodezhnoe-sluzhenie/' %}
                                 <style>
                                 .whoiam_custom{display: none;}
-                                .fa-ok.social-ic,.fa-facebook-f.social-ic,.fa-twitter.social-ic{display: none;}
+                                .social .fa-ok.social-ic,.social .fa-facebook-f.social-ic,.social .fa-twitter.social-ic{display: none;}
                                 </style>
                                 <div class="bs_form_container">
                                     <h3>Лидерская конференция для молодежных и подростковых служителей PLAY 2017</h3>
@@ -154,6 +154,7 @@
         {{form.whoiam}}
     </label></div>
 <div class="whoiam_custom">{{form.whoiam_custom}}</div>
+<div class="email">{{form.email}}</div>
 <div class="agreement checkbox">
   <label>{{form.agreement}}
     <span class="checkbox-material"><span class="check"></span></span> Я ознакомлен(а) и согласен(а) с <a href="//proslavlenie.ru/page/polzovatelskoe-soglashenie/" target="_blank">пользовательским соглашением об использовании персональных данных</a>
