@@ -112,7 +112,7 @@ class Play2017(models.Model):
             ('2', 'Подростковый пастор'),
             ('3', 'Молодежный лидер'),
             ('4', 'Подростковый лидер'),
-            ('5', 'Служение прославлени'),
+            ('5', 'Прославление'),
             ('6', 'Администрирование'),
             ('7', 'Медиа'),
             ('8', 'Другое (указать)')
@@ -120,6 +120,7 @@ class Play2017(models.Model):
         verbose_name=u'Кем вы являетесь на данный момент'
     )   
     whoiam_custom = models.CharField(max_length=200, verbose_name=u'Кем вы являетесь на данный момент (Указать)', blank=True )
+    email = models.CharField(max_length=30, verbose_name=u'E-mail')
     agreement = models.BooleanField(verbose_name=u'Я ознакомлен(а) и согласен(а) с пользовательским соглашением об использовании персональных данных', default=True)
 
     class Meta:

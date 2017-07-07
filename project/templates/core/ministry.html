@@ -123,7 +123,10 @@
 
 
                             {% if request.path_info == '/ministry/molodezhnoe-sluzhenie/' %}
-                                <style>.whoiam_custom{display: none;}</style>
+                                <style>
+                                .whoiam_custom{display: none;}
+                                .fa-ok.social-ic,.fa-facebook-f.social-ic,.fa-twitter.social-ic{display: none;}
+                                </style>
                                 <div class="bs_form_container">
                                     <h3>Лидерская конференция для молодежных и подростковых служителей PLAY 2017</h3>
                                     <p>Конференция пройдет в формате выезда на базе «Церкви Прославления» г. Томск. </p>
@@ -200,10 +203,18 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-3">
-                    <h3 style="color: #2049a1;" id="">Лидер служения</h3>
+                    {% if request.path_info == '/ministry/molodezhnoe-sluzhenie/' %}
+                        <h3 style="color: #2049a1;" id="leadertitle">Молодежный пастор</h3>
+                    {% else %}
+                        <h3 style="color: #2049a1;" id="leadertitle">Лидер служения</h3>
+                    {% endif %} 
+
                     <div class="row">
                         <div class="col-xs-4">
-                            <img src="/media/{{ ministry.leader.photo }}" style="width:85px; border-radius:85px;" alt="">
+                            <a class="fancybox-me" rel="leaderphoto" href="/media/{{ ministry.leader.photo }}">
+                                <img src="/media/{{ ministry.leader.photo }}" style="width:85px; border-radius:85px;" alt="Лидер служения">
+                            </a>
+                            
                         </div>
                         <div class="col-xs-8">
                             <h5>{{ ministry.leader.first_name }}</h5> 

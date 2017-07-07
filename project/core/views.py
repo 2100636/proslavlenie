@@ -289,7 +289,7 @@ def ministryView(request, slug, template_name="catalog/ministry.html"):
                 elif request.POST['whoiam'] == '4':
                     whoiam = u'Подростковый лидер'
                 elif request.POST['whoiam'] == '5':
-                    whoiam = u'Служение прославлени'
+                    whoiam = u'Прославление'
                 elif request.POST['whoiam'] == '6':
                     whoiam = u'Администрирование'
                 elif request.POST['whoiam'] == '7':
@@ -299,6 +299,7 @@ def ministryView(request, slug, template_name="catalog/ministry.html"):
                 subject = u'Анкета PLAY 2017'
                 message = u'ФИО: %s \n Возраст (полных лет): %s \n Пол: %s \n Город: %s \n Название церкви: %s \n ' \
                         u'ФИО старшего пастора: %s \n Кем вы являетесь на данный момент: %s \n ' \
+                        u'E-mail: %s \n ' \
                         u'Согласен с пользовательским соглашением: да' \
                     % (
                         request.POST['fio'],
@@ -308,6 +309,7 @@ def ministryView(request, slug, template_name="catalog/ministry.html"):
                         request.POST['you_church'],
                         request.POST['pastor_fio'],
                         whoiam,
+                        request.POST['email'],
                         )
 
                 send_mail(
