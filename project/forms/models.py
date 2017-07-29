@@ -121,6 +121,7 @@ class Play2017(models.Model):
     )   
     whoiam_custom = models.CharField(max_length=200, verbose_name=u'Кем вы являетесь на данный момент (Указать)', blank=True )
     email = models.CharField(max_length=30, verbose_name=u'E-mail')
+    phone = models.CharField(max_length=11, verbose_name=u'Телефон', default='')
     agreement = models.BooleanField(verbose_name=u'Я ознакомлен(а) и согласен(а) с пользовательским соглашением об использовании персональных данных', default=True)
 
     class Meta:
