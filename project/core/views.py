@@ -300,6 +300,7 @@ def ministryView(request, slug, template_name="catalog/ministry.html"):
                 message = u'ФИО: %s \n Возраст (полных лет): %s \n Пол: %s \n Город: %s \n Название церкви: %s \n ' \
                         u'ФИО старшего пастора: %s \n Кем вы являетесь на данный момент: %s \n ' \
                         u'E-mail: %s \n ' \
+                        u'Телефон: %s \n ' \
                         u'Согласен с пользовательским соглашением: да' \
                     % (
                         request.POST['fio'],
@@ -310,6 +311,7 @@ def ministryView(request, slug, template_name="catalog/ministry.html"):
                         request.POST['pastor_fio'],
                         whoiam,
                         request.POST['email'],
+                        request.POST['phone'],
                         )
 
                 send_mail(
