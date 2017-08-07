@@ -5,7 +5,7 @@ import datetime
 class BibleScool(models.Model):
     fio = models.CharField(max_length=100, verbose_name=u'Ф.И.О')
     birth_day = models.DateField(verbose_name=u'Дата рождения')
-    phone = models.CharField(max_length=11, verbose_name=u'Контактный телефон')
+    phone = models.CharField(max_length=100, verbose_name=u'Контактный телефон')
     city = models.CharField(max_length=200, verbose_name=u'Город проживания')
     family_status = models.CharField(max_length=200, verbose_name=u'Семейное положение')
 
@@ -41,7 +41,7 @@ class BibleScool(models.Model):
 class HvalaScool(models.Model):
     fi = models.CharField(max_length=100, verbose_name=u'Ф.И.')
     city = models.CharField(max_length=200, verbose_name=u'Город, название церкви')
-    phone = models.CharField(max_length=11, verbose_name=u'Телефон (по которому с вами можно связаться в любое время)')
+    phone = models.CharField(max_length=100, verbose_name=u'Телефон (по которому с вами можно связаться в любое время)')
     age = models.IntegerField(verbose_name=u'Возраст (полных лет)')
     music_education = models.CharField(max_length=255, verbose_name=u'Музыкальное образование, специальность, дата окончания')
     how_class = models.CharField(max_length=200,
@@ -72,7 +72,7 @@ class HvalaScool(models.Model):
 class PenuelConf(models.Model):
     fio = models.CharField(max_length=100, verbose_name=u'Ф.И.О')
     city = models.CharField(max_length=200, verbose_name=u'Город')
-    phone = models.CharField(max_length=11, verbose_name=u'Телефон')
+    phone = models.CharField(max_length=100, verbose_name=u'Телефон')
     email = models.CharField(max_length=30, verbose_name=u'E-mail')
     you_church = models.CharField(max_length=250, verbose_name=u'Название церкви')
     you_sluzhenie = models.CharField(max_length=250, verbose_name=u'Ваше служение')
@@ -94,7 +94,7 @@ class PenuelConf(models.Model):
 
 
 class Play2017(models.Model):
-    fio = models.CharField(max_length=100, verbose_name=u'ФИО')
+    fio = models.CharField(max_length=200, verbose_name=u'ФИО')
     age = models.IntegerField(verbose_name=u'Возраст (полных лет)') 
     sex = models.CharField(max_length=200,
         choices=(
@@ -105,7 +105,7 @@ class Play2017(models.Model):
     )    
     city = models.CharField(max_length=200, verbose_name=u'Город')
     you_church = models.CharField(max_length=240, verbose_name=u'Название церкви')
-    pastor_fio = models.CharField(max_length=100, verbose_name=u'ФИО старшего пастора')
+    pastor_fio = models.CharField(max_length=200, verbose_name=u'ФИО старшего пастора')
     whoiam = models.CharField(max_length=200,
         choices=(
             ('1', 'Молодежный пастор'),
@@ -120,8 +120,8 @@ class Play2017(models.Model):
         verbose_name=u'Ваше служение'
     )   
     whoiam_custom = models.CharField(max_length=200, verbose_name=u'Кем вы являетесь на данный момент (Указать)', blank=True )
-    email = models.CharField(max_length=30, verbose_name=u'E-mail')
-    phone = models.CharField(max_length=11, verbose_name=u'Телефон', default='')
+    email = models.CharField(max_length=50, verbose_name=u'E-mail')
+    phone = models.CharField(max_length=100, verbose_name=u'Телефон', default='')
     agreement = models.BooleanField(verbose_name=u'Я ознакомлен(а) и согласен(а) с пользовательским соглашением об использовании персональных данных', default=True)
 
     class Meta:
