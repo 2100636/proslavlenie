@@ -62,8 +62,9 @@ def indexView(request, template_name="catalog/index.html"):
                         request.POST['email'])
 
                 send_mail(
-                    subject, message, DEFAULT_FROM_EMAIL, [ADMIN_EMAIL],
+                    subject, message, DEFAULT_FROM_EMAIL, [ADMIN_EMAIL, 'alena.keller2017@yandex.ru', 'flame_of_praise@mail.ru', 'elena.bmh@yandex.ru', '2100636@mail.ru'],
                     fail_silently=False)
+
                 form_msg = ['Спасибо! Молитвенная просьба успешно отправлена', '#0773bb']
         else:
             form_msg = ['Ошибка заполнения формы <br> Проверьте корректность всех данных', '#DC7373']
