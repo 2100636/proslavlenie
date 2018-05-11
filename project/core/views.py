@@ -14,7 +14,7 @@ from project.settings import ADMIN_EMAIL, DEFAULT_FROM_EMAIL
 
 from project.payment.forms import PaymentForm
 from project.payment.models import Payment
-import requests 
+#import requests 
 
 def crossdomain_xmlView(request, template_name="core/crossdomain.html"):
     return render_to_response(
@@ -51,19 +51,21 @@ def indexView(request, template_name="catalog/index.html"):
         if form_need.is_valid():
             if request.POST.get('agreement', False) == False:
                 form_msg = ['Ошибка заполнения формы "Молитвенная нужда"<br> Вы должны согласиться с пользовательским соглашением', '#DC7373']
+            elif request.POST['e_mail'] != '':
+                form_msg = ['Ошибка заполнения формы "Молитвенная нужда"<br> Обнаружен спам, попробуйте еще раз или позднее', '#DC7373']
             else:
                 form_need.save()
-                subject = u'Нужда proslavlenie.ru'
-                message = u'телефон: %s \n Имя: %s \n Сообщение: %s \n почта: %s'\
-                    % (
-                        request.POST['phone'],
-                        request.POST['name'],
-                        request.POST['text'],
-                        request.POST['email'])
-
-                send_mail(
-                    subject, message, DEFAULT_FROM_EMAIL, [ADMIN_EMAIL, 'alena.keller2017@yandex.ru', 'flame_of_praise@mail.ru', 'elena.bmh@yandex.ru', '2100636@mail.ru'],
-                    fail_silently=False)
+                ## subject = u'Нужда proslavlenie.ru'
+                ## message = u'телефон: %s \n Имя: %s \n Сообщение: %s \n почта: %s'\
+                ##     % (
+                ##         request.POST['phone'],
+                ##         request.POST['name'],
+                ##         request.POST['text'],
+                ##         request.POST['email'])
+                ## 
+                ## send_mail(
+                ##     subject, message, DEFAULT_FROM_EMAIL, [ADMIN_EMAIL, 'alena.keller2017@yandex.ru', 'flame_of_praise@mail.ru', 'elena.bmh@yandex.ru', '2100636@mail.ru'],
+                ##     fail_silently=False)
 
                 form_msg = ['Спасибо! Молитвенная просьба успешно отправлена', '#0773bb']
         else:
@@ -98,7 +100,7 @@ def indexView(request, template_name="catalog/index.html"):
     
                 ## send_mail(
                 ##    subject, message, DEFAULT_FROM_EMAIL, [ADMIN_EMAIL], fail_silently=False)
-                r = requests.get("http://form.proslavlenie.ru/actions.php")
+                ### r = requests.get("http://form.proslavlenie.ru/actions.php")
 
                 form_msg = ['Спасибо! Вопрос успешно отправлен', '#0773bb']
         else:
