@@ -14,7 +14,7 @@ from project.settings import ADMIN_EMAIL, DEFAULT_FROM_EMAIL
 
 from project.payment.forms import PaymentForm
 from project.payment.models import Payment
-
+import requests 
 
 def crossdomain_xmlView(request, template_name="core/crossdomain.html"):
     return render_to_response(
