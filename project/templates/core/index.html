@@ -146,8 +146,8 @@
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                             <h4 class="modal-title">Задать вопрос</h4>
                                         </div>
-                                        <div class="errorswrap"></div>
                                         <form action="." method="post" class="siteform">
+                                          <div class="errorswrap"></div>
                                           {% csrf_token %}
                                           <div class="modal-body">
                                             <input name="formname" type="hidden" value="Задать вопрос" class="form-control">
@@ -163,13 +163,14 @@
                                                 <span class="checkbox-material"><span class="check"></span></span> Я ознакомлен(а) и согласен(а) с <a href="//proslavlenie.ru/page/polzovatelskoe-soglashenie/" target="_blank">пользовательским соглашением об использовании персональных данных</a>
                                               </label>
                                             </div>
-                                          </div>
-                                          <div class="modal-footer">
-                                            <button class="btn btn-warning" data-dismiss="modal">Закрыть</button>
-                                            <input type="submit" name="question" class="btn btn-primary " value="Отправить" style="display: none;">
+                                            <input type="submit" name="need" class="btn btn-primary " value="Отправить" style="display: none;">
                                             <div class="send btn btn-primary" style="position: relative;z-index: 2;">Отправить</div>
                                           </div>
-                                        </form>
+
+                                       </form>
+                                        <div class="modal-footer" style="margin-top: -69px;margin-bottom: 0;position: relative;z-index: 1;">
+                                          <button class="btn btn-warning" data-dismiss="modal">Закрыть</button>
+                                        </div>
                                     </div><!-- /.modal-content -->
                                 </div><!-- /.modal-dialog -->
                             </div><!-- /.modal -->
@@ -317,7 +318,7 @@
               <div class="send btn btn-primary" style="position: relative;z-index: 2;">Отправить</div>
             </div>
           </form>
-          <div class="modal-footer" style="margin-top: -59px;margin-bottom: 0;position: relative;z-index: 1;">
+          <div class="modal-footer" style="margin-top: -69px;margin-bottom: 0;position: relative;z-index: 1;">
             <button class="btn btn-warning" data-dismiss="modal">Закрыть</button>
           </div>
         </div>
