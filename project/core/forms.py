@@ -65,4 +65,4 @@ class QuestionForm(forms.ModelForm):
     #email = forms.CharField(widget=forms.TextInput)
     class Meta:
         model = Question
-        fields = ('name', 'phone', 'email', 'text')
+        fields = ('name', 'phone', 'email', 'text', 'e_mail')
