@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django import forms
-from project.core.models import Need
+from project.core.models import Need, Question
 from yandex_money.models import Payment
 
 
@@ -57,5 +57,5 @@ class QuestionForm(forms.Form):
     #text = forms.CharField(widget=forms.Textarea)
     #email = forms.CharField(widget=forms.TextInput)
     class Meta:
-        model = Need
+        model = Question
         fields = ('name', 'phone', 'email', 'text')
