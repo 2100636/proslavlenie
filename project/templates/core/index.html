@@ -277,6 +277,11 @@
 
 
 <!-- модальное окно для кнопки Молитвенная нужда из header.html -->
+  <style>  
+  #id_otherfield{
+    display: none;
+  }
+  </style>
 <div id="complete-dialog" class="modal fade" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -285,13 +290,28 @@
                 <h4 class="modal-title">Оставить молитвенную просьбу</h4>
                 <b style="color: #E60000;text-align: center;">Отправка просьбы временно недоступна по техническим причинам</b>
             </div>
-            <form action="." method="post">{% csrf_token %}
+            <form action="." method="post" class="siteform">
+                {# {% csrf_token %} #} 
                 <div class="modal-body">
-                    <br/>
-                    {{form_need.name}}
-                    {{form_need.phone}}
-                    {{form_need.email}}
-                    {{form_need.text}}
+
+
+                    <div class="errorswrap"></div>
+                    <input name="formname" type="hidden" value="Молитвенная просьба" class="form-control">
+                    <input name="fields" type="hidden" value="formname;name;phone;email;message" class="form-control">
+                    <input class="form-control floating-label" id="id_name" name="name" placeholder="Ваше Имя" type="text"> <!-- required -->
+                    <input class="form-control floating-label" id="id_phone" name="phone" placeholder="Ваш телефон" type="text">
+                    <input class="form-control floating-label" id="id_email" name="email" placeholder="Ваша почта" type="email">
+                    <input class="form-control floating-label" id="id_otherfield" name="e-mail" placeholder="Не_заполняйте_это_поле!" type="text">
+                    <textarea class="form-control floating-label" id="id_message" name="message" placeholder="Опишите Вашу нужду"></textarea>
+
+                {#    <br/>   #}
+                {#    {{form_need.name}}   #}
+                {#    {{form_need.phone}}   #}
+                {#    {{form_need.email}}   #}
+                {#    {{form_need.text}}   #}
+
+
+
                     <div class="agreement checkbox">
                       <label>{{form_need.agreement}}
                         <span class="checkbox-material"><span class="check"></span></span> Я ознакомлен(а) и согласен(а) с <a href="//proslavlenie.ru/page/polzovatelskoe-soglashenie/" target="_blank">пользовательским соглашением об использовании персональных данных</a>
@@ -354,6 +374,36 @@
        swiper.slideTo($(this).index());
     });
     </script>
+
+      <script>
+        (function($){$(document).ready(function(){
+
+          $(".siteform").submit(function() {
+            var that = $(this);
+            var str = that.serialize();
+            console.log(that);
+            console.log(str);
+            $.ajax({
+              type: "POST",
+              url: "http://form.proslavlenie.ru/mail.php",
+              data: str,
+              success: function(msg) {
+                console.log(msg);
+                if(msg == 'ok') {
+                  result = '<div class="ok">Спасибо! Заявка отправлена. Мы с Вами свяжемся в ближайшее время.</div>';
+                  that.html(result);
+                }
+                else {
+                  that.find('.errorswrap').html('<div class="errors">'+msg+'</div>');
+                }
+              }
+            });
+            return false;
+          });
+
+        });})(jQuery);
+      </script>  
+
 {% endblock %}
 
 {% block shacke %}
