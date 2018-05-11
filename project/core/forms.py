@@ -53,11 +53,6 @@ class QuestionForm(forms.ModelForm):
         self.fields['text'].widget.attrs = {
             'placeholder': 'Ваш Вопрос',
             'class': 'form-control floating-label'}
-        
-        e_mail = forms.CharField(widget=forms.TextInput)
-        e_mail.widget.attrs = {
-            'placeholder': 'Не_заполняйте_поле',
-            'class': 'form-control floating-label'}
 
     #name = forms.CharField(widget=forms.TextInput)
     #phone = forms.CharField(widget=forms.TextInput, required=False)
@@ -65,4 +60,4 @@ class QuestionForm(forms.ModelForm):
     #email = forms.CharField(widget=forms.TextInput)
     class Meta:
         model = Question
-        fields = ('name', 'phone', 'email', 'text', 'e_mail')
+        fields = ('name', 'phone', 'email', 'text')
