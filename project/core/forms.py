@@ -34,7 +34,7 @@ class NeedForm(forms.ModelForm):
         fields = ('name', 'phone', 'email', 'text', 'agreement')
 
 
-class QuestionForm(forms.Form):
+class QuestionForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(QuestionForm, self).__init__(*args, **kwargs)
 
