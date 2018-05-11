@@ -82,7 +82,7 @@ def indexView(request, template_name="catalog/index.html"):
         if form_question.is_valid():
             if request.POST.get('agreement', False) == False:
                 form_msg = ['Ошибка заполнения формы "Задать вопрос"<br> Вы должны согласиться с пользовательским соглашением', '#DC7373']
-            elif request.POST['e_mail'] != '':
+            elif request.POST['e-mail'] != '':
                 form_msg = ['Ошибка заполнения формы "Задать вопрос"<br> Обнаружен спам, попробуйте еще раз или позднее', '#DC7373']
             else:
                 form_question.save()

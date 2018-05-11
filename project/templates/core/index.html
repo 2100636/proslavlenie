@@ -146,12 +146,12 @@
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                             <h4 class="modal-title">Задать вопрос</h4>
                                         </div>
-                                        <form action="." method="post">{% csrf_token %}
+                                        <form action="." method="post" class="siteform">{% csrf_token %}
                                             <div class="modal-body">
                                                 {{form_question.name}}
                                                 {{form_question.phone}}
                                                 {{form_question.email}}
-                                                <input class="form-control floating-label" id="e_mail" name="e_mail" placeholder="Не_заполняйте_это_поле" type="email">
+                                                <input class="form-control floating-label" id="e_mail" name="e-mail" placeholder="Не_заполняйте_это_поле" type="email">
                                                 {{form_question.text}}
                                                 <div class="agreement checkbox">
                                                   <label>
