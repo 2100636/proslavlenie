@@ -166,7 +166,7 @@
                                           </div>
                                           <div class="modal-footer">
                                             <button class="btn btn-warning" data-dismiss="modal">Закрыть</button>
-                                            <input type="submit" name="question" class="btn btn-primary" value="Отправить">
+                                            <input type="submit" name="question" class="btn btn-primary send" value="Отправить">
                                           </div>
                                         </form>
                                     </div><!-- /.modal-content -->
@@ -317,7 +317,7 @@
                   <span class="checkbox-material"><span class="check"></span></span> Я ознакомлен(а) и согласен(а) с <a href="//proslavlenie.ru/page/polzovatelskoe-soglashenie/" target="_blank">пользовательским соглашением об использовании персональных данных</a>
                 </label>
               </div>        
-              <input type="submit" name="need" class="btn btn-primary" value="Отправить" style="position: relative;z-index: 2;">
+              <input type="submit" name="need" class="btn btn-primary send" value="Отправить" style="position: relative;z-index: 2;">
 
             </div>
           </form>
@@ -384,9 +384,10 @@
       var send = false;
       (function($){$(document).ready(function(){
         
-        $(".siteform").submit(function() {
+        $(".siteform .send").click(function() {
+          var that = $(this);
+          form = that.parents('.siteform');
           if (send == false) {
-            var that = $(this);
             var str = that.serialize();
             console.log(that);
             console.log(str);
@@ -398,12 +399,12 @@
                 console.log(msg);
                 if(msg == 'ok') {
                   result = '<div class="ok">Спасибо! Ваше сообщение отправлено.</div>';
-                  that.html(result);
+                  form.html(result);
                   send = true;
-                  that.submit();
+                  form.submit();
                 }
                 else {
-                  that.find('.errorswrap').html('<div class="errors">'+msg+'</div>');
+                  form.find('.errorswrap').html('<div class="errors">'+msg+'</div>');
                 }
               }
             });
