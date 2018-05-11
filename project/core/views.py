@@ -95,10 +95,10 @@ def indexView(request, template_name="catalog/index.html"):
                 ##         request.POST['email'],
                 ##         request.POST['text']
                 ##     )
-
+    
                 ## send_mail(
                 ##    subject, message, DEFAULT_FROM_EMAIL, [ADMIN_EMAIL], fail_silently=False)
-                r = requests.get("https://form.proslavlenie.ru/actions.php")
+                r = requests.get("http://form.proslavlenie.ru/actions.php")
 
                 form_msg = ['Спасибо! Вопрос успешно отправлен', '#0773bb']
         else:
