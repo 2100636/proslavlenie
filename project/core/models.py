@@ -337,7 +337,7 @@ class MinistryImage(models.Model):
 
 class Need(models.Model):
     name = models.CharField(max_length=100, verbose_name=u'Ваше имя')
-    phone = models.CharField(max_length=11, verbose_name=u'Ваш телефо')
+    phone = models.CharField(max_length=11, verbose_name=u'Ваш телефон')
     email = models.EmailField(blank=True)
     text = models.TextField(verbose_name=u'Текст сообщения')
     agreement = models.BooleanField(verbose_name=u'Я ознакомлен(а) и согласен(а) с пользовательским соглашением об использовании персональных данных', default=True)
@@ -352,8 +352,11 @@ class Need(models.Model):
 
 class Question(models.Model):
     """docstring for Question"""
+    name = models.CharField(max_length=150, blank=True, verbose_name=u'Ваше имя')
     question = models.TextField(verbose_name=u'Ваш вопрос')
     is_admin = models.BooleanField(default=False)
+    phone = models.CharField(max_length=15, blank=True, verbose_name=u'Ваш телефон')
+    email = models.EmailField(max_length=30, blank=True, verbose_name=u'Ваш E-mail')
 
     class Meta:
         verbose_name = u'Вопрос'

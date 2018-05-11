@@ -150,6 +150,7 @@
                                             <div class="modal-body">
                                                 {{form_question.name}}
                                                 {{form_question.phone}}
+                                                {{form_question.email}}
                                                 {{form_question.text}}
                                                 <div class="agreement checkbox">
                                                   <label>
@@ -276,7 +277,7 @@
     </section>
 
 
-<!-- модальное окно для кнопки Молитвенная нужда из header.html -->
+ {# <!-- модальное окно для кнопки Молитвенная нужда из header.html --> #}
   <style>  
   #id_otherfield{
     display: none;
@@ -288,19 +289,18 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h4 class="modal-title">Оставить молитвенную просьбу</h4>
-                <b style="color: #E60000;text-align: center;">Отправка просьбы временно недоступна по техническим причинам</b>
+                <!-- <b style="color: #E60000;text-align: center;">Отправка просьбы временно недоступна по техническим причинам</b> -->
             </div>
             <form action="." method="post" class="siteform">
                 {# {% csrf_token %} #} 
                 <div class="modal-body">
 
-
                     <div class="errorswrap"></div>
                     <input name="formname" type="hidden" value="Молитвенная просьба" class="form-control">
                     <input name="fields" type="hidden" value="formname;name;phone;email;message" class="form-control">
-                    <input class="form-control floating-label" id="id_name" name="name" placeholder="Ваше Имя" type="text"> <!-- required -->
-                    <input class="form-control floating-label" id="id_phone" name="phone" placeholder="Ваш телефон" type="text">
-                    <input class="form-control floating-label" id="id_email" name="email" placeholder="Ваша почта" type="email">
+                    <input class="form-control floating-label" id="id_name" name="name" required placeholder="Ваше Имя" type="text">
+                    <input class="form-control floating-label" id="id_phone" name="phone" required placeholder="Ваш телефон" type="text">
+                    <input class="form-control floating-label" id="id_email" name="email" required placeholder="Ваша почта" type="email">
                     <input class="form-control floating-label" id="id_otherfield" name="e-mail" placeholder="Не_заполняйте_это_поле!" type="text">
                     <textarea class="form-control floating-label" id="id_message" name="message" placeholder="Опишите Вашу нужду"></textarea>
 
@@ -310,20 +310,18 @@
                 {#    {{form_need.email}}   #}
                 {#    {{form_need.text}}   #}
 
-
-
                     <div class="agreement checkbox">
                       <label>{{form_need.agreement}}
                         <span class="checkbox-material"><span class="check"></span></span> Я ознакомлен(а) и согласен(а) с <a href="//proslavlenie.ru/page/polzovatelskoe-soglashenie/" target="_blank">пользовательским соглашением об использовании персональных данных</a>
                       </label>
-                    </div>                    
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-warning" data-dismiss="modal">Закрыть</button>
+                    </div>        
                     <input type="submit" name="need" class="btn btn-primary" value="Отправить">
-                    <!--<button class="btn btn-success" >Отправить</button>-->
+
                 </div>
             </form>
+            <div class="modal-footer" style="margin-top: -59px;margin-bottom: 0;position: relative;z-index: 1;">
+                <button class="btn btn-warning" data-dismiss="modal">Закрыть</button>
+            </div>
         </div>
     </div>
 </div>
@@ -390,7 +388,7 @@
               success: function(msg) {
                 console.log(msg);
                 if(msg == 'ok') {
-                  result = '<div class="ok">Спасибо! Заявка отправлена. Мы с Вами свяжемся в ближайшее время.</div>';
+                  result = '<div class="ok">Спасибо! Ваше сообщение отправлено.</div>';
                   that.html(result);
                 }
                 else {

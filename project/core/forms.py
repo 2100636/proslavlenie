@@ -44,11 +44,18 @@ class QuestionForm(forms.Form):
             'placeholder': 'Ваш телефон (не обязательно)',
             'class': 'form-control floating-label'}
 
+        self.fields['email'].widget.attrs = {
+            'placeholder': 'Ваша почта',
+            'class': 'form-control floating-label'}            
+
         self.fields['text'].widget.attrs = {
             'placeholder': 'Ваше Вопрос',
             'class': 'form-control floating-label'}
 
-    name = forms.CharField(widget=forms.TextInput)
-    phone = forms.CharField(widget=forms.TextInput, required=False)
-    text = forms.CharField(widget=forms.Textarea)
-
+    #name = forms.CharField(widget=forms.TextInput)
+    #phone = forms.CharField(widget=forms.TextInput, required=False)
+    #text = forms.CharField(widget=forms.Textarea)
+    #email = forms.CharField(widget=forms.TextInput)
+    class Meta:
+        model = Need
+        fields = ('name', 'phone', 'email', 'text')
