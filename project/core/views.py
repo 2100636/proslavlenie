@@ -71,12 +71,14 @@ def indexView(request, template_name="catalog/index.html"):
 
     # Отправляем вопрос на почту
     elif request.method == "POST" and "question" in request.POST:
-        postdata = {
-            'name': request.POST['name'],
-            'phone': request.POST['phone'],
-            'text': request.POST['text']
-        }
-        form_question = QuestionForm(postdata)
+        ## postdata = {
+        ##     'name': request.POST['name'],
+        ##     'phone': request.POST['phone'],
+        ##     'email': request.POST['email'],
+        ##     'text': request.POST['text']
+        ## }
+        ## form_question = QuestionForm(postdata)
+        form_question = QuestionForm(request.POST)
         if form_question.is_valid():
             if request.POST.get('agreement', False) == False:
                 form_msg = ['Ошибка заполнения формы "Задать вопрос"<br> Вы должны согласиться с пользовательским соглашением', '#DC7373']

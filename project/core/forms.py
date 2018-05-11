@@ -37,8 +37,10 @@ class NeedForm(forms.ModelForm):
 class QuestionForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(QuestionForm, self).__init__(*args, **kwargs)
+
         self.fields['name'].widget.attrs = {
-            'placeholder': 'Ваше Имя', 'class': 'form-control floating-label'}
+            'placeholder': 'Ваше Имя', 
+            'class': 'form-control floating-label'}
 
         self.fields['phone'].widget.attrs = {
             'placeholder': 'Ваш телефон (не обязательно)',
@@ -51,7 +53,6 @@ class QuestionForm(forms.Form):
         self.fields['text'].widget.attrs = {
             'placeholder': 'Ваше Вопрос',
             'class': 'form-control floating-label'}
-
     #name = forms.CharField(widget=forms.TextInput)
     #phone = forms.CharField(widget=forms.TextInput, required=False)
     #text = forms.CharField(widget=forms.Textarea)

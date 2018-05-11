@@ -353,7 +353,8 @@ class Need(models.Model):
 class Question(models.Model):
     """docstring for Question"""
     name = models.CharField(max_length=150, blank=True, verbose_name=u'Ваше имя')
-    question = models.TextField(verbose_name=u'Ваш вопрос')
+    question = models.TextField(verbose_name=u'Ваш вопрос', default='')
+    text = models.TextField(verbose_name=u'Текст сообщения', default='')
     is_admin = models.BooleanField(default=False)
     phone = models.CharField(max_length=15, blank=True, verbose_name=u'Ваш телефон')
     email = models.EmailField(max_length=30, blank=True, verbose_name=u'Ваш E-mail')
