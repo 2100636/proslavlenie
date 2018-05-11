@@ -353,8 +353,8 @@ class Need(models.Model):
 class Question(models.Model):
     """docstring for Question"""
     name = models.CharField(max_length=150, blank=True, verbose_name=u'Ваше имя')
-    question = models.TextField(verbose_name=u'Ваш вопрос', default='')
-    text = models.TextField(verbose_name=u'Текст сообщения', default='')
+    #question = models.TextField(verbose_name=u'Ваш вопрос', default='')
+    text = models.TextField(verbose_name=u'Вопрос', default='')
     is_admin = models.BooleanField(default=False)
     phone = models.CharField(max_length=15, blank=True, verbose_name=u'Ваш телефон')
     email = models.EmailField(max_length=30, blank=True, verbose_name=u'Ваш E-mail')
@@ -362,6 +362,9 @@ class Question(models.Model):
     class Meta:
         verbose_name = u'Вопрос'
         verbose_name_plural = u'Вопросы'
+
+    def __unicode__(self):
+        return self.text
 
     def is_admin_question(self):
         return self.is_admin
