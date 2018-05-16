@@ -71,10 +71,14 @@
 
                             {% if request.path_info == '/ministry/biblejskie-kursy/' %}
                                 <div class="bs_form_container">
-                                    <form action="." method="post">
+                                    <form action="." method="post" class="siteform">
                                         {% csrf_token %}
-                                        <h3>Анкета для поступления в БШ</h3>
+                                        <h3>Анкета для поступления в БК</h3>
                                         {# {{ form }} #}
+<input name="formname" type="hidden" value="Анкета БШ" class="form-control">
+<input name="fields" type="hidden" value="formname;fio;birth_day;phone;city;family_status;you_church;church_city;pastor_fio;is_church_member;is_believer;salvation_day;you_mission;form_of_study;is_pastor_know;is_blagoslovenie;is_vernutsya" class="form-control">
+
+
 <div class="fio">{{form.fio}}</div>
 <div class="birth_day">{{form.birth_day}}</div>
 <div class="phone">{{form.phone}}</div>
@@ -97,6 +101,23 @@
 <div class="salvation_day">{{form.salvation_day}}</div>
 <div class="you_mission">{{form.you_mission}}</div>
 <div class="form_of_study"><label for="id_form_of_study">Форма обучения: {{form.form_of_study}}</label></div>
+
+<div class="is_pastor_know checkbox">
+  <label>{{form.is_pastor_know}}
+    <span class="checkbox-material"><span class="check"></span></span> Знает ли пастор вашей Церкви, о вашем желании обучаться на БК?
+  </label>
+</div><div class="is_blagoslovenie checkbox">
+  <label>{{form.is_blagoslovenie}}
+    <span class="checkbox-material"><span class="check"></span></span> Имеете ли вы благословение вашего пастора для обучения?
+  </label>
+</div><div class="is_vernutsya checkbox">
+  <label>{{form.is_vernutsya}}
+    <span class="checkbox-material"><span class="check"></span></span> Обязуетесь ли вы по окончании обучения вернуться в свою церковь?
+  </label>
+</div>
+
+<input class="form-control floating-label" id="e_mail" name="e_mail" placeholder="Не_заполняйте_это_поле" type="email">
+
 <div class="rules checkbox">
   <label>{{form.rules}}
     <span class="checkbox-material"><span class="check"></span></span> Я понимаю, что, как слушатель Библейских курсов, я обязан следовать установленным правилам
@@ -108,7 +129,10 @@
   </label>
 </div>
 
-                                        <input type="submit" name="bs_form" class="btn btn-success" style="display: block;margin-top: 20px;float: right;" value="Отправить">
+                                        <input type="submit" name="bs_form" class="btn btn-success" style="display: block;margin-top: 20px;float: right;display: none;" value="Отправить">
+                                        
+                                        <div class="send btn btn-success" style="display: block;margin-top: 20px;float: right;">Отправить</div>
+
                                     </form>
                                 </div>
                             {% endif %} 
@@ -271,5 +295,45 @@
         </script>
     {% endif %} 
 
+
+    <style>
+      #e_mail.form-control{
+        display: none;
+      }
+    </style>
+    <script>
+      var send = false;
+      (function($){$(document).ready(function(){
+        
+        $(".siteform .send").click(function() {
+          var that = $(this);
+          form = that.parents('.siteform');
+          if (send == false) {
+            var str = form.serialize();
+            console.log(form);
+            console.log(str);
+            $.ajax({
+              type: "POST",
+              url: "https://form.proslavlenie.ru/mail.php",
+              data: str,
+              success: function(msg) {
+                console.log(msg);
+                if(msg == 'ok') {
+                  result = '<div class="ok">Спасибо! Ваше сообщение отправлено.</div>';
+                  form.html(result);
+                  send = true;
+                  form.submit();
+                }
+                else {
+                  form.find('.errorswrap').html('<div class="errors">'+msg+'</div>');
+                }
+              }
+            });
+            return false;
+          }
+        });
+
+      });})(jQuery);
+    </script> 
 
 {% endblock %}

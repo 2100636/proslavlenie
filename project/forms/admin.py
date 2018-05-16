@@ -5,6 +5,12 @@ from models import BibleScool, HvalaScool, PenuelConf, Play2017
 
 
 #
+class BibleScoolAdmin(admin.ModelAdmin):
+    model = BibleScool
+    list_display = ('fio', 'city', 'phone' , 'date')
+    list_display_links = ('fio',)
+    list_per_page = 100
+
 class HvalaScoolAdmin(admin.ModelAdmin):
     model = HvalaScool
     list_display = ('fi', 'date')
@@ -19,7 +25,7 @@ class PenuelConfAdmin(admin.ModelAdmin):
     list_per_page = 50
 
 
-admin.site.register(BibleScool)
+admin.site.register(BibleScool, BibleScoolAdmin)
 admin.site.register(HvalaScool, HvalaScoolAdmin)
 admin.site.register(PenuelConf, PenuelConfAdmin)
 admin.site.register(Play2017)

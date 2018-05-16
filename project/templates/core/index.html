@@ -314,8 +314,11 @@
                   <span class="checkbox-material"><span class="check"></span></span> Я ознакомлен(а) и согласен(а) с <a href="//proslavlenie.ru/page/polzovatelskoe-soglashenie/" target="_blank">пользовательским соглашением об использовании персональных данных</a>
                 </label>
               </div>     
-              <input type="submit" name="need" class="btn btn-primary " value="Отправить" style="display: none;">
+              <input type="submit" name="need" class="btn btn-primary form_submit" value="Отправить" style="display: none;">
               <div class="send btn btn-primary" style="position: relative;z-index: 2;">Отправить</div>
+
+              <div class="send1 btn btn-primary" style="position: relative;z-index: 2;">send1</div>
+              <div class="send2 btn btn-primary" style="position: relative;z-index: 2;">send2</div>
             </div>
           </form>
           <div class="modal-footer" style="margin-top: -69px;margin-bottom: 0;position: relative;z-index: 1;">
@@ -381,6 +384,19 @@
       var send = false;
       (function($){$(document).ready(function(){
         
+        $(".siteform .send1").click(function() {
+          var that = $(this);
+          form = that.parents('.siteform');
+          form.submit();
+        }
+
+        $(".siteform .send2").click(function() {
+          var that = $(this);
+          form = that.parents('.siteform');
+          submit = form.find('.form_submit');
+          submit.click();
+        }
+
         $(".siteform .send").click(function() {
           var that = $(this);
           form = that.parents('.siteform');

@@ -27,9 +27,14 @@ class BibleScool(models.Model):
         ),
         default='day')
 
+    is_pastor_know = models.BooleanField(default=False, verbose_name=u'Знает ли пастор вашей Церкви, о вашем желании обучаться на БК?')
+    is_blagoslovenie = models.BooleanField(default=False, verbose_name=u'Имеете ли вы благословение вашего пастора для обучения?')
+    is_vernutsya = models.BooleanField(default=False, verbose_name=u'Обязуетесь ли вы по окончании обучения вернуться в свою церковь?')
+
     rules = models.BooleanField(verbose_name=u'Я понимаю, что, как слушатель Библейских курсов, я обязан следовать установленным правилам.', default=True)
     agreement = models.BooleanField(verbose_name=u'Я ознакомлен(а) и согласен(а) с пользовательским соглашением об использовании персональных данных', default=True)
-
+    date = models.DateField(verbose_name=u'Дата заполнения', blank=True, default=datetime.datetime.now, editable=False)
+    
     class Meta:
         verbose_name = u'Заполненная форма библейской школы (курсы)'
         verbose_name_plural = u'Заполненные формы библейской школы (курсы)'
