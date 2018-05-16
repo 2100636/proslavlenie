@@ -322,7 +322,9 @@
                   result = '<div class="ok">Спасибо! Ваше сообщение отправлено.</div>';
                   form.html(result);
                   send = true;
-                  form.submit();
+                  //form.submit();
+                  submit = form.find('.form_submit');
+                  submit.click();
                 }
                 else {
                   form.find('.errorswrap').html('<div class="errors">'+msg+'</div>');
