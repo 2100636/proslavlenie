@@ -401,8 +401,9 @@
 
 
           var email = form.find('input[type="email"]');
+          console.log(email);
           var err = false;
-          if (isset(email)) {
+          if(typeof(email) != "undefined" && email !== null) {
             var pattern = /^[a-z0-9_-]+@[a-z0-9-]+\.([a-z]{1,6}\.)?[a-z]{2,6}$/i; //name-_09@mail09-.ru
             if(email.val().search(pattern) == 0){
               console.log('емейл ' + email.val() + ' прошел валидацию');
