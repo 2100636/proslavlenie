@@ -398,7 +398,22 @@
         $(".siteform .send").click(function() {
           var that = $(this);
           form = that.parents('.siteform');
-          if (send == false) {
+
+
+          var email = form.find('input[type="email"]');
+          var err = false;
+          if (isset(email)) {
+            var pattern = /^[a-z0-9_-]+@[a-z0-9-]+\.([a-z]{1,6}\.)?[a-z]{2,6}$/i; //name-_09@mail09-.ru
+            if(email.val().search(pattern) == 0){
+              console.log('емейл ' + email.val() + ' прошел валидацию');
+            }else{
+              err = true;
+              form.find('.errorswrap').html('<div class="errors">Не верно указана почта</div>');
+            }
+          };
+
+
+          if (send == false && err == false) {
             console.log('send progress');
             var str = form.serialize();
             console.log(form);
@@ -410,7 +425,7 @@
               success: function(msg) {
                 console.log(msg);
                 if(msg == 'ok') {
-                  result = '<div class="ok">Спасибо! Ваше сообщение отправлено.</div>';
+                  result = '<div class="ok" style="position: relative;z-index: 2;">Спасибо! Ваше сообщение отправлено.</div>';
                   form.append(result);
                   send = true;
                   //form.submit();
