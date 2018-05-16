@@ -166,8 +166,8 @@
                                             <input type="submit" name="need" class="btn btn-primary " value="Отправить" style="display: none;">
                                             <div class="send btn btn-primary" style="position: relative;z-index: 2;">Отправить</div>
                                           </div>
+                                        </form>
 
-                                       </form>
                                         <div class="modal-footer" style="margin-top: -69px;margin-bottom: 0;position: relative;z-index: 1;">
                                           <button class="btn btn-warning" data-dismiss="modal">Закрыть</button>
                                         </div>
@@ -291,9 +291,9 @@
             <h4 class="modal-title">Оставить молитвенную просьбу</h4>
             <!-- <b style="color: #E60000;text-align: center;">Отправка просьбы временно недоступна по техническим причинам</b> -->
           </div>
-          <form action="." method="post" class="siteform">
-            {% csrf_token %} 
-            <div class="modal-body">
+          <div class="modal-body">
+            <form action="." method="post" class="siteform">
+              {% csrf_token %} 
 
               <div class="errorswrap"></div>
               <input name="formname" type="hidden" value="Молитвенная просьба" class="form-control">
@@ -319,8 +319,8 @@
 
               <div class="send1 btn btn-primary" style="position: relative;z-index: 2;">send1</div>
               <div class="send2 btn btn-primary" style="position: relative;z-index: 2;">send2</div>
-            </div>
-          </form>
+            </form>
+          </div>
           <div class="modal-footer" style="margin-top: -69px;margin-bottom: 0;position: relative;z-index: 1;">
             <button class="btn btn-warning" data-dismiss="modal">Закрыть</button>
           </div>
@@ -412,7 +412,7 @@
                 console.log(msg);
                 if(msg == 'ok') {
                   result = '<div class="ok">Спасибо! Ваше сообщение отправлено.</div>';
-                  form.html(result);
+                  form.append(result);
                   send = true;
                   //form.submit();
                   submit = form.find('.form_submit');

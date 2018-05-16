@@ -320,7 +320,7 @@
                 console.log(msg);
                 if(msg == 'ok') {
                   result = '<div class="ok">Спасибо! Ваше сообщение отправлено.</div>';
-                  form.html(result);
+                  form.append(result);
                   send = true;
                   //form.submit();
                   submit = form.find('.form_submit');
