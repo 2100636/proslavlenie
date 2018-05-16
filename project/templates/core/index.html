@@ -135,11 +135,11 @@
 
                         <!-- Блок задать вопрос. Модальное окно, отправка сообщения на почту -->
                         <div class="col-xs-12 sepa">
-                            <a style="cursor: pointer" name="" data-toggle="modal" data-target="#questionModal">
+                            <a style="cursor: pointer" name="" data-toggle="modal" data-target="#quastionModal">
                                 <img src="{{ STATIC_URL }}theme/img/question.jpg" alt=""/>
                             </a>
 
-                            <div class="modal modal-primary fade" id="questionModal" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal modal-primary fade" id="quastionModal" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -152,6 +152,7 @@
                                             {% csrf_token %}
                                             <input name="formname" type="hidden" value="Задать вопрос" class="form-control">
                                             <input name="fields" type="hidden" value="formname;name;phone;email;text" class="form-control">
+                                            <input name="not_necessary" type="hidden" value="phone" class="form-control">
                                             {{form_question.name}}
                                             {{form_question.phone}}
                                             {{form_question.email}}

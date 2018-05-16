@@ -75,8 +75,11 @@
                                         {% csrf_token %}
                                         <h3>Анкета для поступления в БК</h3>
                                         {# {{ form }} #}
+<div class="errorswrap"></div>
+
 <input name="formname" type="hidden" value="Анкета БШ" class="form-control">
 <input name="fields" type="hidden" value="formname;fio;birth_day;phone;city;family_status;you_church;church_city;pastor_fio;is_church_member;is_believer;salvation_day;you_mission;form_of_study;is_pastor_know;is_blagoslovenie;is_vernutsya" class="form-control">
+<input name="not_necessary" type="hidden" value="is_church_member;is_believer;is_pastor_know;is_blagoslovenie;is_vernutsya" class="form-control">
 
 
 <div class="fio">{{form.fio}}</div>
