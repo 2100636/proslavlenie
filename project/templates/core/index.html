@@ -146,10 +146,10 @@
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                             <h4 class="modal-title">Задать вопрос</h4>
                                         </div>
-                                        <form action="." method="post" class="siteform">
-                                          <div class="errorswrap"></div>
-                                          {% csrf_token %}
-                                          <div class="modal-body">
+                                        <div class="modal-body">
+                                          <form action="." method="post" class="siteform">
+                                            <div class="errorswrap"></div>
+                                            {% csrf_token %}
                                             <input name="formname" type="hidden" value="Задать вопрос" class="form-control">
                                             <input name="fields" type="hidden" value="formname;name;phone;email;text" class="form-control">
                                             {{form_question.name}}
@@ -163,10 +163,10 @@
                                                 <span class="checkbox-material"><span class="check"></span></span> Я ознакомлен(а) и согласен(а) с <a href="//proslavlenie.ru/page/polzovatelskoe-soglashenie/" target="_blank">пользовательским соглашением об использовании персональных данных</a>
                                               </label>
                                             </div>
-                                            <input type="submit" name="need" class="btn btn-primary form_submit" value="Отправить" style="display: none;">
+                                            <input type="submit" name="quastion" class="btn btn-primary form_submit" value="Отправить" style="display: none;">
                                             <div class="send btn btn-primary" style="position: relative;z-index: 2;">Отправить</div>
-                                          </div>
-                                        </form>
+                                          </form>
+                                        </div>
 
                                         <div class="modal-footer" style="margin-top: -60px;margin-bottom: 0;position: relative;z-index: 1;">
                                           <button class="btn btn-warning" data-dismiss="modal">Закрыть</button>
@@ -381,23 +381,24 @@
       var send = false;
       (function($){$(document).ready(function(){
         
-        $(".siteform .send1").click(function() {
-          var that = $(this);
-          form = that.parents('.siteform');
-          form.submit();
-        });
+        // $(".siteform .send1").click(function() {
+        //   var that = $(this);
+        //   form = that.parents('.siteform');
+        //   form.submit();
+        // });
 
-        $(".siteform .send2").click(function() {
-          var that = $(this);
-          form = that.parents('.siteform');
-          submit = form.find('.form_submit');
-          submit.click();
-        });
+        // $(".siteform .send2").click(function() {
+        //   var that = $(this);
+        //   form = that.parents('.siteform');
+        //   submit = form.find('.form_submit');
+        //   submit.click();
+        // });
 
         $(".siteform .send").click(function() {
           var that = $(this);
           form = that.parents('.siteform');
           if (send == false) {
+            console.log('send progress');
             var str = form.serialize();
             console.log(form);
             console.log(str);
@@ -422,6 +423,8 @@
             });
             return false;
           }
+          console.log('___-___');
+
         });
 
       });})(jQuery);
