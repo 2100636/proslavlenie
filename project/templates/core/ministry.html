@@ -161,36 +161,52 @@
                                     <p>Для регистрации заполните анкету ниже.</p>
                                 </div> 
                                 <div class="bs_form_container">
-                                    <form action="." method="post">
+                                    <form action="." method="post" class="siteform">
                                         {% csrf_token %}
                                         <h3>Регистрация в конференции PLAY 2018</h3>
-<div class="fio">{{form.fio}}</div>
-<div class="age">{{form.age}}</div>
-<div class="sex">
-    <label for="id_how_class">
-        Пол
-        {{form.sex}}
-    </label>
-</div>
-<div class="city">{{form.city}}</div>
-<div class="you_church">{{form.you_church}}</div>
-<div class="pastor_fio">{{form.pastor_fio}}</div>
-<div class="whoiam">
-    <label for="id_how_class">
-        Ваше служение
-        {{form.whoiam}}
-    </label></div>
-<div class="whoiam_custom">{{form.whoiam_custom}}</div>
-<div class="email">{{form.email}}</div>
-<div class="phone">{{form.phone}}</div>
-<div class="agreement checkbox">
-  <label>{{form.agreement}}
-    <span class="checkbox-material"><span class="check"></span></span> Я ознакомлен(а) и согласен(а) с <a href="//proslavlenie.ru/page/polzovatelskoe-soglashenie/" target="_blank">пользовательским соглашением об использовании персональных данных</a>
-  </label>
-</div>
+                                        <div class="errorswrap"></div>
 
-                                        <input type="submit" name="ms_form" class="btn btn-success" style="display: block;margin-top: 20px;float: right;" value="Отправить">
+<input name="formname" type="hidden" value="PLAY 2018">
+<input name="fields" type="hidden" value="formname;fio;age;sex;city;you_church;pastor_fio;whoiam;whoiam_custom;email;phone">
+
+<div class="fio">{{form.fio}}</div>  
+<div class="age">{{form.age}}</div>  
+<div class="sex">  
+    <label for="id_how_class">  
+        Пол  
+        {{form.sex}}  
+    </label>  
+</div>  
+<div class="city">{{form.city}}</div>  
+<div class="you_church">{{form.you_church}}</div>  
+<div class="pastor_fio">{{form.pastor_fio}}</div>  
+<div class="whoiam">  
+    <label for="id_how_class">  
+        Ваше служение  
+        {{form.whoiam}}  
+    </label></div>  
+<div class="whoiam_custom">{{form.whoiam_custom}}</div>  
+<div class="email">{{form.email}}</div>  
+<div class="phone">{{form.phone}}</div>  
+<div class="agreement checkbox">  
+  <label>{{form.agreement}}  
+    <span class="checkbox-material"><span class="check"></span></span>
+    Я ознакомлен(а) и согласен(а) с <a href="//proslavlenie.ru/page/polzovatelskoe-soglashenie/" target="_blank">пользовательским соглашением об использовании персональных данных</a>
+  </label>  
+</div>  
+{# <input type="submit" name="ms_form" class="btn btn-success" style="display: block;margin-top: 20px;float: right;" value="Отправить"> #}
+
+<div class="send btn btn-success" style="display: block;margin-top: 20px;float: right;">Отправить</div>
+
+
+
+
+
                                     </form>
+
+
+
+
                                 </div>
 
                             {% endif %} 
