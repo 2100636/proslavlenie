@@ -49,7 +49,7 @@
 
       <section class="content anketa_PenuelConfForm qwerty" id="anketa">
         <div class="container">
-          <p>Регистрация на молитвенный выезд "Пенуэл" 3-5 октября 2018 года</p>
+          <p>Анкета для конференции Пенуэл в Томске</p>
 
           <div class="row">
             {% if form_msg %}
@@ -81,9 +81,30 @@
             <div class="col-xs-9">
               <form action=".#anketa" method="post" id="PenuelConfForm">
                   {% csrf_token %}
-                  <h3>Анкета для конференции Пенуэл в Томске</h3>
-                  {{ form }}
-                  <input type="submit" name="PenuelConfForm" class="btn btn-success" style="display: block;margin-top: 20px;float: right;" value="Отправить">
+                  <h3>Регистрация на молитвенный выезд "Пенуэл" 3-5 октября 2018 года</h3>
+                  {# {{ form }} #}
+
+    <div class="errorswrap"></div>
+
+    <input name="formname" type="hidden" value="Регистрация Пенуэл 2018" class="form-control">
+    <input name="fields" type="hidden" value="fio;city;phone;email;you_church;you_sluzhenie" class="form-control">
+  
+
+
+    <div class="fio">{{form.fio}}</div>
+    <div class="city">{{form.city}}</div>
+    <div class="phone">{{form.phone}}</div>
+    <div class="email">{{form.email}}</div>
+    <div class="you_church">{{form.you_church}}</div>
+    <div class="you_sluzhenie">{{form.you_sluzhenie}}</div>
+    <div class="agreement checkbox">
+      <label>{{form.agreement}}
+        <span class="checkbox-material"><span class="check"></span></span> Я ознакомлен(а) и согласен(а) с <a href="//proslavlenie.ru/page/polzovatelskoe-soglashenie/" target="_blank">пользовательским соглашением об использовании персональных данных</a>
+      </label>
+    </div>
+
+    <div class="send btn btn-success" style="display: block;margin-top: 20px;float: right;">Отправить</div>
+                  {# <input type="submit" name="PenuelConfForm" class="btn btn-success" style="display: block;margin-top: 20px;float: right;" value="Отправить"> #}
               </form>
             </div>
           </div>
