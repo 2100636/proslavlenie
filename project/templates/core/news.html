@@ -97,10 +97,10 @@
     <div class="email">{{form.email}}</div>
     <div class="you_church">{{form.you_church}}</div>
     <div class="you_sluzhenie">{{form.you_sluzhenie}}</div>
-    <div class="agreement checkbox">
-      <label>{{form.agreement}}
-        <span class="checkbox-material"><span class="check"></span></span> Я ознакомлен(а) и согласен(а) с <a href="//proslavlenie.ru/page/polzovatelskoe-soglashenie/" target="_blank">пользовательским соглашением об использовании персональных данных</a>
-      </label>
+    <input class="form-control floating-label" id="e_mail" name="e_mail" placeholder="Не_заполняйте_это_поле" type="email">
+
+    <div class="agreement">
+       Отправляя форму вы соглашаетесь с <a href="//proslavlenie.ru/page/polzovatelskoe-soglashenie/" target="_blank">пользовательским соглашением об использовании персональных данных</a>
     </div>
 
     <div class="send btn btn-success" style="display: block;margin-top: 20px;float: right;">Отправить</div>
@@ -111,13 +111,7 @@
 
         </div>
       </section>
-      <script>
-        (function($) {
-          $(document).ready(function() {
 
-          });
-        })(jQuery);
-      </script>
     {% endif %}
 
 
@@ -198,13 +192,54 @@
     </script>
 
 
-    <script>
-        $(document).ready(function() {
-            $('.anketa_PenuelConf').click(function(){
-                $('.anketa_PenuelConfForm').show();
-            });
-        });
-    </script>
+{#   <script>       #}
+{#       $(document).ready(function() {         #}
+{#           $('.anketa_PenuelConf').click(function(){      #}
+{#               $('.anketa_PenuelConfForm').show();        #}
+{#           });        #}
+{#       });        #}
+{#   </script>      #}
 
+    <style>
+      #e_mail.form-control{
+        display: none;
+      }
+    </style>
+    <script>
+      var send = false;
+      (function($){$(document).ready(function(){
+        
+        $(".siteform .send").click(function() {
+          var that = $(this);
+          form = that.parents('.siteform');
+          if (send == false) {
+            var str = form.serialize();
+            console.log(form);
+            console.log(str);
+            $.ajax({
+              type: "POST",
+              url: "https://form.proslavlenie.ru/mail.php",
+              data: str,
+              success: function(msg) {
+                console.log(msg);
+                if(msg == 'ok') {
+                  result = '<div class="ok">Спасибо! Ваше сообщение отправлено.</div>';
+                  form.append(result);
+                  send = true;
+                  //form.submit();
+                  submit = form.find('.form_submit');
+                  submit.click();
+                }
+                else {
+                  form.find('.errorswrap').html('<div class="errors">'+msg+'</div>');
+                }
+              }
+            });
+            return false;
+          }
+        });
+
+      });})(jQuery);
+    </script> 
 
 {% endblock %}
