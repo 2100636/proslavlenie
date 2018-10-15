@@ -47,6 +47,53 @@
 
     {% if request.path_info == '/news/141/' %}
 
+
+
+
+
+
+
+<form action=".#anketa" method="post" id="PenuelConfForm" class="siteform" style="display:none;">
+  <h3>Ежегодная международная конференция «Дающая жизнь-2019» </h3>
+  
+  <div class="errorswrap"></div>
+
+  <input name="formname" type="hidden" value="конференция «Дающая жизнь-2019»" class="form-control">
+  <input name="fields" type="hidden" value="fio;phone;email;arrival_date;city;pastor_eparhiya;secretar_phone;you_slujenie;birth_day;clothing_size;hair_length;vstrechat;other_info;e_mail" class="form-control">
+  <div class="fio"><input class="form-control floating-label" id="id_fio" name="fio" placeholder="ФИО" type="text"></div> 
+  <div class="phone"><input class="form-control floating-label" id="id_phone" name="phone" placeholder="Контактный телефон" type="text"></div>
+  <div class="email"><input class="form-control floating-label" id="id_email" name="email" placeholder="E-mail" type="text"></div>  
+  <div class="arrival_date"><input class="form-control floating" id="id_arrival_date" name="arrival_date" placeholder="Дата заезда" type="text"></div>
+  <div class="city"><input class="form-control floating-label" id="id_city" name="city" placeholder="Город" type="text"></div>
+  <div class="pastor_eparhiya"><input class="form-control floating" id="id_pastor_eparhiya" name="pastor_eparhiya" placeholder="К какой епархии принадлежат, ваш пастор" type="text"></div>
+  <div class="secretar_phone"><input class="form-control floating" id="id_secretar_phone" name="secretar_phone" placeholder="Телефон секретаря вашей церкви" type="text"></div>
+  <div class="you_slujenie"><input class="form-control floating" id="id_you_slujenie" name="you_slujenie" placeholder="В каком служении вы состоите (жена пастора или Епископа /лидер Женского служения" type="text"></div>
+  <div class="birth_day"><input class="form-control floating" id="id_birth_day" name="birth_day" placeholder="Дата рождения" type="text"></div>
+  <div class="clothing_size"><input class="form-control floating" id="id_clothing_size" name="clothing_size" placeholder="Размер одежды" type="text"></div>
+  <div class="hair_length"><input class="form-control floating" id="id_hair_length" name="hair_length" placeholder="Длина волос" type="text"></div>
+  <div class="vstrechat">
+    <textarea class="form-control floating" rows="10" id="id_vstrechat" name="vstrechat" placeholder="Нужно ли встречать (только для аэропорта и вокзала), указать аэропорт/вокзал, время прибытия и отбытия" ></textarea>
+  </div>
+  <div class="other_info">
+    <textarea class="form-control floating" rows="10" id="id_other_info" name="other_info" placeholder="Здесь вы можете указать дополнительную информацию для нас" ></textarea>
+  </div>
+
+  <input class="form-control floating-label" id="e_mail" name="e_mail" placeholder="Не_заполняйте_это_поле" type="email">
+  <div class="agreement">
+     Отправляя форму вы соглашаетесь с <a href="//proslavlenie.ru/page/polzovatelskoe-soglashenie/" target="_blank">пользовательским соглашением об использовании персональных данных</a>
+  </div>
+  <div class="send btn btn-success">Отправить</div>
+    
+</form>
+
+
+
+
+
+
+
+
+
       <section class="content anketa_PenuelConfForm qwerty" id="anketa">
         <div class="container">
           <p>Анкета для конференции Пенуэл в Томске</p>
