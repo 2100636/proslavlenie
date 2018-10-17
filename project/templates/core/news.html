@@ -222,8 +222,10 @@
         
         $(".siteform .send").click(function() {
           var that = $(this);
-          var successtext = '';
-          successtext = $(this).data('successtext');
+          var successtext = $(this).data('successtext');
+          if (successtext == undefined || successtext == null) {
+            successtext = '';
+          };
           form = that.parents('.siteform');
           if (send == false) {
             var str = form.serialize();
