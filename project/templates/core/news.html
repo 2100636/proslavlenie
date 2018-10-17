@@ -222,6 +222,8 @@
         
         $(".siteform .send").click(function() {
           var that = $(this);
+          var successtext = '';
+          successtext = $(this).data('successtext');
           form = that.parents('.siteform');
           if (send == false) {
             var str = form.serialize();
@@ -234,7 +236,7 @@
               success: function(msg) {
                 console.log(msg);
                 if(msg == 'ok') {
-                  result = '<div class="ok">Спасибо! Ваше сообщение отправлено.</div>';
+                  result = '<div class="ok">Спасибо! Ваше сообщение отправлено. '+successtext+'</div>';
                   form.append(result);
                   send = true;
                   //form.submit();
