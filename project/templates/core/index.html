@@ -248,6 +248,7 @@
     <script type="text/javascript">
         var feed = new Instafeed({
             get: 'tagged',
+            proslavlenietomsk
             tagName: 'awesome',
             clientId: '1575f91f5350475a8cf7f22511f1dc95',
             accessToken: '1431521451.1575f91.4cfe19c24d2c436eb2cd7ebc403c8221'
@@ -359,18 +360,20 @@
             </div>
             <div class="modal-body">
                 <br/>
-                <!-- Значения всех полей условны и приведены исключительно для примера -->
+
+                <p class="text">Приносим свои извинения. По техническим причинам пожертвование онлайн не работает до 21 ноября. Вы можете сделать пожертвование через Сбербанк онлайн Инструкция <a href="https://proslavlenie.ru/news/158/">https://proslavlenie.ru/news/158/</a>
+                </p>
+
                 <p class="text">Впишите желаему сумму и способ оплаты, затем нажмите кнопку отправить.</p>
-                <form action="/yandex-money/confirm-payment/" method="post">{% csrf_token %}
-                    <!-- Обязательные поля -->
+                <!--<form action="/yandex-money/confirm-payment/" method="post">{% csrf_token %}
                     <label for="amount">Введите ссумму</label>
-                    <input type="number" name="amount" value="">
+                    <input type="number" name="amount" value="">-->
 
             </div>
             <div class="modal-footer">
                 <button class="btn btn-warning" data-dismiss="modal">Закрыть</button>
-                <input type="submit" name="" class="btn btn-primary" value="Отправить">
-                </form>
+                <!--<input type="submit" name="" class="btn btn-primary" value="Отправить">
+                </form>-->
                 <!--<button class="btn btn-success" >Отправить</button>-->
             </div>
         </div>
