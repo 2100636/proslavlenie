@@ -256,7 +256,7 @@
             resolution: 'standard_resolution',
             filter: function(image) {
               image.random_size = 460;
-              return true;
+              return image;
             },
             {% verbatim %}
             template: '<img src="{{image}}" style="width: {{model.random_size}}px; height: {{model.random_size}}px;" />'
