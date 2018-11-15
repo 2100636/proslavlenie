@@ -253,8 +253,13 @@
             userId: '1431521451',
             accessToken: '1431521451.1575f91.4cfe19c24d2c436eb2cd7ebc403c8221',
             limit: '8',
+            resolution: 'standard_resolution',
+            filter: function(image) {
+              image.random_size = 460;
+              return true;
+            },
             {% verbatim %}
-            template: '<a href="{{image}}"><img src="{{image}}" /></a>'
+            template: '<img src="{{image}}" style="width: {{model.random_size}}px; height: {{model.random_size}}px;" />'
             {% endverbatim %}
         });
         feed.run();
