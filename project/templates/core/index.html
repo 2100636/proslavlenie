@@ -257,10 +257,11 @@
             filter: function(image) {
               image.random_size = 460;
               console.log(image);
+              console.log(image.images.thumbnail.url);
               return image;
             },
             {% verbatim %}
-            template: '<a href="{{model}}"><img src="{{image}}" style="width: {{model.random_size}}px; height: {{model.random_size}}px;" /></a>'
+            template: '<a href="{{model.images.thumbnail.url}}"><img src="{{image}}" style="width: {{model.random_size}}px; height: {{model.random_size}}px;" /></a>'
             {% endverbatim %}
         });
         feed.run();
