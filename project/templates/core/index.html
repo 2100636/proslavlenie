@@ -259,7 +259,7 @@
               return image;
             },
             {% verbatim %}
-            template: '<img src="{{image}}" style="width: {{model.random_size}}px; height: {{model.random_size}}px;" />'
+            template: '<a href="{{model}}"><img src="{{image}}" style="width: {{model.random_size}}px; height: {{model.random_size}}px;" /></a>'
             {% endverbatim %}
         });
         feed.run();
