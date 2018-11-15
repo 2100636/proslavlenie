@@ -474,8 +474,7 @@ section.baner {
     text-decoration: none!important;
 }
 section.ministry h2,
-section.articles h2,
-.instagram_line h2{
+section.articles h2{
     text-align: center;
     color: #0773bb;
     text-transform: uppercase;
@@ -851,6 +850,14 @@ input.btn {
 .instagram_line {
   padding-top: 40px;
   padding-bottom: 40px;
+}
+.instagram_line h2{
+  background: #fff;
+  margin-bottom: 28px;
+  font-family: "Roboto Slab";
+  text-align: center;
+  color: #0773bb;
+  text-transform: uppercase;
 }
 #instafeed{
   display: flex;
