@@ -260,7 +260,7 @@
                   return image;
                 },
                 {% verbatim %}
-                template: '<a href="{{image}}"><img src="{{model.images.thumbnail.url}}"/></a>'
+                template: '<a class="fancybox-me" rel="gallery" href="{{image}}"><img src="{{model.images.thumbnail.url}}"/></a>'
                 {% endverbatim %}
             });
             feed.run();
