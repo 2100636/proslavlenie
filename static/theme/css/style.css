@@ -1,4 +1,4 @@
-/*отключение адаптивности*/
+отключение адаптивности*/
 .container{
     width:1170px !important;
 }
@@ -474,7 +474,8 @@ section.baner {
     text-decoration: none!important;
 }
 section.ministry h2,
-section.articles h2{
+section.articles h2,
+.instagram_line h2{
     text-align: center;
     color: #0773bb;
     text-transform: uppercase;
@@ -842,6 +843,28 @@ input.btn {
 
 
 
+
+
+
+
+ /*  летнта инстаграм instagram */
+.instagram_line {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+#instafeed{
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+
+
+
+
+
+
 form ul.errorlist {
 color: #c72626;
 margin-top: 14px;
@@ -876,4 +899,3 @@ z-index: 11;
 background: url("../img/new_year_shapka.png");
 background-size: 100%;
 }
-*/

@@ -242,33 +242,34 @@
 
 
 
+    <section class="instagram_line">
+      <div class="container">
+        <h2>Церковь прославления в Instagram</h2>
+        <div id="instafeed"></div>
+        <script  src="/static/theme/js/instafeed.min.js"></script>
+        <script type="text/javascript">
+            var feed = new Instafeed({
+                get: 'tagged',
+                tagName: 'churchtomsk',
+                clientId: '1575f91f5350475a8cf7f22511f1dc95',
+                userId: '1431521451',
+                accessToken: '1431521451.1575f91.4cfe19c24d2c436eb2cd7ebc403c8221',
+                limit: '7',
+                resolution: 'standard_resolution',
+                filter: function(image) {
+                  return image;
+                },
+                {% verbatim %}
+                template: '<a href="{{image}}"><img src="{{model.images.thumbnail.url}}"/></a>'
+                {% endverbatim %}
+            });
+            feed.run();
+            /*tagName: 'awesome',*/
+        /*accessToken: '1431521451.1677ed0.982d959d1f464b71ba5ed0649f8c9282'*/
+        </script>
 
-    <div id="instafeed"></div>
-    <script  src="/static/theme/js/instafeed.min.js"></script>
-    <script type="text/javascript">
-        var feed = new Instafeed({
-            get: 'tagged',
-            tagName: 'churchtomsk',
-            clientId: '1575f91f5350475a8cf7f22511f1dc95',
-            userId: '1431521451',
-            accessToken: '1431521451.1575f91.4cfe19c24d2c436eb2cd7ebc403c8221',
-            limit: '8',
-            resolution: 'standard_resolution',
-            filter: function(image) {
-              image.random_size = 460;
-              console.log(image);
-              console.log(image.images.thumbnail.url);
-              return image;
-            },
-            {% verbatim %}
-            template: '<a href="{{model.images.thumbnail.url}}"><img src="{{image}}" style="width: {{model.random_size}}px; height: {{model.random_size}}px;" /></a>'
-            {% endverbatim %}
-        });
-        feed.run();
-        /*tagName: 'awesome',*/
-    /*accessToken: '1431521451.1677ed0.982d959d1f464b71ba5ed0649f8c9282'*/
-    </script>
-
+      </div>
+    </section>
     
 
 
