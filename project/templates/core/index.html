@@ -252,7 +252,10 @@
             clientId: '1575f91f5350475a8cf7f22511f1dc95',
             userId: '1431521451',
             accessToken: '1431521451.1575f91.4cfe19c24d2c436eb2cd7ebc403c8221',
-            limit: '8'
+            limit: '8',
+            {% verbatim %}
+            template: '<a href="{{image}}"><img src="{{image}}" /></a>'
+            {% endverbatim %}
         });
         feed.run();
         /*tagName: 'awesome',*/
