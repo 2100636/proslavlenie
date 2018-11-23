@@ -23,19 +23,10 @@
                 <div class="col-xs-12">
                     <div class="row">
                         <div class="col-xs-3">
-                            <img alt="{{ adv.name|escape }}" src="{% cropped_thumbnail adv "cropping" scale=1 %}">
+                            <img alt="{{ adv.name|escape }}" src="{% cropped_thumbnail adv "image" scale=1 %}">
                         </div>
                         <div class="col-xs-9">
                             <p>{{ adv.text }}</p>
-                            <div class="gallery">
-{#                                <div class="row">#}
-                                    {% for img in adv.get_gallery_images %}
-{#                                        <div class="col-xs-2">#}
-                                            <a class="fancybox-me" rel="gallery" href="{{ img.url }}"><img src="{% cropped_thumbnail img "cropping" scale=1 %}"></a>
-{#                                        </div>#}
-                                    {% endfor %}
-{#                                </div>#}
-                            </div>
                         </div>
                     </div>
 
