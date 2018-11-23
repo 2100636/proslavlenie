@@ -52,7 +52,7 @@ urlpatterns = patterns(
         name='questionsView'),
 
 
-    url(r'^adverts/(?P<category>[-\w]+)$', 'advertCatView',
+    url(r'^adverts/(?P<category_slug>[-\w]+)$', 'advertCatView',
         {'template_name': 'core/advert_cat.html'},
         name='advertCatView'),
 

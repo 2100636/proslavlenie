@@ -377,8 +377,10 @@ def advertView(request, slug, template_name="catalog/advert.html"):
         template_name, locals(), context_instance=RequestContext(request))
 
 
-def advertCatView(request, category, template_name="catalog/advert_cat.html"):
-    adverts_ = Advert.objects.filter(category=category)
+def advertCatView(request, category_slug, template_name="catalog/advert_cat.html"):
+
+    category = AdvertCategory.objects.get(slug=category_slug)
+    adverts_ = Advert.objects.filter(category=category.id)
 
     categories = AdvertCategory.objects.all()
 
