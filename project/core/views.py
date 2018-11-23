@@ -393,11 +393,6 @@ def advertCatView(request, category, template_name="catalog/advert_cat.html"):
 def advertAllView(request, template_name="catalog/advert_all.html"):
     advert_all = Advert.objects.order_by("-date")
 
-    d = model_to_dict(advert_all)
-    for f in d:
-        print "%s : %s " % (f, d[f])
-
-
     return render_to_response(
         template_name, locals(), context_instance=RequestContext(request))
 

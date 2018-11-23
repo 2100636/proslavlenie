@@ -22,21 +22,10 @@
                 <div class="col-xs-7">
                     <h1 class="">Обьявления</h1>
                 </div>
-1
-                {% for adv in adverts %}
-                    <div class="col-xs-12" style="margin-bottom: 30px;">
-                        <h4><a href="{{ adv.url }}">{{ adv.name }}</a></h4>
-                        <p style="font-size: 15px;">{{ adv.text|truncatewords:100|safe }}</p>
-                        <p>{{ adv.phone }}</p>
-                        <p>{{ adv.cost }}</p>
-                        <p>{{ adv.category }}</p>
-                        <p>{{ adv.member }}</p>
-                        <p>{{ adv.author }}</p>
-                        <p>{{ adv.pswd }}</p>
-                        <p>{{ adv.date }}</p>
-                        <a href="{{ adv.url }}" class="btn btn-primary pull-right" style="margin-top: 10px;">Подробнее</a>
-                    </div>
-                {% endfor %}
+                
+                {% debug %}
+
+
 2
                 {% for adv in adverts_ %}
                     <div class="col-xs-12" style="margin-bottom: 30px;">
