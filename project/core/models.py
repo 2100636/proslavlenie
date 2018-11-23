@@ -395,7 +395,7 @@ class Advert(models.Model):
     phone = models.CharField(verbose_name=u'Телефон',max_length=200)
     cost = models.CharField(verbose_name=u'Цена',max_length=200, blank=True)
     category = models.ForeignKey(
-        VideoCategory, verbose_name=u'Категория')
+        AdvertCategory, verbose_name=u'Категория')
 
     author = models.CharField(verbose_name=u'Имя',max_length=200)
     pswd = models.CharField(verbose_name=u'Пароль для удаления',max_length=200, blank=True)
