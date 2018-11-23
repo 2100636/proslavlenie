@@ -396,10 +396,12 @@ class Advert(models.Model):
     cost = models.CharField(verbose_name=u'Цена',max_length=200, blank=True)
     category = models.ForeignKey(
         AdvertCategory, verbose_name=u'Категория')
-
+    member = models.BooleanField(verbose_name=u'Являюсь членом церкви')
     author = models.CharField(verbose_name=u'Имя',max_length=200)
     pswd = models.CharField(verbose_name=u'Пароль для удаления',max_length=200, blank=True)
 
+    date = models.DateField(verbose_name=u'Дата',
+                            default=datetime.datetime.now, editable=True)
     class Meta:
         verbose_name = u'Объявление'
         verbose_name_plural = u'Объявления'
