@@ -26,7 +26,7 @@
                 {% for adv in advert_all %}
                     <div class="col-xs-12" style="margin-bottom: 30px;">
                         <h4><a href="{{ adv.url }}">{{ adv.name }}</a></h4>
-                        <img src="{% cropped_thumbnail adv "image" scale=1 %}">
+                        <img src="{% cropped_thumbnail adv "cropping" scale=1 %}">
                         <p style="font-size: 15px;">{{ adv.text|truncatewords:100|safe }}</p>
                         <a href="{{ adv.url }}" class="btn btn-primary pull-right" style="margin-top: 10px;">Подробнее</a>
                     </div>

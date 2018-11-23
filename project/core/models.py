@@ -392,6 +392,9 @@ class Advert(models.Model):
     text = models.TextField(verbose_name=u'Текст объявления')
     image = models.ImageField(
         verbose_name=u'Изображение', upload_to='adsimage', blank=True)
+
+    cropping = ImageRatioField('image', '400x350')
+
     phone = models.CharField(verbose_name=u'Телефон',max_length=200)
     cost = models.CharField(verbose_name=u'Цена',max_length=200, blank=True)
     category = models.ForeignKey(

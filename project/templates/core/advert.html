@@ -17,16 +17,16 @@
             <div class="row">
 
                 <div class="col-xs-7">
-                    <h1 class="">{{ adv.name }}</h1>
+                    <h1 class="">{{ advert.name }}</h1>
                 </div>
 
                 <div class="col-xs-12">
                     <div class="row">
                         <div class="col-xs-3">
-                            <img alt="{{ adv.name|escape }}" src="{% cropped_thumbnail adv "image" scale=1 %}">
+                            <img alt="{{ advert.name|escape }}" src="{% cropped_thumbnail advert "cropping" scale=1 %}">
                         </div>
                         <div class="col-xs-9">
-                            <p>{{ adv.text }}</p>
+                            <p>{{ advert.text }}</p>
                         </div>
                     </div>
 
