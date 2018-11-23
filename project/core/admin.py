@@ -97,7 +97,7 @@ class AdvertAdmin(admin.ModelAdmin):
     list_display_links = ('name',)
     search_fields = ['text']
     fields = (
-        'name', 'text', 'image', 'phone', 'cost', 'category', 'author')
+        'name', 'text', 'image', 'phone', 'cost', 'category', 'author', 'member')
 
 
 
