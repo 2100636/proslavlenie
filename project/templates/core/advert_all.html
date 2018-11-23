@@ -28,6 +28,13 @@
                         <h4><a href="{{ adv.url }}">{{ adv.name }}</a></h4>
                         <img src="{% cropped_thumbnail adv "cropping" scale=1 %}">
                         <p style="font-size: 15px;">{{ adv.text|truncatewords:100|safe }}</p>
+                        <p>{{ adv.phone }}</p>
+                        <p>{{ adv.cost }}</p>
+                        <p>{{ adv.category }}</p>
+                        <p>{{ adv.member }}</p>
+                        <p>{{ adv.author }}</p>
+                        <p>{{ adv.pswd }}</p>
+                        <p>{{ adv.date }}</p>
                         <a href="{{ adv.url }}" class="btn btn-primary pull-right" style="margin-top: 10px;">Подробнее</a>
                     </div>
                 {% endfor %}
