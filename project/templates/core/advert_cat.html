@@ -23,7 +23,7 @@
                     <h1 class="">Обьявления</h1>
                 </div>
                 
-2
+1
                 {% for adv in adverts_ %}
                     <div class="col-xs-12" style="margin-bottom: 30px;">
                         <h4><a href="{{ adv.url }}">{{ adv.name }}</a></h4>
@@ -38,11 +38,11 @@
                         <a href="{{ adv.url }}" class="btn btn-primary pull-right" style="margin-top: 10px;">Подробнее</a>
                     </div>
                 {% endfor %}
-3
+2
                 {% for cat in categories %}
                     <div class="col-xs-12" style="margin-bottom: 30px;">
-                        <p>{{ adv.name }}</p>
-                        <p>{{ adv.slug }}</p>
+                        <p>{{ cat.name }}</p>
+                        <p>{{ cat.slug }}</p>
                     </div>
                 {% endfor %}
 
