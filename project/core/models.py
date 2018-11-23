@@ -391,7 +391,7 @@ class Advert(models.Model):
     slug = models.SlugField(u'Ссылка', max_length=50, unique=True)
     text = models.TextField(verbose_name=u'Текст объявления')
     image = models.ImageField(
-        verbose_name=u'Изображение', upload_to='adsimage', blank=True)
+        verbose_name=u'Изображение', upload_to='obyavleniya_image', blank=True)
 
     cropping = ImageRatioField('image', '400x350')
 
@@ -399,7 +399,7 @@ class Advert(models.Model):
     cost = models.CharField(verbose_name=u'Цена',max_length=200, blank=True)
     category = models.ForeignKey(
         AdvertCategory, verbose_name=u'Категория')
-    member = models.BooleanField(verbose_name=u'Являюсь членом церкви')
+    member = models.BooleanField(verbose_name=u'Являюсь членом церкви', default=False)
     author = models.CharField(verbose_name=u'Имя',max_length=200)
     pswd = models.CharField(verbose_name=u'Пароль для удаления',max_length=200, blank=True)
 
