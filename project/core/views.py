@@ -16,6 +16,9 @@ from project.payment.forms import PaymentForm
 from project.payment.models import Payment
 #import requests 
 
+from django.forms.models import model_to_dict
+
+
 def crossdomain_xmlView(request, template_name="core/crossdomain.html"):
     return render_to_response(
         template_name, locals(), context_instance=RequestContext(request), content_type='application/xml')
@@ -376,8 +379,25 @@ def advertView(request, slug, template_name="catalog/advert.html"):
         template_name, locals(), context_instance=RequestContext(request))
 
 
+def advertCatView(request, category, template_name="catalog/advert_cat.html"):
+    adverts = Advert.objects.get(category=category)
+    adverts_ = Advert.objects.filter(category=category)
+
+
+    categories = VideoCategory.objects.all()
+
+    return render_to_response(
+        template_name, locals(), context_instance=RequestContext(request))
+
+
 def advertAllView(request, template_name="catalog/advert_all.html"):
     advert_all = Advert.objects.order_by("-date")
+
+    d = model_to_dict(advert_all)
+    for f in d:
+        print "%s : %s " % (f, d[f])
+
+
     return render_to_response(
         template_name, locals(), context_instance=RequestContext(request))
 
