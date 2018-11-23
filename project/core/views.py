@@ -7,7 +7,7 @@ from functions import *
 from forms import QuestionForm, NeedForm
 from project.forms.forms import BSForm, HvalaSForm, PenuelConfForm, Play2017Form
 from models import Article, Page, Question,\
-    News, SliderItem, Review, Testimony, Video, Ministry, VideoCategory
+    News, SliderItem, Review, Testimony, Video, Ministry, VideoCategory, Advert, AdvertCategory
 
 from django.core.mail import send_mail
 from project.settings import ADMIN_EMAIL, DEFAULT_FROM_EMAIL
@@ -360,3 +360,24 @@ def questionsView(request, template_name="core/questions.html"):
     questions = Question.objects.all()
     return render_to_response(
         template_name, locals(), context_instance=RequestContext(request))
+
+
+
+
+def advertView(request, id, template_name="catalog/advert.html"):
+    user = request.user
+    advert = Advert.objects.get(id=id)
+    # мета описание
+    # meta_title = advert.meta_title
+    # if not meta_title or meta_title == '':
+    #     meta_title = advert.name
+    # meta_description = advert.meta_description
+    return render_to_response(
+        template_name, locals(), context_instance=RequestContext(request))
+
+
+def advertAllView(request, template_name="catalog/advert_all.html"):
+    advert_all = Advert.objects.order_by("-date")
+    return render_to_response(
+        template_name, locals(), context_instance=RequestContext(request))
+

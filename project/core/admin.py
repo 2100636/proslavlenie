@@ -86,6 +86,20 @@ class MinistryAdmin(ImageCroppingMixin, admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
 
 
+
+
+class AdvertCategoryInline(admin.StackedInline):
+    """Вывод заказов списком"""
+    model = AdvertCategory
+    extra = 0
+class AdvertAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    model = Advert
+    fields = (
+        'name', 'text', 'image', 'phone', 'cost', 'category', 'author')
+
+
+
+
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(Page, PageAdmin)
 admin.site.register(SliderItem, SliderItemAdmin)

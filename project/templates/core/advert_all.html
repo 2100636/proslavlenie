@@ -1,0 +1,46 @@
+{% extends "front_main.html" %}
+{% load thumbnail %}
+{% load cropping %}
+{% load menu_tags %}
+
+{% block meta %}
+    <title>Новости | Церковь Прославления</title>
+    <meta name="description" content='Жизнь, события и новости "Церкви Прославления"'/>
+{% endblock %}
+
+{% block content %}
+<div id="obyavleniya" class="content-wrapper" style="margin-left:0"><!-- Content Wrapper. Contains page content -->
+
+    <section id="drop_menu">
+        {% menu_tree request %}
+    </section>
+
+    <section class="content adv_all">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-xs-7">
+                    <h1 class="">Обьявления</h1>
+                </div>
+
+                {% for adv in adv_all %}
+                    <div class="col-xs-12" style="margin-bottom: 30px;">
+                        <h4><a href="{{ adv.url }}">{{ adv.name }}</a></h4>
+                        <img src="{% cropped_thumbnail adv "cropping" scale=1 %}">
+                        <p style="font-size: 15px;">{{ adv.description|truncatewords:100|safe }}</p>
+                        <a href="{{ adv.url }}" class="btn btn-primary pull-right" style="margin-top: 10px;">Подробнее</a>
+                    </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </section>
+
+</div><!-- /.content-wrapper -->
+{% endblock %}
+
+{% block page_js %}
+    <script>
+    </script>
+{% endblock %}

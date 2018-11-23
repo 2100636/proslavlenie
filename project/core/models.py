@@ -371,3 +371,42 @@ class Question(models.Model):
 
 
 
+
+
+class AdvertCategory(models.Model):
+    name = models.CharField(
+        verbose_name=u'Название видео категории', max_length=200)
+    slug = models.CharField(max_length=20, verbose_name=u'Системное название')
+
+    class Meta:
+        verbose_name = u'Объявления категория'
+        verbose_name_plural = u'Объявления категории'
+
+    def __unicode__(self):
+        return u'Объявления категория: %s' % self.name
+
+
+class Advert(models.Model):
+    name = models.CharField(max_length=200, verbose_name=u'Название')
+    slug = models.SlugField(u'Ссылка', max_length=50, unique=True)
+    text = models.TextField(verbose_name=u'Текст объявления')
+    image = models.ImageField(
+        verbose_name=u'Изображение', upload_to='adsimage', blank=True)
+    phone = models.CharField(verbose_name=u'Телефон',max_length=200)
+    cost = models.CharField(verbose_name=u'Цена',max_length=200, blank=True)
+    category = models.ForeignKey(
+        VideoCategory, verbose_name=u'Категория')
+
+    author = models.CharField(verbose_name=u'Имя',max_length=200)
+    pswd = models.CharField(verbose_name=u'Пароль для удаления',max_length=200, blank=True)
+
+    class Meta:
+        verbose_name = u'Объявление'
+        verbose_name_plural = u'Объявления'
+
+    def __unicode__(self):
+        return u'Объявление %s' % self.name
+
+    def url(self):
+        return '/advert/%s' % self.slug
+

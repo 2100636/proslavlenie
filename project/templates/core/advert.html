@@ -1,0 +1,65 @@
+{% extends "front_main.html" %}
+{% load thumbnail %}
+{% load cropping %}
+{% load menu_tags %}
+
+{% block content %}
+<div id="obyavleniya" class="content-wrapper" style="margin-left:0"><!-- Content Wrapper. Contains page content -->
+
+    <section id="drop_menu">
+        {% menu_tree request %}
+    </section>
+
+
+
+    <section class="content">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-xs-7">
+                    <h1 class="">{{ adv.name }}</h1>
+                </div>
+
+                <div class="col-xs-12">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img alt="{{ adv.name|escape }}" src="{% cropped_thumbnail adv "cropping" scale=1 %}">
+                        </div>
+                        <div class="col-xs-9">
+                            <p>{{ adv.text }}</p>
+                            <div class="gallery">
+{#                                <div class="row">#}
+                                    {% for img in adv.get_gallery_images %}
+{#                                        <div class="col-xs-2">#}
+                                            <a class="fancybox-me" rel="gallery" href="{{ img.url }}"><img src="{% cropped_thumbnail img "cropping" scale=1 %}"></a>
+{#                                        </div>#}
+                                    {% endfor %}
+{#                                </div>#}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+</div><!-- /.content-wrapper -->
+{% endblock %}
+
+{% block page_js %}
+
+  <script>
+    (function($){$(document).ready(function(){
+      
+
+    });})(jQuery);
+  </script> 
+
+{% endblock %}

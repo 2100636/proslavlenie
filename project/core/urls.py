@@ -50,4 +50,13 @@ urlpatterns = patterns(
     url(r'^questions/$', 'questionsView',
         {'template_name': 'core/questions.html'},
         name='questionsView'),
+
+
+    url(r'^news/$', 'advertAllView',
+        {'template_name': 'core/advert_all.html'},
+        name='advertAllView'),
+    
+    url(r'^advert/$', 'advertView',
+        {'template_name': 'core/advert.html'},
+        name='advertView'),
 )
