@@ -364,9 +364,9 @@ def questionsView(request, template_name="core/questions.html"):
 
 
 
-def advertView(request, id, template_name="catalog/advert.html"):
+def advertView(request, slug, template_name="catalog/advert.html"):
     user = request.user
-    advert = Advert.objects.get(id=id)
+    advert = Advert.objects.get(slug=slug)
     # мета описание
     # meta_title = advert.meta_title
     # if not meta_title or meta_title == '':
