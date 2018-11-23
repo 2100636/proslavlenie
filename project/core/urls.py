@@ -52,7 +52,7 @@ urlpatterns = patterns(
         name='questionsView'),
 
 
-    url(r'^advert/$', 'advertAllView',
+    url(r'^adverts/$', 'advertAllView',
         {'template_name': 'core/advert_all.html'},
         name='advertAllView'),
     
