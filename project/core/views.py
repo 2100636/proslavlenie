@@ -378,11 +378,9 @@ def advertView(request, slug, template_name="catalog/advert.html"):
 
 
 def advertCatView(request, category, template_name="catalog/advert_cat.html"):
-    adverts = Advert.objects.get(category=category)
     adverts_ = Advert.objects.filter(category=category)
 
-
-    categories = VideoCategory.objects.all()
+    categories = AdvertCategory.objects.all()
 
     return render_to_response(
         template_name, locals(), context_instance=RequestContext(request))
