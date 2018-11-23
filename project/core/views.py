@@ -16,8 +16,6 @@ from project.payment.forms import PaymentForm
 from project.payment.models import Payment
 #import requests 
 
-from django.forms.models import model_to_dict
-
 
 def crossdomain_xmlView(request, template_name="core/crossdomain.html"):
     return render_to_response(
