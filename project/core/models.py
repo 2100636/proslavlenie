@@ -376,7 +376,7 @@ class Question(models.Model):
 class AdvertCategory(models.Model):
     name = models.CharField(
         verbose_name=u'Название видео категории', max_length=200)
-    slug = models.CharField(max_length=20, verbose_name=u'Системное название')
+    slug = models.CharField(max_length=20, verbose_name=u'Ссылка')
 
     class Meta:
         verbose_name = u'Объявления категория'
