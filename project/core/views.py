@@ -396,7 +396,7 @@ def advertAllView(request, template_name="catalog/advert_all.html"):
     form_advert = AdvertForm()
 
     # Отправляем на почту
-    if request.method == "POST" and "advert" in request.POST:
+    if request.method == "POST" and "form_advert" in request.POST:
         form_need = NeedForm(request.POST)
         if form_need.is_valid():
             form_need.save()
