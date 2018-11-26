@@ -9,7 +9,7 @@ from ckeditor.fields import RichTextField
 from image_cropping import ImageRatioField
 from colorful.fields import RGBColorField
 from authentication.models import Account
-
+from django.template.defaultfilters import slugify
 
 class BaseArticle(models.Model):
     class Meta:
