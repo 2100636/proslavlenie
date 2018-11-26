@@ -10,7 +10,7 @@ from image_cropping import ImageRatioField
 from colorful.fields import RGBColorField
 from authentication.models import Account
 from django.template.defaultfilters import slugify
-from uuslug import slugify
+from uuslug import uuslug
 
 class BaseArticle(models.Model):
     class Meta:
