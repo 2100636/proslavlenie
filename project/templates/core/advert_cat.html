@@ -20,7 +20,7 @@
       <div class="row">
 
         <div class="col-xs-7">
-            <h1 class="">Обьявления категории <b>{{ category.name }}</b></h1>
+          <h1 class="">Обьявления категории <b>{{ category.name }}</b></h1>
         </div>
         
           
@@ -55,6 +55,7 @@
 
             <div class="col-xs-3 cat_list" >
               {% for cat in categories %}
+                  <div class="cat_item"><a href="/adverts/">Все объявления</a></div>
                 {% if category_slug == cat.slug %}
                   <div class="cat_item"><a class="active" href="{{ cat.url }}">{{ cat.name }}</a></div>
                 {% else %}
