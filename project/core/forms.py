@@ -68,7 +68,7 @@ class AdvertForm(forms.ModelForm):
         super(AdvertForm, self).__init__(*args, **kwargs)
 
         self.fields['name'].widget.attrs = {
-            'placeholder': 'Имя', 'class': 'form-control floating-label'}
+            'placeholder': 'Заголовок', 'class': 'form-control floating-label'}
 
         self.fields['text'].widget.attrs = {
             'placeholder': 'Текст объявления',

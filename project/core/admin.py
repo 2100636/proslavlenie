@@ -97,7 +97,7 @@ class AdvertAdmin(admin.ModelAdmin):
     list_display_links = ('name',)
     search_fields = ['text']
     fields = (
-        'name', 'slug', 'text', 'image', 'phone', 'cost', 'category', 'author', 'member')
+        'name', 'slug', 'text', 'image', 'phone', 'cost', 'category', 'author', 'member', 'pswd', 'date','status')
     prepopulated_fields = {'slug': ('name', ), }
 
 
