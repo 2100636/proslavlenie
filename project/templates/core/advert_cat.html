@@ -51,19 +51,19 @@
                 </div>
               </div>
             {% endfor %}
-            </div>      
-          </div>      
+            </div>     
 
-          <div class="col-xs-3 cat_list" >
-            {% for cat in categories %}
-              {% if category_slug == cat.slug %}
-                <div class="cat_item"><a class="active" href="{{ cat.url }}">{{ cat.name }}</a></div>
-              {% else %}
-                <div class="cat_item"><a href="{{ cat.url }}">{{ cat.name }}</a></div>
-              {% endif %} 
-            {% endfor %}
-          </div>
-          
+            <div class="col-xs-3 cat_list" >
+              {% for cat in categories %}
+                {% if category_slug == cat.slug %}
+                  <div class="cat_item"><a class="active" href="{{ cat.url }}">{{ cat.name }}</a></div>
+                {% else %}
+                  <div class="cat_item"><a href="{{ cat.url }}">{{ cat.name }}</a></div>
+                {% endif %} 
+              {% endfor %}
+            </div>
+               
+          </div>  
         </div>
 
 
