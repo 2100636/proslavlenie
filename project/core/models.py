@@ -407,6 +407,9 @@ class Advert(models.Model):
 
     date = models.DateField(verbose_name=u'Дата',
                             default=datetime.datetime.now, editable=True)
+    status = models.IntegerField(verbose_name=u'Публикация', default=0,
+                                help_text=u'0 - Не опубликовано, 1 - Опубликовано')
+
     class Meta:
         verbose_name = u'Объявление'
         verbose_name_plural = u'Объявления'

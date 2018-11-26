@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django import forms
-from project.core.models import Need, Question
+from project.core.models import Need, Question, Advert
 from yandex_money.models import Payment
 
 
@@ -61,3 +61,24 @@ class QuestionForm(forms.ModelForm):
     class Meta:
         model = Question
         fields = ('name', 'phone', 'email', 'text')
+
+
+class AdvertForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(AdvertForm, self).__init__(*args, **kwargs)
+
+        self.fields['name'].widget.attrs = {
+            'placeholder': 'Имя', 'class': 'form-control floating-label'}
+
+        self.fields['text'].widget.attrs = {
+            'placeholder': 'Текст объявления',
+            'class': 'form-control floating-label'}
+
+        self.fields['phone'].widget.attrs = {
+            'placeholder': 'Ваш телефон',
+            'class': 'form-control floating-label'}
+
+    class Meta:
+        model = Advert
+        fields = ('name', 'text', 'image', 'phone', 'cost', 'category', 'member', 'author', 'pswd', 'status')
+

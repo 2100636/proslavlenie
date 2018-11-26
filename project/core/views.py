@@ -4,7 +4,7 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.views.generic import TemplateView
 from functions import *
-from forms import QuestionForm, NeedForm
+from forms import QuestionForm, NeedForm, AdvertForm
 from project.forms.forms import BSForm, HvalaSForm, PenuelConfForm, Play2017Form
 from models import Article, Page, Question,\
     News, SliderItem, Review, Testimony, Video, Ministry, VideoCategory, Advert, AdvertCategory
@@ -392,6 +392,19 @@ def advertCatView(request, category_slug, template_name="catalog/advert_cat.html
 def advertAllView(request, template_name="catalog/advert_all.html"):
     adverts = Advert.objects.order_by("-date")
     categories = AdvertCategory.objects.all()
+
+    form_advert = AdvertForm()
+
+    # Отправляем на почту
+    if request.method == "POST" and "advert" in request.POST:
+        form_need = NeedForm(request.POST)
+        if form_need.is_valid():
+            form_need.save()
+            form_msg = ['Спасибо! Молитвенная просьба успешно отправлена', '#0773bb']
+        else:
+            form_msg = ['Ошибка заполнения формы <br> Проверьте корректность всех данных', '#DC7373']
+
+
     return render_to_response(
         template_name, locals(), context_instance=RequestContext(request))
 

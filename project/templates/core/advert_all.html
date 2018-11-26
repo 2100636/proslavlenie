@@ -11,6 +11,28 @@
 {% endblock %}
 
 {% block content %}
+
+
+
+{% if form_msg %}
+  <div class="container">
+    <div class="form_msg 123">{{ form_msg.0 }}</div>
+    <style>
+      .form_msg{
+        /*background: {{ form_msg.1 }};*/
+        padding: 30px 30px 27px;
+        color: #fff;
+        font-size: 21px;
+        text-align: center;
+        text-transform: uppercase;
+        margin: 33px auto 5px;
+      }
+    </style>
+  </div>
+{% endif %}
+
+
+
 <div id="obyavleniya" class="content-wrapper" style="margin-left:0"><!-- Content Wrapper. Contains page content -->
 
   <section id="drop_menu">
@@ -64,6 +86,33 @@
           </div>   
         </div>
         
+
+        <div class="col-xs-12" >
+          <form action="." method="post" class="siteform">
+            {% csrf_token %} 
+
+            <div class="errorswrap"></div>
+            <input name="formname" type="hidden" value="Объявление" class="form-control">
+            <input name="fields" type="hidden" value="formname;name;phone;email;text" class="form-control">
+            <input class="form-control floating-label" id="e_mail" name="e_mail" placeholder="Не_заполняйте_это_поле!" type="text">
+
+            {{ form_advert }}
+            <hr>
+            <!-- {{form_advert.name}}
+            {{form_advert.text}}
+            {{form_advert.phone}}
+            {{form_advert.author}} -->
+
+            <div class="agreement checkbox">
+              <label>
+                <span class="checkbox-material"><span class="check"></span></span> Я ознакомлен(а) и согласен(а) с <a href="//proslavlenie.ru/page/polzovatelskoe-soglashenie/" target="_blank">пользовательским соглашением об использовании персональных данных</a>
+              </label>
+            </div>     
+            <input type="submit" name="need" class="btn btn-primary form_submit" value="Отправить" style="display: none;">
+            <div class="send btn btn-primary" style="position: relative;z-index: 2;">Отправить</div>
+          </form>
+        </div>
+
         
 
       </div>
