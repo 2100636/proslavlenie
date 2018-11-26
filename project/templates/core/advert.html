@@ -6,41 +6,39 @@
 {% block content %}
 <div id="obyavleniya" class="content-wrapper" style="margin-left:0"><!-- Content Wrapper. Contains page content -->
 
-    <section id="drop_menu">
-        {% menu_tree request %}
-    </section>
+  <section id="drop_menu">
+    {% menu_tree request %}
+  </section>
 
 
 
-    <section class="content">
-        <div class="container">
-            <div class="row">
+  <section class="content">
+    <div class="container">
+      <div class="row">
 
-                <div class="col-xs-7">
-                    <h1 class="">{{ advert.name }}</h1>
-                </div>
-
-                <div class="col-xs-12">
-                    <div class="row">
-                        <div class="col-xs-7">
-                          <div class="text">{{ advert.text }}</div>
-                          <div class="phone">{{ advert.phone }}</div>
-                          <div class="cost">{{ advert.cost }}</div>
-                          <div class="category">{{ advert.category }}</div>
-                          <div class="member">{{ advert.member }}</div>
-                          <div class="author">{{ advert.author }}</div>
-                          <div class="date">{{ advert.date }}</div>
-                        </div>
-                        <div class="col-xs-5">
-                            <img alt="{{ advert.name|escape }}" src="{% cropped_thumbnail advert "cropping" scale=1 %}">
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
+        <div class="col-xs-7">
+          <h1 class="">{{ advert.name }}</h1>
         </div>
-    </section>
+
+        <div class="col-xs-12">
+          <div class="row">
+            <div class="col-xs-7">
+              <div class="text">{{ advert.text }}</div>
+              <div class="phone">{{ advert.phone }}</div>
+              <div class="cost">{{ advert.cost }}</div>
+              <div class="category">{{ advert.category }}</div>
+              <div class="member">{{ advert.member }}</div>
+              <div class="author">{{ advert.author }}</div>
+              <div class="date">{{ advert.date }}</div>
+            </div>
+            <div class="col-xs-5">
+              <img class="img-responsive" alt="{{ advert.name|escape }}" src="{% cropped_thumbnail advert "cropping" scale=1 %}">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
 

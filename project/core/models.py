@@ -383,7 +383,7 @@ class AdvertCategory(models.Model):
         verbose_name_plural = u'Объявления категории'
 
     def __unicode__(self):
-        return u'Объявления категория: %s' % self.name
+        return u'Категория: %s' % self.name
 
     def url(self):
         return '/adverts/%s' % self.slug
