@@ -397,13 +397,12 @@ def advertAllView(request, template_name="catalog/advert_all.html"):
 
     # Отправляем на почту
     if request.method == "POST" and "form_advert" in request.POST:
-        form_need = NeedForm(request.POST)
-        if form_need.is_valid():
-            form_need.save()
-            form_msg = ['Спасибо! Молитвенная просьба успешно отправлена', '#0773bb']
+        form_advert = AdvertForm(request.POST)
+        if form_advert.is_valid():
+            form_advert.save()
+            form_msg = ['Спасибо! Ваше объявление отправлено, после модерации оно будет опубликовано', '#0773bb']
         else:
             form_msg = ['Ошибка заполнения формы <br> Проверьте корректность всех данных', '#DC7373']
-
 
     return render_to_response(
         template_name, locals(), context_instance=RequestContext(request))
