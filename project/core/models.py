@@ -385,6 +385,8 @@ class AdvertCategory(models.Model):
     def __unicode__(self):
         return u'Объявления категория: %s' % self.name
 
+    def url(self):
+        return '/adverts/%s' % self.slug
 
 class Advert(models.Model):
     name = models.CharField(max_length=200, verbose_name=u'Название')

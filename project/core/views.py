@@ -368,6 +368,7 @@ def questionsView(request, template_name="core/questions.html"):
 def advertView(request, slug, template_name="catalog/advert.html"):
     user = request.user
     advert = Advert.objects.get(slug=slug)
+    categories = AdvertCategory.objects.all()
     # мета описание
     # meta_title = advert.meta_title
     # if not meta_title or meta_title == '':
@@ -380,7 +381,7 @@ def advertView(request, slug, template_name="catalog/advert.html"):
 def advertCatView(request, category_slug, template_name="catalog/advert_cat.html"):
 
     category = AdvertCategory.objects.get(slug=category_slug)
-    adverts_ = Advert.objects.filter(category=category.id)
+    adverts = Advert.objects.filter(category=category.id)
 
     categories = AdvertCategory.objects.all()
 
@@ -390,7 +391,7 @@ def advertCatView(request, category_slug, template_name="catalog/advert_cat.html
 
 def advertAllView(request, template_name="catalog/advert_all.html"):
     advert_all = Advert.objects.order_by("-date")
-
+    categories = AdvertCategory.objects.all()
     return render_to_response(
         template_name, locals(), context_instance=RequestContext(request))
 
