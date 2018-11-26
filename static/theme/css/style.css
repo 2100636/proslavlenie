@@ -875,6 +875,7 @@ input.btn {
 }
 #obyavleniya h1{
   font-size: 34px;
+  margin-bottom: 50px;
 }
 #obyavleniya h1 b{
   font-size: 51px;
@@ -899,6 +900,7 @@ input.btn {
   border-bottom: 2px solid #0773bb;
   padding-bottom: 20px;
   margin-bottom: 40px;
+  position: relative;
 }
 .obyav_item .image{
   width: 290px;
@@ -968,11 +970,12 @@ input.btn {
 }
 .obyav_content .member {
   position: relative;
-  padding-left: 30px;
+  padding-left: 27px;
   line-height: 26px;
   margin-bottom: 10px;
   display: inline-block;
   float: left;
+  margin-left: 15px;
 }
 .obyav_content .member:before {
   content: "";
@@ -982,9 +985,9 @@ input.btn {
   display: block;
   float: left;
   background-size: 100%;
-  position: relative;
+  position: absolute;
   top: 2px;
-  margin-left: 15px;
+  left: 0;
 }
 .obyav_content .category {
   position: absolute;
