@@ -397,15 +397,15 @@ def advertAllView(request, template_name="catalog/advert_all.html"):
 
     # Отправляем на почту
     if request.method == "POST" and "form_advert" in request.POST:
-        form_advert = AdvertForm(request.POST)
+        form_advert = AdvertForm(request.POST, request.FILES)
         if form_advert.is_valid():
 
-            r = requests.get(form_advert['image'])
-            image = path.basename(urlparse(form_advert['image']).path)
-            buf = BytesIO()
-            buf.write(r.content)
+            # r = requests.get(form_advert['image'])
+            # image = path.basename(urlparse(form_advert['image']).path)
+            # buf = BytesIO()
+            # buf.write(r.content)
 
-            form_advert['image'] = File(buf, image)
+            # form_advert['image'] = File(buf, image)
 
             form_advert.save()
             form_msg = ['Спасибо! Ваше объявление отправлено, после модерации оно будет опубликовано', '#0773bb']
