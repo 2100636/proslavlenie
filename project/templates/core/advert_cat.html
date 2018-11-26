@@ -27,8 +27,8 @@
         <div class="col-xs-12" >
 
           <div class="col-xs-9 obyav_list">
-          {% for adv in advert_all %}
-            <div class="obyav_item" >
+          {% for adv in adverts %}
+            <div class="obyav_item clearfix" >
               <div class="image">
                 <img class="img-responsive" src="{% cropped_thumbnail adv "cropping" scale=1 %}">
               </div>
@@ -39,7 +39,7 @@
                 {% if adv.cost and  adv.cost != "0" %}
                   <div class="cost"><b>Цена:</b> {{ adv.cost }}</div>
                 {% endif %}
-                <div class="author_info">
+                <div class="author_info clearfix">
                   <div class="phone">{{ adv.phone }}</div>
                   <div class="author">{{ adv.author }}</div>
                   {% if adv.member %}

@@ -390,7 +390,7 @@ def advertCatView(request, category_slug, template_name="catalog/advert_cat.html
 
 
 def advertAllView(request, template_name="catalog/advert_all.html"):
-    advert_all = Advert.objects.order_by("-date")
+    adverts = Advert.objects.order_by("-date")
     categories = AdvertCategory.objects.all()
     return render_to_response(
         template_name, locals(), context_instance=RequestContext(request))

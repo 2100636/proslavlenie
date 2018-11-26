@@ -895,17 +895,22 @@ input.btn {
   text-decoration: none;
 }
 
-.obyav_content{
-  float: left;
+.obyav_item {
+  border-bottom: 2px solid #0773bb;
+  padding-bottom: 20px;
+  margin-bottom: 40px;
 }
-
-.obyav_content .image{
+.obyav_item .image{
   width: 380px;
   border-left: 2px solid #ffffff;
   border-bottom: 2px solid #ffffff;
   box-shadow: -3px 3px 0px -1px #0773bb;
   float: left;
   margin-right: 17px;
+}
+
+.obyav_content{
+  float: left;
 }
 .obyav_content .title{
   position: relative;
