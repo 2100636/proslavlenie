@@ -901,16 +901,14 @@ input.btn {
   margin-bottom: 40px;
 }
 .obyav_item .image{
-  width: 380px;
-  border-left: 2px solid #ffffff;
-  border-bottom: 2px solid #ffffff;
-  box-shadow: -3px 3px 0px -1px #0773bb;
+  width: 290px;
   float: left;
   margin-right: 17px;
 }
 
 .obyav_content{
   float: left;
+  width: calc(100% - 307px);
 }
 .obyav_content .title{
   position: relative;
@@ -926,6 +924,9 @@ input.btn {
 .obyav_content .text{
   padding: 10px 0;
   border-bottom: 1px solid #f1f1f1;
+  margin-bottom: 15px;
+}
+.cost {
   margin-bottom: 15px;
 }
 .obyav_content .phone{
@@ -974,10 +975,11 @@ input.btn {
   float: left;
 }
 .obyav_content .member:before {
+  content: "";
   background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSItNzYgMCA1MTIgNTEyIiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIyNHB4Ij48cGF0aCBkPSJtMjI1IDUxMnYtMzAxaDEzNXYtOTBoLTEzNXYtMTIxaC05MHYxMjFoLTEzNXY5MGgxMzV2MzAxem0wIDAiIGZpbGw9IiMwNzczYmIiLz48L3N2Zz4K);
   width: 22px;
   height: 20px;
-  display: inline-block;
+  display: block;
   float: left;
   background-size: 100%;
   position: relative;
@@ -985,8 +987,13 @@ input.btn {
   margin-left: 15px;
 }
 .obyav_content .category {
-  color: #797979;
-  margin-top: 22px;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  background: rgba(8, 17, 23, 0.88);
+  color: #fff;
+  padding: 10px;
+  width: 290px;
 }
 
 
