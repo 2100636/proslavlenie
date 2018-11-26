@@ -432,4 +432,4 @@ class Advert(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = self._get_unique_slug()
-        super().save(*args, **kwargs)
+        super(Advert, self).save(*args, **kwargs)
