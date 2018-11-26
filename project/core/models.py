@@ -10,6 +10,7 @@ from image_cropping import ImageRatioField
 from colorful.fields import RGBColorField
 from authentication.models import Account
 from django.template.defaultfilters import slugify
+from uuslug import slugify
 
 class BaseArticle(models.Model):
     class Meta:
@@ -433,10 +434,14 @@ class Advert(models.Model):
     #     if not self.slug:
     #         self.slug = self._get_unique_slug()
     #     super(Advert, self).save(*args, **kwargs)
-        
-    def save(self, *args, **kwargs):
-        if not self.id:
-            # Newly created object, so set slug
-            self.slug = slugify(self.name)
 
-        super(Advert, self).save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     if not self.id:
+    #         # Newly created object, so set slug
+    #         self.slug = slugify(self.name)
+
+    #     super(Advert, self).save(*args, **kwargs)
+
+    def save(self, *args, **kwargs):
+        self.slug = uuslug(self.name, instance=self, max_length=50)
+        super(Advert, self).save(*args, **kwargs)        

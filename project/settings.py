@@ -207,7 +207,8 @@ INSTALLED_APPS = (
     'image_cropping',
     'easy_thumbnails',
     'django_generic_flatblocks',
-    'rest_framework'
+    'rest_framework',
+    'uuslug'
 )
 
 REST_FRAMEWORK = {
