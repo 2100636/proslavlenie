@@ -90,7 +90,7 @@
             </div>
           {% endif %}
 
-          <form action="." method="post" class="siteform">
+          <form action="." method="post" class="siteform" enctype="multipart/form-data">
             {% csrf_token %} 
 
             <div class="errorswrap"></div>
