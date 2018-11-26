@@ -80,5 +80,5 @@ class AdvertForm(forms.ModelForm):
 
     class Meta:
         model = Advert
-        fields = ('name', 'text', 'image', 'phone', 'cost', 'category', 'member', 'author', 'pswd', 'status')
+        fields = ('name', 'text', 'image', 'phone', 'cost', 'category', 'member', 'author', 'pswd')
 
