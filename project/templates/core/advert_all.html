@@ -30,9 +30,12 @@
           <h1 class="">Обьявления</h1>
         </div>
 
-страница: {{ pageNumber }} <br>
-{{ adverts.start_index }} to {{ adverts.end_index }} of {{ adverts.paginator.count }}.
-<br>
+        {% if pageNumber != 1 %}
+          <div class="col-xs-4">
+            <div class="current_page">Страница: <span>{{ pageNumber }}</span></div>
+          </div>
+        {% endif %}
+
 
         <div class="col-xs-12" >
           <div class="row">
@@ -81,7 +84,18 @@
 
         <div class="col-xs-12" >
 
-
+          страница: {{ pageNumber }} <br>
+          {{ adverts.start_index }} to {{ adverts.end_index }} of {{ adverts.paginator.count }}.
+          <br>
+          <div class="pages">
+            {% for i in range_ %}
+              {% if i == pageNumber %}
+                <li class="active">{{ i }}</li>
+              {% else %}
+                <li><a href="">{{ i }}</a></li>
+              {% endif %}
+            {% endfor %}
+          </div>
 
         </div>
 
