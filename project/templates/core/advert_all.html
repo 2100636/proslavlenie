@@ -90,7 +90,7 @@
           <div class="pages">
             {% for i in range_ %}
               {% if i != 0 %}
-                {% if i == int(float(pageNumber)) %}
+                {% if i == pageNumber %}
                   <li class="active">{{ i }}</li>
                 {% else %}
                   <li><a href="">{{ i }}</a></li>
