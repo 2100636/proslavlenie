@@ -397,7 +397,7 @@ def advertAllView(request, template_name="catalog/advert_all.html"):
 
 
     adverts = Advert.objects.filter(status=1).order_by("-id")
-    paginator = Paginator(adverts, 5)
+    paginator = Paginator(adverts, 4)
     pageNumber = request.GET.get('page')
 
     try: 
