@@ -89,10 +89,12 @@
           <br>
           <div class="pages">
             {% for i in range_ %}
-              {% if int(float(i)) == int(float(pageNumber)) %}
-                <li class="active">{{ i }}</li>
-              {% else %}
-                <li><a href="">{{ i }}</a></li>
+              {% if i != 0 %}
+                {% if i == int(float(pageNumber)) %}
+                  <li class="active">{{ i }}</li>
+                {% else %}
+                  <li><a href="">{{ i }}</a></li>
+                {% endif %}
               {% endif %}
             {% endfor %}
           </div>
