@@ -44,13 +44,10 @@
           <div class="row">
             <div class="col-xs-9 obyav_list">
               
-              {% if adverts == null %}
-                Здесь пока нет объявлений. null
+              {% if adverts%}
+              {% else %}
+                Здесь пока нет объявлений!
               {% endif %}
-              {% if adverts == false %}
-                Здесь пока нет объявлений. false
-              {% endif %}
-
               
               {% for adv in adverts %}
                 <div class="obyav_item clearfix" >

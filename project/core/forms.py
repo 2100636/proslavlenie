@@ -69,22 +69,44 @@ class AdvertForm(forms.ModelForm):
 
         self.fields['name'].widget.attrs = {
             'placeholder': 'Заголовок *',
-            'required': 'required',}
+            'required': 'required',
+            'class': 'form-control floating-label'
+            }
 
         self.fields['text'].widget.attrs = {
             'placeholder': 'Текст объявления *',
-            'required': 'required'}
+            'required': 'required',
+            'class': 'form-control floating-label'
+            }
+
+        self.fields['image'].widget.attrs = {
+            'class': 'form-control floating-label'
+            }
 
         self.fields['phone'].widget.attrs = {
             'placeholder': 'Ваш телефон *',
-            'required': 'required'}
+            'required': 'required',
+            'class': 'form-control floating-label'
+            }
+
+        self.fields['cost'].widget.attrs = {
+            'class': 'form-control floating-label'
+            }
+
+        self.fields['category'].widget.attrs = {
+            'required': 'required',
+            'class': 'form-control floating-label'
+            }
+
+        self.fields['member'].widget.attrs = {
+            'class': 'form-control floating-label'
+            }
 
         self.fields['author'].widget.attrs = {
             'placeholder': 'Ваше имя *',
-            'required': 'required'}
-
-        self.fields['category'].widget.attrs = {
-            'required': 'required'}
+            'required': 'required',
+            'class': 'form-control floating-label'
+            }
 
     class Meta:
         model = Advert
