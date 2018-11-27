@@ -408,7 +408,7 @@ def advertAllView(request, template_name="catalog/advert_all.html"):
         pageNumber = paginator.num_pages
     adverts = paginator.page(pageNumber)
 
-    range_ = range(adverts.paginator.count)
+    range_ = range(adverts.paginator.count+1)
 
     return render_to_response(
         template_name, locals(), context_instance=RequestContext(request))
