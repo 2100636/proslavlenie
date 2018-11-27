@@ -46,7 +46,7 @@
                   {% if adv.image %}
                     <img class="img-responsive" alt="{{ adv.name }}" src="{% cropped_thumbnail adv "cropping" scale=1 %}">
                   {% else %}
-                    <img class="img-responsive" alt="no photo" src="static/theme/no_photo.jpg">
+                    <img class="img-responsive" alt="no photo" src="/static/theme/img/no_photo.jpg">
                   {% endif %}
                 </div>
                 <div class="obyav_content">
@@ -83,21 +83,17 @@
         
 
         <div class="col-xs-12" >
-
-          страница: {{ pageNumber }} <br>
-          {{ adverts.start_index }} to {{ adverts.end_index }} of {{ adverts.paginator.count }}.
-          <br>
-          <div class="pages">
+          <ul class="pages">
             {% for i in range_ %}
               {% if i != 0 %}
                 {% if i == pageNumber %}
                   <li class="active">{{ i }}</li>
                 {% else %}
-                  <li><a href="">{{ i }}</a></li>
+                  <li><a rel="nofollow" href="/adverts/?page={{ i }}">{{ i }}</a></li>
                 {% endif %}
               {% endif %}
             {% endfor %}
-          </div>
+          </ul>
 
         </div>
 
