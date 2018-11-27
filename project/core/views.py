@@ -415,7 +415,9 @@ def advertAllView(request, template_name="catalog/advert_all.html"):
     #pageNumber_type = type(pageNumber)
 
     count_page = adverts.paginator.count / objects_on_page
-    count_page = int(math.ceil(count_page))
+    ostatok = adverts.paginator.count % objects_on_page
+    if ostatok != 0:
+        count_page = count_page+1
     
     range_ = range(1, count_page+1)
 
