@@ -367,7 +367,7 @@ def questionsView(request, template_name="core/questions.html"):
 
 def advertView(request, slug, template_name="catalog/advert.html"):
     user = request.user
-    advert = Advert.objects.filter(slug=slug, 'status'=1)
+    advert = Advert.objects.filter(slug=slug)
     categories = AdvertCategory.objects.all()
     # мета описание
     # meta_title = advert.meta_title
@@ -381,7 +381,7 @@ def advertView(request, slug, template_name="catalog/advert.html"):
 def advertCatView(request, category_slug, template_name="catalog/advert_cat.html"):
 
     category = AdvertCategory.objects.get(slug=category_slug)
-    adverts = Advert.objects.filter(category=category.id, 'status'=1)
+    adverts = Advert.objects.filter(category=category.id)
 
     categories = AdvertCategory.objects.all()
 
@@ -391,7 +391,7 @@ def advertCatView(request, category_slug, template_name="catalog/advert_cat.html
 
 def advertAllView(request, template_name="catalog/advert_all.html"):
     adverts = Advert.objects.order_by("-id")
-    categories = AdvertCategory.objects.filter('status'=1)[:5]
+    categories = AdvertCategory.objects.filter(status=1)[:5]
 
     form_advert = AdvertForm()
 
