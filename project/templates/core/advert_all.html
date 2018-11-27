@@ -40,6 +40,9 @@
         <br>
         + {{ pageNumber }} +
         <br>
+        + {{ pageNumber_ }} +
+        <br>
+
 
         {% if pageNumber != 1 %}
           <div class="col-xs-4">
@@ -96,7 +99,7 @@
         <div class="col-xs-12" >
           <ul class="pages">
             {% for i in range_ %}
-              {% if i == pageNumber %}
+              {% if i == pageNumber_ %}
                 <li class="active">{{ i }}</li>
               {% else %}
                 <li><a rel="nofollow" href="/adverts/?page={{ i }}">{{ i }}</a></li>
