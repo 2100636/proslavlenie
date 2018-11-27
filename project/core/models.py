@@ -420,28 +420,7 @@ class Advert(models.Model):
 
     def url(self):
         return '/advert/%s' % self.slug
-
-    # def _get_unique_slug(self):
-    #     slug = slugify(self.name)
-    #     unique_slug = slug
-    #     num = 1
-    #     while Advert.objects.filter(slug=unique_slug).exists():
-    #         unique_slug = '{}-{}'.format(slug, num)
-    #         num += 1
-    #     return unique_slug
- 
-    # def save(self, *args, **kwargs):
-    #     if not self.slug:
-    #         self.slug = self._get_unique_slug()
-    #     super(Advert, self).save(*args, **kwargs)
-
-    # def save(self, *args, **kwargs):
-    #     if not self.id:
-    #         # Newly created object, so set slug
-    #         self.slug = slugify(self.name)
-
-    #     super(Advert, self).save(*args, **kwargs)
-
+        
     def save(self, *args, **kwargs):
         self.slug = uuslug(self.name, instance=self, max_length=50)
         super(Advert, self).save(*args, **kwargs)        

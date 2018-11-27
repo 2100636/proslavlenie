@@ -1074,7 +1074,7 @@ padding: 0;
   margin-right: 0;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen {
   .writeme {
     display: block;
   }
