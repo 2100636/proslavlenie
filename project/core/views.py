@@ -390,8 +390,8 @@ def advertCatView(request, category_slug, template_name="catalog/advert_cat.html
 
 
 def advertAllView(request, template_name="catalog/advert_all.html"):
-    adverts = Advert.objects.order_by("-id")
-    categories = AdvertCategory.objects.filter(status=1)[:5]
+    adverts = Advert.objects.filter(status=1).order_by("-id")[:5]
+    categories = AdvertCategory.objects.all()
 
     form_advert = AdvertForm()
 
