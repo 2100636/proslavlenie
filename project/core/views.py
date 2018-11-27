@@ -381,19 +381,39 @@ def advertView(request, slug, template_name="catalog/advert.html"):
 
 
 def advertCatView(request, category_slug, template_name="catalog/advert_cat.html"):
-
-    category = AdvertCategory.objects.get(slug=category_slug)
-    adverts = Advert.objects.filter(category=category.id,status=1)
-
     categories = AdvertCategory.objects.all()
+    category = AdvertCategory.objects.get(slug=category_slug)
+
+    # количество объектов на странице
+    objects_on_page = 4
+
+    adverts = Advert.objects.filter(category=category.id,status=1).order_by("-id")
+    paginator = Paginator(adverts, objects_on_page)
+    pageNumber = request.GET.get('page')
+
+    try: 
+        paginatedPage = paginator.page(pageNumber)
+    except PageNotAnInteger: 
+        pageNumber = 1
+    except EmptyPage: 
+        pageNumber = paginator.num_pages
+    adverts = paginator.page(pageNumber)
+
+    pageNumber_ = int(pageNumber);
+
+    count_page = adverts.paginator.count / objects_on_page
+    ostatok = adverts.paginator.count % objects_on_page
+    if ostatok != 0:
+        count_page = count_page+1
+    
+    range_ = range(1, count_page+1)
+
 
     return render_to_response(
         template_name, locals(), context_instance=RequestContext(request))
 
 
 def advertAllView(request, template_name="catalog/advert_all.html"):
-
-    ## adverts = Advert.objects.filter(status=1).order_by("-id")[:5]
     categories = AdvertCategory.objects.all()
 
     # количество объектов на странице

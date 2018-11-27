@@ -881,6 +881,11 @@ input.btn {
   font-size: 51px;
   display: block;
 }
+.current_page {
+  margin-bottom: 35px;
+  margin-top: 37px;
+  color: #777;
+}
 
 #obyavleniya .cat_list {
   background: #0773bb;
@@ -901,6 +906,7 @@ input.btn {
   padding-bottom: 20px;
   margin-bottom: 40px;
   position: relative;
+  box-shadow: 0px 5px 2px -2px rgba(130, 130, 130, 0.25);
 }
 .obyav_item .image{
   width: 290px;
@@ -1000,9 +1006,24 @@ input.btn {
 }
 
 
-
-
-
+ul.pages_list li {
+  display: inline-block;
+  list-style: none;
+  margin-right: 3px;
+  cursor: default;
+}
+ul.pages_list li a {
+  padding: 4px 10px;
+  background: #d6edf5;
+  color: #0773bb;
+  font-weight: 600;
+  display: inline-block;
+}
+ul.pages_list li.active {
+  padding: 5px 10px;
+  background: #d6edf5;
+  color: #080808;
+}
 
 
 

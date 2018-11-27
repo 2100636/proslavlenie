@@ -30,18 +30,7 @@
           <h1 class="">Обьявления</h1>
         </div>
 
-        {{ adverts.start_index }} to {{ adverts.end_index }} of {{ adverts.paginator.count }}.
-
-        <br>
-        <br>
-
-        <br>
-        !{{pageNumber_type}}!
-        <br>
-        + {{ pageNumber }} +
-        <br>
-        + {{ pageNumber_ }} +
-        <br>
+        {#  {{ adverts.start_index }} to {{ adverts.end_index }} of {{ adverts.paginator.count }} #}
 
 
         {% if pageNumber != 1 %}
@@ -54,34 +43,50 @@
         <div class="col-xs-12" >
           <div class="row">
             <div class="col-xs-9 obyav_list">
-            {% for adv in adverts %}
-              <div class="obyav_item clearfix" >
-                <div class="image">
-                  {% if adv.image %}
-                    <img class="img-responsive" alt="{{ adv.name }}" src="{% cropped_thumbnail adv "cropping" scale=1 %}">
-                  {% else %}
-                    <img class="img-responsive" alt="no photo" src="/static/theme/img/no_photo.jpg">
-                  {% endif %}
-                </div>
-                <div class="obyav_content">
-                  <div class="title"><a href="{{ adv.url }}">{{ adv.name }}</a></div>
-                  <div class="date">{{ adv.date }}</div>
-                  <div class="text"><p>{{ adv.text|safe }}</p></div>
-                  {% if adv.cost and  adv.cost != "0" %}
-                    <div class="cost"><b>Цена:</b> {{ adv.cost }} <span>руб.</span></div>
-                  {% endif %}
-                  <div class="author_info clearfix">
-                    <div class="phone">{{ adv.phone }}</div>
-                    <div class="author">{{ adv.author }}</div>
-                    {% if adv.member %}
-                      <div class="member">Член Церкви Прославления</div>
+              {% for adv in adverts %}
+                <div class="obyav_item clearfix" >
+                  <div class="image">
+                    {% if adv.image %}
+                      <img class="img-responsive" alt="{{ adv.name }}" src="{% cropped_thumbnail adv "cropping" scale=1 %}">
+                    {% else %}
+                      <img class="img-responsive" alt="no photo" src="/static/theme/img/no_photo.jpg">
                     {% endif %}
                   </div>
-                  <div class="category">{{ adv.category }}</div>
-                  {# <a href="{{ adv.url }}" class="btn btn-primary pull-right" style="margin-top: 10px;">Подробнее</a> #}
+                  <div class="obyav_content">
+                    <div class="title"><a href="{{ adv.url }}">{{ adv.name }}</a></div>
+                    <div class="date">{{ adv.date }}</div>
+                    <div class="text"><p>{{ adv.text|safe }}</p></div>
+                    {% if adv.cost and  adv.cost != "0" %}
+                      <div class="cost"><b>Цена:</b> {{ adv.cost }} <span>руб.</span></div>
+                    {% endif %}
+                    <div class="author_info clearfix">
+                      <div class="phone">{{ adv.phone }}</div>
+                      <div class="author">{{ adv.author }}</div>
+                      {% if adv.member %}
+                        <div class="member">Член Церкви Прославления</div>
+                      {% endif %}
+                    </div>
+                    <div class="category">{{ adv.category }}</div>
+                    {# <a href="{{ adv.url }}" class="btn btn-primary pull-right" style="margin-top: 10px;">Подробнее</a> #}
+                  </div>
                 </div>
+              {% endfor %}
+
+              <div class="col-xs-12" >
+                <ul class="pages_list">
+                  {% for i in range_ %}
+                    {% if i == pageNumber_ %}
+                      <li class="active">{{ i }}</li>
+                    {% else %}
+                      {% if i == 1 %}
+                        <li><a rel="nofollow" href="/adverts/">{{ i }}</a></li>
+                      {% else %}
+                        <li><a rel="nofollow" href="/adverts/?page={{ i }}">{{ i }}</a></li>
+                      {% endif %}
+                    {% endif %}
+                  {% endfor %}
+                </ul>
               </div>
-            {% endfor %}
             </div>   
 
             <div class="col-xs-3 cat_list" >
@@ -95,23 +100,6 @@
           </div>   
         </div>
         
-
-        <div class="col-xs-12" >
-          <ul class="pages">
-            {% for i in range_ %}
-              {% if i == pageNumber_ %}
-                <li class="active">{{ i }}</li>
-              {% else %}
-                {% if i == 1 %}
-                  <li><a rel="nofollow" href="/adverts/">{{ i }}</a></li>
-                {% else %}
-                  <li><a rel="nofollow" href="/adverts/?page={{ i }}">{{ i }}</a></li>
-                {% endif %}
-              {% endif %}
-            {% endfor %}
-          </ul>
-
-        </div>
 
         
 

@@ -384,7 +384,7 @@ class AdvertCategory(models.Model):
         verbose_name_plural = u'Объявления категории'
 
     def __unicode__(self):
-        return u'Категория: %s' % self.name
+        return u'%s' % self.name
 
     def url(self):
         return '/adverts/%s' % self.slug
@@ -420,7 +420,7 @@ class Advert(models.Model):
 
     def url(self):
         return '/advert/%s' % self.slug
-        
+
     def save(self, *args, **kwargs):
         self.slug = uuslug(self.name, instance=self, max_length=50)
         super(Advert, self).save(*args, **kwargs)        

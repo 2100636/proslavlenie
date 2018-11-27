@@ -93,7 +93,7 @@ class AdvertCategoryInline(admin.StackedInline):
 
 class AdvertAdmin(admin.ModelAdmin):
     model = Advert
-    list_display = ('name', 'text', 'phone', 'cost', 'category', 'author', 'status')
+    list_display = ('name', 'text', 'phone', 'cost', 'category', 'author', 'date', 'status')
     list_display_links = ('name',)
     search_fields = ['text']
     fields = (
