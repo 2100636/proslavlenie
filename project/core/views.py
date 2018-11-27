@@ -381,7 +381,7 @@ def advertView(request, slug, template_name="catalog/advert.html"):
 def advertCatView(request, category_slug, template_name="catalog/advert_cat.html"):
 
     category = AdvertCategory.objects.get(slug=category_slug)
-    adverts = Advert.objects.filter(category=category.id)
+    adverts = Advert.objects.filter(category=category.id,status=1)
 
     categories = AdvertCategory.objects.all()
 
