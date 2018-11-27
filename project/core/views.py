@@ -17,6 +17,7 @@ from project.payment.models import Payment
 import requests 
 import re
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+import math
 
 def crossdomain_xmlView(request, template_name="core/crossdomain.html"):
     return render_to_response(
@@ -414,7 +415,7 @@ def advertAllView(request, template_name="catalog/advert_all.html"):
     #pageNumber_type = type(pageNumber)
 
     count_page = adverts.paginator.count / objects_on_page
-    count_page = ceil(count_page)
+    count_page = int(math.ceil(count_page))
     
     range_ = range(1, count_page+1)
 
