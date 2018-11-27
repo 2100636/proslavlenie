@@ -414,7 +414,7 @@ def advertAllView(request, template_name="catalog/advert_all.html"):
 
 
 def advertAddView(request, template_name="catalog/advert_add.html"):
-    category = AdvertCategory.objects.get(slug=category_slug)
+    categories = AdvertCategory.objects.all()
     form_advert = AdvertForm()
 
     if request.method == "POST" and "form_advert" in request.POST:
