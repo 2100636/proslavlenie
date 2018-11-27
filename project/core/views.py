@@ -15,7 +15,7 @@ from project.settings import ADMIN_EMAIL, DEFAULT_FROM_EMAIL
 from project.payment.forms import PaymentForm
 from project.payment.models import Payment
 import requests 
-
+import re
 
 def crossdomain_xmlView(request, template_name="core/crossdomain.html"):
     return render_to_response(
@@ -390,23 +390,27 @@ def advertCatView(request, category_slug, template_name="catalog/advert_cat.html
 
 
 def advertAllView(request, template_name="catalog/advert_all.html"):
-    adverts = Advert.objects.order_by("-date")
+    adverts = Advert.objects.order_by("-id")
     categories = AdvertCategory.objects.all()
 
     form_advert = AdvertForm()
 
     # Отправляем на почту
     if request.method == "POST" and "form_advert" in request.POST:
+
+        if request.POST['e_mail'] == "":
+            form_msg = ['Ошибка заполнения формы <br> Обнаружен спам: e_mail - не пустое', '#DC7373']
+            return render_to_response(
+                template_name, locals(), context_instance=RequestContext(request))
+
+        spam1 = re.findall(r'http', request.POST['text'])
+        if spam1:
+            form_msg = ['Ошибка заполнения формы <br> Обнаружен спам: найдено http', '#DC7373']
+            return render_to_response(
+                template_name, locals(), context_instance=RequestContext(request))
+
         form_advert = AdvertForm(request.POST, request.FILES)
         if form_advert.is_valid():
-
-            # r = requests.get(form_advert['image'])
-            # image = path.basename(urlparse(form_advert['image']).path)
-            # buf = BytesIO()
-            # buf.write(r.content)
-
-            # form_advert['image'] = File(buf, image)
-
             form_advert.save()
             form_msg = ['Спасибо! Ваше объявление отправлено, после модерации оно будет опубликовано', '#0773bb']
         else:
