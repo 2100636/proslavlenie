@@ -102,7 +102,11 @@
               {% if i == pageNumber_ %}
                 <li class="active">{{ i }}</li>
               {% else %}
-                <li><a rel="nofollow" href="/adverts/?page={{ i }}">{{ i }}</a></li>
+                {% if i == 1 %}
+                  <li><a rel="nofollow" href="/adverts/">{{ i }}</a></li>
+                {% else %}
+                  <li><a rel="nofollow" href="/adverts/?page={{ i }}">{{ i }}</a></li>
+                {% endif %}
               {% endif %}
             {% endfor %}
           </ul>
