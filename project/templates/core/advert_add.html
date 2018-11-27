@@ -1,0 +1,99 @@
+{% extends "front_main.html" %}
+{% load thumbnail %}
+{% load cropping %}
+{% load menu_tags %}
+
+{% block meta %}
+  <title>Добавить объявление | Церковь Прославления</title>
+  <meta name="description" content='Добавить объявление - Частные объявления на сайте "Церкви Прославления"'/>
+{% endblock %}
+
+{% block content %}
+<div id="obyavleniya" class="content-wrapper" style="margin-left:0"><!-- Content Wrapper. Contains page content -->
+
+  <section id="drop_menu">
+      {% menu_tree request %}
+  </section>
+
+  <section class="content adv_all">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-xs-7">
+          <h1 class="">Добавление объявления</h1>
+        </div>
+        
+          
+        <div class="col-xs-12" >
+          <div class="row">
+            <div class="col-xs-9 obyav_list">
+              {% if form_msg %}
+                <div class="container">
+                  <div class="form_msg 123">{{ form_msg.0 }}</div>
+                  <style>
+                    .form_msg{
+                      /*background: {{ form_msg.1 }};*/
+                      padding: 30px 30px 27px;
+                      color: #fff;
+                      color: #000;
+                      font-size: 21px;
+                      text-align: center;
+                      text-transform: uppercase;
+                      margin: 33px auto 5px;
+                    }
+                  </style>
+                </div>
+              {% endif %}
+
+              <form action="." method="post" class="siteform" enctype="multipart/form-data">
+                {% csrf_token %} 
+
+                <div class="errorswrap"></div>
+                <input name="formname" type="hidden" value="Объявление" class="form-control">
+                <input name="fields" type="hidden" value="formname;name;phone;email;text" class="form-control">
+                <input class="form-control floating-label" id="e_mail" name="e_mail" placeholder="Не_заполняйте_это_поле!" type="text">
+
+                {{ form_advert }}
+                <hr>
+                <!-- {{form_advert.name}}
+                {{form_advert.text}}
+                {{form_advert.phone}}
+                {{form_advert.author}} -->
+
+                <div class="agreement checkbox">
+                  <label>
+                    <span class="checkbox-material"><span class="check"></span></span> Я ознакомлен(а) и согласен(а) с <a href="//proslavlenie.ru/page/polzovatelskoe-soglashenie/" target="_blank">пользовательским соглашением об использовании персональных данных</a>
+                  </label>
+                </div>     
+                <input type="submit" name="form_advert" class="btn btn-primary form_submit" value="Отправить" >
+                <div class="send btn btn-primary" style="position: relative;z-index: 2;">Отправить</div>
+              </form>
+            </div>     
+
+            <div class="col-xs-3 cat_list" >
+              <div class="cat_item"><a href="/adverts/">Все объявления</a></div>
+              {% for cat in categories %}
+                <div class="cat_item"><a href="{{ cat.url }}">{{ cat.name }}</a></div>
+              {% endfor %}
+              <div class="cat_item"><a class="active" href="/adverts/add/">Добавить объявление</a></div>
+
+            </div>
+               
+          </div>  
+        </div>
+
+
+
+
+      </div>
+
+    </div>
+  </section>
+
+</div><!-- /.content-wrapper -->
+{% endblock %}
+
+{% block page_js %}
+  <script>
+  </script>
+{% endblock %}

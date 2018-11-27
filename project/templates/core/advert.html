@@ -24,6 +24,13 @@
           <div class="row">
             <div class="col-xs-7">
               <div class="text">{{ advert.text }}</div>
+              <div class="phone">
+                {% if advert.image %}
+                  <img class="img-responsive" alt="{{ advert.name }}" src="{% cropped_thumbnail advert "cropping" scale=1 %}">
+                {% else %}
+                  <img class="img-responsive" alt="no photo" src="static/theme/no_photo.jpg">
+                {% endif %}
+              </div>                
               <div class="phone">{{ advert.phone }}</div>
               <div class="cost">{{ advert.cost }}</div>
               <div class="category">{{ advert.category }}</div>

@@ -16,6 +16,7 @@ from project.payment.forms import PaymentForm
 from project.payment.models import Payment
 import requests 
 import re
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def crossdomain_xmlView(request, template_name="core/crossdomain.html"):
     return render_to_response(
@@ -390,12 +391,32 @@ def advertCatView(request, category_slug, template_name="catalog/advert_cat.html
 
 
 def advertAllView(request, template_name="catalog/advert_all.html"):
-    adverts = Advert.objects.filter(status=1).order_by("-id")[:5]
+
+    ## adverts = Advert.objects.filter(status=1).order_by("-id")[:5]
     categories = AdvertCategory.objects.all()
 
+
+    adverts = Advert.objects.filter(status=1).order_by("-id")
+    paginator = Paginator(adverts, 7)
+    pageNumber = request.GET.get('page')
+
+    try: 
+        paginatedPage = paginator.page(pageNumber)
+    except PageNotAnInteger: 
+        pageNumber = 1
+    except EmptyPage: 
+        pageNumber = paginator.num_pages
+    adverts = paginator.page(pageNumber)
+
+    return render_to_response(
+        template_name, locals(), context_instance=RequestContext(request))
+
+
+
+def advertAddView(request, template_name="catalog/advert_add.html"):
+    category = AdvertCategory.objects.get(slug=category_slug)
     form_advert = AdvertForm()
 
-    # Отправляем на почту
     if request.method == "POST" and "form_advert" in request.POST:
 
         if request.POST['e_mail'] != "":

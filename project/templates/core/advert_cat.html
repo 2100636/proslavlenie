@@ -30,7 +30,11 @@
             {% for adv in adverts %}
               <div class="obyav_item clearfix" >
                 <div class="image">
-                  <img class="img-responsive" src="{% cropped_thumbnail adv "cropping" scale=1 %}">
+                  {% if adv.image %}
+                    <img class="img-responsive" alt="{{ adv.name }}" src="{% cropped_thumbnail adv "cropping" scale=1 %}">
+                  {% else %}
+                    <img class="img-responsive" alt="no photo" src="static/theme/no_photo.jpg">
+                  {% endif %}
                 </div>
                 <div class="obyav_content">
                   <div class="title"><a href="{{ adv.url }}">{{ adv.name }}</a></div>
@@ -61,6 +65,7 @@
                 {% else %}
                   <div class="cat_item"><a href="{{ cat.url }}">{{ cat.name }}</a></div>
                 {% endif %} 
+                <div class="cat_item"><a href="/adverts/add/">Добавить объявление</a></div>
               {% endfor %}
             </div>
                
