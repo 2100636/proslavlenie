@@ -395,9 +395,11 @@ def advertAllView(request, template_name="catalog/advert_all.html"):
     ## adverts = Advert.objects.filter(status=1).order_by("-id")[:5]
     categories = AdvertCategory.objects.all()
 
+    # количество объектов на странице
+    objects_on_page = 4
 
     adverts = Advert.objects.filter(status=1).order_by("-id")
-    paginator = Paginator(adverts, 4)
+    paginator = Paginator(adverts, objects_on_page)
     pageNumber = request.GET.get('page')
 
     try: 
@@ -411,9 +413,10 @@ def advertAllView(request, template_name="catalog/advert_all.html"):
     #pageNumber = int(pageNumber);
     #pageNumber_type = type(pageNumber)
 
-    count = adverts.paginator.count;
+    count_page = adverts.paginator.count / objects_on_page
+    count_page = ceil(count_page)
     
-    range_ = range(count+1)
+    range_ = range(1, count_page+1)
 
     return render_to_response(
         template_name, locals(), context_instance=RequestContext(request))
