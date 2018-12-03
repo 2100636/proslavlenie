@@ -19,6 +19,7 @@ import re
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import math
 from datetime import datetime
+from datetime import timedelta
 
 def crossdomain_xmlView(request, template_name="core/crossdomain.html"):
     return render_to_response(
