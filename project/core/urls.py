@@ -64,6 +64,10 @@ urlpatterns = patterns(
         {'template_name': 'core/advert_all.html'},
         name='advertAllView'),
     
+    url(r'^advert/(?P<slug>[-\w]+)/delete/$', 'advertDeleteView',
+        {'template_name': 'core/advert_delete.html'},
+        name='advertDeleteView'),
+
     url(r'^advert/(?P<slug>[-\w]+)/$', 'advertView',
         {'template_name': 'core/advert.html'},
         name='advertView'),

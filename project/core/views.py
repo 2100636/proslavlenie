@@ -369,7 +369,7 @@ def questionsView(request, template_name="core/questions.html"):
 
 def advertView(request, slug, template_name="catalog/advert.html"):
     user = request.user
-    advert = Advert.objects.filter(slug=slug)
+    advert = Advert.objects.get(slug=slug)
     categories = AdvertCategory.objects.all()
     # мета описание
     # meta_title = advert.meta_title
@@ -380,12 +380,27 @@ def advertView(request, slug, template_name="catalog/advert.html"):
         template_name, locals(), context_instance=RequestContext(request))
 
 
+def advertDeleteView(request, slug, template_name="catalog/advert.html"):
+    user = request.user
+    categories = AdvertCategory.objects.all()
+
+    advert = Advert.objects.get(slug=slug)
+
+    if request.method == "POST" and "idadvert" in request.POST:
+        if request.POST['pass'] != "":
+            advert_to_del = Advert.objects.get(slug=slug,pswd=request.POST['pass'])
+
+
+    return render_to_response(
+        template_name, locals(), context_instance=RequestContext(request))
+
+
 def advertCatView(request, category_slug, template_name="catalog/advert_cat.html"):
     categories = AdvertCategory.objects.all()
     category = AdvertCategory.objects.get(slug=category_slug)
 
     # количество объектов на странице
-    objects_on_page = 4
+    objects_on_page = 20
 
     adverts = Advert.objects.filter(category=category.id,status=1).order_by("-id")
     paginator = Paginator(adverts, objects_on_page)
@@ -417,7 +432,7 @@ def advertAllView(request, template_name="catalog/advert_all.html"):
     categories = AdvertCategory.objects.all()
 
     # количество объектов на странице
-    objects_on_page = 4
+    objects_on_page = 20
 
     adverts = Advert.objects.filter(status=1).order_by("-id")
     paginator = Paginator(adverts, objects_on_page)
@@ -452,13 +467,13 @@ def advertAddView(request, template_name="catalog/advert_add.html"):
     if request.method == "POST" and "form_advert" in request.POST:
 
         if request.POST['e_mail'] != "":
-            form_msg = ['Ошибка заполнения формы <br> Обнаружен спам: e_mail - не пустое', '#DC7373']
+            form_msg = ['Ошибка заполнения формы <br> Обнаружен спам.', '#DC7373']
             return render_to_response(
                 template_name, locals(), context_instance=RequestContext(request))
 
-        spam1 = re.findall(r'http', request.POST['text'])
+        spam1 = re.findall(r'<a ', request.POST['text'])
         if spam1:
-            form_msg = ['Ошибка заполнения формы <br> Обнаружен спам: найдено http', '#DC7373']
+            form_msg = ['Ошибка заполнения формы <br> Обнаружен спам: найдено <a ', '#DC7373']
             return render_to_response(
                 template_name, locals(), context_instance=RequestContext(request))
 

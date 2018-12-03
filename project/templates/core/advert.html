@@ -36,7 +36,7 @@
                 {% if advert.image %}
                   <img class="img-responsive" alt="{{ advert.name }}" src="{% cropped_thumbnail advert "cropping" scale=1 %}">
                 {% else %}
-                  <img class="img-responsive" alt="no photo" src="static/theme/no_photo.jpg">
+                  <img class="img-responsive" alt="no photo" src="/static/theme/no_photo.jpg">
                 {% endif %}
               </div>      
             </div>

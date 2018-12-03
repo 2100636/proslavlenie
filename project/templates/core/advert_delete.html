@@ -1,0 +1,64 @@
+{% extends "front_main.html" %}
+{% load thumbnail %}
+{% load cropping %}
+{% load menu_tags %}
+
+{% block meta %}
+  <title>Удалить объявление | Церковь Прославления</title>
+  <meta name="description" content='Удалить объявление - Частные объявления на сайте "Церкви Прославления"'/>
+{% endblock %}
+
+{% block content %}
+<div id="obyavleniya" class="content-wrapper" style="margin-left:0"><!-- Content Wrapper. Contains page content -->
+
+  <section id="drop_menu">
+      {% menu_tree request %}
+  </section>
+
+  <section class="content adv_all">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-xs-7">
+          <h1 class="">Удаление объявления</h1>
+        </div>
+        
+          
+        <div class="col-xs-12" >
+          <div class="row">
+            <div class="col-xs-9 obyav_list obyav_del">
+
+
+
+              <h2 class="">{{ advert.name }}</h2>
+              <h2 class="">{{ advert_to_del.name }}</h2>
+
+            </div>     
+
+            <div class="col-xs-3 cat_list" >
+              <div class="cat_item"><a href="/adverts/">Все объявления</a></div>
+              {% for cat in categories %}
+                <div class="cat_item"><a href="{{ cat.url }}">{{ cat.name }}</a></div>
+              {% endfor %}
+              <div class="cat_item"><a class="active" href="/adverts/add/">Удалить объявление</a></div>
+
+            </div>
+               
+          </div>  
+        </div>
+
+
+
+
+      </div>
+
+    </div>
+  </section>
+
+</div><!-- /.content-wrapper -->
+{% endblock %}
+
+{% block page_js %}
+  <script>
+  </script>
+{% endblock %}
