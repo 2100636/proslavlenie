@@ -385,12 +385,7 @@ def advertDeleteView(request, slug, template_name="catalog/advert.html"):
     user = request.user
     categories = AdvertCategory.objects.all()
 
-
-    a = Advert.objects.filter(date__gte=datetime.now()-timedelta(days=10))
-    b = Advert.objects.filter(date__gte=datetime.now()+timedelta(days=10))
-    c = Advert.objects.filter(date__lte=datetime.now()-timedelta(days=10))
-    d = Advert.objects.filter(date__lte=datetime.now()+timedelta(days=10))
-
+    c = Advert.objects.filter(date__lte=datetime.now()-timedelta(days=30))..delete()
 
     if request.method == "POST" and "pass" in request.POST and "id" in request.POST:
         if request.POST['pass'] != "":
@@ -401,7 +396,13 @@ def advertDeleteView(request, slug, template_name="catalog/advert.html"):
             except Advert.DoesNotExist:
                 status = 0;
 
+    return render_to_response(
+        template_name, locals(), context_instance=RequestContext(request))
 
+
+def advertDeleteOldView(request, template_name="catalog/advert_delete_old.html"):
+    categories = AdvertCategory.objects.all()
+    c = Advert.objects.filter(date__lte=datetime.now()-timedelta(days=30)).delete()
     return render_to_response(
         template_name, locals(), context_instance=RequestContext(request))
 
