@@ -44,12 +44,12 @@
                   <div class="obyav_content">
                     <div class="title">{{ adv.name }}</div>
                     <div class="date">{{ adv.date }}</div>
-                    <div class="text"><p>{{ adv.text|safe }}</p></div>
+                    <div class="text"><p>{{ adv.text }}</p></div>
                     {% if adv.cost and  adv.cost != "0" %}
                       <div class="cost"><b>Цена:</b> {{ adv.cost }}</div>
                     {% endif %}
                     <div class="author_info clearfix">
-                      <div class="phone">{{ adv.phone }}</div>
+                      <!--noindex--><div class="phone">{{ adv.phone }}</div><!--/noindex-->
                       <div class="author">{{ adv.author }}</div>
                       {% if adv.member %}
                         <div class="member">Прихожанин Церкви Прославления</div>
