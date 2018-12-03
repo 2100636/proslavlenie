@@ -402,7 +402,7 @@ class Advert(models.Model):
     cost = models.CharField(verbose_name=u'Цена',max_length=200, blank=True)
     category = models.ForeignKey(
         AdvertCategory, verbose_name=u'Категория')
-    member = models.BooleanField(verbose_name=u'Являюсь членом церкви', default=False)
+    member = models.BooleanField(verbose_name=u'Прихожанин Церкви Прославления', default=False)
     author = models.CharField(verbose_name=u'Имя',max_length=200)
     pswd = models.CharField(verbose_name=u'Пароль для удаления',max_length=200, blank=True)
 

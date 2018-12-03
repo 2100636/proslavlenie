@@ -71,14 +71,38 @@
 
                 {{ form_advert }}
                 <hr>
-                {{form_advert.name}}
-                {{form_advert.text}}
-                {{form_advert.image}}
-                {{form_advert.phone}}
-                {{form_advert.cost}}
-                {{form_advert.category}}
-                {{form_advert.member}}
-                {{form_advert.author}}
+                <div class="form-item">
+                  <label for="id_name">Название:</label>
+                  {{form_advert.name}}
+                  </div>
+                <div class="form-item">
+                  <label for="id_text">Текст объявления:</label>
+                  {{form_advert.text}}
+                  </div>
+                <div class="form-item">
+                  <label for="id_image">Изображение:</label>
+                  {{form_advert.image}}
+                  </div>
+                <div class="form-item">
+                  <label for="id_phone">Телефон:</label>
+                  {{form_advert.phone}}
+                  </div>
+                <div class="form-item">
+                  <label for="id_cost">Цена:</label>
+                  {{form_advert.cost}}
+                  </div>
+                <div class="form-item">
+                  <label for="id_category">Категория:</label>
+                  {{form_advert.category}}
+                  </div>
+                <div class="form-item">
+                  <label for="id_member">Прихожанин Церкви Прославления:</label>
+                  {{form_advert.member}}
+                  </div>
+                <div class="form-item">
+                  <label for="id_author">Имя:</label>
+                  {{form_advert.author}}
+                  </div>
 
                 <div class="agreement checkbox">
                   <label>
