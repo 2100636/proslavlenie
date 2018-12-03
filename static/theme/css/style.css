@@ -1026,12 +1026,46 @@ ul.pages_list li.active {
 }
 
 
+.obyav_add .rules_adverts {
+  padding: 17px;
+  font-size: 13px;
+  background: rgba(194, 208, 233, 0.3);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  line-height: 15px;
+}
+.rules_adverts p {
+  margin-bottom: 8px;
+}
+.rules_adverts .title{
+  font-size: 21px;
+  margin-bottom: 11px;
+}
 
-
-
-
-
-
+.form_item {
+  margin-bottom: 15px;
+}
+.form_control {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  -webkit-transition: all border-color ease-in-out .15s,box-shadow ease-in-out .15s ease;
+  -moz-transition: all border-color ease-in-out .15s,box-shadow ease-in-out .15s ease;
+  -ms-transition: all border-color ease-in-out .15s,box-shadow ease-in-out .15s ease;
+  -o-transition: all border-color ease-in-out .15s,box-shadow ease-in-out .15s ease;
+  transition: all border-color ease-in-out .15s,box-shadow ease-in-out .15s ease;
+}
 
 
 
