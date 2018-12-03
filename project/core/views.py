@@ -384,6 +384,10 @@ def advertDeleteView(request, slug, template_name="catalog/advert.html"):
     user = request.user
     categories = AdvertCategory.objects.all()
 
+
+    a = Advert.objects.filter(date=datetime.now()-timedelta(days=10))
+
+
     if request.method == "POST" and "pass" in request.POST and "id" in request.POST:
         if request.POST['pass'] != "":
             try:

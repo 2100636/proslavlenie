@@ -28,6 +28,17 @@
           <div class="row">
             <div class="col-xs-9 obyav_list obyav_del">
 
+              <hr>
+              {% for adv in a %}
+                <div class="obyav_item clearfix" >
+
+                  <div class="obyav_content">
+                    <div class="title">{{ adv.name }}</div>
+                  </div>
+                </div>
+              {% endfor %}
+              <hr>
+
 
               {% if status == 1 %}
                 <p class="">Объявление <b>{{ advert_to_del.name }}</b> удалено!</p>
