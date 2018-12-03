@@ -1026,6 +1026,9 @@ input.btn {
 .obyav_content .cancel:hover {
   color: #111;
 }
+.obyav_content .cancel {
+display: none;
+}
 
 ul.pages_list li {
   display: inline-block;
@@ -1099,7 +1102,10 @@ textarea.form_control{
   box-shadow: none;
 }
 
-
+#obyavleniya .info_block {
+  padding: 10px;
+  margin-top: 20px;
+}
 
 
 

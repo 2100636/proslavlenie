@@ -138,16 +138,16 @@
       $('.delbtn').click(function(){
         $(this).hide();
         p = $(this).parent();
-        p.find('form').slideDown();
+        p.find('form').slideDown(300);
         p.find('.cancel').show();
       });
       $('.cancel').click(function(){
         $(this).hide();
         p = $(this).parent();
-        p.find('form').slideUp();
+        p.find('form').slideUp(300);
         p.find('.delbtn').show();
       });
-      
+
     });
   })(jQuery);
   </script>

@@ -117,14 +117,16 @@
               </form>
             </div>     
 
-            <div class="col-xs-3 cat_list" >
-              <div class="cat_item"><a href="/adverts/">Все объявления</a></div>
-              {% for cat in categories %}
-                <div class="cat_item"><a href="{{ cat.url }}">{{ cat.name }}</a></div>
-              {% endfor %}
-              <div class="cat_item"><a class="active" href="/adverts/add/">Добавить объявление</a></div>
+            <div class="col-xs-3" >
+              <div class="cat_list">
+                <div class="cat_item"><a href="/adverts/">Все объявления</a></div>
+                {% for cat in categories %}
+                  <div class="cat_item"><a href="{{ cat.url }}">{{ cat.name }}</a></div>
+                {% endfor %}
+                <div class="cat_item"><a class="active" href="/adverts/add/">Добавить объявление</a></div>
+              </div>
 
-              <div clsss="info_block">
+              <div class="info_block">
                 Вы можете задать пароль для удаления объявления, чтобы иметь возможность в любой момент удалить свое объявление.
               </div>
 
