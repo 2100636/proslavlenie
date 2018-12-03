@@ -30,8 +30,15 @@
 
 
 
-              <h2 class="">{{ advert.name }}</h2>
-              <h2 class="">{{ advert_to_del.name }}</h2>
+              <!-- <h2 class="">{{ advert.name }}</h2> -->
+
+              {% if advert_to_del%}
+                <p class="">Объявление <b>{{ advert_to_del.name }}</b> удалено!</p>
+              {% else %}
+                <p>Неверный пароль или объявление не найдено!</p>
+              {% endif %}
+
+              _{{ delete }}_
 
             </div>     
 
@@ -40,7 +47,7 @@
               {% for cat in categories %}
                 <div class="cat_item"><a href="{{ cat.url }}">{{ cat.name }}</a></div>
               {% endfor %}
-              <div class="cat_item"><a class="active" href="/adverts/add/">Удалить объявление</a></div>
+              <div class="cat_item"><a class="active" href="/adverts/add/">Добавить объявление</a></div>
 
             </div>
                
