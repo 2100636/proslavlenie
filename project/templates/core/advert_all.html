@@ -73,7 +73,7 @@
                       {% endif %}
                     </div>
                     <div class="category">Категория: {{ adv.category }}</div>
-                    <div class="to_delete" style="display:none;">
+                    <div class="to_delete">
                       <div class="delbtn">Удалить</div>
                       <div class="cancel">Отмена</div>
                       <form action="/advert/{{ adv.slug }}/delete/" method="post">
