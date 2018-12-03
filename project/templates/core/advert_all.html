@@ -75,6 +75,7 @@
                     <div class="category">Категория: {{ adv.category }}</div>
                     <div class="to_delete" style="display:none;">
                       <form action="/advert/{{ adv.slug }}/delete/" method="post">
+                        {% csrf_token %} 
                         <input type="text" name="pass">
                         <button type="submit">Удалить</button>
                       </form>
