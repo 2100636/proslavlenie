@@ -76,6 +76,7 @@
                     <div class="to_delete" style="display:none;">
                       <form action="/advert/{{ adv.slug }}/delete/" method="post">
                         {% csrf_token %} 
+                        <input type="hidden" name="id" value="{{ adv.id }}">
                         <input type="text" name="pass">
                         <button type="submit">Удалить</button>
                       </form>
