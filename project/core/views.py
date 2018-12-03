@@ -386,7 +386,7 @@ def advertDeleteView(request, slug, template_name="catalog/advert.html"):
 
     advert = Advert.objects.get(slug=slug)
 
-    if request.method == "POST" and "idadvert" in request.POST:
+    if request.method == "POST" and "pass" in request.POST:
         if request.POST['pass'] != "":
             advert_to_del = Advert.objects.get(slug=slug,pswd=request.POST['pass'])
 
