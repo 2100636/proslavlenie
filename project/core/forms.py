@@ -108,6 +108,10 @@ class AdvertForm(forms.ModelForm):
             'class': 'form_control floating-label'
             }
 
+        self.fields['pswd'].widget.attrs = {
+            'class': 'form_control floating-label'
+            }
+
     class Meta:
         model = Advert
         fields = ('name', 'text', 'image', 'phone', 'cost', 'category', 'member', 'author', 'pswd')

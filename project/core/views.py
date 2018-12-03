@@ -388,7 +388,7 @@ def advertDeleteView(request, slug, template_name="catalog/advert.html"):
         if request.POST['pass'] != "":
             try:
                 advert_to_del = Advert.objects.get(id=request.POST['id'], slug=slug,pswd=request.POST['pass'])
-                delete = Advert.objects.filter(id=request.POST['id'], slug=slug,pswd=request.POST['pass']).delete()
+                Advert.objects.filter(id=request.POST['id'], slug=slug,pswd=request.POST['pass']).delete()
                 status = 1;
             except Advert.DoesNotExist:
                 status = 0;
