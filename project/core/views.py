@@ -18,8 +18,7 @@ import requests
 import re
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import math
-from datetime import datetime
-from datetime import timedelta
+from datetime import datetime, timedelta
 
 def crossdomain_xmlView(request, template_name="core/crossdomain.html"):
     return render_to_response(
@@ -387,7 +386,7 @@ def advertDeleteView(request, slug, template_name="catalog/advert.html"):
     categories = AdvertCategory.objects.all()
 
 
-    a = Advert.objects.filter(date=datetime.now()-timedelta(days=10))
+    a = Advert.objects.filter(date__gte=datetime.now()-timedelta(days=10))
 
 
     if request.method == "POST" and "pass" in request.POST and "id" in request.POST:
