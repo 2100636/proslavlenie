@@ -100,7 +100,11 @@
                 <div class="form_item">
                   <label for="id_author">Имя:</label>
                   {{form_advert.author}}
-                  </div>
+                </div>
+                <div class="form_item">
+                  <label for="id_pswd">Пароль для удаления:</label>
+                  {{form_advert.pswd}}
+                </div>
 
                 <div class="agreement checkbox">
                   <label>
@@ -119,6 +123,10 @@
                 <div class="cat_item"><a href="{{ cat.url }}">{{ cat.name }}</a></div>
               {% endfor %}
               <div class="cat_item"><a class="active" href="/adverts/add/">Добавить объявление</a></div>
+
+              <div clsss="info_block">
+                Вы можете задать пароль для удаления объявления, чтобы иметь возможность в любой момент удалить свое объявление.
+              </div>
 
             </div>
                

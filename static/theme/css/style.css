@@ -903,7 +903,7 @@ input.btn {
 
 .obyav_item {
   border-bottom: 2px solid #0773bb;
-  padding-bottom: 20px;
+  padding-bottom: 23px;
   margin-bottom: 40px;
   position: relative;
   box-shadow: 0px 5px 2px -2px rgba(130, 130, 130, 0.25);
@@ -1005,7 +1005,27 @@ input.btn {
   width: 290px;
   font-size: 13px;
 }
-
+.obyav_content .to_delete{
+  float: right;
+  position: absolute;
+  bottom: 4px;
+  right: 3px;
+}
+.obyav_content .to_delete form{
+  display: none;
+}
+.obyav_content .delbtn,
+.obyav_content .cancel {
+  color: #777;
+  font-size: 13px;
+  padding: 3px;
+  width: 61px;
+  cursor: pointer;
+}
+.obyav_content .delbtn:hover,
+.obyav_content .cancel:hover {
+  color: #111;
+}
 
 ul.pages_list li {
   display: inline-block;

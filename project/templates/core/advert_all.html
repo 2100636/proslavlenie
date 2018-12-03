@@ -74,10 +74,12 @@
                     </div>
                     <div class="category">Категория: {{ adv.category }}</div>
                     <div class="to_delete" style="display:none;">
+                      <div class="delbtn">Удалить</div>
+                      <div class="cancel">Отмена</div>
                       <form action="/advert/{{ adv.slug }}/delete/" method="post">
                         {% csrf_token %} 
                         <input type="hidden" name="id" value="{{ adv.id }}">
-                        <input type="text" name="pass">
+                        <input type="text" name="pass" placeholder="Пароль для удаления">
                         <button type="submit">Удалить</button>
                       </form>
                     </div>
@@ -130,5 +132,23 @@
 
 {% block page_js %}
   <script>
+  (function($) {
+    $(document).ready(function() {
+
+      $('.delbtn').click(function(){
+        $(this).hide();
+        p = $(this).parent();
+        p.find('form').slideDown();
+        p.find('.cancel').show();
+      });
+      $('.cancel').click(function(){
+        $(this).hide();
+        p = $(this).parent();
+        p.find('form').slideUp();
+        p.find('.delbtn').show();
+      });
+      
+    });
+  })(jQuery);
   </script>
 {% endblock %}
