@@ -385,12 +385,6 @@ def advertDeleteView(request, slug, template_name="catalog/advert.html"):
     user = request.user
     categories = AdvertCategory.objects.all()
 
-
-    post_data = {'name': 'Gladys'}
-    response = requests.post('http://form.proslavlenie.ru/test.php', data=post_data)
-    content = response.content
-
-
     if request.method == "POST" and "pass" in request.POST and "id" in request.POST:
         if request.POST['pass'] != "":
             try:
@@ -497,6 +491,9 @@ def advertAddView(request, template_name="catalog/advert_add.html"):
         if form_advert.is_valid():
             form_advert.save()
             form_msg = ['Спасибо! Ваше объявление отправлено, после модерации оно будет опубликовано', '#0773bb']
+            post_data = request.POST
+            response = requests.post('http://form.proslavlenie.ru/test.php', data=post_data)
+            content = response.content            
         else:
             form_msg = ['Ошибка заполнения формы <br> Проверьте корректность всех данных', '#DC7373']
 
