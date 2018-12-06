@@ -483,16 +483,26 @@ def advertAddView(request, template_name="catalog/advert_add.html"):
 
         spam1 = re.findall(r'<a ', request.POST['text'])
         if spam1:
-            form_msg = ['Ошибка заполнения формы <br> Обнаружен спам: найдено <a ', '#DC7373']
+            form_msg = ['Ошибка заполнения формы <br> Обнаружен спам.', '#DC7373']
             return render_to_response(
                 template_name, locals(), context_instance=RequestContext(request))
+
+        emoji_pattern = re.compile("["
+                u"\U0001F600-\U0001F64F"  # emoticons
+                u"\U0001F300-\U0001F5FF"  # symbols & pictographs
+                u"\U0001F680-\U0001F6FF"  # transport & map symbols
+                u"\U0001F1E0-\U0001F1FF"  # flags (iOS)
+                                   "]+", flags=re.UNICODE)
+        request.POST['text'] = emoji_pattern.sub(r'', request.POST['text']) # no emoji
 
         form_advert = AdvertForm(request.POST, request.FILES)
         if form_advert.is_valid():
             form_advert.save()
             form_msg = ['Спасибо! Ваше объявление отправлено, после модерации оно будет опубликовано', '#0773bb']
-            post_data = request.POST
-            response = requests.post('http://form.proslavlenie.ru/test.php', data=post_data)
+            ### 
+            ### post_data = request.POST
+            ###
+            ### response = requests.post('http://form.proslavlenie.ru/test.php', data=post_data)
             content = response.content            
         else:
             form_msg = ['Ошибка заполнения формы <br> Проверьте корректность всех данных', '#DC7373']
