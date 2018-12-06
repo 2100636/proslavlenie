@@ -487,14 +487,6 @@ def advertAddView(request, template_name="catalog/advert_add.html"):
             return render_to_response(
                 template_name, locals(), context_instance=RequestContext(request))
 
-        emoji_pattern = re.compile("["
-                u"\U0001F600-\U0001F64F"  # emoticons
-                u"\U0001F300-\U0001F5FF"  # symbols & pictographs
-                u"\U0001F680-\U0001F6FF"  # transport & map symbols
-                u"\U0001F1E0-\U0001F1FF"  # flags (iOS)
-                                   "]+", flags=re.UNICODE)
-        request.POST['text'] = emoji_pattern.sub(r'', request.POST['text']) # no emoji
-
         form_advert = AdvertForm(request.POST, request.FILES)
         if form_advert.is_valid():
             form_advert.save()
