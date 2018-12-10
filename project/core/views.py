@@ -495,7 +495,7 @@ def advertAddView(request, template_name="catalog/advert_add.html"):
             ### post_data = request.POST
             ###
             ### response = requests.post('http://form.proslavlenie.ru/test.php', data=post_data)
-            content = response.content            
+            ### content = response.content            
         else:
             form_msg = ['Ошибка заполнения формы <br> Проверьте корректность всех данных', '#DC7373']
 
