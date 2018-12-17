@@ -87,10 +87,10 @@
                 <div class="col-xs-4">
                     <div class="row">
 
-                        <!-- Первый flat блок на главной -->
+                        <!-- Третий flat блок на главной -->
                         <div class="col-xs-6 sepa">
-                            {% gblock "index_first" for "blocks.IndexBlock" %}
-                        </div><!-- /.Первый flat блок на главной -->
+                            {% gblock "index_third" for "blocks.IndexBlock" %}
+                        </div><!-- /.Третий flat блок -->
 
                         <!-- Второй flat блок на главной -->
                         <div class="col-xs-6 sepa">
@@ -102,7 +102,7 @@
                             <div class="small_block">
                                 <a style="cursor: pointer" name="" data-toggle="modal" data-target="#pritchModal">
                                     <img style="width: 100%;" src="{% cropped_thumbnail pritch_video "cropping_pritch" scale=1 %}">
-                                    <div class="video_description">Проповедь</div>
+                                    <div class="description" style="bottom: 0;">Проповедь</div>
                                 </a>
                                 <div class="modal modal-primary fade" id="pritchModal" tabindex="-1" role="dialog" aria-hidden="true">
                                     <div class="modal-dialog">
@@ -123,10 +123,10 @@
                             </div>
                         </div><!-- /.Маленький блок с проповедью на главной -->
 
-                        <!-- Третий flat блок на главной -->
+                        <!-- Первый flat блок на главной -->
                         <div class="col-xs-6 sepa">
-                            {% gblock "index_third" for "blocks.IndexBlock" %}
-                        </div><!-- /.Третий flat блок -->
+                            {% gblock "index_first" for "blocks.IndexBlock" %}
+                        </div><!-- /.Первый flat блок на главной -->
 
                         <!-- Большой flat блок на главной (Израиль изначально) -->
                         <div class="col-xs-12 sepa">
