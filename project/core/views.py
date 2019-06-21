@@ -224,7 +224,7 @@ def reviewView(request, id, template_name="catalog/review.html"):
 
 
 def testimonysView(request, template_name="catalog/reviews.html"):
-    testimonys = Testimony.objects.all()
+    testimonys = Testimony.objects.all().order_by('-id')
     return render_to_response(
         template_name, locals(), context_instance=RequestContext(request))
 
