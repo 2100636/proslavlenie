@@ -1,0 +1,235 @@
+{% extends "front_main.html" %}
+{% load thumbnail %}
+{% load cropping %}
+{% load menu_tags %}
+{% load sitetree %}
+
+{% block content %}
+<div id="ministry" class="content-wrapper" style="margin-left:0"><!-- Content Wrapper. Contains page content -->
+
+  <section id="drop_menu">
+    {% menu_tree request %}
+  </section>
+
+  <section class="baner" style="background: url('{{ ministry.baner_url }}') center no-repeat;">
+{#        <img src="{{ ministry.baner_url }}" alt="{{ ministry.name }} церкви прославления" style="position: absolute; margin-top:-22px; width:100%;">#}
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          {% sitetree_breadcrumbs from "site_menu" template "sitetree/breadcrumbs.html" %}
+        </div>
+        <div class="col-xs-5" id="baner_text">
+          <h2 style="color:{{ ministry.color }};">{{ ministry.name }}</h2>
+          <div class="lid_text">
+            <p>{{ ministry.baner_text }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="content">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-xs-7">
+          <h1 class="">{{ news.name }}</h1>
+        </div>
+
+        <div class="col-xs-12"> 
+        
+            <iframe width="370" height="250"
+              src="https://www.youtube.com/embed/{{ ministry.video }}" frameborder="0" allowfullscreen></iframe>
+            <br/>
+            <p style="margin-top: 40px;">{{ ministry.description }}<p>
+            
+
+            {% if form_msg %} 
+              <div class="form_msg">{{ form_msg.0 }}</div>
+              <style>
+                .form_msg{
+                  background: {{ form_msg.1 }};
+                  padding: 30px 30px 27px;
+                  color: #fff;
+                  font-size: 21px;
+                  text-align: center;
+                  text-transform: uppercase;
+                }
+              </style> 
+            {% endif %}
+
+
+
+
+
+              {% if request.path_info == '/ministry/biblejskie-kursy/' %}
+                <div class="bs_form_container">
+                  <form action="." method="post" class="siteform">
+                    {% csrf_token %}
+                    <h3>Анкета для поступления в БК</h3>
+                    {# {{ form }} #}
+<div class="errorswrap"></div>
+
+<input name="formname" type="hidden" value="Анкета БШ" class="form-control">
+<input name="fields" type="hidden" value="formname;fio;birth_day;phone;city;family_status;you_church;church_city;pastor_fio;is_church_member;is_believer;salvation_day;you_mission;form_of_study;is_pastor_know;is_blagoslovenie;is_vernutsya" class="form-control">
+<input name="not_necessary" type="hidden" value="is_church_member;is_believer;is_pastor_know;is_blagoslovenie;is_vernutsya" class="form-control">
+
+
+<div class="fio">{{form.fio}}</div>
+<div class="birth_day">{{form.birth_day}}</div>
+<div class="phone">{{form.phone}}</div>
+<div class="city">{{form.city}}</div>
+<div class="family_status">{{form.family_status}}</div>
+<div class="you_church">{{form.you_church}}</div>
+<div class="church_city">{{form.church_city}}</div>
+<div class="pastor_fio">{{form.pastor_fio}}</div>
+<div class="is_church_member checkbox">
+  <label>
+  {{form.is_church_member}}
+  <span class="checkbox-material"><span class="check"></span></span> Являетесь ли Вы членом Церкви
+  </label>
+</div>
+<div class="is_believer checkbox">
+  <label>{{form.is_believer}}
+  <span class="checkbox-material"><span class="check"></span></span> Веруете ли Вы в Иисуса Христа как своего Господа и Спасителя
+  </label>
+</div>
+<div class="salvation_day">{{form.salvation_day}}</div>
+<div class="you_mission">{{form.you_mission}}</div>
+<div class="form_of_study"><label for="id_form_of_study">Форма обучения: {{form.form_of_study}}</label></div>
+
+<div class="is_pastor_know checkbox">
+  <label>{{form.is_pastor_know}}
+  <span class="checkbox-material"><span class="check"></span></span> Знает ли пастор вашей Церкви, о вашем желании обучаться на БК?
+  </label>
+</div><div class="is_blagoslovenie checkbox">
+  <label>{{form.is_blagoslovenie}}
+  <span class="checkbox-material"><span class="check"></span></span> Имеете ли вы благословение вашего пастора для обучения?
+  </label>
+</div><div class="is_vernutsya checkbox">
+  <label>{{form.is_vernutsya}}
+  <span class="checkbox-material"><span class="check"></span></span> Обязуетесь ли вы по окончании обучения вернуться в свою церковь?
+  </label>
+</div>
+
+<input class="form-control floating-label" id="e_mail" name="e_mail" placeholder="Не_заполняйте_это_поле" type="email">
+
+<div class="rules checkbox">
+  <label>{{form.rules}}
+  <span class="checkbox-material"><span class="check"></span></span> Я понимаю, что, как слушатель Библейских курсов, я обязан следовать установленным правилам
+  </label>
+</div>
+<div class="agreement checkbox">
+  <label>{{form.agreement}}
+  <span class="checkbox-material"><span class="check"></span></span> Я ознакомлен(а) и согласен(а) с <a href="//proslavlenie.ru/page/polzovatelskoe-soglashenie/" target="_blank">пользовательским соглашением об использовании персональных данных</a>
+  </label>
+</div>
+
+                    <input type="submit" name="bs_form" class="btn btn-success form_submit" style="display: block;margin-top: 20px;float: right;display: none;" value="Отправить">
+
+                    <div class="send btn btn-success" style="display: block;margin-top: 20px;float: right;">Отправить</div>
+
+                  </form>
+                </div>
+              {% endif %} 
+
+
+
+
+
+
+              <div class="gallery">
+{#                                <div class="row">#}
+                  {% for img in ministry.get_gallery_images %}
+{#                                        <div class="col-xs-2">#}
+                      <a class="fancybox-me" rel="gallery" href="{{ img.url }}"><img src="{% cropped_thumbnail img "cropping" scale=1 %}"></a>
+{#                                        </div>#}
+                  {% endfor %}
+{#                                </div>#}
+              </div>
+          
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <section class="color_block" style="background-color:{{ ministry.color }}; padding:35px 0;
+    color: #fff;">
+    <div class="container"> 
+      <div class="row">
+        <div class="col-xs-12">
+          {{ ministry.allocate_description }}
+        </div>
+      </div>
+    </div>
+  </section>
+
+ 
+</div><!-- /.content-wrapper -->
+{% endblock %}
+
+{% block page_js %}
+  <script src='{{ STATIC_URL }}AdminLte/plugins/fastclick/fastclick.min.js'></script>
+  <script src="{{ STATIC_URL }}AdminLte/dist/js/app.min.js" type="text/javascript"></script>
+{#    <script src='{{ STATIC_URL }}theme/js/swiper.jquery.min.js'></script>#}
+  <script src="{{ STATIC_URL }}theme/js/swiper.min.js" type="text/javascript"></script>
+  <script>
+  var swiper = new Swiper('.swiper-container', {
+{#        pagination: '.swiper-pagination',#}
+{#        paginationClickable: true,#}
+    direction: 'vertical'
+  });
+  $('.my-pager').on('click', function(){
+     swiper.slideTo($(this).index());
+  });
+  </script>
+
+
+
+
+  <style>
+    #e_mail.form-control{
+    display: none;
+    }
+  </style>
+  <script>
+    var send = false;
+    (function($){$(document).ready(function(){
+    
+    $(".siteform .send").click(function() {
+      var that = $(this);
+      form = that.parents('.siteform');
+      if (send == false) {
+      var str = form.serialize();
+      console.log(form);
+      console.log(str);
+      $.ajax({
+        type: "POST",
+        url: "https://form.proslavlenie.ru/mail.php",
+        data: str,
+        success: function(msg) {
+        console.log(msg);
+        if(msg == 'ok') {
+          result = '<div class="ok">Спасибо! Ваше сообщение отправлено.</div>';
+          form.append(result);
+          send = true;
+          //form.submit();
+          submit = form.find('.form_submit');
+          submit.click();
+        }
+        else {
+          form.find('.errorswrap').html('<div class="errors">'+msg+'</div>');
+        }
+        }
+      });
+      return false;
+      }
+    });
+
+    });})(jQuery);
+  </script> 
+
+{% endblock %}
