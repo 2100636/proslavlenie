@@ -53,30 +53,40 @@ flex-wrap: wrap;
 justify-content: space-between;
 }
 h2{
-  font-size: 20px;
+  margin-top: 10px;
+  font-size: 23px;
 }
 .block1{
 margin-bottom: 20px;
+font-size: 17px;
 }
 .block2{
-margin-bottom: 20px;
+font-size: 17px;
 background: #03658f;
 color: #fff;
+padding: 14px 20px;
+margin-bottom: 30px;
+}
+.gallery{
+  text-align: center;
 }
 .block3{
 margin: 20px 0 30px;
+    font-size: 17px;
 }
 .block3 h2{
-padding: 8px;
+padding: 10px;
 background: #4cc0f0;
 margin-bottom: 5px;
+color: #fff;
+text-align: center;
 }
 .programm{
 color: #03658f;
 }
 .programm .item{
 text-align: center;
-width: 25px;
+width: 25%;
 padding: 0 15px;
 }
 .block4{
@@ -84,6 +94,8 @@ background: #127fb6;
 color: #fff;
 padding: 20px 15px;
 margin-bottom: 30px;
+font-size: 17px;
+
 }
 .block41,
 .block42{
@@ -91,6 +103,7 @@ width: 30%;
 }
 .block4image{
 width: 40%;
+text-align: center;
 }
 .blockanketa{
 font-weight: 600;
@@ -106,16 +119,21 @@ margin-bottom: 40px;
 }
 .block6{
 margin-bottom: 40px;
+text-align: center;
 }
 .block6 h2{
-padding: 8px;
+padding: 10px;
 background: #ed924e;
+text-align: center;
+font-weight: 600;
 }
 </style>
 
 <div class="block1">
   <div class="flex">
-    <div class="video"></div>
+    <div class="video">
+    <iframe width="370" height="250" src="https://www.youtube.com/embed/{{ ministry.video }}" frameborder="0" allowfullscreen></iframe>
+    </div>
     <div class="text1"><h2>Добро пожаловать на Библейские Курсы!</h2>
     Если вы хотите больше узнать о Боге и Его воле для вашей жизни, или систематизировать то, что уже слышали и читали о новой жизни во Христе – добро пожаловать на библейские курсы! Наша цель - помочь христианам возрастать духовно, познавая Слово Божье, для эффективного служения Господу и людям, раскрыть духовные дары и помочь войти в свое призвание.
     </div>
@@ -139,47 +157,47 @@ background: #ed924e;
 
 <div class="block3">
   <h2>Дневное отделение </h2>
-  Начало занятий 1 октября 2019г. конец 25 апреля 2020г.
+  <p style="text-align:center;color:#ff524e;margin-bottom:15px;font-size:19px;">Начало занятий 1 октября 2019г. конец 25 апреля 2020г.</p>
 
-  <p style="color: #ff524e;margin-bottom: 20px;">Учебная программа дневного отделения<br>
+  <p style="text-align:center;margin-bottom:15px;font-size:19px;">Учебная программа дневного отделения<br>
   Темы: </p>
 
-  <div class="programm">
+  <div class="programm flex">
     <div class="item">
-    Праведность 
-    Освобождение
-    Завет в крови
-    Библия
-    Обзоры Ветхого и Нового заветов
-    Молитва
-    Вера
+    Праведность  <br>
+    Освобождение <br>
+    Завет в крови <br>
+    Библия <br>
+    Обзоры Ветхого и Нового заветов <br>
+    Молитва <br>
+    Вера <br>
     Власть верующего
     </div>
     <div class="item">
-    Благовестие
-    Доктрины
-    Исцеление
-    Израиль
-    Церковь
-    Домашние группы
+    Благовестие<br>
+    Доктрины<br>
+    Исцеление<br>
+    Израиль<br>
+    Церковь<br>
+    Домашние группы<br>
     Душепопечение
     </div>
     <div class="item">
-    Божий взгляд на преуспевание
-    Брак и семья
-    Характер Бога
-    Этикет
-    Этика служителя
-    Страдания
-    Послание к Римлянам
+    Божий взгляд на преуспевание<br>
+    Брак и семья<br>
+    Характер Бога<br>
+    Этикет<br>
+    Этика служителя<br>
+    Страдания<br>
+    Послание к Римлянам<br>
     Дух Святой и Его дары
     </div>
     <div class="item">
-    Дары служений
-    Дары духовные
-    Подготовка к служению
-    История Церкви
-    Деяния апостолов
+    Дары служений<br>
+    Дары духовные<br>
+    Подготовка к служению<br>
+    История Церкви<br>
+    Деяния апостолов<br>
     Миссия
     </div>
   </div>
@@ -189,13 +207,13 @@ background: #ed924e;
 <div class="block4">
   <div class="flex">
     <div class="block41">
-      Расписание дневного 
-      отделения
-      c Понедельника по четверг
-      9.00 - 9.30 молитва 
-      9.30 - 10.20 - 1 урок
-      10.30 - 11.20 - 2 урок
-      11.40 - 12.30 - 3 урок
+      Расписание дневного <br>
+      отделения<br>
+      c Понедельника по четверг<br>
+      9.00 - 9.30 молитва <br>
+      9.30 - 10.20 - 1 урок<br>
+      10.30 - 11.20 - 2 урок<br>
+      11.40 - 12.30 - 3 урок<br>
       12.40 - 13.30 - 4 урок
     </div>  
     <div class="block4image">
@@ -210,7 +228,7 @@ background: #ed924e;
 
 
 <div class="blockanketa">
-  <p>
+  <p style="text-align: center;">
   Для поступления на библейские курсы необходимо  <br>
   пройти регистрацию и заполнить анкету,<br>
    которую вы видите в этом разделе сайта. <br>
@@ -320,7 +338,7 @@ background: #ed924e;
 
 <div class="block5">
   <div class="flex">
-    <div class="stud" style="font-size: 14px;">
+    <div class="stud" style="width: 47%;font-size: 14px;">
       <div style="font-size: 20px;" class="title">Наши студенты</div>
       <p>Томичи и приезжие из других городов и стран, разных возрастов и социальных слоев.
       Мы верим, что каждый христианин, примирившись с Богом, должен пройти обучающий процесс для духовного возрастания. <br>
@@ -331,7 +349,7 @@ background: #ed924e;
       200 человек начали домашние группы. <br>
       Многие уехали на миссию и стали пасторами и лидерами церквей.</p>
     </div>
-    <div class="prepoda" style="font-size: 14px;">
+    <div class="prepoda" style="width: 47%;font-size: 14px;">
       <div style="font-size: 20px;" class="title">Преподаватели</div>
       <p>В преподавательский состав входят 14 человек.<br>
       Все учителя являются служителями и лидерами отделов церкви, пасторами, пресвитерами. <br>
@@ -348,22 +366,22 @@ background: #ed924e;
 
 <div class="block6">
   <h2>Вечернее отделение</h2>
-  зp    Расписание Вечернего отделения
+  <p>Расписание Вечернего отделения</p> 
 
   <div class="flex">
-    <div class="block61">
-      Пятница 
-      18.30 - молитва
-      19.00 - 19.50 - 1 урок
+    <div class="block61" style="width: 47%;">
+      Пятница  <br>
+      18.30 - молитва <br>
+      19.00 - 19.50 - 1 урок <br>
       20.10 - 20.50 - 2 урок
     </div>
-    <div class="block62">
-      Суббота:
-      10.00 - молитва
-      10.30 - 11.30 - 1 урок
-      11.40 - 12.30 - 2 урок
-      13.00 - 13.50 - 3 урок
-      14.00 - 14.50 - 4 урок
+    <div class="block62" style="width: 47%;">
+      Суббота:<br>
+      10.00 - молитва<br>
+      10.30 - 11.30 - 1 урок<br>
+      11.40 - 12.30 - 2 урок<br>
+      13.00 - 13.50 - 3 урок<br>
+      14.00 - 14.50 - 4 урок<br>
       15.00 - 16.00 - 5 урок
     </div>
   </div>
