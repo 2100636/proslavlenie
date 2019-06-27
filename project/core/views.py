@@ -241,10 +241,10 @@ def testimonyView(request, id, template_name="catalog/testimony.html"):
         template_name, locals(), context_instance=RequestContext(request))
 
 
-def ministryView(request, slug, template_name="catalog/ministry.html"):
+def ministryView(request, slug, template_name="core/ministry.html"):
 
     if request.path_info == '/ministry/biblejskie-kursy/':
-        template_name="catalog/ministry_biblejskie_kursy.html"
+        template_name="core/ministry_biblejskie_kursy.html"
         form = BSForm()
 
     if request.method == 'POST' and 'bs_form' in request.POST:
