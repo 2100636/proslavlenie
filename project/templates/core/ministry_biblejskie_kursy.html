@@ -42,6 +42,14 @@
 form .errors{
 color: red;
 }
+.ok {
+  text-align: center;
+  background: #009700;
+  color: #fff;
+  padding: 15px;
+  float: left;
+  font-size: 20px;
+}
 .flex{
 display: -webkit-flex;
 display: -moz-flex;
@@ -290,7 +298,6 @@ text-align: center;
     {% csrf_token %}
     <h3>Анкета для поступления в БК</h3>
     {# {{ form }} #}
-    <div class="errorswrap"></div>
 
     <input name="formname" type="hidden" value="Анкета БШ" class="form-control">
     <input name="fields" type="hidden" value="formname;fio;birth_day;phone;city;family_status;you_church;pastor_fio_phone;is_church_member;is_believer;salvation_day;you_mission;form_of_study;is_pastor_know;is_blagoslovenie;is_vernutsya;psyho_disp" class="form-control">
@@ -358,6 +365,8 @@ text-align: center;
     <input type="submit" name="bs_form" class="btn btn-success form_submit" style="display: block;margin-top: 20px;float: right;display: none;" value="Отправить">
 
     <div class="send btn btn-success" style="display: block;margin-top: 20px;float: right;">Отправить</div>
+
+    <div class="errorswrap"></div>
 
   </form>
 </div>
@@ -575,8 +584,9 @@ text-align: center;
         success: function(msg) {
         console.log(msg);
         if(msg == 'ok') {
-          result = '<div class="ok">Спасибо! Ваше сообщение отправлено.</div>';
+          result = '<div class="ok">Спасибо! Ваше сообщение отправлено. <p style="font-size: 13px">Обновите страницу для повторной отправки анкеты</p></div>';
           form.append(result);
+          form.find('.errorswrap').html('');
           send = true;
           //form.submit();
           //submit = form.find('.form_submit');
