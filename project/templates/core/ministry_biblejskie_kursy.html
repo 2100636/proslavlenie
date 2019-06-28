@@ -39,6 +39,9 @@
 
 
 <style>
+form .errors{
+color: red;
+}
 .flex{
 display: -webkit-flex;
 display: -moz-flex;
@@ -290,7 +293,7 @@ text-align: center;
     <div class="errorswrap"></div>
 
     <input name="formname" type="hidden" value="Анкета БШ" class="form-control">
-    <input name="fields" type="hidden" value="formname;fio;birth_day;phone;city;family_status;you_church;church_city;pastor_fio_phone;is_church_member;is_believer;salvation_day;you_mission;form_of_study;is_pastor_know;is_blagoslovenie;is_vernutsya;psyho_disp" class="form-control">
+    <input name="fields" type="hidden" value="formname;fio;birth_day;phone;city;family_status;you_church;pastor_fio_phone;is_church_member;is_believer;salvation_day;you_mission;form_of_study;is_pastor_know;is_blagoslovenie;is_vernutsya;psyho_disp" class="form-control">
     <input name="not_necessary" type="hidden" value="is_church_member;is_believer;is_pastor_know;is_blagoslovenie;is_vernutsya;psyho_disp" class="form-control">
 
 
@@ -332,10 +335,12 @@ text-align: center;
       <span class="checkbox-material"><span class="check"></span></span> Обязуетесь ли вы по окончании обучения вернуться в свою церковь?
       </label>
     </div>
-    <label>
-    <input id="id_psyho_disp" name="psyho_disp" type="checkbox">
-      <span class="checkbox-material"><span class="check"></span></span> Состоите ли вы на учете в психо-неврологическом диспансере?
-    </label>
+    <div class="id_psyho_disp checkbox">
+      <label>
+      <input id="id_psyho_disp" name="psyho_disp" type="checkbox">
+        <span class="checkbox-material"><span class="check"></span></span> Состоите ли вы на учете в психо-неврологическом диспансере?
+      </label>
+    </div>
 
     <input class="form-control floating-label" id="e_mail" name="e_mail" placeholder="Не_заполняйте_это_поле" type="email">
 
@@ -492,6 +497,8 @@ text-align: center;
       •&nbsp;Духовная дисциплина.
     </div>
   </div>
+
+  <p style="margin-top: 23px;">По всем вопросам звоните секретарю вечернего отделения БК: Жанна <a href="tel:89138162090">8(913)816-20-90</a></p>
 </div>
 
 
@@ -582,6 +589,7 @@ text-align: center;
       });
       return false;
       }
+      return false;
     });
 
 
