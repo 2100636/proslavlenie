@@ -88,18 +88,22 @@ color: #03658f;
 text-align: center;
 width: 25%;
 padding: 0 15px;
+font-weight: 600;
 }
 .block4{
 background: #127fb6;
 color: #fff;
-padding: 20px 15px;
+padding: 28px 15px;
 margin-bottom: 30px;
 font-size: 17px;
-
 }
-.block41,
+.block41 {
+  text-align: center;
+  font-weight: 600;
+  width: 25%;
+}
 .block42{
-width: 30%;
+width: 35%;
 }
 .block4image{
 width: 40%;
@@ -114,6 +118,7 @@ color: #127fb6;
 border-bottom: 1px dashed;
 display: inline-block;
 cursor: pointer;
+margin-bottom: 20px;
 }
 .block5{
 margin-bottom: 40px;
@@ -132,9 +137,21 @@ background: #ed924e;
 color: #fff;
 text-align: center;
 }
-.block6 .flex{
+.block6 .rasp{
 max-width: 500px;
 margin: 20px auto 0;
+}
+
+.block7{
+margin-bottom: 40px;
+text-align: center;
+font-weight: 600;
+}
+.block7 h2{
+padding: 10px;
+background: #089f29;
+color: #fff;
+text-align: center;
 }
 </style>
 
@@ -173,41 +190,41 @@ margin: 20px auto 0;
 
   <div class="programm flex">
     <div class="item">
-    Праведность  <br>
-    Освобождение <br>
-    Завет в крови <br>
-    Библия <br>
-    Обзоры Ветхого и Нового заветов <br>
-    Молитва <br>
-    Вера <br>
-    Власть верующего
+    •&nbsp;Праведность  <br>
+    •&nbsp;Освобождение <br>
+    •&nbsp;Завет в крови <br>
+    •&nbsp;Библия <br>
+    •&nbsp;Обзоры Ветхого и Нового заветов <br>
+    •&nbsp;Молитва <br>
+    •&nbsp;Вера <br>
+    •&nbsp;Власть верующего
     </div>
     <div class="item">
-    Благовестие<br>
-    Доктрины<br>
-    Исцеление<br>
-    Израиль<br>
-    Церковь<br>
-    Домашние группы<br>
-    Душепопечение
+    •&nbsp;Благовестие<br>
+    •&nbsp;Доктрины<br>
+    •&nbsp;Исцеление<br>
+    •&nbsp;Израиль<br>
+    •&nbsp;Церковь<br>
+    •&nbsp;Домашние группы<br>
+    •&nbsp;Душепопечение
     </div>
     <div class="item">
-    Божий взгляд на преуспевание<br>
-    Брак и семья<br>
-    Характер Бога<br>
-    Этикет<br>
-    Этика служителя<br>
-    Страдания<br>
-    Послание к Римлянам<br>
-    Дух Святой и Его дары
+    •&nbsp;Божий взгляд на преуспевание<br>
+    •&nbsp;Брак и семья<br>
+    •&nbsp;Характер Бога<br>
+    •&nbsp;Этикет<br>
+    •&nbsp;Этика служителя<br>
+    •&nbsp;Страдания<br>
+    •&nbsp;Послание к Римлянам<br>
+    •&nbsp;Дух Святой и Его дары
     </div>
     <div class="item">
-    Дары служений<br>
-    Дары духовные<br>
-    Подготовка к служению<br>
-    История Церкви<br>
-    Деяния апостолов<br>
-    Миссия
+    •&nbsp;Дары служений<br>
+    •&nbsp;Дары духовные<br>
+    •&nbsp;Подготовка к служению<br>
+    •&nbsp;История Церкви<br>
+    •&nbsp;Деяния апостолов<br>
+    •&nbsp;Миссия
     </div>
   </div>
 </div>
@@ -273,8 +290,8 @@ margin: 20px auto 0;
     <div class="errorswrap"></div>
 
     <input name="formname" type="hidden" value="Анкета БШ" class="form-control">
-    <input name="fields" type="hidden" value="formname;fio;birth_day;phone;city;family_status;you_church;church_city;pastor_fio;is_church_member;is_believer;salvation_day;you_mission;form_of_study;is_pastor_know;is_blagoslovenie;is_vernutsya" class="form-control">
-    <input name="not_necessary" type="hidden" value="is_church_member;is_believer;is_pastor_know;is_blagoslovenie;is_vernutsya" class="form-control">
+    <input name="fields" type="hidden" value="formname;fio;birth_day;phone;city;family_status;you_church;church_city;pastor_fio_phone;is_church_member;is_believer;salvation_day;you_mission;form_of_study;is_pastor_know;is_blagoslovenie;is_vernutsya;psyho_disp" class="form-control">
+    <input name="not_necessary" type="hidden" value="is_church_member;is_believer;is_pastor_know;is_blagoslovenie;is_vernutsya;psyho_disp" class="form-control">
 
 
     <div class="fio">{{form.fio}}</div>
@@ -283,8 +300,9 @@ margin: 20px auto 0;
     <div class="city">{{form.city}}</div>
     <div class="family_status">{{form.family_status}}</div>
     <div class="you_church">{{form.you_church}}</div>
-    <div class="church_city">{{form.church_city}}</div>
-    <div class="pastor_fio">{{form.pastor_fio}}</div>
+    <div class="pastor_fio_phone">
+      <input class="form-control floating-label" id="id_pastor_fio_phone" name="pastor_fio_phone" placeholder="ФИО Пастора и телефон" type="text">
+    </div>
     <div class="is_church_member checkbox">
       <label>
       {{form.is_church_member}}
@@ -308,11 +326,16 @@ margin: 20px auto 0;
       <label>{{form.is_blagoslovenie}}
       <span class="checkbox-material"><span class="check"></span></span> Имеете ли вы благословение вашего пастора для обучения?
       </label>
-    </div><div class="is_vernutsya checkbox">
+    </div>
+    <div class="is_vernutsya checkbox">
       <label>{{form.is_vernutsya}}
       <span class="checkbox-material"><span class="check"></span></span> Обязуетесь ли вы по окончании обучения вернуться в свою церковь?
       </label>
     </div>
+    <label>
+    <input id="id_psyho_disp" name="psyho_disp" type="checkbox">
+      <span class="checkbox-material"><span class="check"></span></span> Состоите ли вы на учете в психо-неврологическом диспансере?
+    </label>
 
     <input class="form-control floating-label" id="e_mail" name="e_mail" placeholder="Не_заполняйте_это_поле" type="email">
 
@@ -374,7 +397,7 @@ margin: 20px auto 0;
   <h2>Вечернее отделение</h2>
   <p>Расписание Вечернего отделения</p> 
 
-  <div class="flex">
+  <div class="flex rasp">
     <div class="block61" style="width: 47%;">
       Пятница  <br>
       18.30 - молитва <br>
@@ -391,6 +414,93 @@ margin: 20px auto 0;
       15.00 - 16.00 - 5 урок
     </div>
   </div>
+
+
+  <p style="text-align:center;margin-bottom:15px;font-size:19px;">Учебная программа Вечернего отделения<br>
+  Темы: </p>
+
+  <div class="programm flex">
+    <div class="item">
+    •&nbsp;Праведность <br>
+    •&nbsp;Освобождение <br>
+    •&nbsp;Библия <br>
+    •&nbsp;Власть верующего <br>
+    •&nbsp;Вера
+    </div>
+    <div class="item">
+    •&nbsp;Завет в крови <br>
+    •&nbsp;Израиль <br>
+    •&nbsp;Молитва <br>
+    •&nbsp;Доктрины
+    </div>
+    <div class="item">
+    •&nbsp;Дух Святой и Его дары <br>
+    •&nbsp;Финансы <br>
+    •&nbsp;Благовестие <br>
+    •&nbsp;История Церкви
+    </div>
+    <div class="item">
+    •&nbsp;Брак и семья <br>
+    •&nbsp;Церковь <br>
+    •&nbsp;Дары служений <br>
+    •&nbsp;Подготовка к служению
+    </div>
+  </div>
+</div>
+
+  
+
+
+
+
+<div class="block7">
+  <h2>Лидерско-миссионерский курс</h2>
+  <p style="text-align:center;color:#ff524e;margin-bottom:15px;font-size:19px;">Начало занятий 11 января 2020г. конец 25 апреля 2020г. </p>
+  <p>Для студентов, которые успешно закончили вечернее или дневное отделение БК, мы предлагаем продолжить обучение на лидерско-миссионерском курсе. Занятия проходят с января по апрель включительно, по расписанию вечернего отделения.</p>
+  <p style="text-align:center;margin-bottom:15px;font-size:19px;">Учебная программа Лидерско-миссионерского курса<br>
+  Темы: </p>
+
+  <div class="programm flex">
+    <div class="item">
+      •&nbsp;Ораторское искусство
+      •&nbsp;Приоритеты и решения
+      •&nbsp;Планирование
+      •&nbsp;Призвание
+      •&nbsp;Видение
+      •&nbsp;Сердце лидера
+    </div>
+    <div class="item">
+      •&nbsp;Работа с людьми
+      •&nbsp;Миссия
+      •&nbsp;Домашние группы
+      •&nbsp;Альфа-курс
+      •&nbsp;Душепопечение
+      •&nbsp;Консультирование
+    </div>
+    <div class="item">
+      •&nbsp;Финансы
+      •&nbsp;Как добиться результата в любом деле
+      •&nbsp;Ближний круг
+      •&nbsp;Проверка на лидерство
+      •&nbsp;Мудрое вложение
+      •&nbsp;Команда
+    </div>
+    <div class="item">
+      •&nbsp;Делегирование
+      •&nbsp;Дух Святой и Его дары
+      •&nbsp;Искусство умывать ноги
+      •&nbsp;Духовная дисциплина.
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
 
 
 </div>
