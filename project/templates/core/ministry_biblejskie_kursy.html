@@ -113,9 +113,13 @@ margin-bottom: 30px;
 color: #127fb6;
 border-bottom: 1px dashed;
 display: inline-block;
+cursor: pointer;
 }
 .block5{
 margin-bottom: 40px;
+}
+.block5 .text{
+margin-top: 20px;
 }
 .block6{
 margin-bottom: 40px;
@@ -127,6 +131,10 @@ padding: 10px;
 background: #ed924e;
 color: #fff;
 text-align: center;
+}
+.block6 .flex{
+max-width: 500px;
+margin: 20px auto 0;
 }
 </style>
 
@@ -257,10 +265,7 @@ text-align: center;
             {% endif %}
 
 
-
-
-
-<div class="bs_form_container">
+<div class="bs_form_container" style="display:none;">
   <form action="." method="post" class="siteform">
     {% csrf_token %}
     <h3>Анкета для поступления в БК</h3>
@@ -339,7 +344,7 @@ text-align: center;
 
 <div class="block5">
   <div class="flex">
-    <div class="stud" style="width: 47%;font-size: 14px;">
+    <div class="stud" style="width: 41%;font-size: 14px;">
       <div style="font-size: 20px;" class="title">Наши студенты</div>
       <p>Томичи и приезжие из других городов и стран, разных возрастов и социальных слоев.
       Мы верим, что каждый христианин, примирившись с Богом, должен пройти обучающий процесс для духовного возрастания. <br>
@@ -350,7 +355,7 @@ text-align: center;
       200 человек начали домашние группы. <br>
       Многие уехали на миссию и стали пасторами и лидерами церквей.</p>
     </div>
-    <div class="prepoda" style="width: 47%;font-size: 14px;">
+    <div class="prepoda" style="width: 53%;font-size: 14px;">
       <div style="font-size: 20px;" class="title">Преподаватели</div>
       <p>В преподавательский состав входят 14 человек.<br>
       Все учителя являются служителями и лидерами отделов церкви, пасторами, пресвитерами. <br>
@@ -468,6 +473,18 @@ text-align: center;
       return false;
       }
     });
+
+
+    $('.anketabtn').click(function(){
+      if ($('.bs_form_container').css('display') == 'none') {
+        $('.bs_form_container').slideDown();
+      }else{
+        $('.bs_form_container').slideUp();
+      }
+    });
+    
+
+
 
     });})(jQuery);
   </script> 
