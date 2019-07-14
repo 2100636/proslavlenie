@@ -22,7 +22,7 @@ import math
 from datetime import datetime, timedelta
 
 def youtube_verificate_View(request):
-    html = "google-site-verification: googled2eb921cd4826378.html"
+    html = "google-site-verification: google211a33f553b0112c.html"
     return HttpResponse(html)
 
 def crossdomain_xmlView(request, template_name="core/crossdomain.html"):

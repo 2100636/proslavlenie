@@ -6,7 +6,7 @@ urlpatterns = patterns(
     'project.core.views',
 
     url(r'^crossdomain\.xml$', 'crossdomain_xmlView', {'template_name': 'core/crossdomain.html'}, name='crossdomain_xml'),
-    url(r'^googled2eb921cd4826378\.html$', 'youtube_verificate_View'),
+    url(r'^google211a33f553b0112c\.html$', 'youtube_verificate_View'),
 
     url(r'^$', 'indexView',
         {'template_name': 'core/index.html'},
