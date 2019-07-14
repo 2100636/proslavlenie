@@ -2,6 +2,7 @@
 #!/usr/bin/env python
 from django.template import RequestContext
 from django.shortcuts import render_to_response
+from django.http import HttpResponse
 from django.views.generic import TemplateView
 from functions import *
 from forms import QuestionForm, NeedForm, AdvertForm
