@@ -20,6 +20,10 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import math
 from datetime import datetime, timedelta
 
+def youtube_verificate_View(request):
+    html = "google-site-verification: googled2eb921cd4826378.html"
+    return HttpResponse(html)
+
 def crossdomain_xmlView(request, template_name="core/crossdomain.html"):
     return render_to_response(
         template_name, locals(), context_instance=RequestContext(request), content_type='application/xml')
