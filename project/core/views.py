@@ -549,7 +549,8 @@ def partnershipProjectView(request, category_slug, slug, template_name="core/par
     project = Project.objects.get(slug=slug)
     categories = Project.objects.all()
 
-    complete = round(project.current * 100 / project.goal, 1)
+    complete = project.current * 100 / project.goal
+    complete = round(complete, 1)
 
     # мета описание
     # meta_title = project.meta_title
