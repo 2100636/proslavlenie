@@ -376,7 +376,7 @@ class Question(models.Model):
 
 class AdvertCategory(models.Model):
     name = models.CharField(
-        verbose_name=u'Название видео категории', max_length=200)
+        verbose_name=u'Название категории', max_length=200)
     slug = models.CharField(max_length=20, verbose_name=u'Ссылка')
 
     class Meta:
@@ -388,6 +388,7 @@ class AdvertCategory(models.Model):
 
     def url(self):
         return '/adverts/%s' % self.slug
+
 
 class Advert(models.Model):
     name = models.CharField(max_length=200, verbose_name=u'Название')
@@ -420,6 +421,55 @@ class Advert(models.Model):
 
     def url(self):
         return '/advert/%s' % self.slug
+
+    def save(self, *args, **kwargs):
+        self.slug = uuslug(self.name, instance=self, max_length=50)
+        super(Advert, self).save(*args, **kwargs)        
+
+
+
+
+
+class ProjectCategory(models.Model):
+    name = models.CharField(
+        verbose_name=u'Название категории', max_length=200)
+    slug = models.CharField(max_length=20, verbose_name=u'Ссылка')
+    image = models.ImageField(
+        verbose_name=u'Изображение', upload_to='projectcategory_image', blank=True)
+
+    class Meta:
+        verbose_name = u'категория проектов для Партнерства'
+        verbose_name_plural = u'Проекты категории'
+
+    def __unicode__(self):
+        return u'%s' % self.name
+
+    def url(self):
+        return '/partnership/%s' % self.slug
+
+
+class Project(models.Model):
+    name = models.CharField(max_length=200, verbose_name=u'Название')
+    slug = models.SlugField(u'Ссылка', max_length=50, unique=True)
+    image = models.ImageField(verbose_name=u'Изображение', upload_to='obyavleniya_image', blank=True)
+    text = models.TextField(verbose_name=u'Описание проекта')
+    needsText = models.TextField(verbose_name=u'Кратко о том, что требуется')
+    cropping = ImageRatioField('image', '380x350')
+    goal = models.CharField(verbose_name=u'Цель', max_length=200)
+    current = models.CharField(verbose_name=u'Собрано', max_length=200, default=0)
+    category = models.ForeignKey(ProjectCategory, verbose_name=u'Категория')
+    date = models.DateField(verbose_name=u'Дата ', default=datetime.datetime.now, editable=True)
+    status = models.BooleanField(verbose_name=u'опубликовано', default=True)
+
+    class Meta:
+        verbose_name = u'Проект партнерства'
+        verbose_name_plural = u'Проекты партнерства'
+
+    def __unicode__(self):
+        return u'Проект %s' % self.name
+
+    def url(self):
+        return '/partnership/%s/%s' % (self.category.slug, self.slug)
 
     def save(self, *args, **kwargs):
         self.slug = uuslug(self.name, instance=self, max_length=50)

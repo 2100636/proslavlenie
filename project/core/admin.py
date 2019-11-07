@@ -4,7 +4,7 @@ from django.contrib import admin
 from project.core.models import Article, Page, SliderItem,\
     ArticleGalleryImage, NewsGalleryImage, PageGalleryImage, \
     News, Review, Testimony, TestimonyGalleryImage, Video,\
-    VideoCategory, Ministry, MinistryImage, Need, Question, AdvertCategory, Advert
+    VideoCategory, Ministry, MinistryImage, Need, Question, AdvertCategory, Advert, ProjectCategory, Project
 
 from image_cropping import ImageCroppingMixin
 
@@ -87,7 +87,7 @@ class MinistryAdmin(ImageCroppingMixin, admin.ModelAdmin):
 
 
 class AdvertCategoryInline(admin.StackedInline):
-    """Вывод заказов списком"""
+    """Вывод категорий списком"""
     model = AdvertCategory
     extra = 0
 
@@ -99,6 +99,25 @@ class AdvertAdmin(admin.ModelAdmin):
     fields = (
         'name', 'slug', 'text', 'image', 'phone', 'cost', 'category', 'author', 'member', 'pswd', 'date','status')
     prepopulated_fields = {'slug': ('name', ), }
+
+
+class ProjectCategoryInline(admin.StackedInline):
+    """Вывод категорий списком"""
+    model = ProjectCategory
+    extra = 0
+
+class ProjectAdmin(admin.ModelAdmin):
+    model = Project
+    list_display = ('name', 'needstext', 'goal', 'current', 'category', 'date', 'status')
+    list_display_links = ('name',)
+    search_fields = ['text']
+    # fields = (
+    #     'name', 'slug', 'text', 'image', 'phone', 'cost', 'category', 'author', 'member', 'pswd', 'date','status')
+    # prepopulated_fields = {'slug': ('name', ), }
+
+
+
+
 
 
 
@@ -116,3 +135,6 @@ admin.site.register(Need)
 admin.site.register(Question)
 admin.site.register(Advert, AdvertAdmin)
 admin.site.register(AdvertCategory)
+admin.site.register(Project, ProjectAdmin)
+admin.site.register(ProjectCategory)
+

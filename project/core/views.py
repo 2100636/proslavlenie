@@ -8,7 +8,7 @@ from functions import *
 from forms import QuestionForm, NeedForm, AdvertForm
 from project.forms.forms import BSForm, HvalaSForm, PenuelConfForm, Play2017Form
 from models import Article, Page, Question,\
-    News, SliderItem, Review, Testimony, Video, Ministry, VideoCategory, Advert, AdvertCategory
+    News, SliderItem, Review, Testimony, Video, Ministry, VideoCategory, Advert, AdvertCategory, ProjectCategory, Project
 
 from django.core.mail import send_mail
 from project.settings import ADMIN_EMAIL, DEFAULT_FROM_EMAIL
@@ -507,4 +507,41 @@ def advertAddView(request, template_name="catalog/advert_add.html"):
 
     return render_to_response(
         template_name, locals(), context_instance=RequestContext(request))
+
+
+
+
+
+
+
+def advertAllView(request):
+    categories = ProjectCategory.objects.all()
+
+    # количество объектов на странице
+    objects_on_page = 20
+
+    projects = Project.objects.filter(status=1).order_by("-id")
+    paginator = Paginator(projects, objects_on_page)
+    pageNumber = request.GET.get('page')
+
+    try: 
+        paginatedPage = paginator.page(pageNumber)
+    except PageNotAnInteger: 
+        pageNumber = 1
+    except EmptyPage: 
+        pageNumber = paginator.num_pages
+    projects = paginator.page(pageNumber)
+
+    pageNumber_ = int(pageNumber);
+
+    count_page = projects.paginator.count / objects_on_page
+    ostatok = projects.paginator.count % objects_on_page
+    if ostatok != 0:
+        count_page = count_page+1
+    
+    range_ = range(1, count_page+1)
+
+    return render_to_response(
+        template_name, locals(), context_instance=RequestContext(request))
+
 

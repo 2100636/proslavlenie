@@ -1,0 +1,130 @@
+{% extends "front_main.html" %}
+{% load thumbnail %}
+{% load cropping %}
+{% load menu_tags %}
+
+
+
+{% block meta %}
+  <title>Партнерство | Церковь Прославления</title>
+  <meta name="description" content='Партнерство "Церкви Прославления"'/>
+{% endblock %}
+
+{% block content %}
+
+
+
+<div id="obyavleniya" class="content-wrapper" style="margin-left:0"><!-- Content Wrapper. Contains page content -->
+
+  <section id="drop_menu">
+    {% menu_tree request %}
+  </section>
+
+
+  <section class="content project_all">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-xs-7">
+          <h1 class="">Партнерство</h1>
+        </div>
+
+        {% if pageNumber != 1 %}
+          <div class="col-xs-4">
+            <div class="current_page">Страница: <span>{{ pageNumber }}</span></div>
+          </div>
+        {% endif %}
+
+
+        <div class="col-xs-12" >
+          <div class="row">
+            <div class="col-xs-9 obyav_list">
+              
+              {% if projects%}
+              {% else %}
+                Здесь пока нет проектов!
+              {% endif %}
+              
+              {% for project in projects %}
+                <div class="obyav_item clearfix" >
+                  <div class="image">
+                    {% if project.image %}
+                      <img class="img-responsive" alt="{{ project.name }}" src="{% cropped_thumbnail project "cropping" scale=1 %}">
+                    {% else %}
+                      <img class="img-responsive" alt="no photo" src="/static/theme/img/no_photo.jpg">
+                    {% endif %}
+                  </div>
+                  <div class="obyav_content">
+                    <div class="title">{{ project.name }}</div>
+                    <div class="date">{{ project.date }}</div>
+                    <div class="goal"><b>Цель:</b> {{ project.goal }} <span>руб.</span></div>
+                    <div class="current"><b>Собрано:</b> {{ project.current }} <span>руб.</span></div>
+                    <div class="category">Категория: {{ project.category }}</div>
+                    <a href="{{ project.url }}" class="btn btn-primary pull-right" style="margin-top: 10px;">Подробнее</a>
+                  </div>
+                </div>
+              {% endfor %}
+
+              {% if count_page > 1 %}
+                <div class="col-xs-12" >
+                  <ul class="pages_list">
+                    {% for i in range_ %}
+                      {% if i == pageNumber_ %}
+                        <li class="active">{{ i }}</li>
+                      {% else %}
+                        {% if i == 1 %}
+                          <li><a rel="nofollow" href="/projecterts/">{{ i }}</a></li>
+                        {% else %}
+                          <li><a rel="nofollow" href="/projecterts/?page={{ i }}">{{ i }}</a></li>
+                        {% endif %}
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% endif %}
+
+            </div>   
+
+            <div class="col-xs-3 cat_list" >
+              <div class="cat_item"><a class="active" href="/partnership/">Партнерство</a></div>
+              {% for cat in categories %}
+                <div class="cat_item"><a href="{{ cat.url }}">{{ cat.name }}</a></div>
+              {% endfor %}
+            </div>
+
+          </div>   
+        </div>
+        
+
+        
+
+      </div>
+
+    </div>
+  </section>
+
+</div><!-- /.content-wrapper -->
+{% endblock %}
+
+{% block page_js %}
+  <script>
+  (function($) {
+    $(document).ready(function() {
+
+      $('.delbtn').click(function(){
+        $(this).hide();
+        p = $(this).parent();
+        p.find('form').slideDown(300);
+        p.find('.cancel').show();
+      });
+      $('.cancel').click(function(){
+        $(this).hide();
+        p = $(this).parent();
+        p.find('form').slideUp(300);
+        p.find('.delbtn').show();
+      });
+
+    });
+  })(jQuery);
+  </script>
+{% endblock %}
