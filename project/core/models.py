@@ -433,7 +433,7 @@ class Advert(models.Model):
 class ProjectCategory(models.Model):
     name = models.CharField(
         verbose_name=u'Название категории', max_length=200)
-    slug = models.CharField(max_length=20, verbose_name=u'Ссылка')
+    slug = models.SlugField(u'Ссылка', max_length=50, unique=True)
     image = models.ImageField(
         verbose_name=u'Изображение', upload_to='projectcategory_image', blank=True)
 
