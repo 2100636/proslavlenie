@@ -108,18 +108,12 @@ class ProjectCategoryInline(admin.StackedInline):
 
 class ProjectAdmin(admin.ModelAdmin):
     model = Project
-    list_display = ('name', 'needstext', 'goal', 'current', 'category', 'date', 'status')
+    list_display = ('name', 'needsText', 'goal', 'current', 'category', 'date', 'status')
     list_display_links = ('name',)
     search_fields = ['text']
     # fields = (
     #     'name', 'slug', 'text', 'image', 'phone', 'cost', 'category', 'author', 'member', 'pswd', 'date','status')
     # prepopulated_fields = {'slug': ('name', ), }
-
-
-
-
-
-
 
 
 admin.site.register(Article, ArticleAdmin)
