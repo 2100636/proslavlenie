@@ -452,9 +452,9 @@ class Project(models.Model):
     name = models.CharField(max_length=200, verbose_name=u'Название')
     slug = models.SlugField(u'Ссылка', max_length=50, unique=True)
     image = models.ImageField(verbose_name=u'Изображение', upload_to='obyavleniya_image', blank=True)
+    cropping = ImageRatioField('image', '380x350')
     text = models.TextField(verbose_name=u'Описание проекта')
     needsText = models.TextField(verbose_name=u'Кратко о том, что требуется')
-    cropping = ImageRatioField('image', '380x350')
     goal = models.CharField(verbose_name=u'Цель', max_length=200)
     current = models.CharField(verbose_name=u'Собрано', max_length=200, default=0)
     category = models.ForeignKey(ProjectCategory, verbose_name=u'Категория')
@@ -473,4 +473,4 @@ class Project(models.Model):
 
     def save(self, *args, **kwargs):
         self.slug = uuslug(self.name, instance=self, max_length=50)
-        super(Advert, self).save(*args, **kwargs)        
+        super(Project, self).save(*args, **kwargs)        
