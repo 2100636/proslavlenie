@@ -455,7 +455,6 @@ class Project(models.Model):
     cropping = ImageRatioField('image', '380x350')
     text = models.TextField(verbose_name=u'Описание проекта')
     description = RichTextField(default='')
-
     needsText = models.TextField(verbose_name=u'Кратко о том, что требуется')
     goal = models.CharField(verbose_name=u'Цель', max_length=200)
     current = models.CharField(verbose_name=u'Собрано', max_length=200, default=0)
