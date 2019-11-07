@@ -78,13 +78,13 @@ urlpatterns = patterns(
         name='advertView'),
 
 
-    # url(r'^partnership/(?P<category_slug>[-\w]+)$', 'partnershipCatView',
-    #     {'template_name': 'core/partnership_cat.html'},
-    #     name='partnershipCatView'),
+    url(r'^partnership/(?P<category_slug>[-\w]+)$', 'partnershipCatView',
+        {'template_name': 'core/partnership_cat.html'},
+        name='partnershipCatView'),
 
-    # url(r'^partnership/(?P<category_slug>[-\w]+)/(?P<slug>[-\w]+)/$', 'partnershipProjectView',
-    #     {'template_name': 'core/partnershipProject.html'},
-    #     name='partnershipProjectView'),
+    url(r'^partnership/(?P<category_slug>[-\w]+)/(?P<slug>[-\w]+)/$', 'partnershipProjectView',
+        {'template_name': 'core/partnership_project.html'},
+        name='partnershipProjectView'),
 
     url(r'^partnership/$', 'partnershipView',
         {'template_name': 'core/partnership.html'},

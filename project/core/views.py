@@ -512,8 +512,6 @@ def advertAddView(request, template_name="catalog/advert_add.html"):
 
 
 
-
-
 def partnershipView(request, template_name="core/partnership.html"):
     categories = ProjectCategory.objects.all()
 
@@ -544,4 +542,54 @@ def partnershipView(request, template_name="core/partnership.html"):
     return render_to_response(
         template_name, locals(), context_instance=RequestContext(request))
 
+
+
+def partnershipProjectView(request, slug, template_name="core/partnership_project.html"):
+    user = request.user
+    project = Project.objects.get(slug=slug)
+    categories = Project.objects.all()
+
+    complete = round(project.current * 100 / project.goal, 1)
+
+    # мета описание
+    # meta_title = project.meta_title
+    # if not meta_title or meta_title == '':
+    #     meta_title = project.name
+    # meta_description = project.meta_description
+    return render_to_response(
+        template_name, locals(), context_instance=RequestContext(request))
+
+
+
+def partnershipCatView(request, category_slug, template_name="catalog/partnership_cat.html"):
+    categories = ProjectCategory.objects.all()
+    category = ProjectCategory.objects.get(slug=category_slug)
+
+    # количество объектов на странице
+    objects_on_page = 20
+
+    projects = Advert.objects.filter(category=category.id,status=1).order_by("-id")
+    paginator = Paginator(projects, objects_on_page)
+    pageNumber = request.GET.get('page')
+
+    try: 
+        paginatedPage = paginator.page(pageNumber)
+    except PageNotAnInteger: 
+        pageNumber = 1
+    except EmptyPage: 
+        pageNumber = paginator.num_pages
+    projects = paginator.page(pageNumber)
+
+    pageNumber_ = int(pageNumber);
+
+    count_page = projects.paginator.count / objects_on_page
+    ostatok = projects.paginator.count % objects_on_page
+    if ostatok != 0:
+        count_page = count_page+1
+    
+    range_ = range(1, count_page+1)
+
+
+    return render_to_response(
+        template_name, locals(), context_instance=RequestContext(request))
 

@@ -1,0 +1,72 @@
+{% extends "front_main.html" %}
+{% load thumbnail %}
+{% load cropping %}
+{% load menu_tags %}
+
+{% block content %}
+<div id="obyavleniya" class="content-wrapper" style="margin-left:0"><!-- Content Wrapper. Contains page content -->
+
+  <section id="drop_menu">
+    {% menu_tree request %}
+  </section>
+
+
+
+  <section class="content">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-xs-7">
+          <h1 class="">{{ project.name }}</h1>
+        </div>
+
+        <div class="col-xs-12">
+
+          <div class="text">{{ project.text }}</div>          
+          <div class="needsText">{{ project.needsText }}</div>   
+        </div>
+
+          <div class="row">
+
+            <div class="col-xs-5">
+              <div class="image">
+                {% if project.image %}
+                  <img class="img-responsive" alt="{{ project.name }}" src="{% cropped_thumbnail project "cropping" scale=1 %}">
+                {% else %}
+                  <img class="img-responsive" alt="no photo" src="/static/theme/no_photo.jpg">
+                {% endif %}
+              </div>      
+            </div>
+            <div class="col-xs-7">       
+              <div class="goal"><div class="title">Необходимо:</div> {{ project.goal }}</div>
+              <div class="goalline">{{ complete }}%</div>
+              <div class="current"><div class="title">Собрано:</div> {{ project.current }}</div>
+              <div class="category">{{ project.category }}</div>
+              <div class="date">{{ project.date }}</div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+</div><!-- /.content-wrapper -->
+{% endblock %}
+
+{% block page_js %}
+
+  <script>
+    (function($){$(document).ready(function(){
+      
+
+    });})(jQuery);
+  </script> 
+
+{% endblock %}
