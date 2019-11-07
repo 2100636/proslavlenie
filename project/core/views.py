@@ -544,7 +544,7 @@ def partnershipView(request, template_name="core/partnership.html"):
 
 
 
-def partnershipProjectView(request, slug, template_name="core/partnership_project.html"):
+def partnershipProjectView(request, category_slug, slug, template_name="core/partnership_project.html"):
     user = request.user
     project = Project.objects.get(slug=slug)
     categories = Project.objects.all()
@@ -568,7 +568,7 @@ def partnershipCatView(request, category_slug, template_name="catalog/partnershi
     # количество объектов на странице
     objects_on_page = 20
 
-    projects = Advert.objects.filter(category=category.id,status=1).order_by("-id")
+    projects = Project.objects.filter(category=category.id,status=1).order_by("-id")
     paginator = Paginator(projects, objects_on_page)
     pageNumber = request.GET.get('page')
 
