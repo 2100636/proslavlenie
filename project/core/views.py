@@ -514,7 +514,7 @@ def advertAddView(request, template_name="catalog/advert_add.html"):
 
 
 
-def partnershipView(request):
+def partnershipView(request, template_name="core/partnership.html"):
     categories = ProjectCategory.objects.all()
 
     # количество объектов на странице
