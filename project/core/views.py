@@ -512,18 +512,13 @@ def advertAddView(request, template_name="catalog/advert_add.html"):
 
 
 
-def partnershipList(request):
+
+def partnershipList(request, template_name='core/partnership_list.html'):
     categories = ProjectCategory.objects.all()
     projects = Project.objects.filter(status=1).order_by("-id")
-    html = ''
-    for project in projects:
-        # html = html + project.category.name + ':' + project.name + ':' + project.url 
-        html = u"%s%s:%s:%s;" % (html, project.category.name, project.name, project.url)
-    return HttpResponse(html)
-    # return render_to_response(
-    #     template_name, locals(), context_instance=RequestContext(request))
-
-
+    return render_to_response(
+        template_name, locals(), context_instance=RequestContext(request))
+ 
 
 
 def partnershipView(request, template_name="core/partnership.html"):
