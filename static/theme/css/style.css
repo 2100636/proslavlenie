@@ -1111,42 +1111,31 @@ textarea.form_control{
 
 
 
-.partnership_cat h1 {
+.partnership h1 {
   font-size: 34px;
   margin-bottom: 50px;
 }
-.partnership_cat h1 b{
+.partnership h1 b{
   font-size: 51px;
   display: block;
 }
 
-.partnership_project .text {
-  margin-bottom: 35px;
-}
-.partnership_project .needsText {
-  border: 3px solid #2274c7;
-  padding: 20px 30px 14px;
-  margin-bottom: 35px;
-  font-size: 18px;
-  color: #2274c7;
-}
-
-.partnership_project .goal {
+.partnership .goal {
   font-size: 22px;
   color: #2274c7;
   margin-bottom: 15px;
 }
-.partnership_project .goal .title {
+.partnership .goal .title {
   display: inline-block;
   font-weight: 600;
   text-transform: uppercase;
 }
-.partnership_project .current {
+.partnership .current {
   font-size: 22px;
   color: #c15036;
   margin-bottom: 15px;
 }
-.partnership_project .current .title {
+.partnership .current .title {
   display: inline-block;
   font-weight: 600;
   text-transform: uppercase;
@@ -1159,7 +1148,7 @@ textarea.form_control{
   position: relative;
   margin-bottom: 20px;
 }
-.goalline:before
+.goalline:before,
 .goalline:after {
   display: block;
   position: absolute;
@@ -1194,14 +1183,26 @@ textarea.form_control{
   color: #fff;
 }
 
-.partnership_project .btn{
+.partnership .bttns .btn{
   background: #fc9725;
 }
 
-.partnership_project .date{
+.partnership .date{
   font-size: 13px;
   color: #5b5b5b;
   margin-top: 50px;
+}
+
+
+.partnership_project .text {
+  margin-bottom: 35px;
+}
+.partnership_project .needsText {
+  border: 3px solid #2274c7;
+  padding: 20px 30px 14px;
+  margin-bottom: 35px;
+  font-size: 18px;
+  color: #2274c7;
 }
 
 
