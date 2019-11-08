@@ -3,6 +3,7 @@
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 import json
+from django.core import serializers
 from django.http import HttpResponse
 from django.http import JsonResponse
 from django.views.generic import TemplateView
@@ -528,6 +529,8 @@ def partnershipList(request):
         arr.append(project.url)
         array.append(arr)
         
+    serialized = serializers.serialize('json', array)
+    return JsonResponse(serialized, safe=False) 
 
 #     {
 #   "0":{"id":"3", "category":"Медиа", "name":"sfdsfdsf", "url":"/partnership/media/sfdsfdsf"},
