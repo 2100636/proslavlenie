@@ -471,6 +471,14 @@ class Project(models.Model):
     def url(self):
         return '/partnership/%s/%s' % (self.category.slug, self.slug)
 
+    def complete(self):
+        current = float(self.current)
+        goal = float(self.goal)
+        complete = current * 100 / goal
+        complete = round(complete, 1)
+        return complete
+
+
     def save(self, *args, **kwargs):
         self.slug = uuslug(self.name, instance=self, max_length=50)
         super(Project, self).save(*args, **kwargs)        
