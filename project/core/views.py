@@ -518,7 +518,7 @@ def partnershipList(request):
     html = ''
     for project in projects:
         # html = html + project.category.name + ':' + project.name + ':' + project.url 
-        html = "%s%s:%s:%s;" % (html, project.category.name, project.name, project.url)
+        html = u"%s%s:%s:%s;" % (html, project.category.name, project.name, project.url)
     return HttpResponse(html)
     # return render_to_response(
     #     template_name, locals(), context_instance=RequestContext(request))
