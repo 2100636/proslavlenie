@@ -513,7 +513,7 @@ def advertAddView(request, template_name="catalog/advert_add.html"):
 
 
 
-def partnershipList(request, template_name='core/partnership_list.html'):
+def partnershipList(request):
     categories = ProjectCategory.objects.all()
     projects = Project.objects.filter(status=1).order_by("-id")
 
