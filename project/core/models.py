@@ -452,7 +452,7 @@ class Project(models.Model):
     name = models.CharField(max_length=200, verbose_name=u'Название')
     slug = models.SlugField(u'Ссылка', max_length=50, unique=True)
     image = models.ImageField(verbose_name=u'Изображение', upload_to='obyavleniya_image', blank=True)
-    cropping = ImageRatioField('image', '380x350')
+    cropping = ImageRatioField('image', '450x260')
     text = RichTextField(verbose_name=u'Описание проекта', default='')
     needsText = RichTextField(verbose_name=u'Кратко о том, что требуется', default='', config_name='height250')
     goal = models.CharField(verbose_name=u'Цель', max_length=200)

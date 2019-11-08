@@ -1186,6 +1186,9 @@ textarea.form_control{
 .partnership .bttns .btn{
   background: #fc9725;
 }
+.partnership .bttns .btn:hover{
+  color: #fff;
+}
 
 .partnership .date{
   font-size: 13px;
