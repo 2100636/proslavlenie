@@ -1207,8 +1207,14 @@ textarea.form_control{
   font-size: 18px;
   color: #2274c7;
 }
-
-
+.partnership_project_item{
+  margin-bottom: 50px;
+}
+.partnership_project_item .name{
+  font-size: 22px; 
+  line-height: 24px;
+  margin-bottom: 17px;
+}
 
 
 

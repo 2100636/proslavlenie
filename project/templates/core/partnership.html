@@ -69,10 +69,11 @@
                     </div>      
                   </div>
                   <div class="col-xs-7">       
+                    <div class="name"><a href="{{ project.url }}">{{ project.name }}</a></div>
                     <div class="goal"><div class="title">Необходимо:</div> {{ project.goal }} руб.</div>
                     <div class="goalline"><div class="persent">{{ project.complete }}%</div><div class="progress"></div></div>
                     <div class="current"><div class="title">Собрано:</div> {{ project.current }} руб.</div>
-                    <a href="{{ project.url }}" class="btn btn-primary pull-right" style="margin-top: 10px;">Подробнее</a>
+                    <a href="{{ project.url }}" class="btn btn-primary pull-right">Подробнее</a>
                     <div class="category">Категория: <a href="{{ project.url }}">{{ project.category }}</a></div>
                   </div>
                 </div>
