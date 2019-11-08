@@ -1,1 +1,8 @@
-{{% for project in projects %}{"id":"{{project.id}}"}{"category":"{{project.category.name}}"}{"name":"{{project.name}}"}{"url":"{{project.url}}"}{% endfor %}}
+{{ '{' }}
+{% for project in projects %}
+{{ '{' }}"id":"{{project.id}}"{{ '}' }},
+{{ '{' }}"category":"{{project.category.name}}"{{ '}' }},
+{{ '{' }}"name":"{{project.name}}"{{ '}' }},
+{{ '{' }}"url":"{{project.url}}"{{ '}' }},
+{% endfor %}
+{{ '}' }}
