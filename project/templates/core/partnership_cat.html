@@ -15,7 +15,7 @@
       {% menu_tree request %}
   </section>
 
-  <section class="content project_all">
+  <section class="content partnership_cat">
     <div class="container">
       <div class="row">
 
@@ -33,7 +33,7 @@
               {% endif %}
 
               {% for project in projects %}
-                <div class="obyav_item clearfix" >
+                <div class="partnership_project_item clearfix" >
                   <div class="image">
                     {% if project.image %}
                       <img class="img-responsive" alt="{{ project.name }}" src="{% cropped_thumbnail project "cropping" scale=1 %}">
