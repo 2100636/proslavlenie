@@ -476,6 +476,8 @@ class Project(models.Model):
         goal = float(self.goal)
         complete = current * 100 / goal
         complete = round(complete, 1)
+        complete = str(complete)
+        complete = complete.replace(',','.')
         return complete
 
 
