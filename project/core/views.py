@@ -516,6 +516,17 @@ def advertAddView(request, template_name="catalog/advert_add.html"):
 def partnershipList(request, template_name='core/partnership_list.html'):
     categories = ProjectCategory.objects.all()
     projects = Project.objects.filter(status=1).order_by("-id")
+
+    massiv = []
+    for project in projects:
+        massiv[project.id] = project.id
+
+#     {
+#   "0":{"id":"3", "category":"Медиа", "name":"sfdsfdsf", "url":"/partnership/media/sfdsfdsf"},
+#   "1":{"id":"3", "category":"Медиа", "name":"sfdsfdsf", "url":"/partnership/media/sfdsfdsf"}
+  
+# }
+
     return render_to_response(
         template_name, locals(), context_instance=RequestContext(request))
  
