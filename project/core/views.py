@@ -516,34 +516,24 @@ def advertAddView(request, template_name="catalog/advert_add.html"):
 
 
 
-def partnershipList(request):
+def partnershipList(request, template_name):
     categories = ProjectCategory.objects.all()
     projects = Project.objects.filter(status=1).order_by("-id")
 
-    array = []
-    for project in projects:
-        arr = []
-        arr.append(project.id)
-        # arr.append(project.category.name)
-        arr.append(project.name)
-        # arr.append(project.url)
-        array.append(arr)
+    # array = []
+    # for project in projects:
+    #     arr = []
+    #     arr.append(project.id)
+    #     # arr.append(project.category.name)
+    #     arr.append(project.name)
+    #     # arr.append(project.url)
+    #     array.append(arr)
         
-    serialized = serializers.serialize('json', array)
-    return JsonResponse(serialized, safe=False) 
+    # serialized = serializers.serialize('json', array)
+    # return JsonResponse(serialized, safe=False) 
 
-#     {
-#   "0":{"id":"3", "category":"Медиа", "name":"sfdsfdsf", "url":"/partnership/media/sfdsfdsf"},
-#   "1":{"id":"3", "category":"Медиа", "name":"sfdsfdsf", "url":"/partnership/media/sfdsfdsf"}
-  
-# }
-
-    return JsonResponse(array, safe=False)
-    
-    # return HttpResponse(your_json)
-
-    # return render_to_response(
-    #     template_name, locals(), context_instance=RequestContext(request))
+    return render_to_response(
+        template_name, locals(), context_instance=RequestContext(request))
  
 
 
