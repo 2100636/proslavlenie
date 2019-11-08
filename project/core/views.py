@@ -512,6 +512,19 @@ def advertAddView(request, template_name="catalog/advert_add.html"):
 
 
 
+def partnershipList(request):
+    categories = ProjectCategory.objects.all()
+    projects = Project.objects.filter(status=1).order_by("-id")
+    html = ''
+    for project in projects:
+        html = html + project.category + ':' + project.name
+    return HttpResponse(html)
+    # return render_to_response(
+    #     template_name, locals(), context_instance=RequestContext(request))
+
+
+
+
 def partnershipView(request, template_name="core/partnership.html"):
     categories = ProjectCategory.objects.all()
 

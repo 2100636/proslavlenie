@@ -78,6 +78,9 @@ urlpatterns = patterns(
         name='advertView'),
 
 
+
+    url(r'^partnership/list$', 'partnershipList'),
+
     url(r'^partnership/(?P<category_slug>[-\w]+)$', 'partnershipCatView',
         {'template_name': 'core/partnership_cat.html'},
         name='partnershipCatView'),
