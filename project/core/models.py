@@ -454,7 +454,7 @@ class Project(models.Model):
     image = models.ImageField(verbose_name=u'Изображение', upload_to='obyavleniya_image', blank=True)
     cropping = ImageRatioField('image', '380x350')
     text = RichTextField(verbose_name=u'Описание проекта', default='')
-    needsText = RichTextField(verbose_name=u'Кратко о том, что требуется', default='')
+    needsText = RichTextField(verbose_name=u'Кратко о том, что требуется', default='', config_name='height250')
     goal = models.CharField(verbose_name=u'Цель', max_length=200)
     current = models.CharField(verbose_name=u'Собрано', max_length=200, default=0)
     category = models.ForeignKey(ProjectCategory, verbose_name=u'Категория')

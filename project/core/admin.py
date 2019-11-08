@@ -113,7 +113,7 @@ class ProjectAdmin(admin.ModelAdmin):
     search_fields = ['text']
     # fields = (
     #     'name', 'slug', 'text', 'image', 'phone', 'cost', 'category', 'author', 'member', 'pswd', 'date','status')
-    # prepopulated_fields = {'slug': ('name', ), }
+    prepopulated_fields = {'slug': ('name', ), }
 
 
 admin.site.register(Article, ArticleAdmin)
