@@ -4,7 +4,7 @@
 {% load menu_tags %}
 
 {% block content %}
-<div class="content-wrapper partnership_project" style="margin-left:0"><!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper partnership partnership_project" style="margin-left:0"><!-- Content Wrapper. Contains page content -->
 
   <section id="drop_menu">
     {% menu_tree request %}
@@ -37,10 +37,15 @@
         </div>
         <div class="col-xs-7">       
           <div class="goal"><div class="title">Необходимо:</div> {{ project.goal }}</div>
-          <div class="goalline">{{ complete }}%</div>
+          <div class="goalline"><div class="persent">{{ complete }}%</div><div class="progress"></div></div>
           <div class="current"><div class="title">Собрано:</div> {{ project.current }}</div>
-          <div class="category">{{ project.category }}</div>
-          <div class="date">{{ project.date }}</div>
+
+          <div class="bttns">
+            <a class="btn btn-default" href="http://donation.proslavlenie.ru/index2.php?id_project={{project.id}}" target="_blank">Пожертвовать единоразово</a>
+            <div class="btn btn-default">Стать партнером</div>
+          </div>
+
+          <div class="date">Дата публикации проекта на сайте: {{ project.date }}</div>
         </div>
             
         </div>

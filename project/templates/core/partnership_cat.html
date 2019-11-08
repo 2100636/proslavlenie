@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="content-wrapper partnership_cat" style="margin-left:0"><!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper partnership partnership_cat" style="margin-left:0"><!-- Content Wrapper. Contains page content -->
 
   <section id="drop_menu">
       {% menu_tree request %}
@@ -42,7 +42,7 @@
                     {% endif %}
                   </div>
 
-                  <div class="obyav_content">
+                  <div class="item_content">
                     <div class="title">{{ project.name }}</div>
                     <div class="date">{{ project.date }}</div>
                     <div class="goal"><b>Цель:</b> {{ project.goal }} <span>руб.</span></div>
@@ -82,7 +82,6 @@
                   <div class="cat_item"><a href="{{ cat.url }}">{{ cat.name }}</a></div>
                 {% endif %} 
               {% endfor %}
-              <div class="cat_item"><a href="/projects/add/">Добавить объявление</a></div>
             </div>
                
           </div>  

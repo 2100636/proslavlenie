@@ -1111,6 +1111,113 @@ textarea.form_control{
 
 
 
+.partnership_cat h1 {
+  font-size: 34px;
+  margin-bottom: 50px;
+}
+.partnership_cat h1 b{
+  font-size: 51px;
+  display: block;
+}
+
+.partnership_project .text {
+  margin-bottom: 35px;
+}
+.partnership_project .needsText {
+  border: 3px solid #2274c7;
+  padding: 20px 30px 14px;
+  margin-bottom: 35px;
+  font-size: 18px;
+  color: #2274c7;
+}
+
+.partnership_project .goal {
+  font-size: 22px;
+  color: #2274c7;
+  margin-bottom: 15px;
+}
+.partnership_project .goal .title {
+  display: inline-block;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.partnership_project .current {
+  font-size: 22px;
+  color: #c15036;
+  margin-bottom: 15px;
+}
+.partnership_project .current .title {
+  display: inline-block;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.goalline {
+  background: #e5e5e5;
+  border: 1px solid #2274c7;
+  width: 500px;
+  position: relative;
+  margin-bottom: 20px;
+}
+.goalline:before
+.goalline:after {
+  display: block;
+  position: absolute;
+  z-index: 2;
+  font-size: 11px;
+  top: 23px;
+}
+.goalline:before {
+  content: "0%";
+  color: #9b9b9b;
+  left: 0;
+}
+.goalline:after {
+  content: "100%";
+  color: #9b9b9b;
+  right: 0;
+}
+.goalline .progress{
+  background: #2274c7;
+  position: absolute;
+  height: 100%;
+  width: 76.6%;
+  top: 0;
+  left: 0;
+  margin: 0;
+}
+.goalline .persent{
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  font-weight: 600;
+  color: #fff;
+}
+
+.partnership_project .btn{
+  background: #fc9725;
+}
+
+.partnership_project .date{
+  font-size: 13px;
+  color: #5b5b5b;
+  margin-top: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
