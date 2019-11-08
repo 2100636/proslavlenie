@@ -524,9 +524,9 @@ def partnershipList(request):
     for project in projects:
         arr = []
         arr.append(project.id)
-        arr.append(project.category.name)
+        # arr.append(project.category.name)
         arr.append(project.name)
-        arr.append(project.url)
+        # arr.append(project.url)
         array.append(arr)
         
     serialized = serializers.serialize('json', array)
