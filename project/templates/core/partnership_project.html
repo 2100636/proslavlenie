@@ -14,6 +14,11 @@
 
   <section class="content">
     <div class="container">
+
+      <div style="font-size: 21px;border-bottom: 1px solid #d5d5d5;margin-bottom: 15px;">
+        <a href="/partnership/">Все проекты</a>
+      </div>
+
       <div class="row">
         <div class="col-xs-7">
           <h1 class="">{{ project.name }}</h1>
@@ -62,7 +67,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="becomepartnerLabel">Чтобы стать партнером заполните форму:</h4>
+        <h4 class="modal-title" id="becomepartnerLabel" style="line-height: 30px;margin-bottom: 16px;text-align: center;">Чтобы стать партнером <br> заполните форму:</h4>
       </div>
       <div class="modal-body">
         <form class="siteform">
@@ -96,12 +101,47 @@
 {% endblock %}
 
 {% block page_js %}
-
   <script>
+    var send = false;
     (function($){$(document).ready(function(){
-      
+    
+    $(".siteform .send").click(function() {
+      var that = $(this);
+      form = that.parents('.siteform');
+      if (send == false) {
+      var str = form.serialize();
+      console.log(form);
+      console.log(str);
+      $.ajax({
+        type: "POST",
+        url: "https://form.proslavlenie.ru/mail.php",
+        data: str,
+        success: function(msg) {
+        console.log(msg);
+        if(msg == 'ok') {
+          result = '<div class="ok">Спасибо! Ваше сообщение отправлено. <p style="font-size: 13px">Обновите страницу для повторной отправки анкеты</p></div>';
+          form.append(result);
+          form.find('.errorswrap').html('');
+          send = true;
+          //form.submit();
+          //submit = form.find('.form_submit');
+          //submit.click();
+        }
+        else {
+          form.find('.errorswrap').html('<div class="errors">'+msg+'</div>');
+        }
+        }
+      });
+      return false;
+      }
+      return false;
+    });
+
+ 
+
+
 
     });})(jQuery);
-  </script> 
+  </script>  
 
 {% endblock %}
