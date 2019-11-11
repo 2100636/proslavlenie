@@ -42,7 +42,7 @@
 
           <div class="bttns">
             <a class="btn btn-default" href="http://donation.proslavlenie.ru/index2.php?id_project={{project.id}}" target="_blank">Пожертвовать единоразово</a>
-            <div class="btn btn-default">Стать партнером</div>
+            <div class="btn btn-default" data-toggle="modal" data-target="#becomepartner">Стать партнером</div>
           </div>
 
           <div class="date">Дата публикации проекта на сайте: {{ project.date }}</div>
@@ -55,10 +55,42 @@
     </div>
   </section>
 
+ 
 
-
-
-
+<div class="modal fade" id="becomepartner" tabindex="-1" role="dialog" aria-labelledby="becomepartnerLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="becomepartnerLabel">Чтобы стать партнером заполните форму:</h4>
+      </div>
+      <div class="modal-body">
+        <form class="siteform">
+          <input type="hidden" name="csrfmiddlewaretoken" value="UmBfsvlwoSm6CGz2dra5JNhDc4AA55W1">
+          <input name="formname" type="hidden" value="Анкета БШ" class="form-control">
+          <input name="fields" type="hidden" value="fio;phone;email;how_often;summ" class="form-control">
+          <div class="fio"><input class="form-control floating-label" id="id_fio" name="fio" placeholder="Ф.И.О" type="text"></div>
+          <div class="phone"><input class="form-control floating-label" id="id_phone" name="phone" placeholder="Контактный телефон" type="text"></div>
+          <div class="email"><input class="form-control floating-label" id="id_email" name="email" placeholder="E-mail" type="text"></div>
+          <div class="how_often"><input class="form-control floating-label" id="id_how_often" name="how_often" placeholder="Как часто вы можете пожертвовать (Н-р: Ежемесячно)" type="text"></div>
+          <div class="summ"><input class="form-control floating-label" id="id_summ" name="summ" placeholder="Сумма" type="text"></div>
+          <input class="form-control floating-label" id="e_mail" name="e_mail" placeholder="Не_заполняйте_это_поле" type="email">
+          <div class="agreement checkbox">
+            <label><input checked="checked" id="id_agreement" name="agreement" type="checkbox">
+            <span class="checkbox-material"><span class="check"></span></span> Я ознакомлен(а) и согласен(а) с <a href="//proslavlenie.ru/page/polzovatelskoe-soglashenie/" target="_blank">пользовательским соглашением об использовании персональных данных</a>
+            </label>
+          </div> 
+          <div class="send btn btn-success" style="display: block;margin-top: 20px;float: right;">Отправить</div> 
+          <div class="errorswrap"></div> 
+        </form>
+      </div>
+      <div class="modal-footer" style="margin-top: -60px;margin-bottom: 0;position: relative;z-index: 1;">
+        <button class="btn btn-warning" data-dismiss="modal">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</div>
+ 
 
 </div><!-- /.content-wrapper -->
 {% endblock %}
