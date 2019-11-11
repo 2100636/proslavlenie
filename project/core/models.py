@@ -436,7 +436,7 @@ class ProjectCategory(models.Model):
     slug = models.SlugField(u'Ссылка', max_length=50, unique=True)
     image = models.ImageField(
         verbose_name=u'Изображение', upload_to='projectcategory_image', blank=True)
-    cropping = ImageRatioField('image', '350x350')
+    cropping = ImageRatioField('image', '250pxx250')
 
     class Meta:
         verbose_name = u'категория проектов для Партнерства'

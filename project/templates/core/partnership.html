@@ -54,16 +54,18 @@
           <h2 style="font-family: 'Roboto Slab';color: #2274c7;text-transform: uppercase;font-size: 30px;margin-bottom: 50px;text-align: center;" >Наши проекты:</h2>
 
           {% for cat in categories %}
-            <div class="cat_item" style="width:350px;" >
+            <div class="cat_item" style="width:250px;" >
               <a href="{{ cat.url }}">
                 {# <img src="{{ cat.image }}" alt="{{ cat.name }}" style="width:350px;heigth:350px;"> #}
-                <img class="img-responsive" alt="{{ cat.name }}" src="{% cropped_thumbnail cat "cropping" scale=1 %}">
+                <img class="img-responsive" alt="{{ cat.name }}" src="{% cropped_thumbnail cat "cropping" scale=1 %}" style="width:250px;heigth:250px;">
                 <div class="name" style="font-family: 'Roboto Slab';color: #2274c7;text-transform: uppercase;font-size: 22px;margin-bottom: 10px;text-align: center;" >{{ cat.name }}</div>
               </a>
             </div>
           {% endfor %}
         </div>
 
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
         <hr>
 
 
