@@ -72,8 +72,10 @@
       <div class="modal-body">
         <form class="siteform">
           <input type="hidden" name="csrfmiddlewaretoken" value="UmBfsvlwoSm6CGz2dra5JNhDc4AA55W1">
-          <input name="formname" type="hidden" value="Анкета БШ" class="form-control">
-          <input name="fields" type="hidden" value="fio;phone;email;how_often;summ" class="form-control">
+          <input name="formname" type="hidden" value="Анкета партнера">
+          <input name="fields" type="hidden" value="project;io;phone;email;how_often;summ" >
+          <input name="project" type="hidden" value="{{ project.name }}">
+
           <div class="fio"><input class="form-control floating-label" id="id_fio" name="fio" placeholder="Ф.И.О" type="text"></div>
           <div class="phone"><input class="form-control floating-label" id="id_phone" name="phone" placeholder="Контактный телефон" type="text"></div>
           <div class="email"><input class="form-control floating-label" id="id_email" name="email" placeholder="E-mail" type="text"></div>
