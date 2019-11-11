@@ -1144,7 +1144,8 @@ textarea.form_control{
 .goalline {
   background: #e5e5e5;
   border: 1px solid #2274c7;
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
   position: relative;
   margin-bottom: 20px;
 }
