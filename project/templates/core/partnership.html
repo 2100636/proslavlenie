@@ -56,7 +56,7 @@
           {% for cat in categories %}
             <div class="cat_item" style="width:350px;" >
               <a href="{{ cat.url }}">
-                <img src="{{ cat.image }}" alt="{{ cat.name }}" style="width:350px;heigth:350px;">
+                <img class="img-responsive" alt="{{ cat.name }}" src="{% cropped_thumbnail cat.image "cropping" scale=1 %}" style="width:350px;heigth:350px;">
                 <div class="name" style="font-family: 'Roboto Slab';color: #2274c7;text-transform: uppercase;font-size: 22px;margin-bottom: 10px;text-align: center;" >{{ cat.name }}</div>
               </a>
             </div>
