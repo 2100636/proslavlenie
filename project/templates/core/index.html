@@ -135,9 +135,15 @@
 
                         <!-- Блок задать вопрос. Модальное окно, отправка сообщения на почту -->
                         <div class="col-xs-12 sepa">
-                            <a style="cursor: pointer" name="" data-toggle="modal" data-target="#quastionModal">
-                                <img src="{{ STATIC_URL }}theme/img/question.jpg" alt=""/>
+                            {#  <a style="cursor: pointer" name="" data-toggle="modal" data-target="#quastionModal"> #}
+                            {#     <img src="{{ STATIC_URL }}theme/img/question.jpg" alt=""/> #}
+                            {# </a> #}
+
+
+                            <a style="cursor: pointer" href="/news/217/">
+                                <img src="{{ STATIC_URL }}theme/img/onlinestudy.jpg" alt=""/>
                             </a>
+                            
 
                             <div class="modal modal-primary fade" id="quastionModal" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog">
