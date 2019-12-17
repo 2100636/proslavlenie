@@ -363,7 +363,7 @@ small {
 }
 .btn_front a {
     color: #fff;
-    padding: 30px 80px;
+    padding: 30px 10px 30px 60px;
 }
 .btn_front a:hover {
     color: #fff;
