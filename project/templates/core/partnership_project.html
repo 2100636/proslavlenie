@@ -51,10 +51,12 @@
 
           <div class="bttns">
             {% if project.id == 6 %}
-              <div class="btn btn-default" data-toggle="modal" data-target="#podpisatsya">Получить курс</div>
+              <a class="btn btn-default" href="http://donation.proslavlenie.ru/index.php?id_project={{project.id}}" target="_blank">Пожертвовать единоразово</a>
+              <div class="btn btn-default" data-toggle="modal" data-target="#podpisatsya">Стать партнером</div>
+            {% else %}
+              <a class="btn btn-default" href="http://donation.proslavlenie.ru/index.php?id_project={{project.id}}" target="_blank">Пожертвовать единоразово</a>
+              <div class="btn btn-default" data-toggle="modal" data-target="#becomepartner">Стать партнером</div>
             {% endif %}
-            <a class="btn btn-default" href="http://donation.proslavlenie.ru/index.php?id_project={{project.id}}" target="_blank">Пожертвовать единоразово</a>
-            <div class="btn btn-default" data-toggle="modal" data-target="#becomepartner">Стать партнером</div>
           </div>
 
           <div class="date">Дата публикации проекта на сайте: {{ project.date }}</div>
