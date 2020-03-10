@@ -101,8 +101,8 @@
                         <div class="persent">{{ project.complete }}%</div>
                         <div class="progress" style="width:{{ project.complete }}%"></div>
                       </div>
+                      <div class="current"><div class="title">Собрано:</div> {{ project.current }} руб.</div>
                     {% endif %}
-                    <div class="current"><div class="title">Собрано:</div> {{ project.current }} руб.</div>
                     <a href="{{ project.url }}" class="btn btn-primary pull-right">Подробнее</a>
                     {# <div class="category">Категория: <a href="{{ project.category.url }}">{{ project.category }}</a></div> #}
                   </div>

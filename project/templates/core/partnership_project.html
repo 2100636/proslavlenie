@@ -51,7 +51,7 @@
 
           <div class="bttns">
             {% if project.id == 6 %}
-              <div class="btn btn-default" data-toggle="modal" data-target="#podpisatsya">Получить курс/div>
+              <div class="btn btn-default" data-toggle="modal" data-target="#podpisatsya">Получить курс</div>
             {% endif %}
             <a class="btn btn-default" href="http://donation.proslavlenie.ru/index.php?id_project={{project.id}}" target="_blank">Пожертвовать единоразово</a>
             <div class="btn btn-default" data-toggle="modal" data-target="#becomepartner">Стать партнером</div>
@@ -114,26 +114,10 @@
         <h4 class="modal-title" id="podpisatsyaLabel" style="line-height: 30px;margin-bottom: 16px;text-align: center;">Чтобы получить курс <br> заполните форму и подпишитесь на рассылку:</h4>
       </div>
       <div class="modal-body">
-        <form action='https://ru.msndr.net/subscriptions/xmdqascveumcuvbir/form' charset='UTF-8' method='post'>
-          <label class="required" for="email">Email</label>
-          <input type="text" name="recipient[email]" id="recipient_email" value="" required="required" class="form-control" />
-          <input type="hidden" name="recipient[recipient_values_attributes][69819][recipient_parameter_id]" id="recipient_recipient_values_attributes_69819_recipient_parameter_id" value="69819" />
-          <label class="required" for="recipient_recipient_values_attributes_69819_value">Фамилия</label>
-          <input type="text" name="recipient[recipient_values_attributes][69819][value]" id="recipient_recipient_values_attributes_69819_value" class="form-control" required="required" />
-          <input type="hidden" name="recipient[recipient_values_attributes][69820][recipient_parameter_id]" id="recipient_recipient_values_attributes_69820_recipient_parameter_id" value="69820" />
-          <label class="required" for="recipient_recipient_values_attributes_69820_value">Имя</label>
-          <input type="text" name="recipient[recipient_values_attributes][69820][value]" id="recipient_recipient_values_attributes_69820_value" class="form-control" required="required" />
-          <input type="hidden" name="recipient[recipient_values_attributes][69821][recipient_parameter_id]" id="recipient_recipient_values_attributes_69821_recipient_parameter_id" value="69821" />
-          <label class="required" for="recipient_recipient_values_attributes_69821_value">Отчество</label>
-          <input type="text" name="recipient[recipient_values_attributes][69821][value]" id="recipient_recipient_values_attributes_69821_value" class="form-control" required="required" />
-          <input type="hidden" name="recipient[recipient_values_attributes][69822][recipient_parameter_id]" id="recipient_recipient_values_attributes_69822_recipient_parameter_id" value="69822" />
-          <label class="" for="recipient_recipient_values_attributes_69822_value">Телефон</label>
-          <input type="text" name="recipient[recipient_values_attributes][69822][value]" id="recipient_recipient_values_attributes_69822_value" class="form-control" />
-          <input type="hidden" name="recipient[recipient_values_attributes][69823][recipient_parameter_id]" id="recipient_recipient_values_attributes_69823_recipient_parameter_id" value="69823" />
-          <label class="required" for="recipient_recipient_values_attributes_69823_value">Адрес</label>
-          <input type="text" name="recipient[recipient_values_attributes][69823][value]" id="recipient_recipient_values_attributes_69823_value" class="form-control" required="required" />
-          <button type='submit'>Подписаться</button>
-        </form>
+        <div style="overflow: hidden;width: 100%;">
+          <iframe src="https://ru.msndr.net/subscriptions/xmdqascveumcuvbir/form" style="width:100%;border:0;height:702px;margin-top:-100px;">
+          </iframe>
+        </div>
       </div>
       <div class="modal-footer" style="margin-top: -60px;margin-bottom: 0;position: relative;z-index: 1;">
         <button class="btn btn-warning" data-dismiss="modal">Закрыть</button>
