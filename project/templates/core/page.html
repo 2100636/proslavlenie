@@ -83,4 +83,62 @@
        swiper.slideTo($(this).index());
     });
     </script>
+
+
+
+    <style>
+      #e_mail.form-control{
+        display: none;
+      }
+    .ok {
+      padding: 20px;
+      background: #a9ffb4;
+      font-weight: 600;
+      font-size: 16px;
+    }      
+    .errors {
+      color: #e80b0b;
+    }
+    </style>
+    <script>
+      var send = false;
+      (function($){$(document).ready(function(){
+        
+        $(".siteform .send").click(function() {
+          var that = $(this);
+          var successtext = $(this).data('successtext');
+          if (successtext == undefined || successtext == null) {
+            successtext = '';
+          };
+          form = that.parents('.siteform');
+          if (send == false) {
+            var str = form.serialize();
+            console.log(form);
+            console.log(str);
+            $.ajax({
+              type: "POST",
+              url: "https://form.proslavlenie.ru/mail.php",
+              data: str,
+              success: function(msg) {
+                console.log(msg);
+                if(msg == 'ok') {
+                  result = '<div class="ok">Спасибо! Ваше сообщение отправлено. '+successtext+'</div>';
+                  form.append(result);
+                  send = true;
+                  //form.submit();
+                  submit = form.find('.form_submit');
+                  submit.click();
+                }
+                else {
+                  form.find('.errorswrap').html('<div class="errors">'+msg+'</div>');
+                }
+              }
+            });
+            return false;
+          }
+        });
+
+      });})(jQuery);
+    </script> 
+    
 {% endblock %}
