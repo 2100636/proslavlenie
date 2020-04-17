@@ -164,6 +164,27 @@ background: #089f29;
 color: #fff;
 text-align: center;
 }
+
+
+.block8 h2 {
+  padding: 10px;
+  background: #f1b122;
+  color: #fff;
+  text-align: center;
+}
+.block8{
+  margin-bottom: 40px;
+  text-align: center;
+  font-weight: 600;
+}
+
+
+
+
+
+
+
+
 </style>
 
 <div class="block1">
@@ -171,7 +192,7 @@ text-align: center;
     <div class="video">
     <iframe width="370" height="250" src="https://www.youtube.com/embed/{{ ministry.video }}" frameborder="0" allowfullscreen></iframe>
     </div>
-    <div class="text1" style="width: 740px;"><h2>Добро пожаловать на Библейские Курсы!</h2>
+    <div class="text1" style="width: 740px;"><h2>Добро пожаловать на Библейские курсы «Жизнь в победе»</h2>
     Если вы хотите больше узнать о Боге и Его воле для вашей жизни, или систематизировать то, что уже слышали и читали о новой жизни во Христе – добро пожаловать на библейские курсы! Наша цель - помочь христианам возрастать духовно, познавая Слово Божье, для эффективного служения Господу и людям, раскрыть духовные дары и помочь войти в свое призвание.
     </div>
   </div>
@@ -264,153 +285,13 @@ text-align: center;
 </div>
 
 
-<div class="blockanketa">
-  <p style="text-align: center;">
-  Для поступления на библейские курсы необходимо  <br>
-  пройти регистрацию и заполнить анкету,<br>
-   которую вы видите в этом разделе сайта. <br>
-  По всем вопросам звоните секретарю <br>
-  дневного отделения БК: Юлия <a href="tel:89528809002">8(952)880-90-02</a>
-  </p>
-
-  <div class="text-center">
-    <span class="anketabtn">АНКЕТА</span>
-  </div>
 
 
-            {% if form_msg %} 
-              <div class="form_msg">{{ form_msg.0 }}</div>
-              <style>
-                .form_msg{
-                  background: {{ form_msg.1 }};
-                  padding: 30px 30px 27px;
-                  color: #fff;
-                  font-size: 21px;
-                  text-align: center;
-                  text-transform: uppercase;
-                }
-              </style> 
-            {% endif %}
-
-
-<div class="bs_form_container" style="display:none;">
-  <form action="." method="post" class="siteform">
-    {% csrf_token %}
-    <h3>Анкета для поступления в БК</h3>
-    {# {{ form }} #}
-
-    <input name="formname" type="hidden" value="Анкета БШ" class="form-control">
-    <input name="fields" type="hidden" value="formname;fio;birth_day;phone;city;family_status;you_church;pastor_fio_phone;is_church_member;is_believer;salvation_day;you_mission;form_of_study;is_pastor_know;is_blagoslovenie;is_vernutsya;psyho_disp" class="form-control">
-    <input name="not_necessary" type="hidden" value="is_church_member;is_believer;is_pastor_know;is_blagoslovenie;is_vernutsya;psyho_disp" class="form-control">
-
-
-    <div class="fio">{{form.fio}}</div>
-    <div class="birth_day">{{form.birth_day}}</div>
-    <div class="phone">{{form.phone}}</div>
-    <div class="city">{{form.city}}</div>
-    <div class="family_status">{{form.family_status}}</div>
-    <div class="you_church">{{form.you_church}}</div>
-    <div class="pastor_fio_phone">
-      <input class="form-control floating-label" id="id_pastor_fio_phone" name="pastor_fio_phone" placeholder="ФИО Пастора и телефон" type="text">
-    </div>
-    <div class="is_church_member checkbox">
-      <label>
-      {{form.is_church_member}}
-      <span class="checkbox-material"><span class="check"></span></span> Являетесь ли Вы членом Церкви
-      </label>
-    </div>
-    <div class="is_believer checkbox">
-      <label>{{form.is_believer}}
-      <span class="checkbox-material"><span class="check"></span></span> Веруете ли Вы в Иисуса Христа как своего Господа и Спасителя
-      </label>
-    </div>
-    <div class="salvation_day">{{form.salvation_day}}</div>
-    <div class="you_mission">{{form.you_mission}}</div>
-    <div class="form_of_study"><label for="id_form_of_study">Форма обучения: {{form.form_of_study}}</label></div>
-
-    <div class="is_pastor_know checkbox">
-      <label>{{form.is_pastor_know}}
-      <span class="checkbox-material"><span class="check"></span></span> Знает ли пастор вашей Церкви, о вашем желании обучаться на БК?
-      </label>
-    </div><div class="is_blagoslovenie checkbox">
-      <label>{{form.is_blagoslovenie}}
-      <span class="checkbox-material"><span class="check"></span></span> Имеете ли вы благословение вашего пастора для обучения?
-      </label>
-    </div>
-    <div class="is_vernutsya checkbox">
-      <label>{{form.is_vernutsya}}
-      <span class="checkbox-material"><span class="check"></span></span> Обязуетесь ли вы по окончании обучения вернуться в свою церковь?
-      </label>
-    </div>
-    <div class="id_psyho_disp checkbox">
-      <label>
-      <input id="id_psyho_disp" name="psyho_disp" type="checkbox">
-        <span class="checkbox-material"><span class="check"></span></span> Состоите ли вы на учете в психо-неврологическом диспансере?
-      </label>
-    </div>
-
-    <input class="form-control floating-label" id="e_mail" name="e_mail" placeholder="Не_заполняйте_это_поле" type="email">
-
-    <div class="rules checkbox">
-      <label>{{form.rules}}
-      <span class="checkbox-material"><span class="check"></span></span> Я понимаю, что, как слушатель Библейских курсов, я обязан следовать установленным правилам
-      </label>
-    </div>
-    <div class="agreement checkbox">
-      <label>{{form.agreement}}
-      <span class="checkbox-material"><span class="check"></span></span> Я ознакомлен(а) и согласен(а) с <a href="//proslavlenie.ru/page/polzovatelskoe-soglashenie/" target="_blank">пользовательским соглашением об использовании персональных данных</a>
-      </label>
-    </div>
-
-    <input type="submit" name="bs_form" class="btn btn-success form_submit" style="display: block;margin-top: 20px;float: right;display: none;" value="Отправить">
-
-    <div class="send btn btn-success" style="display: block;margin-top: 20px;float: right;">Отправить</div>
-
-    <div class="errorswrap"></div>
-
-  </form>
-</div>
-
-
-
-
-
-</div>
-
-
-
-<div class="block5">
-  <div class="flex">
-    <div class="stud" style="width: 41%;font-size: 14px;">
-      <div style="font-size: 20px;" class="title">Наши студенты</div>
-      <p>Томичи и приезжие из других городов и стран, разных возрастов и социальных слоев.
-      Мы верим, что каждый христианин, примирившись с Богом, должен пройти обучающий процесс для духовного возрастания. <br>
-      Наши студенты - люди с разным уровнем духовной зрелости: от новообращенных до служителей 
-      и действующих пасторов, миссионеры.<br>
-      Уже во время обучения каждый из студентов входит в служения Церкви, где и продолжает 
-      трудиться по окончании Курсов.<br>
-      200 человек начали домашние группы. <br>
-      Многие уехали на миссию и стали пасторами и лидерами церквей.</p>
-    </div>
-    <div class="prepoda" style="width: 53%;font-size: 14px;">
-      <div style="font-size: 20px;" class="title">Преподаватели</div>
-      <p>В преподавательский состав входят 14 человек.<br>
-      Все учителя являются служителями и лидерами отделов церкви, пасторами, пресвитерами. <br>
-      Учителя прошли обучение на Библейских курсах в Библейском Центре «Слово Жизни» Москва.<br>
-      На сегодняшний день 5 человек обучаются в Евроазиатской богословской семинарии, в ближайшее время получат степень «магистр Церковного служения»<br>
-      Наши преподаватели - высококвалифицированные, дипломированные специалисты: религиоведы, соц. работники, педагоги-психологи. <br>
-      Учителя наших Курсов служат в других городах и странах, снаряжая верующих на дело служения, проводят лидерские Конференции в России, различные семинары и мастер-классы. </p>
-    </div>
-  </div>
-  <div class="text">
-    <p>Обучающий процесс включает в себя лекционные занятия, молитвенную практику и практику движения в дарах Духа Святого. Помимо изучения Слова Божьего, студенты читают дополнительную духовную литературу, принимают участие в служениях Церкви, евангелизациях в городе и на миссионерских полях.</p>
-  </div>
-</div>
 
 <div class="block6">
   <h2>Вечернее отделение</h2>
 
-  <p style="text-align:center;color:#ff524e;margin-bottom:15px;font-size:19px;">Обучение с 7 сентября 2019г. по 28 декабря 2019г.</p>
+  <p style="text-align:center;color:#ff524e;margin-bottom:15px;font-size:19px;">Обучение с 5 сентября 2020г. по 26 декабря 2020г.</p>
 
 
   <p>Расписание Вечернего отделения</p> 
@@ -424,12 +305,12 @@ text-align: center;
     </div>
     <div class="block62" style="width: 47%;">
       Суббота:<br>
-      10.00-10.50 молитвенная Школа <br>
-      11.00-11.50 1 урок <br>
-      12.00-12.50 2 урок <br>
-      13.20-14.10 3 урок <br>
-      14.20-15.10 5 урок <br>
-      15.20-16.10 6 урок <br>
+      10.00 — 10. 50 — 1 урок<br>
+      11.00 — 11.50 — 2 урок<br>
+      12.00 — 12.50 — 3 урок<br>
+      13.20 — 14.10 — 4 урок<br>
+      14.20 — 15.10 — 5 урок<br>
+      15.20 — 16.00 — 6 урок<br>
     </div>
   </div>
 
@@ -526,7 +407,7 @@ text-align: center;
     </div>
   </div>
 
-  <p style="margin-top: 23px;">По всем вопросам звоните секретарю вечернего отделения БК: Екатерина <a href="tel:89528809002">8(952)880-90-02</a></p>
+  <p style="margin-top: 23px;">По всем вопросам звоните секретарю вечернего отделения БК: <a href="tel:89528809002">8(952)880-90-02</a></p>
 </div>
 
 
@@ -535,6 +416,230 @@ text-align: center;
 
 
 
+
+
+
+<div class="block8">
+  <h2>Курс «Школа Душепопечения»</h2>
+
+  <p style="text-align:center;margin-bottom:15px;">Приглашаем вас пройти обучение в «Школе Душепопечения», на курсе «Основы христианского душепопечения». <br>
+Здесь, вы познакомитесь с Библейским основанием Душепопечения и обретете навыки душепопечительской помощи ближнему.</p>
+
+  <p style="text-align:center;color:#ff524e;margin-bottom:15px;font-size:19px;">Обучение со 2 по 30 мая 2020г. в онлайн режиме</p>
+
+
+  <p>Расписание занятий:</p> 
+
+  <div class="rasp" style="text-align: center;margin-bottom: 20px;">
+    Суббота: <br>
+    10.00-10.50 1 урок<br>
+    11.00-11.50 2 урок<br>
+    12.00-12.50 3 урок<br>
+    13.20-14.10 4 урок<br>
+    14.20-15.10 5 урок<br>
+    15.20- 16.00 6 урок<br>
+  </div>
+
+
+  <p style="text-align:center;margin-bottom:15px;font-size:19px;">Учебная программа</p>
+
+  <div class="programm flex">
+    <div class="item" style="width: 20%;">
+    <h4>2.05</h4>
+    • 1.Качества душепопечителя. Душепопечение: забота и консультирование.<br>
+    • 2. Душепопечительское чтение Священного Писания.
+    </div>
+
+    <div class="item" style="width: 20%;">
+    <h4>29.05</h4>
+    • Душепопечительское воспитание (наставничество).
+    </div>
+
+    <div class="item" style="width: 20%;">
+    <h4>16.05</h4>
+    • 1. Пятиступенчатая модель консультирования.<br>
+    • 2. Кризисное консультирование. Страх, гнев, обиды, депрессия.
+    </div>
+
+    <div class="item" style="width: 20%;">
+    <h4>23.05</h4>
+    • Семейное консультирование: супружеские и родительско-детские отношения. Измена, развод.
+    </div>
+
+    <div class="item" style="width: 20%;">
+    <h4>30.05</h4>
+    • 1. Консультирование по сексуальным вопросам. <br>
+    • 2. Созависимость.
+    </div>
+
+  </div>
+
+  <p style="margin: 40px;"> При успешном окончании курсов, вы получите сертификат о прослушивании курса «Основы христианского душепопечения»
+Для поступления на Курсы Душепопечения необходимо иметь сертификат об окончании базового курса по изучению библии (вечернего, дневного или онлайн отделения).
+Вопросы по тел 89528809002</p>
+
+</div>
+
+ 
+
+
+
+
+<div class="block5">
+  <div class="flex">
+    <div class="stud" style="width: 41%;font-size: 14px;">
+      <div style="font-size: 20px;" class="title">Наши студенты</div>
+      <p>Томичи и приезжие из других городов и стран, разных возрастов и социальных слоев.
+      Мы верим, что каждый христианин, примирившись с Богом, должен пройти обучающий процесс для духовного возрастания. <br>
+      Наши студенты - люди с разным уровнем духовной зрелости: от новообращенных до служителей 
+      и действующих пасторов, миссионеры.<br>
+      Уже во время обучения каждый из студентов входит в служения Церкви, где и продолжает 
+      трудиться по окончании Курсов.<br>
+      200 человек начали домашние группы. <br>
+      Многие уехали на миссию и стали пасторами и лидерами церквей.</p>
+    </div>
+    <div class="prepoda" style="width: 53%;font-size: 14px;">
+      <div style="font-size: 20px;" class="title">Преподаватели</div>
+      <p>В преподавательский состав входят 14 человек.<br>
+      Все учителя являются служителями и лидерами отделов церкви, пасторами, пресвитерами. <br>
+      Учителя прошли обучение на Библейских курсах в Библейском Центре «Слово Жизни» Москва.<br>
+      На сегодняшний день 5 человек обучаются в Евроазиатской богословской семинарии, в ближайшее время получат степень «магистр Церковного служения»<br>
+      Наши преподаватели - высококвалифицированные, дипломированные специалисты: религиоведы, соц. работники, педагоги-психологи. <br>
+      Учителя наших Курсов служат в других городах и странах, снаряжая верующих на дело служения, проводят лидерские Конференции в России, различные семинары и мастер-классы. </p>
+    </div>
+  </div>
+  <div class="text">
+    <p>Обучающий процесс включает в себя лекционные занятия, молитвенную практику и практику движения в дарах Духа Святого. Помимо изучения Слова Божьего, студенты читают дополнительную духовную литературу, принимают участие в служениях Церкви, евангелизациях в городе и на миссионерских полях.</p>
+  </div>
+</div>
+
+
+
+
+
+<div class="blockanketa">
+  <p style="text-align: center;">
+  Для поступления на библейские курсы необходимо  <br>
+  пройти регистрацию и заполнить анкету,<br>
+   которую вы видите в этом разделе сайта. <br>
+  По всем вопросам звоните секретарю <br>
+  дневного отделения БК: <a href="tel:89528809002">8(952)880-90-02</a>
+  </p>
+
+  <div class="text-center">
+    <span class="anketabtn">АНКЕТА</span>
+  </div>
+
+
+            {% if form_msg %} 
+              <div class="form_msg">{{ form_msg.0 }}</div>
+              <style>
+                .form_msg{
+                  background: {{ form_msg.1 }};
+                  padding: 30px 30px 27px;
+                  color: #fff;
+                  font-size: 21px;
+                  text-align: center;
+                  text-transform: uppercase;
+                }
+              </style> 
+            {% endif %}
+
+
+  <div class="bs_form_container" style="display:none;">
+    <form action="." method="post" class="siteform">
+      {% csrf_token %}
+      <h3>Анкета для поступления в БК</h3>
+      {# {{ form }} #}
+
+      <input name="formname" type="hidden" value="Анкета БШ" class="form-control">
+      <input name="fields" type="hidden" value="formname;fio;birth_day;phone;city;family_status;you_church;pastor_fio_phone;is_church_member;is_believer;salvation_day;you_mission;form_of_study;is_pastor_know;is_blagoslovenie;is_vernutsya;psyho_disp" class="form-control">
+      <input name="not_necessary" type="hidden" value="is_church_member;is_believer;is_pastor_know;is_blagoslovenie;is_vernutsya;psyho_disp" class="form-control">
+
+
+      <div class="fio">{{form.fio}}</div>
+      <div class="birth_day">{{form.birth_day}}</div>
+      <div class="phone">{{form.phone}}</div>
+      <div class="city">{{form.city}}</div>
+      <div class="family_status">{{form.family_status}}</div>
+      <div class="you_church">{{form.you_church}}</div>
+      <div class="pastor_fio_phone">
+        <input class="form-control floating-label" id="id_pastor_fio_phone" name="pastor_fio_phone" placeholder="ФИО Пастора и телефон" type="text">
+      </div>
+      <div class="is_church_member checkbox">
+        <label>
+        {{form.is_church_member}}
+        <span class="checkbox-material"><span class="check"></span></span> Являетесь ли Вы членом Церкви
+        </label>
+      </div>
+      <div class="is_believer checkbox">
+        <label>{{form.is_believer}}
+        <span class="checkbox-material"><span class="check"></span></span> Веруете ли Вы в Иисуса Христа как своего Господа и Спасителя
+        </label>
+      </div>
+      <div class="salvation_day">{{form.salvation_day}}</div>
+      <div class="you_mission">{{form.you_mission}}</div>
+
+      <div class="form_of_study">
+        <label for="id_form_of_study">Форма обучения: 
+          <select id="id_form_of_study" name="form_of_study">
+            <option value="day" selected="selected">дневная</option>
+            <option value="evening">вечерняя</option>
+            <option value="evening">подготовка к служению</option>
+            <option value="evening">школа душепопечительства</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="form_of_study"><label for="id_form_of_study">Форма обучения: {{form.form_of_study}}</label></div>
+
+      <div class="is_pastor_know checkbox">
+        <label>{{form.is_pastor_know}}
+        <span class="checkbox-material"><span class="check"></span></span> Знает ли пастор вашей Церкви, о вашем желании обучаться на БК?
+        </label>
+      </div><div class="is_blagoslovenie checkbox">
+        <label>{{form.is_blagoslovenie}}
+        <span class="checkbox-material"><span class="check"></span></span> Имеете ли вы благословение вашего пастора для обучения?
+        </label>
+      </div>
+      <div class="is_vernutsya checkbox">
+        <label>{{form.is_vernutsya}}
+        <span class="checkbox-material"><span class="check"></span></span> Обязуетесь ли вы по окончании обучения вернуться в свою церковь?
+        </label>
+      </div>
+      <div class="id_psyho_disp checkbox">
+        <label>
+        <input id="id_psyho_disp" name="psyho_disp" type="checkbox">
+          <span class="checkbox-material"><span class="check"></span></span> Состоите ли вы на учете в психо-неврологическом диспансере?
+        </label>
+      </div>
+
+      <input class="form-control floating-label" id="e_mail" name="e_mail" placeholder="Не_заполняйте_это_поле" type="email">
+
+      <div class="rules checkbox">
+        <label>{{form.rules}}
+        <span class="checkbox-material"><span class="check"></span></span> Я понимаю, что, как слушатель Библейских курсов, я обязан следовать установленным правилам
+        </label>
+      </div>
+      <div class="agreement checkbox">
+        <label>{{form.agreement}}
+        <span class="checkbox-material"><span class="check"></span></span> Я ознакомлен(а) и согласен(а) с <a href="//proslavlenie.ru/page/polzovatelskoe-soglashenie/" target="_blank">пользовательским соглашением об использовании персональных данных</a>
+        </label>
+      </div>
+
+      <input type="submit" name="bs_form" class="btn btn-success form_submit" style="display: block;margin-top: 20px;float: right;display: none;" value="Отправить">
+
+      <div class="send btn btn-success" style="display: block;margin-top: 20px;float: right;">Отправить</div>
+
+      <div class="errorswrap"></div>
+
+    </form>
+  </div>
+
+
+
+
+</div>
 
 
 
