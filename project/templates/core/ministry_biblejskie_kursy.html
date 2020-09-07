@@ -565,10 +565,12 @@ text-align: center;
       <h3>Анкета для поступления на дневное или вечернее отделение Бк</h3>
       {# {{ form }} #}
 
-      <input name="formname" type="hidden" value="Анкета БШ" class="form-control">
-      <input name="fields" type="hidden" value="formname;fio;birth_day;phone;city;family_status;you_church;pastor_fio_phone;is_church_member;is_believer;salvation_day;you_mission;form_of_study;is_pastor_know;is_blagoslovenie;is_vernutsya;psyho_disp" class="form-control">
-      <input name="not_necessary" type="hidden" value="is_church_member;is_believer;is_pastor_know;is_blagoslovenie;is_vernutsya;psyho_disp" class="form-control">
 
+
+
+      <input name="formname" type="hidden" value="Анкета БШ" class="form-control">
+      <input name="fields" type="hidden" value="formname;fio;birth_day;phone;city;family_status;you_church;pastor_fio_phone;is_believer;salvation_day;christening_day;is_church_member;used_tobacco;drink_alcohol;used_drugs;involved_occult;what_ministry;you_mission;form_of_study;is_pastor_know;is_blagoslovenie;is_vernutsya;psyho_disp" class="form-control">
+      <!-- <input name="not_necessary" type="hidden" value="is_believer;is_church_member;is_pastor_know;is_blagoslovenie;is_vernutsya;psyho_disp;" class="form-control"> -->
 
       <div class="fio">{{form.fio}}</div>
       <div class="birth_day">{{form.birth_day}}</div>
@@ -580,7 +582,7 @@ text-align: center;
         <input class="form-control floating-label" id="id_pastor_fio_phone" name="pastor_fio_phone" placeholder="ФИО Пастора и телефон" type="text">
       </div>
       <div class="is_believer checkbox">
-        <label>{{form.is_believer}}
+        <label><input id="id_is_believer" name="is_believer" type="checkbox" value="нет">
         <span class="checkbox-material"><span class="check"></span></span> Веруете ли Вы в Иисуса Христа как своего Господа и Спасителя
         </label>
       </div>
@@ -593,11 +595,11 @@ text-align: center;
 
       <div class="is_church_member checkbox">
         <label>
-        {{form.is_church_member}}
+        <input id="id_is_church_member" name="is_church_member" type="checkbox" value="нет">
         <span class="checkbox-material"><span class="check"></span></span> Являетесь ли Вы членом Церкви
         </label>
       </div>
-      
+
       <div class="used_tobacco">
         <input class="form-control floating-label" id="id_used_tobacco" name="used_tobacco" placeholder="Употребляли ли Вы табак? Если да, то когда в последний раз?" type="text">
       </div>
@@ -615,9 +617,6 @@ text-align: center;
         <input class="form-control floating-label" id="id_what_ministry" name="what_ministry" placeholder="В каком служении Вы состоите? Где хотели бы себя попробовать?" type="text">
       </div>
 
-
-
-
       <div class="you_mission">{{form.you_mission}}</div>
 
       <div class="form_of_study">
@@ -631,28 +630,32 @@ text-align: center;
         </label>
       </div>
 
-      <!-- <div class="form_of_study"><label for="id_form_of_study">Форма обучения: {{form.form_of_study}}</label></div> -->
-
       <div class="is_pastor_know checkbox">
-        <label>{{form.is_pastor_know}}
+        <label><input id="id_is_pastor_know" name="is_pastor_know" type="checkbox" value="нет">
         <span class="checkbox-material"><span class="check"></span></span> Знает ли пастор вашей Церкви, о вашем желании обучаться на БК?
         </label>
-      </div><div class="is_blagoslovenie checkbox">
-        <label>{{form.is_blagoslovenie}}
+      </div>
+      <div class="is_blagoslovenie checkbox">
+        <label><input id="id_is_blagoslovenie" name="is_blagoslovenie" type="checkbox" value="нет">
         <span class="checkbox-material"><span class="check"></span></span> Имеете ли вы благословение вашего пастора для обучения?
         </label>
       </div>
       <div class="is_vernutsya checkbox">
-        <label>{{form.is_vernutsya}}
+        <label><input id="id_is_vernutsya" name="is_vernutsya" type="checkbox" value="нет">
         <span class="checkbox-material"><span class="check"></span></span> Обязуетесь ли вы по окончании обучения вернуться в свою церковь?
         </label>
       </div>
       <div class="id_psyho_disp checkbox">
         <label>
-        <input id="id_psyho_disp" name="psyho_disp" type="checkbox">
+        <input id="id_psyho_disp" name="psyho_disp" type="checkbox" value="нет">
           <span class="checkbox-material"><span class="check"></span></span> Состоите ли вы на учете в психо-неврологическом диспансере?
         </label>
       </div>
+
+
+
+
+
 
       <input class="form-control floating-label" id="e_mail" name="e_mail" placeholder="Не_заполняйте_это_поле" type="email">
 
@@ -733,6 +736,17 @@ text-align: center;
   <script>
     var send = false;
     (function($){$(document).ready(function(){
+
+
+    $('input[type="checkbox"]').on('change', function(){
+      if($(this).prop('checked')){
+        $(this).val('Да');
+      }else{
+        $(this).val('Нет');
+      }
+    });
+
+
     
     $(".siteform .send").click(function() {
       var that = $(this);
