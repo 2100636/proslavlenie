@@ -579,12 +579,6 @@ text-align: center;
       <div class="pastor_fio_phone">
         <input class="form-control floating-label" id="id_pastor_fio_phone" name="pastor_fio_phone" placeholder="ФИО Пастора и телефон" type="text">
       </div>
-      <div class="is_church_member checkbox">
-        <label>
-        {{form.is_church_member}}
-        <span class="checkbox-material"><span class="check"></span></span> Являетесь ли Вы членом Церкви
-        </label>
-      </div>
       <div class="is_believer checkbox">
         <label>{{form.is_believer}}
         <span class="checkbox-material"><span class="check"></span></span> Веруете ли Вы в Иисуса Христа как своего Господа и Спасителя
@@ -597,6 +591,13 @@ text-align: center;
         <input class="form-control floating-label" id="id_christening_day" name="christening_day" placeholder="Принимали ли Вы водное крещение? Укажите дату." type="text">
       </div>
 
+      <div class="is_church_member checkbox">
+        <label>
+        {{form.is_church_member}}
+        <span class="checkbox-material"><span class="check"></span></span> Являетесь ли Вы членом Церкви
+        </label>
+      </div>
+      
       <div class="used_tobacco">
         <input class="form-control floating-label" id="id_used_tobacco" name="used_tobacco" placeholder="Употребляли ли Вы табак? Если да, то когда в последний раз?" type="text">
       </div>
