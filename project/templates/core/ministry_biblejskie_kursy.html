@@ -548,7 +548,7 @@ text-align: center;
               <div class="form_msg">{{ form_msg.0 }}</div>
               <style>
                 .form_msg{
-                  background: {{ form_msg.1 }};
+                  background: {{ form_msg.1 }}; //{
                   padding: 30px 30px 27px;
                   color: #fff;
                   font-size: 21px;
@@ -575,7 +575,21 @@ text-align: center;
       <div class="fio">{{form.fio}}</div>
       <div class="birth_day">{{form.birth_day}}</div>
       <div class="phone">{{form.phone}}</div>
-      <div class="city">{{form.city}}</div>
+
+
+      <div class="tomsk_or_no">
+        <label for="id_tomsk_or_no">Ваш город?
+          <select id="id_tomsk_or_no" name="tomsk_or_no">
+            <option value="tomsk" selected="selected">Томск</option>
+            <option value="other">Другой (указать ниже)</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="city" style="display:none;">
+        <input class="form-control floating-label" id="id_city" name="city" placeholder="Город проживания" type="text" value="Томск">
+      </div>
+
       <div class="family_status">{{form.family_status}}</div>
       <div class="you_church">{{form.you_church}}</div>
       <div class="pastor_fio_phone">
@@ -622,10 +636,10 @@ text-align: center;
       <div class="form_of_study">
         <label for="id_form_of_study">Форма обучения: 
           <select id="id_form_of_study" name="form_of_study">
-            <option value="day" selected="selected">дневная</option>
-            <option value="evening">вечерняя</option>
-            <option value="evening">подготовка к служению</option>
-            <option value="evening">школа душепопечительства</option>
+            <option value="дневная" selected="selected">дневная</option>
+            <option value="вечерняя">вечерняя</option>
+            <option value="подготовка к служению">подготовка к служению</option>
+            <option value="школа душепопечительства">школа душепопечительства</option>
           </select>
         </label>
       </div>
@@ -669,6 +683,7 @@ text-align: center;
         <span class="checkbox-material"><span class="check"></span></span> Я ознакомлен(а) и согласен(а) с <a href="//proslavlenie.ru/page/polzovatelskoe-soglashenie/" target="_blank">пользовательским соглашением об использовании персональных данных</a>
         </label>
       </div>
+      <div>Администрация библейских курсов оставляет за собой право отказать в приеме на обучение  без объяснения причин</div>
 
       <input type="submit" name="bs_form" class="btn btn-success form_submit" style="display: block;margin-top: 20px;float: right;display: none;" value="Отправить">
 
@@ -736,6 +751,19 @@ text-align: center;
   <script>
     var send = false;
     (function($){$(document).ready(function(){
+
+
+
+      $('.id_tomsk_or_no').on('change',function(){
+        if ($(this).val()!='tomsk') {
+          $('#id_city').val('');
+          $('.city').slideDown();
+        }else{
+          $('#id_city').val('tomsk');
+          $('.city').slideUp();
+        };
+      });
+
 
 
     $('input[type="checkbox"]').on('change', function(){
