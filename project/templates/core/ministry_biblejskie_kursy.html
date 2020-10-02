@@ -578,7 +578,7 @@ text-align: center;
 
 
       <div class="tomsk_or_no">
-        <label for="id_tomsk_or_no">Ваш город?
+        <label for="id_tomsk_or_no">Ваш город: 
           <select id="id_tomsk_or_no" name="tomsk_or_no">
             <option value="tomsk" selected="selected">Томск</option>
             <option value="other">Другой (указать ниже)</option>
@@ -756,11 +756,11 @@ text-align: center;
         if ($(this).val()!='tomsk') {
           $('#id_city').val('');
           $('.city').slideDown(200);
-          $('#id_pastor_fio_phone').attr('ФИО и телефон пастора церкви');
+          $('#id_pastor_fio_phone').attr('placeholder','ФИО и телефон пастора церкви');
         }else{
           $('#id_city').val('Томск');
           $('.city').slideUp(100);
-          $('#id_pastor_fio_phone').attr('ФИО и телефон пастора домашней группы');
+          $('#id_pastor_fio_phone').attr('placeholder','ФИО и телефон пастора домашней группы');
         };
       });
 
