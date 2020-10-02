@@ -593,7 +593,7 @@ text-align: center;
       <div class="family_status">{{form.family_status}}</div>
       <div class="you_church">{{form.you_church}}</div>
       <div class="pastor_fio_phone">
-        <input class="form-control floating-label" id="id_pastor_fio_phone" name="pastor_fio_phone" placeholder="ФИО Пастора и телефон" type="text">
+        <input class="form-control floating-label" id="id_pastor_fio_phone" name="pastor_fio_phone" placeholder="ФИО и телефон пастора домашней группы" type="text">
       </div>
       <div class="is_believer checkbox">
         <label><input id="id_is_believer" name="is_believer" type="checkbox" value="нет">
@@ -752,15 +752,15 @@ text-align: center;
     var send = false;
     (function($){$(document).ready(function(){
 
-
-
       $('#id_tomsk_or_no').on('change',function(){
         if ($(this).val()!='tomsk') {
           $('#id_city').val('');
-          $('.city').slideDown();
+          $('.city').slideDown(200);
+          $('#id_pastor_fio_phone').attr('ФИО и телефон пастора церкви');
         }else{
-          $('#id_city').val('tomsk');
-          $('.city').slideUp();
+          $('#id_city').val('Томск');
+          $('.city').slideUp(100);
+          $('#id_pastor_fio_phone').attr('ФИО и телефон пастора домашней группы');
         };
       });
 
