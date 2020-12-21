@@ -1323,7 +1323,7 @@ padding: 0;
 
 
 /* новогоднее украшение */
-/*
+
 body:after {
 content: "";
 display: block;
@@ -1347,4 +1347,4 @@ top: -5px;
 z-index: 11;
 background: url("../img/new_year_shapka.png");
 background-size: 100%;
-}*/
+}
