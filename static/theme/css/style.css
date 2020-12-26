@@ -426,30 +426,40 @@ section.baner {
 }
 .news {
     background: #97d5ff;
-    padding:10px 30px 30px 30px;
-    height: 425px;
+    padding: 10px 30px 16px 30px;
     overflow: hidden;
+    margin-bottom: 10px;
 }
 .news a {
     color: #333333;
     font-size: 16px;
     text-decoration: underline;
 }
+.news > h4{
+    margin: 0 0 11px;
+}
 .news h4 a {
     color: #0773bb;
-    font-size: 30px;
+    font-size: 24px;
     text-decoration: underline;
     font-family: "Roboto Slab";
+}
+.news_item {
+    margin-bottom: 7px;
 }
 .news .date {
     color: #0773bb;
     font-style: italic;
+    font-size: 11px;
 }
 .reviews{
     background: #0773bb;
     padding:10px 30px 30px 15px;
     height: 440px;
     overflow: hidden;
+}
+.sport a img{
+    width: 100%;
 }
 .reviews h4 a {
     font-size: 30px;

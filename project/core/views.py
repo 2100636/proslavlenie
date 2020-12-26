@@ -36,7 +36,7 @@ def crossdomain_xmlView(request, template_name="core/crossdomain.html"):
 def indexView(request, template_name="catalog/index.html"):
     user = request.user
     articles = Article.objects.order_by('-id')[:4]
-    news = News.objects.order_by("-date")[:5]
+    news = News.objects.order_by("-date")[:4]
     slides = SliderItem.objects.all()[:3]
 
     # получение ссылок для видео
