@@ -43,9 +43,7 @@
         <div class="col-xs-7">
           {% if project.id == 8 %}
             <div style="font-size: 22px;">
-              <p>Являясь нашим партнером, Вы вместе с нами:</p>
-              <p>Проповедуете Евангелие в других городах и странах<br>
-              Духовно поддерживаете верующих и меняете жизни людей</p>
+              <p>Если Вы еще не являетесь нашим партнером, сделайте это сегодня! Мы готовы молиться за вас и служить вам!</p>
             </div>
           {% elif project.id == 6 %}
             <div style="font-size: 22px;"> Станьте партнером. Заполнив анкету, мы подарим Вам бесплатный авторский видео курс Юлии Тихоновой.</div>
@@ -57,10 +55,10 @@
 
           <div class="bttns">
             {% if project.id == 6 %}
-              <a class="btn btn-default" href="http://donation.proslavlenie.ru/index.php?id_project={{project.id}}" target="_blank">Пожертвовать единоразово</a>
+              <a class="btn btn-default" href="https://donation.proslavlenie.ru/index.php?id_project={{project.id}}" target="_blank">Пожертвовать единоразово</a>
               <div class="btn btn-default" data-toggle="modal" data-target="#podpisatsya">Стать партнером</div>
             {% else %}
-              <a class="btn btn-default" href="http://donation.proslavlenie.ru/index.php?id_project={{project.id}}" target="_blank">Пожертвовать единоразово</a>
+              <a class="btn btn-default" href="https://donation.proslavlenie.ru/index.php?id_project={{project.id}}" target="_blank">Пожертвовать единоразово</a>
               <div class="btn btn-default" data-toggle="modal" data-target="#becomepartner">Стать партнером</div>
             {% endif %}
           </div>
